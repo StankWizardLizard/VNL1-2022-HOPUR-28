@@ -13,7 +13,7 @@
  [X] Velja Verkstjóra
  [X] Setja upp github page
  [X] Athuga Hvort github er virkt fyrir aðra
- [ ] Invite'a alla inná github page
+ [X] Invite'a alla inná github page
  [X] Ákveða kl hvað við viljum mæta á morgun
  [ ] Lesa yfir fyrirlestra powerpointið og verkefnalýsingu
 
