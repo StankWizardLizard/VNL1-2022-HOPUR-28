@@ -14,5 +14,6 @@
  [X] Setja upp github page
  [ ] Invite'a alla inná github page
  [X] Ákveða kl hvað við viljum mæta á morgun
+ [ ] Lesa yfir fyrirlestra powerpointið og verkefnalýsingu
 
- 
+ Allir Muna að mæta klukkan ~10:30 í HR á morgun
