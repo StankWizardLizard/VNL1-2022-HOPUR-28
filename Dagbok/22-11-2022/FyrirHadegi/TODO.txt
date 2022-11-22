@@ -12,7 +12,8 @@
  [ ] Gera Class Diagram
  [ ] Gera Wirefram
  [ ] Gera Notendahóp greiningu
- [ ] Refine'a 
+ [ ] Gera Use Cases
+ [ ] Gera Krofulisti
  [ ] 
  
   
