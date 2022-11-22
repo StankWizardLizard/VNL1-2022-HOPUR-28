@@ -7,9 +7,13 @@
  ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚════╝ 
                                                               
  ##############################################################
+
+ [ ] Greina Classa
+ [ ] Gera Class Diagram
+ [ ] Gera Wirefram
+ [ ] Gera Notendahóp greiningu
+ [ ] Refine'a 
+ [ ] 
  
- 
- 
- 
- 
+  
  
