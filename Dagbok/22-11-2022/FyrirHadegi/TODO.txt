@@ -8,13 +8,10 @@
                                                               
  ##############################################################
 
- [ ] Greina Classa
- [ ] Gera Class Diagram
- [ ] Gera Wirefram
+ [X] Greina Classa
+ [X] Gera Class Diagram
+ [X] Gera Wirefram
  [ ] Gera Notendahóp greiningu
  [ ] Gera Use Cases
  [ ] Gera Krofulisti
- [ ] 
- 
-  
  
