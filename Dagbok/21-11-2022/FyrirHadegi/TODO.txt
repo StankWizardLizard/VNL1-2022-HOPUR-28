@@ -15,6 +15,6 @@
  [X] Athuga Hvort github er virkt fyrir aðra
  [X] Invite'a alla inná github page
  [X] Ákveða kl hvað við viljum mæta á morgun
- [ ] Lesa yfir fyrirlestra powerpointið og verkefnalýsingu
+ [X] Lesa yfir fyrirlestra powerpointið og verkefnalýsingu
 
  Allir Muna að mæta klukkan ~10:30 í HR á morgun
