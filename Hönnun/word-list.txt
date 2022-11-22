@@ -1,0 +1,7 @@
+Leikmaður - Player
+Mótshaldari - Host
+Fyrirliði - Captain
+Félag - Club
+Lið - Team
+Deild - Division
+Viðureign - Match

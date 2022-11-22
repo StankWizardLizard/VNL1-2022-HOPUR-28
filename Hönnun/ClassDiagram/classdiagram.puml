@@ -1,0 +1,70 @@
+@startuml lol
+
+Person <|-- Host
+Person <|-- Player
+Captain <|-- Player
+Team "1" o-- "3" Player
+Team "1" o-- "1" Captain
+Club "1" o-- "1..*" Team 
+Match "1" o-- "2" Team 
+Division "1" *-- "1..*" Match  
+Host ..> Division
+
+
+class Person {
+    Name
+    SSN
+    mobile_nr
+}
+
+class Player {
+    address
+    home_nr
+    email
+    team_id
+}
+
+class Host {
+    change_results()
+    postpone_match()
+}
+
+class Captain {
+    post_results()
+}
+
+class Club {
+    name
+    address
+    phone_nr
+    teams_id[]
+}
+
+class Team {
+    team_id
+    name
+    captain_id
+    players_id[]
+}
+
+class Division {
+    name
+    team_id[]
+    host_id
+    start_date
+    end_date
+    type
+    match[]
+}
+
+class Match {
+    division_id
+    home_team
+    home_team_players[]
+    away_team
+    away_team_players[]
+    results
+
+}
+
+@enduml
