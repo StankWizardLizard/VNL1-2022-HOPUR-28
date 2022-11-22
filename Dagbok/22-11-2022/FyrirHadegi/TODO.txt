@@ -15,3 +15,6 @@
  [ ] Gera Use Cases
  [ ] Gera Krofulisti
  
+ Mætum Allir uppí skóla um 10 - 11 leitið. Unnum í að greina Classa, gera 
+Class Diagram. Búnir með 1 Wirefrime en gerum fleiri á morgun, Notandahóp 
+greinga klár. Komnir langt með Use cases. Fórum heim um 6 leitið.
