@@ -1,10 +1,17 @@
 @startuml
 
+class MainMenuUI  #B4a7e5
+class LeaderboardUI #B4a7e5
+class ScoreboardUI #B4a7e5
+class DivisionUI #B4a7e5
 
-
-
-
-
+class LogicWrapper{
+    TeamLL
+    ClubLL
+    DivisionLL
+    MatchLL
+    allexposedLLfunctions()
+}
 
 class TeamLL #EB937F{
     add_team()
@@ -30,6 +37,11 @@ class MatchLL #EB937F{
     get_match( match_id )   
 }
 
+LogicWrapper -- TeamLL
+LogicWrapper -- ClubLL
+LogicWrapper -- DivisionLL
+LogicWrapper -- MatchLL
+
 
 /'
 Storage layer
@@ -40,7 +52,7 @@ class StorageWrapper{
     DivisionIO
     TeamIO
     PlayerIO
-    allexposedfunctionsIOfunctions()
+    allexposedIOfunctions()
 
 }
 
@@ -64,10 +76,16 @@ class TeamIO  #ADD1b2  {
     get_team_from_file()
     write_team_person_to_file()
 }
+class ClubIO  #ADD1b2 {
+    get_club_from_file()
+    write_club_person_to_file()
+
+}
 
 StorageWrapper -- MatchesIO
 StorageWrapper -- PersonIO
 StorageWrapper -- DivisionIO
 StorageWrapper -- TeamIO
+StorageWrapper -- ClubIO
 
 @enduml
