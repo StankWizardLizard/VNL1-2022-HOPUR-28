@@ -1,4 +1,8 @@
 @startuml
+skinparam  class {
+    BackgroundColor<<personnel>> #A9DCDF
+}
+
 
 class TeamLL {
     add_team()
@@ -23,5 +27,38 @@ class MatchLL {
     get_match_txt( match_id )   
     get_match( match_id )   
 }
+
+
+/'
+Storage layer
+'/
+
+
+
+class MatchesIO{
+    match_filename
+    get_match_from_file()
+    write_match_to_file()
+
+}
+class PersonIO{
+    persons_filename
+    get_person_from_file()
+    write_person_to_file()
+
+}
+class DivisionIO{
+    get_division_from_file()
+    write_division_person_to_file()
+}
+class TeamIO    {
+    get_team_from_file()
+    write_team_person_to_file()
+}
+class PlayerIO  {
+    get_player_from_file()
+    write_player_person_to_file()
+}
+
 
 @enduml
