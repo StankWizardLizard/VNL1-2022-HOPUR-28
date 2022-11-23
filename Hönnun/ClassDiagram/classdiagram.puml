@@ -9,11 +9,7 @@ Club "1" o-- "1..*" Team
 Match "1" o-- "2" Team 
 Division "1" *-- "1..*" Match  
 Host ..> Division
-Match *-- Score_card 
 
-class Score_card{
-    id
-}
 
 class Person {
     Name
@@ -29,8 +25,7 @@ class Player {
 }
 
 class Host {
-    change_results()
-    postpone_match()
+
 }
 
 class Captain {
@@ -62,13 +57,38 @@ class Division {
 }
 
 class Match {
+    date
     division_id
     home_team
     home_team_players[]
     away_team
     away_team_players[]
     results
-
+    add_results()
+    change_results()
+    postpone_match()
 }
+
+class TeamLL {
+    get_team_txt( team_id )
+    get_team( team_id )
+}
+
+class ClubLL {
+    get_club_txt( club_id )
+    get_club( club_id )
+}
+
+class DivisionLL{
+    get_divisiom_txt( division_id )
+    get_divisiom( division_id )
+}
+
+class MatchLL {
+    get_match_txt( match_id )   
+    get_match( match_id )   
+}
+
+
 
 @enduml
