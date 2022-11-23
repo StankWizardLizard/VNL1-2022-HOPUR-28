@@ -1,9 +1,53 @@
 @startuml
 
-class MainMenuUI  #B4a7e5
-class LeaderboardUI #B4a7e5
-class ScoreboardUI #B4a7e5
-class DivisionUI #B4a7e5
+class MainMenuUI  #B4a7e5 {
+    LogicWrapper
+}
+class LeaderboardUI #B4a7e5 {
+    LogicWrapper
+}
+class ScoreboardUI #B4a7e5 {
+    LogicWrapper
+}
+class DivisionUI #B4a7e5 {
+    LogicWrapper
+}
+
+
+
+class PersonLL #EB937F{
+    create_person()
+    get_all_players()
+    get_person( person_id )   
+}
+
+class MatchLL #EB937F{
+    create_match()
+    get_all_matches()
+    get_upcoming_matches()
+    get_concluded_matches()
+    change_date()
+    set_results()
+    change_results()
+    get_match( match_id )   
+}
+
+class DivisionLL #EB937F {
+    create_division()
+    get_leaderboard()
+    get_division( division_id )
+}
+
+class TeamLL #EB937F{
+    create_team()
+    get_all_teams()
+    get_team( team_id )
+}
+
+class ClubLL #EB937F {
+    create_club()
+    get_club( club_id )
+}
 
 class LogicWrapper{
     TeamLL
@@ -13,31 +57,10 @@ class LogicWrapper{
     allexposedLLfunctions()
 }
 
-class TeamLL #EB937F{
-    add_team()
-    get_team_txt( team_id )
-    get_team( team_id )
-}
 
-class ClubLL #EB937F {
-    add_club()
-    get_club_txt( club_id )
-    get_club( club_id )
-}
-
-class DivisionLL #EB937F {
-    add_club()
-    get_divisiom_txt( division_id )
-    get_divisiom( division_id )
-}
-
-class MatchLL #EB937F{
-    add_match()
-    get_match_txt( match_id )   
-    get_match( match_id )   
-}
 
 LogicWrapper -- TeamLL
+LogicWrapper -- PersonLL
 LogicWrapper -- ClubLL
 LogicWrapper -- DivisionLL
 LogicWrapper -- MatchLL
@@ -47,6 +70,7 @@ LeaderboardUI -- LogicWrapper
 ScoreboardUI -- LogicWrapper
 DivisionUI -- LogicWrapper
 
+PersonLL -- StorageWrapper 
 TeamLL -- StorageWrapper 
 ClubLL -- StorageWrapper 
 DivisionLL -- StorageWrapper 
@@ -65,16 +89,16 @@ class StorageWrapper{
 
 }
 
-class MatchesIO #ADD1b2{
-    match_filename
-    get_match_from_file()
-    write_match_to_file()
-
-}
 class PersonIO #ADD1b2{
     persons_filename
     get_person_from_file()
     write_person_to_file()
+
+}
+class MatchesIO #ADD1b2{
+    match_filename
+    get_match_from_file()
+    write_match_to_file()
 
 }
 class DivisionIO #ADD1b2{
