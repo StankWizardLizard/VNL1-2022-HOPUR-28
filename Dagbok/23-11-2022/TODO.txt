@@ -11,7 +11,7 @@
  [ ] Klára Class Diagram
  [ ] Klára Happy Path
  [ ] Klára Use Cases
- [ ] Byrja á StateMachine Diagram
+ [ ] Byrja State Diagram
 
  ##############################################################
 
