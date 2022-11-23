@@ -1,6 +1,5 @@
 @startuml lol
 
-Person <|-- Host
 Person <|-- Player
 Player <|-- Captain
 Team "1" o-- "3..*" Player
@@ -19,8 +18,6 @@ class Player {
     home_nr
     email
     team_id
-}
-class Host {
 }
 class Captain {
 }
