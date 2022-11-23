@@ -1,0 +1,32 @@
+################   A KRÖFUR   ##################
+
+Kerfið:
+Eiga að geta skrá félög {nafn, heimilisfang, símanumer}
+Eiga að geta skrá leikmann {nafn, kennitala, tölvupóstgang, fæðingardagur}
+Eiga að geta kalla fram stöðuna ...
+Eiga að geta kalla fram lista yfir allar viðureignir, bæði sem hefur og ekki spilað
+Eiga að geta kalla fram lista yfir hver staðan sé á móti/deild
+
+
+Mótshaldari:
+Eiga að geta skráð mót/deildi.
+Eiga að geta skráð leik í lið
+Eiga að geta frestað viðureignum (breytt hvenær þær fara fram) ef úrslit hafa ekki verið skráð nú þegar
+Eiga að geta breyt skráningu úrslita en má ekki nýskrá úrslit
+Eiga að geta skipulagt mót/deild þar sem viðureignum er raðað niður á dagatal.
+
+
+Fyrirliði:
+(Heimaliðið) Eiga að geta skráð úrslit viðureignar eftir að hún hefur farið fram.
+
+
+Allir: 
+Eiga að geta kallað fram lista yfir öll lið og leikmen
+Eiga að geta kallað fram lista yfir óspilaðar viðureignir
+Eiga að geta kallað fram lista yfir viðureignir með skráð úrslit
+Eiga að geta kallað fram yfirlit yfir stöðuna í móti/deild
+
+################   B KRÖFUR   ##################
+
+
+################   C KRÖFUR   ##################

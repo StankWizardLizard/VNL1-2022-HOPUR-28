@@ -1,0 +1,27 @@
+@startuml
+
+class TeamLL {
+    add_team()
+    get_team_txt( team_id )
+    get_team( team_id )
+}
+
+class ClubLL {
+    add_club()
+    get_club_txt( club_id )
+    get_club( club_id )
+}
+
+class DivisionLL{
+    add_club()
+    get_divisiom_txt( division_id )
+    get_divisiom( division_id )
+}
+
+class MatchLL {
+    add_match()
+    get_match_txt( match_id )   
+    get_match( match_id )   
+}
+
+@enduml
