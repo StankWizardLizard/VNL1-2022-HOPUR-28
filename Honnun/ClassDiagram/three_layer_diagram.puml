@@ -13,15 +13,17 @@ class DivisionUI #B4a7e5 {
     LogicWrapper
 }
 
-
-
 class PersonLL #EB937F{
+    Person
+    PersonIO
     create_person()
     get_all_players()
     get_person( person_id )   
 }
 
 class MatchLL #EB937F{
+    Match
+    MatchIO
     create_match()
     get_all_matches()
     get_upcoming_matches()
@@ -33,18 +35,24 @@ class MatchLL #EB937F{
 }
 
 class DivisionLL #EB937F {
+    Division
+    DivisionIO
     create_division()
     get_leaderboard()
     get_division( division_id )
 }
 
 class TeamLL #EB937F{
+    Team
+    TeamIO
     create_team()
     get_all_teams()
     get_team( team_id )
 }
 
 class ClubLL #EB937F {
+    Club
+    ClubIO
     create_club()
     get_club( club_id )
 }
@@ -80,7 +88,7 @@ MatchLL -- StorageWrapper
 Storage layer
 '/
 class StorageWrapper{
-    MatchesIO
+    MatchIO
     PersonIO
     DivisionIO
     TeamIO
@@ -95,7 +103,7 @@ class PersonIO #ADD1b2{
     write_person_to_file()
 
 }
-class MatchesIO #ADD1b2{
+class MatchIO #ADD1b2{
     match_filename
     get_match_from_file()
     write_match_to_file()
@@ -115,7 +123,7 @@ class ClubIO  #ADD1b2 {
 
 }
 
-StorageWrapper -- MatchesIO
+StorageWrapper -- MatchIO
 StorageWrapper -- PersonIO
 StorageWrapper -- DivisionIO
 StorageWrapper -- TeamIO
