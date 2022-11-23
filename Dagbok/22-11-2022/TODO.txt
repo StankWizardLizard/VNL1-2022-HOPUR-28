@@ -20,5 +20,8 @@
  Mætum Allir uppí skóla um 10 - 11 leitið. Unnum í að greina Classa, gera 
  Class Diagram. Búnir með 1 Wirefrime en gerum fleiri á morgun, Notandahóp 
  greinga klár. Komnir langt með Use cases. Fórum heim um 6 leitið.
+ Náðum ekki að klára UseCases og Kröfulistan, það færðrist bara á 
+ Daginn a morgun :)
+
 
       Allir muna að mæta klukkan ~10:30 í HR á morgun :)

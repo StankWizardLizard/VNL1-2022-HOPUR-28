@@ -9,13 +9,14 @@
  ##############################################################
 
  [ ] Klára Class Diagram
- [ ] Klára Happy Path
+ [X] Klára Happy Path
  [ ] Klára Use Cases
- [ ] Byrja State Diagram
+ [ ] Byrja User Grooup Diagram
 
  ##############################################################
 
-  
+ Náðum góðum árangri með allt, en náðum ekki að klára allt samt
+ Restin klárum við á næsta dag :)
 
  ##############################################################
 
