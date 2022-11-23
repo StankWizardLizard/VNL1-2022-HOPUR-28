@@ -42,6 +42,15 @@ LogicWrapper -- ClubLL
 LogicWrapper -- DivisionLL
 LogicWrapper -- MatchLL
 
+MainMenuUI  --  LogicWrapper
+LeaderboardUI -- LogicWrapper
+ScoreboardUI -- LogicWrapper
+DivisionUI -- LogicWrapper
+
+TeamLL -- StorageWrapper 
+ClubLL -- StorageWrapper 
+DivisionLL -- StorageWrapper 
+MatchLL -- StorageWrapper 
 
 /'
 Storage layer
