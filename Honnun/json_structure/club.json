@@ -1,0 +1,6 @@
+{
+    "name": "lala",
+    "address": "heima",
+    "phone_nr" : 123,
+    "team_ids": [1, 2, 3, 4]
+}
