@@ -8,8 +8,12 @@
                                                               
  ##############################################################
 
+ [ ] Klára Kröfulista
+ [ ] Klára Use Cases
+ [ ] Klára Class Diagram
+ [ ] Klára Skýrlsu
+ [ ] Ræða um hvaða "Diagram" þurfa aukarlega
  [ ]
- [X]
 
  ##############################################################
 
