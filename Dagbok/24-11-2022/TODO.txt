@@ -14,7 +14,6 @@
  [ ] Klára Skýrlsu
  [ ] Klára Wireframe
  [ ] Ræða um hvaða "Diagram" þurfa aukarlega
- [ ]
 
  ##############################################################
 
@@ -22,4 +21,4 @@
  
  ##############################################################
 
-	Allir Muna að mæta klukkan ~10:30 í HR á morgun
+       Allir Muna að mæta klukkan ~10:30 í HR á morgun :)

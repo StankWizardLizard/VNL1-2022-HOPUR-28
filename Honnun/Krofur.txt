@@ -13,14 +13,14 @@ Eiga að geta skráð mót/deildi.
 Eiga að geta skráð leik í lið
 Eiga að geta frestað viðureignum (breytt hvenær þær fara fram) ef úrslit hafa ekki verið skráð nú þegar
 Eiga að geta breyt skráningu úrslita en má ekki nýskrá úrslit
-Eiga að geta skipulagt mót/deild þar sem viðureignum er raðað niður á dagatal.
+Eiga að geta skipulagt mót/deild þar sem viðureignum er raðað niður á dagatal
 
 
 Fyrirliði:
 (Heimaliðið) Eiga að geta skráð úrslit viðureignar eftir að hún hefur farið fram.
 
 
-Allir: 
+Notendur: 
 Eiga að geta kallað fram lista yfir öll lið og leikmen
 Eiga að geta kallað fram lista yfir óspilaðar viðureignir
 Eiga að geta kallað fram lista yfir viðureignir með skráð úrslit
@@ -28,5 +28,18 @@ Eiga að geta kallað fram yfirlit yfir stöðuna í móti/deild
 
 ################   B KRÖFUR   ##################
 
+Kerfið:
+Eiga að geta gefið Quality Points
+Eiga að geta haldið utan um stig sem leikmenn afla í hverju viðureign
+Eiga að geta sýnt tölfræði fyrir leikmenn þegar upplysingar um þá eru kallaðar fram
+Eiga að geta birta fram yfirlit yfir stighæstu leikmenn
+Eiga að geta birta fram yfirlit yfir flestu Quality Points í mót/deild
+Eiga að geta birta fram yfirlit yfir hæstu innskot í mót/deild
+Eiga að geta birta fram yfirlit yfir hæstu útskot í mót/deild
+Eiga að geta birta fram yfirlit yfir sigra/leikja fjölda um leikmann
 
 ################   C KRÖFUR   ##################
+
+Kefrið:
+Eiga að gets skilað leikskýrslu sem textaskra
+
