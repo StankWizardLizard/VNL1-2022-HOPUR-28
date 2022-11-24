@@ -12,6 +12,7 @@
  [ ] Klára Use Cases
  [ ] Klára Class Diagram
  [ ] Klára Skýrlsu
+ [ ] Klára Wireframe
  [ ] Ræða um hvaða "Diagram" þurfa aukarlega
  [ ]
 
