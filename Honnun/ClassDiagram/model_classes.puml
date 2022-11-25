@@ -3,49 +3,55 @@
 
 Team "1" o-- "3..*" Player
 Club "1" *-- "1..*" Team 
-Match "1" o-- "2" Team 
+Match "*" o-- "2" Team 
 Division "1" *-- "1..*" Match  
 
 
 class Player {
+    id
+    team_id
     name
     SSN
     mobile_nr
-    address
     home_nr
+    address
     email
-    team_id
     captain: bool
 }
 class Club {
+    id
+    teams_id[]
     name
     address
     phone_nr
-    teams_id[]
 }
 class Team {
-    team_id
-    name
+    id
+    player_ids[]
     captain_id
-    players_id[]
+    name
 }
 class Division {
-    name
-    team_id[]
-    host_id
+    id
+    team_ids[]
+    host_name
+    phone_nr
     start_date
     end_date
     type
-    match[]
+    rounds
 }
 class Match {
-    date
+    id
     division_id
+    type
+    date
     home_team
-    home_team_players[]
     away_team
+    home_team_players[]
     away_team_players[]
     results
+    quality_points
 }
 
 @enduml
