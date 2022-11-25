@@ -8,18 +8,15 @@
                                                               
  ##############################################################
 
- [X] Klára Kröfulista
- [X] Klára Use Cases
- [ ] Klára Class Diagram
- [ ] Klára Skýrlsu
- [X] Klára Wireframe
- [X] Ræða um hvaða "Diagram" þurfa aukarlega
+ [ ] Klára Skyrslu
+ [ ] 
+ [ ] 
+ [ ]
 
  ##############################################################
 
- Okkur gékk mjög vel með að klára þetta mikilvæga, resting verður
- klárað a morgun ;)
  
+
  ##############################################################
 
-       Allir Muna að mæta klukkan ~10:30 í HR á morgun :)
+       Allir Muna að mæta klukkan ~10:30 í HR á morgun

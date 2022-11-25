@@ -40,6 +40,6 @@ Eiga að geta birta fram yfirlit yfir sigra/leikja fjölda um leikmann
 
 ################   C KRÖFUR   ##################
 
-Kefrið:
+Kerfið:
 Eiga að gets skilað leikskýrslu sem textaskra
 
