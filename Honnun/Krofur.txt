@@ -3,7 +3,6 @@
 Kerfið:
 Eiga að geta skrá félög {nafn, heimilisfang, símanumer}
 Eiga að geta skrá leikmann {nafn, kennitala, tölvupóstgang, fæðingardagur}
-Eiga að geta kalla fram stöðuna ...
 Eiga að geta kalla fram lista yfir allar viðureignir, bæði sem hefur og ekki spilað
 Eiga að geta kalla fram lista yfir hver staðan sé á móti/deild
 
