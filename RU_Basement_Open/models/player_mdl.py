@@ -1,6 +1,6 @@
 
 class PlayerMdl():
-    def __init__(self, name, SSN, mobile_nr, home_nr, address, email):
+    def __init__(self, name, SSN, mobile_nr, home_nr, address, email, id="", team_id=""):
         self.name = name
         self.SSN = SSN
         self.mobile_nr = mobile_nr
@@ -8,5 +8,5 @@ class PlayerMdl():
         self.address = address
         self.email = email
         
-        self.id = "" # Generate
-        self.team_id = "" # Assign in logic
+        self.id = id # Generate
+        self.team_id = team_id # Assign in logic
