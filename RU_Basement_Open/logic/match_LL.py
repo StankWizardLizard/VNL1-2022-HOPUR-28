@@ -51,12 +51,14 @@ class MatchLL():
 
     def change_date(self, id, new_date):
         """Changes a matches date and updates data layer"""
-        # self._update_matches
-        # match_idx = match in self.matches where id = match.id
-        # self.matches[idx].date = new_date
-        # self._write_matches
-        pass
-
+        self._update_matches
+        for match in self.matches:
+            if match.id == id:
+                match.date = new_date
+                self._write_matches()
+                return
+        raise IndexError
+    
     def set_results(self, id, results):
         # self._update_matches
         # match_idx = match in self.matches where id = match.id
