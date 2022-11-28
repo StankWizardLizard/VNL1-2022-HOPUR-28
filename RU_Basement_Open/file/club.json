@@ -1,6 +1,28 @@
 {
-    "name": "lala",
-    "address": "heima",
-    "phone_nr" : 123,
-    "team_ids": [1, 2, 3, 4]
+    "club_details": [
+        {
+            "id": 1,
+            "teams_id": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "name": "lala",
+            "address": "heima",
+            "phone": 123
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "g\u00f6tunni",
+            "phone": 1234567
+        }
+    ]
 }

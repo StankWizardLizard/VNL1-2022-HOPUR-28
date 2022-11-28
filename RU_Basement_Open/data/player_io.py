@@ -5,10 +5,11 @@ from data.functions import  *
 class PlayerIO:
     def __init__(self, player_filename = "RU_Basement_Open/file/player.json"):
         self.player_filename = player_filename
-        self.data = load_file_data(self.player_filename)
 
     def get_players_from_file(self):
         '''returns data of players from json file as a list of objects'''
+
+        self.data = load_file_data(self.player_filename)
 
         players = []
 
@@ -19,13 +20,13 @@ class PlayerIO:
         return players
 
     def write_player_to_file(self, players:list):
-        '''takes in updated list of players converts it to a list of dicts, 
+        '''takes in updated list of player objects converts it to a list of dicts, 
         and writes it to the json file'''
 
         new_players = []
         for x in players:
             new_players.append(to_dict(x))
         player_details = {"player_details": new_players}
-        players_details_json = json.dumps(player_details, indent=3)
+        players_details_json = json.dumps(player_details, indent=4)
         write_file_data(self.player_filename, players_details_json)
 

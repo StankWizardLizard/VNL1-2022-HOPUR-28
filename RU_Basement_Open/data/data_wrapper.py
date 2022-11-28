@@ -1,8 +1,8 @@
-from player_io import PlayerIO
-from match_io import MatchIO
-from division_io import DivisionIO
-from team_io import TeamIO
-from club_io import ClubIO
+from data.player_io import PlayerIO
+from data.match_io import MatchIO
+from data.division_io import DivisionIO
+from data.team_io import TeamIO
+from data.club_io import ClubIO
 
 class DataWrapper:
     def __init__(self):
@@ -15,29 +15,29 @@ class DataWrapper:
     def get_players_from_file(self):
         return self.player_io.get_players_from_file()
     
-    def write_player_to_file(self):
-        return self.player_io.write_player_to_file()
+    def write_player_to_file(self, list_of_players):
+        return self.player_io.write_player_to_file(list_of_players)
     
-    def get_match_from_file(self):
-        return self.match_io.get_match_from_file()
+    def get_matches_from_file(self):
+        return self.match_io.get_matches_from_file()
     
-    def write_match_to_file(self):
-        return self.match_io.write_match_to_file()
+    def write_match_to_file(self, list_of_matches):
+        return self.match_io.write_match_to_file(list_of_matches)
     
-    def get_division_from_file(self):
-        return self.division_io.get_division_from_file()
+    def get_divisions_from_file(self):
+        return self.division_io.get_divisions_from_file()
 
-    def write_division_person_to_file(self):
-        return self.division_io.write_division_person_to_file()
+    def write_division_person_to_file(self, list_of_divsions):
+        return self.division_io.write_division_person_to_file(list_of_divsions)
 
-    def get_team_from_file(self):
-        return self.team_io.get_team_from_file()
+    def get_teams_from_file(self):
+        return self.team_io.get_teams_from_file()
 
-    def write_team_person_to_file(self):
-        return self.team_io.write_team_person_to_file()
+    def write_team_person_to_file(self, list_of_teams):
+        return self.team_io.write_team_person_to_file(list_of_teams)
 
-    def get_club_from_file(self):
-        return self.club_io.get_club_from_file()
+    def get_clubs_from_file(self):
+        return self.club_io.get_clubs_from_file()
 
-    def write_club_person_to_file(self):
-        return self.club_io.write_club_person_to_file()
+    def write_club_person_to_file(self, list_of_teams):
+        return self.club_io.write_club_person_to_file(list_of_teams)
