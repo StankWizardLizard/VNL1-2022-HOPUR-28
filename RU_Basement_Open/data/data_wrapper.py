@@ -12,8 +12,8 @@ class DataWrapper:
         self.team_io = TeamIO()
         self.club_io = ClubIO()
 
-    def get_player_from_file_by_ssn(self):
-        return self.player_io.get_player_from_file_by_ssn()
+    def get_players_from_file(self):
+        return self.player_io.get_players_from_file()
     
     def write_player_to_file(self):
         return self.player_io.write_player_to_file()

@@ -7,8 +7,20 @@
             "home_nr" : 123,
             "address" : "home",
             "email": "a@a.a",
+            "id": 1,
             "team_id": 2,
             "captain": true 
+        },
+        {
+            "name": "halli",
+            "ssn": 1234,
+            "mobile_nr": 1234,
+            "home_nr" : 1234,
+            "address" : "home is where the heart is",
+            "email": "b@b.b",
+            "id": 2,
+            "team_id": 2,
+            "captain": false 
         }
     ]
 }

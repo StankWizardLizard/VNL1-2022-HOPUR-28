@@ -1,34 +1,31 @@
 import json
+from models.player_mdl import PlayerMdl
+from data.functions import  *
 
 class PlayerIO:
     def __init__(self, player_filename = "RU_Basement_Open/file/player.json"):
         self.player_filename = player_filename
-        self.data = self._load_file_data()
+        self.data = load_file_data(self.player_filename)
 
-    def _load_file_data(self):
-        '''loads the json file data'''
+    def get_players_from_file(self):
+        '''returns data of players from json file as a list of objects'''
 
-        f = open(self.player_filename, encoding="U")
-        data = json.load(f)
-        f.close()
-        return data
+        players = []
 
-    def get_player_from_file_by_ssn(self, player_ssn):
-        '''returns data of player with x ssn number'''
-        
         for i in self.data["player_details"]:
-            if i["ssn"] == player_ssn:
-                return i["name"]
-    
-    def get_players_from_file(self, player_ssn):
-        '''returns data of all players in json file'''
-        
-        for i in self.data["player_details"]:
-            if i["ssn"] == player_ssn:
-                return i["name"]
+            player = PlayerMdl(i["name"], i["ssn"], i["mobile_nr"], i["home_nr"], i["address"], i["email"], i["id"], i["team_id"] )
+            players.append(player)
 
-    def write_player_to_file(self):
-        pass
+        return players
 
-test = PlayerIO()
-print(test.get_player_from_file(123))
+    def write_player_to_file(self, players:list):
+        '''takes in updated list of players converts it to a list of dicts, 
+        and writes it to the json file'''
+
+        new_players = []
+        for x in players:
+            new_players.append(to_dict(x))
+        player_details = {"player_details": new_players}
+        players_details_json = json.dumps(player_details, indent=3)
+        write_file_data(self.player_filename, players_details_json)
+
