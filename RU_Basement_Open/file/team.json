@@ -1,0 +1,6 @@
+{   
+    "id": 2,
+    "name": "KR",
+    "captain_id": 3,
+    "player_ids" : [1, 2, 3, 6,7 ,8, 9]    
+}

@@ -1,0 +1,14 @@
+{
+    "player_details": [
+        {
+            "name": "lala",
+            "ssn": 123,
+            "mobile_nr": 123,
+            "home_nr" : 123,
+            "address" : "home",
+            "email": "a@a.a",
+            "team_id": 2,
+            "captain": true 
+        }
+    ]
+}

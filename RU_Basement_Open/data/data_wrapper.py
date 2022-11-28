@@ -1,4 +1,4 @@
-from person_io import PersonIO
+from player_io import PlayerIO
 from match_io import MatchIO
 from division_io import DivisionIO
 from team_io import TeamIO
@@ -6,17 +6,17 @@ from club_io import ClubIO
 
 class DataWrapper:
     def __init__(self):
-        self.person_io = PersonIO()
+        self.player_io = PlayerIO()
         self.match_io = MatchIO()
         self.division_io = DivisionIO()
         self.team_io = TeamIO()
         self.club_io = ClubIO()
 
-    def get_person_from_file(self):
-        return self.person_io.get_person_from_file()
+    def get_player_from_file_by_ssn(self):
+        return self.player_io.get_player_from_file_by_ssn()
     
-    def write_person_to_file(self):
-        return self.person_io.write_person_to_file()
+    def write_player_to_file(self):
+        return self.player_io.write_player_to_file()
     
     def get_match_from_file(self):
         return self.match_io.get_match_from_file()
