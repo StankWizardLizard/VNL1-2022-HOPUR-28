@@ -14,4 +14,19 @@ class DataWrapper:
 
     def get_person_from_file(self):
         return self.person_io.get_person_from_file()
-        
+    
+    def write_person_to_file(self):
+        return self.person_io.write_person_to_file()
+    
+    def get_match_from_file(self):
+        return self.match_io.get_match_from_file()
+    
+    def write_match_to_file(self):
+        return self.match_io.write_match_to_file()
+    
+    def get_division_from_file(self):
+        return self.division_io.get_division_from_file()
+
+    def write_division_person_to_file(self):
+        return self.division_io.write_division_person_to_file()
+    
