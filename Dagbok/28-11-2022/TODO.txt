@@ -12,7 +12,7 @@
  [ ] Skilgreina reglur með git
  [ ] búa til git branches
  [ ] Flokka alla í hópa
- [ ] 
+ [ ] test
 
  ##############################################################
 
