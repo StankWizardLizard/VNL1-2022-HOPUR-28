@@ -1,4 +1,4 @@
-class DivisionMDL:
+class DivisionMdl:
     def __init__(self, id, team_ids, host_name,phone_nr,start_date,end_date,type,rounds):
         self.id = id
         self.team_ids = team_ids
