@@ -8,10 +8,16 @@
                                                               
  ##############################################################
 
- [X] Klára Skyrslu
+ [ ] Skilgreina reglur um forritun
+ [ ] Skilgreina reglur með git
+ [ ] búa til git branches
+ [ ] Flokka alla í hópa
+ [ ] 
 
  ##############################################################
 
- Náðum að klára skýrlsuna :)
+ 
 
  ##############################################################
+
+                  Muna að mæta kl x á morgun :)
