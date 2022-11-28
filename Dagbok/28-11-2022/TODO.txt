@@ -10,9 +10,7 @@
 
  [ ] Skilgreina reglur um forritun
  [ ] Skilgreina reglur með git
- [ ] búa til git enviroment fyrir forritið
- [ ] 
- [ ] 
+ [ ] búa til git branches
  [ ] 
 
  ##############################################################
