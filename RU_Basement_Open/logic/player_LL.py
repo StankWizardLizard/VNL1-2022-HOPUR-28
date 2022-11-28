@@ -8,11 +8,15 @@ class PlayerLL():
     def create_player(self, player):
         """Takes a player object and forwards it to the data layer"""
         player.id = get_random_id()
-        print("SAVING BEEP BOOP")  # TODO: Connect to IO
-        return player #TODO: remove once IO connected
+        self.data_wrapper.write_person_to_file(player)
+
 
     def get_player(self, id):
-        pass
-    
+        players = self.data_wrapper.get_person_from_file()
+        for player in players:
+            if player["id"] == id:
+                return player
+
     def get_all_players(self):
-        pass
+        return self.data_wrapper.get_person_from_file()
+    
