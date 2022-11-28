@@ -26,6 +26,6 @@ class DivisionIO:
         for x in divisions:
             new_divisions.append(to_dict(x))
         division_details = {"division_details": new_divisions}
-        division_details_json = json.dumps(division_details, indent=4)
+        division_details_json = json.dumps(division_details, indent=4, ensure_ascii=False)
         write_file_data(self.division_filename, division_details_json)
     

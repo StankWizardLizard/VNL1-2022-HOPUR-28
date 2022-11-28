@@ -27,6 +27,6 @@ class PlayerIO:
         for x in players:
             new_players.append(to_dict(x))
         player_details = {"player_details": new_players}
-        players_details_json = json.dumps(player_details, indent=4)
+        players_details_json = json.dumps(player_details, indent=4, ensure_ascii=False)
         write_file_data(self.player_filename, players_details_json)
 

@@ -26,6 +26,6 @@ class ClubIO:
         for x in clubs:
             new_clubs.append(to_dict(x))
         club_details = {"club_details": new_clubs}
-        club_details_json = json.dumps(club_details, indent=4)
+        club_details_json = json.dumps(club_details, indent=4, ensure_ascii=False)
         write_file_data(self.club_filename, club_details_json)
 

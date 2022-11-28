@@ -25,5 +25,5 @@ class MatchIO:
         for x in matches:
             new_matches.append(to_dict(x))
         match_details = {"match_details": new_matches}
-        matches_details_json = json.dumps(match_details, indent=4)
+        matches_details_json = json.dumps(match_details, indent=4, ensure_ascii=False)
         write_file_data(self.match_filename, matches_details_json)

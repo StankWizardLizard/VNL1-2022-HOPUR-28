@@ -26,6 +26,6 @@ class TeamIO:
         for x in teams:
             new_teams.append(to_dict(x))
         team_details = {"team_details": new_teams}
-        team_details_json = json.dumps(team_details, indent=4)
+        team_details_json = json.dumps(team_details, indent=4, ensure_ascii=False)
         write_file_data(self.team_filename, team_details_json)
 

@@ -11,7 +11,7 @@ def to_dict(obj:object):
 def load_file_data(filename):
     '''loads the json file data'''
 
-    f = open(filename, "r",  encoding="UTF-8")
+    f = open(filename, "r",  encoding="utf-8")
     data = json.load(f)
     f.close()
     return data
@@ -19,6 +19,6 @@ def load_file_data(filename):
 def write_file_data(filename, data):
     '''writes data into json file'''
 
-    f = open(filename, "w", encoding= "UTF-8")
+    f = open(filename, "w", encoding= "utf-8")
     f.write(data)
     f.close()
