@@ -24,7 +24,7 @@ class MatchLL():
         return self.matches
 
     def get_match(self, id):
-        """Gets a match my id from data layer"""
+        """Gets a match by id from data layer"""
         # self._update_matches
         # return match where id = match.id in self.matches ##pseudo
         pass
