@@ -17,6 +17,7 @@ class TeamLL():
         """Sends team data to data layer to update"""
         self.data_wrapper.write_matches(self.teams)
     
+    #----- Reading methods -----#
     def get_all_teams(self):
         """Returns a list of all teams from the data layer"""
         self._update_teams()
