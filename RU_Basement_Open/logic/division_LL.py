@@ -110,7 +110,7 @@ class DivisionLL():
         """
         divisions = self.data_wrapper.get_division_from_file()
         for division in divisions:
-            if division["id"] = division_id
+            if division["id"] == division_id:
                 return division 
 
 
