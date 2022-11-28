@@ -7,7 +7,7 @@ class MatchLL():
         self.data_wrapper = data_connection
         self.matches = ""
         self._update_matches
-    
+
     #----- Internal methods -----#
     def _update_matches(self):
         """Gets all matches from data layer"""
@@ -16,7 +16,7 @@ class MatchLL():
     def _write_matches(self):
         """Sends match data to data layer to update"""
         self.data_wrapper.write_matches(self.matches)
-    
+
     #----- Reading methods -----#
     def get_all_matches(self):
         """Returns a list of all matches"""
@@ -24,42 +24,57 @@ class MatchLL():
         return self.matches
 
     def get_match(self, id):
-        """Gets a match by id from data layer"""
-        # self._update_matches
-        # return match where id = match.id in self.matches ##pseudo
-        pass
+        """Returns a match by id from data layer"""
+        self._update_matches
+        for match in self.matches:
+            if match.id == id:
+                return match
+        raise IndexError
 
     def get_upcoming_matches(self):
         """Gets all matches from data layer and returns
         thoes that have no documented results"""
-        # self._update_matches
-        # return matches where results == "" in self.matches
-        pass
+        self._update_matches
+        ret_list = []
+        for match in self.matches:
+            if True:  # TODO: COMPARE DATES
+                ret_list.append(match)
+        return ret_list
 
     def get_concluded_matches(self):
         """Gets all matches from data layer and returns
         those that have a documented result"""
-        # self._update_matches
-        # return matches where results != "" in self.matches
-        pass
-    
+        self._update_matches
+        ret_list = []
+        for match in self.matches:
+            if True:  # TODO: COMPARE DATES
+                ret_list.append(match)
+        return ret_list
+
     #----- Writing methods -----#
     def create_match(self, match):
         """Takes a match object and forwards it to the data layer"""
-        # match.id = get_random_id()
-        # self.data_wrapper.create_match(match)
+        self._update_matches()
+        match.id = get_random_id()
+        self.matches.append(match)
+        self._write_matches()
 
-    def change_date(self, id, new_date):
-        """Changes a matches date and updates data layer"""
-        # self._update_matches
-        # match_idx = match in self.matches where id = match.id
-        # self.matches[idx].date = new_date
-        # self._write_matches
-        pass
+    def set_date(self, id, new_date):
+        """Sets a matches date and updates data layer"""
+        self._update_matches
+        for match in self.matches:
+            if match.id == id:
+                match.date = new_date
+                self._write_matches()
+                return
+        raise IndexError
 
     def set_results(self, id, results):
-        # self._update_matches
-        # match_idx = match in self.matches where id = match.id
-        # self.matches[idx].date = new_date
-        # self._write_matches()
-        pass
+        """Sets a matches results and uptades data layer"""
+        self._update_matches
+        for match in self.matches:
+            if match.id == id:
+                match.results = results
+                self._write_matches()
+                return
+        raise IndexError
