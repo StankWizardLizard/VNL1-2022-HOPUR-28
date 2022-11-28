@@ -6,7 +6,7 @@ class TeamLL():
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         self.teams = ""
-        self._update_teams
+        self._update_teams()
         
     #----- Internal methods -----#
     def _update_teams(self):
@@ -25,7 +25,7 @@ class TeamLL():
     
     def get_team(self, id):
         """Returns a team from the data layer by id"""
-        self._update_teams
+        self._update_teams()
         for team in self.teams:
             if team.id == id:
                 return team
@@ -34,7 +34,7 @@ class TeamLL():
     #----- Writing methods -----""
     def create_team(self, team):
         """Takes a team object and saves it to the data layer"""
-        self._update_teams
+        self._update_teams()
         team.id = get_random_id() # add a unique id
         self.teams.append(team)
         self._write_teams()
