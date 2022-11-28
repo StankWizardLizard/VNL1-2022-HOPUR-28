@@ -40,7 +40,7 @@ class LogicWrapper:
     def get_concluded_matches(self):
         self.match_logic.get_concluded_matches()
     def create_match(self, match):
-        self.match_logic.create_match()
+        self.match_logic.create_match(match)
     def set_date(self, id, new_date):
         self.match_logic.set_date(id, new_date)
     def set_results(self, id, results):
