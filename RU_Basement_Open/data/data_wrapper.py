@@ -1,3 +1,5 @@
+from person_io import PersonIO
+
 class Data_Wrapper:
     def __init__(self):
-        pass
+        self.person_io = PersonIO()
