@@ -1,16 +1,16 @@
-from data.data_wrapper import Data_Wrapper
-from logic.division_LL import DivisionLL
-from logic.player_LL import PlayerLL
+from data.data_wrapper import DataWrapper
 from logic.match_LL import MatchLL
-from logic.club_LL import ClubLL
+from logic.player_LL import PlayerLL
+from logic.division_LL import DivisionLL
 from logic.team_LL import TeamLL
+from logic.club_LL import ClubLL
 
 class LogicWrapper:
     def __init__(self):
-        self.data_wrapper = Data_Wrapper()
-        self.division_logic = DivisionLL(self.data_wrapper)
+        self.data_wrapper = DataWrapper()
         self.player_logic = PlayerLL(self.data_wrapper)
         self.match_logic = MatchLL(self.data_wrapper)
+        self.division_logic = DivisionLL(self.data_wrapper)
         self.team_logic = TeamLL(self.data_wrapper)
         self.club_logic = ClubLL(self.data_wrapper)
         
