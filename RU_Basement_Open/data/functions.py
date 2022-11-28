@@ -22,18 +22,3 @@ def write_file_data(filename, data):
     f = open(filename, "w", encoding= "UTF-8")
     f.write(data)
     f.close()
-
-'''def _load_file_data(self):
-        loads the json file data
-
-        f = open(self.player_filename, "r",  encoding="UTF-8")
-        data = json.load(f)
-        f.close()
-        return data
-
-    def _write_file_data(self, data):
-        writes data into json file
-
-        f = open(self.player_filename, "w", encoding= "UTF-8")
-        f.write(data)
-        f.close()'''
