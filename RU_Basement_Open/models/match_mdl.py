@@ -1,8 +1,8 @@
 class MatchMdl():
     def __init__(
-            self, date, home_team, away_team,
+            self, id, date, home_team, away_team,
             home_team_players, away_team_players,
-            results, quality_points, division_id, id=""):
+            division_id, results="", quality_points=""):
 
         self.date = date
         self.home_team = home_team
@@ -11,7 +11,6 @@ class MatchMdl():
         self.away_team_players = away_team_players
         self.results = results
         self.quality_points = quality_points
-        
-        self.division_id = division_id # Assign
-        self.id = id # Generate 
+        self.division_id = division_id 
+        self.id = id  
         
