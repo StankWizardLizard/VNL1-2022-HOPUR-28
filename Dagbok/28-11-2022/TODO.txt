@@ -11,6 +11,7 @@
  [ ] Skilgreina reglur um forritun
  [ ] Skilgreina reglur með git
  [ ] búa til git branches
+ [ ] Flokka alla í hópa
  [ ] 
 
  ##############################################################
