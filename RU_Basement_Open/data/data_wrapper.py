@@ -29,4 +29,15 @@ class DataWrapper:
 
     def write_division_person_to_file(self):
         return self.division_io.write_division_person_to_file()
-    
+
+    def get_team_from_file(self):
+        return self.team_io.get_team_from_file()
+
+    def write_team_person_to_file(self):
+        return self.team_io.write_team_person_to_file()
+
+    def get_club_from_file(self):
+        return self.club_io.get_club_from_file()
+
+    def write_club_person_to_file(self):
+        return self.club_io.write_club_person_to_file()
