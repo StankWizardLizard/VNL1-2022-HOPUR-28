@@ -1,5 +1,4 @@
-import uuid
-
+from functions.get_random_id import get_random_id
 
 class PlayerLL():
     def __init__(self, data_connection):
@@ -7,7 +6,7 @@ class PlayerLL():
 
     def create_player(self, player):
         """Takes a player object and forwards it to the data layer"""
-        player.id = uuid.uuid1()
+        player.id = get_random_id()
         print("SAVING BEEP BOOP")  # TODO: Connect to IO
         return player
 
@@ -16,4 +15,3 @@ class PlayerLL():
     
     def get_all_players(self):
         pass
-    
