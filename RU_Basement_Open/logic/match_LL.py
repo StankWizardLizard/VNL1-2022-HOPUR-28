@@ -1,42 +1,65 @@
 from functions.get_random_id import get_random_id
+from models import match_mdl
+
 
 class MatchLL():
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
-        
-    def create_match(self, match):
-        """Takes a match object and forwards it to the data layer"""
-        match.id = get_random_id()
-        print("SAVING BEEP BOOP")  # TODO: Connect to IO
-        return match #TODO: remove once IO connected
+        self.matches = ""
+        self._update_matches
     
-    def get_all_matches(self):
+    #----- Internal methods -----#
+    def _update_matches(self):
         """Gets all matches from data layer"""
-        # self.data_wrapper.get_all_matches()
-        # return matches
-        pass
+        self.matches = self.data_wrapper.get_all_matches()
+
+    def _write_matches(self):
+        """Sends match data to data layer to update"""
+        self.data_wrapper.write_matches(self.matches)
     
+    #----- Reading methods -----#
+    def get_all_matches(self):
+        """Returns a list of all matches"""
+        self._update_matches()
+        return self.matches
+
     def get_match(self, id):
         """Gets a match my id from data layer"""
-        # matches = self.get_all_matches
-        # return match where id = match.id ##pseudo
+        # self._update_matches
+        # return match where id = match.id in self.matches ##pseudo
         pass
-    
+
     def get_upcoming_matches(self):
-        """Get all matches which have not concluded from data layer"""
-        # 
+        """Gets all matches from data layer and returns
+        thoes that have no documented results"""
+        # self._update_matches
+        # return matches where results == "" in self.matches
+        pass
+
+    def get_concluded_matches(self):
+        """Gets all matches from data layer and returns
+        those that have a documented result"""
+        # self._update_matches
+        # return matches where results != "" in self.matches
         pass
     
-    def get_concluded_matchesself(self):
+    #----- Writing methods -----#
+    def create_match(self, match):
+        """Takes a match object and forwards it to the data layer"""
+        # match.id = get_random_id()
+        # self.data_wrapper.create_match(match)
+
+    def change_date(self, id, new_date):
+        """Changes a matches date and updates data layer"""
+        # self._update_matches
+        # match_idx = match in self.matches where id = match.id
+        # self.matches[idx].date = new_date
+        # self._write_matches
         pass
-    
-    def change_date(self):
+
+    def set_results(self, id, results):
+        # self._update_matches
+        # match_idx = match in self.matches where id = match.id
+        # self.matches[idx].date = new_date
+        # self._write_matches()
         pass
-    
-    def set_results(self): # TODO: Needed?
-        pass
-    
-    def change_results(self):
-        pass
-    
-    
