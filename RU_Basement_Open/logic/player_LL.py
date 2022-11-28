@@ -9,7 +9,6 @@ class PlayerLL():
         """Takes a player object and forwards it to the data layer"""
         player.id = uuid.uuid1()
         print("SAVING BEEP BOOP")  # TODO: Connect to IO
-
         return player
 
     def get_player(self, id):
