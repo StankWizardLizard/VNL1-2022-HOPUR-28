@@ -8,10 +8,17 @@
                                                               
  ##############################################################
 
- [X] Klára Skyrslu
+ [ ] Skilgreina reglur um forritun
+ [ ] Skilgreina reglur með git
+ [ ] búa til git enviroment fyrir forritið
+ [ ] 
+ [ ] 
+ [ ] 
 
  ##############################################################
 
- Náðum að klára skýrlsuna :)
+ 
 
  ##############################################################
+
+                  Muna að mæta kl x á morgun :)
