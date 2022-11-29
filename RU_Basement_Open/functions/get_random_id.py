@@ -1,4 +1,4 @@
 import uuid
 
 def get_random_id():
-    return uuid.uuid1()
+    return str(uuid.uuid1())
