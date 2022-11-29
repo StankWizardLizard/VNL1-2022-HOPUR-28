@@ -1,8 +1,8 @@
 class PlayerMdl():
     def __init__(
-            self, name, ssn, mobile_nr,
-            home_nr, address, email,
-            team_id, id="", captain = False):
+            self, name:str="", ssn:str="", mobile_nr:str="",
+            home_nr:str="", address:str="", email:str="",
+            team_id:str="", id:str="", captain:bool = False):
 
         self.name = name
         self.ssn = ssn
