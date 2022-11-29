@@ -3,7 +3,7 @@ from models.club_mdl import ClubMdl
 from data.functions import  *
 
 class ClubIO:
-    def __init__(self, club_filename = "RU_Basement_Open/file/club.json") -> None:
+    def __init__(self, club_filename = "file/club.json") -> None:
         self.club_filename = club_filename
 
     def get_clubs_from_file(self):

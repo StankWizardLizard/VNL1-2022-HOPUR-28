@@ -3,7 +3,7 @@ from models.player_mdl import PlayerMdl
 from data.functions import  *
 
 class PlayerIO:
-    def __init__(self, player_filename = "RU_Basement_Open/file/player.json"):
+    def __init__(self, player_filename = "file/player.json"):
         self.player_filename = player_filename
 
     def get_players_from_file(self):

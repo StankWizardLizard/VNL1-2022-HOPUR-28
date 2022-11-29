@@ -3,7 +3,7 @@ from models.team_mdl import TeamMdl
 from data.functions import  *
 
 class TeamIO:
-    def __init__(self, team_filename = "RU_Basement_Open/file/team.json") -> None:
+    def __init__(self, team_filename = "file/team.json") -> None:
         self.team_filename = team_filename
     def get_teams_from_file(self):
         '''returns data of teams from json file as a list of objects'''

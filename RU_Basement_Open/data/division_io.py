@@ -3,7 +3,7 @@ from models.division_mdl import DivisionMdl
 from data.functions import  *
 
 class DivisionIO:
-    def __init__(self, division_filename = "RU_Basement_Open/file/division.json") -> None:
+    def __init__(self, division_filename = "file/division.json") -> None:
         self.division_filename = division_filename
 
     def get_divisions_from_file(self):
