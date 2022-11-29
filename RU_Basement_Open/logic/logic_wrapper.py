@@ -18,27 +18,27 @@ class LogicWrapper:
     def create_division(self,division):
         self.division_logic.create_division(division)
     def get_leaderboard(self):
-        self.division_logic.get_leaderboard()
+        return self.division_logic.get_leaderboard()
     def get_division(self, id):
-        self.division_logic.get_division(id)
+        return self.division_logic.get_division(id)
         
     #----- Player methods -----#
     def create_player(self, player):
         self.player_logic.create_player(player)
     def get_player(self, id):
-        self.player_logic.get_player(id)
+        return self.player_logic.get_player(id)
     def get_all_players(self):
-        self.player_logic.get_all_players()
+        return self.player_logic.get_all_players()
     
     #----- Match methods -----#
     def get_all_matches(self):
-        self.match_logic.get_all_matches()
+        return self.match_logic.get_all_matches()
     def get_match(self, id):
-        self.match_logic.get_match(id)
+        return self.match_logic.get_match(id)
     def get_upcoming_matches(self):
-        self.match_logic.get_upcoming_matches()
+        return self.match_logic.get_upcoming_matches()
     def get_concluded_matches(self):
-        self.match_logic.get_concluded_matches()
+        return self.match_logic.get_concluded_matches()
     def create_match(self, match):
         self.match_logic.create_match(match)
     def set_date(self, id, new_date):
@@ -52,7 +52,7 @@ class LogicWrapper:
     def get_team(self, id):
         return self.team_logic.get_team(id)
     def create_team(self, team):
-        return self.team_logic.create_team(team)        
+        self.team_logic.create_team(team)        
 
     #----- Club methods -----#
     def get_club(self, id):
@@ -60,5 +60,5 @@ class LogicWrapper:
     def get_all_clubs(self):
         return self.club_logic.get_all_clubs()
     def create_club(self, club):
-        return self.club_logic.create_club(club)
+        self.club_logic.create_club(club)
     
