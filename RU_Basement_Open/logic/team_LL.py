@@ -72,13 +72,9 @@ class TeamLL():
         """Takes id's for a player and a team. Promotes that player to captain,
         if he's a part of the team"""
         self._update_teams()
-        try:
-            team = self._find_team(team_id)
-            # Throw error if player not in team
-            if player_id not in team.player_ids:
-                raise IndexError #TODO: Annað exception
-            else: # Assign new captain
-                team.captain_id = player_id
-                self._write_teams()
-        except IndexError:
-            raise IndexError  # If team is not found
+        team = self._find_team(team_id)
+        if player_id not in team.player_ids:
+            raise IndexError #TODO: Annað exception
+        else: # Assign new captain
+            team.captain_id = player_id
+            self._write_teams()

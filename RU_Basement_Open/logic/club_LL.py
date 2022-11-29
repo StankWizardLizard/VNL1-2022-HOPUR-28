@@ -28,10 +28,8 @@ class ClubLL():
     def get_club(self, id):
         """Returns a club from the data layer by id"""
         self._update_clubs()
-        try:
-            return self._find_club(id)
-        except IndexError:
-            raise IndexError
+        return self._find_club(id)
+
 
     def get_all_clubs(self):
         """Returns a list of all clubs from the data layer"""
@@ -50,12 +48,9 @@ class ClubLL():
     def add_team(self, team_id, club_id):
         """Take id's for a team and a club, adds that team to the club"""
         self._update_clubs()
-        try: 
-            club = self._find_club(club_id)
-            club.teams_id.append(team_id)
-            self._write_clubs()      
-        except IndexError:
-            raise IndexError
-        
+        club = self._find_club(club_id)
+        club.teams_id.append(team_id)
+        self._write_clubs()      
+
                 
 

@@ -34,10 +34,8 @@ class MatchLL():
     def get_match(self, id):
         """Returns a match by id from data layer"""
         self._update_matches()
-        try:
-            return self._find_match(id)
-        except IndexError:
-            raise IndexError
+        return self._find_match(id)
+
 
 
     def get_upcoming_matches(self):
@@ -71,20 +69,13 @@ class MatchLL():
     def set_date(self, id, new_date):
         """Sets a matches date and updates data layer"""
         self._update_matches()
-        try:
-            match = self._find_match(id)
-            match.date = new_date
-            self._write_matches
-        except IndexError:
-            raise IndexError
+        match = self._find_match(id)
+        match.date = new_date
+        self._write_matches
 
     def set_results(self, id, results):
         """Sets a matches results and uptades data layer"""
         self._update_matches()
-        try: 
-            match = self._find_match(id)
-            match.results = results
-            self._write_matches()
-        except IndexError:
-            raise IndexError
-        
+        match = self._find_match(id)
+        match.results = results
+        self._write_matches()

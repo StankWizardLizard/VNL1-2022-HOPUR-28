@@ -32,7 +32,7 @@ class DivisionLL():
         for division in self.divisions:
             if division.id == id:
                 return division
-        return False
+        raise IndexError
 
     def _count_legs(self, home, results):
         win_home = 0
@@ -118,11 +118,8 @@ class DivisionLL():
 
         """
         self._update_divisions()
-        division = self._find_division(division_id)
-        if division:
-            return division
-        else:
-            raise IndexError  # Raise if no match found
+        return self._find_division(division_id)
+
 
     #----- Writing methods -----#
     def create_division(self, division):
