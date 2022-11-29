@@ -29,7 +29,7 @@ class TeamLL():
         for team in self.teams:
             if team.id == id:
                 return team
-        raise IndexError
+        raise IndexError #If team not found
 
     # ----- Writing methods -----""
     def create_team(self, team):
@@ -46,4 +46,24 @@ class TeamLL():
         for team in self.teams:
             if team.id == team_id:
                 team.player_ids.append(player_id)
-        self._write_teams()
+                self._write_teams()
+                return
+        raise IndexError # If team is not found
+
+    def promote_to_captain(self, player_id, team_id):
+        """Takes id's for a player and a team. Promotes that player to captain,
+        if he's a part of the team"""
+        self._update_teams()
+        for team in self.teams:
+            if team.id == team_id:
+                # Throw error if player not in team
+                if player_id not in team.player_ids:
+                    raise IndexError
+                else:
+                    # Assign new captain
+                    team.captain_id = player_id
+                    self._write_teams()
+                    return
+        raise IndexError # If team is not found
+                
+                
