@@ -38,6 +38,7 @@ class TeamLL():
         team.id = get_random_id() # add a unique id
         self.teams.append(team)
         self._write_teams()
+        return team.id
         
     def add_player(self,team_id ,player_id):
         """Take id's for a team and a player, adds that player to the team"""
@@ -45,6 +46,6 @@ class TeamLL():
         for team in self.teams:
             if team.id == team_id:
                 team.player_ids.append(player_id)
-        self._update_teams()
+        self._write_teams()
         
         

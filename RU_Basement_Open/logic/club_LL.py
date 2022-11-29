@@ -37,4 +37,15 @@ class ClubLL():
         club.id = get_random_id() # add a unique id
         self.clubs.append(club)
         self._write_clubs()
+        return club.id
     
+    def add_team(self, team_id, club_id):
+        """Take id's for a team and a club, adds that team to the club"""
+        self._update_clubs()
+        for club in self.clubs:
+            if club.id == club_id:
+                club.teams_id.append(team_id)
+        self._write_clubs()
+        
+                
+
