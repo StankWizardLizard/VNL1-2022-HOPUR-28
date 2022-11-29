@@ -24,7 +24,7 @@ class LogicWrapper:
         
     #----- Player methods -----#
     def create_player(self, player):
-        self.player_logic.create_player(player)
+        return self.player_logic.create_player(player)
     def get_player(self, id):
         return self.player_logic.get_player(id)
     def get_all_players(self):
@@ -52,7 +52,9 @@ class LogicWrapper:
     def get_team(self, id):
         return self.team_logic.get_team(id)
     def create_team(self, team):
-        return self.team_logic.create_team(team)        
+        return self.team_logic.create_team(team)
+    def add_player_to_team(self, player_id, team_id):
+        self.team_logic.add_player(player_id, team_id)        
 
     #----- Club methods -----#
     def get_club(self, id):

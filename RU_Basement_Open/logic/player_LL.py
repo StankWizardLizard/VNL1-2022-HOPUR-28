@@ -35,3 +35,4 @@ class PlayerLL():
         player.id = get_random_id()
         self.players.append(player)
         self._write_players()
+        return player.id
