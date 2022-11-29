@@ -13,7 +13,7 @@ class ClubLL():
     
     def _write_clubs(self):
         """Sends club data to data layer to update"""
-        self.data_wrapper.write_matches(self.clubs)
+        self.data_wrapper.write_clubs(self.clubs)
     
     #----- Reading methods -----#
         
