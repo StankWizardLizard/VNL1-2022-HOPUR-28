@@ -1,7 +1,7 @@
 class TeamMdl():
     def __init__(
-            self, name, player_ids=[],
-            captain_id="", id=""):
+            self, name:str="", player_ids:list=[],
+            captain_id:str="", id:str=""):
 
         self.name = name
 
