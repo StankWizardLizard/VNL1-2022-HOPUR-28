@@ -1,8 +1,7 @@
 class DivisionMdl:
     def __init__(
-            self, id:str="", name:str="", team_ids:list=[], host_name:str= "",
-            phone_nr:str="", start_date:str="", end_date:str="",
-            type:str= "L",rounds:int=0, matches:list=[]):
+            self,  name:str,  host_name:str, phone_nr:str, 
+            type:str= "L",rounds:int=0, team_ids:list=[], matches:list=[], start_date:str="", end_date:str="", id:str="",):
 
         self.id = id
         self.name = name
