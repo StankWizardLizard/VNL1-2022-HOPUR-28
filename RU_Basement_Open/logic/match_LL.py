@@ -40,7 +40,7 @@ class MatchLL():
             if True:  # TODO: COMPARE DATES
                 ret_list.append(match)
         return ret_list
-
+    
     def get_concluded_matches(self):
         """Gets all matches from data layer and returns
         those that have a documented result"""
