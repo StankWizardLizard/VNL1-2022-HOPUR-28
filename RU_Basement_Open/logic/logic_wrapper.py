@@ -54,7 +54,11 @@ class LogicWrapper:
     def create_team(self, team):
         return self.team_logic.create_team(team)
     def add_player_to_team(self, player_id, team_id):
-        self.team_logic.add_player(player_id, team_id)        
+        self.team_logic.add_player(player_id, team_id)
+    def promote_player(self, player_id, team_id):
+        self.team_logic.promote_to_captain(player_id, team_id)
+    def get_captain(self, team_id):
+        return self.team_logic.get_captain(team_id)        
 
     #----- Club methods -----#
     def get_club(self, id):
