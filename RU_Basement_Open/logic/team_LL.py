@@ -23,7 +23,7 @@ class TeamLL():
         for team in self.teams:
             if team.id == id:
                 return team
-        return False
+        raise IndexError
 
     #----- Reading methods -----#
     def get_all_teams(self):
@@ -34,12 +34,11 @@ class TeamLL():
     def get_team(self, id):
         """Returns a team from the data layer by id"""
         self._update_teams()
-        team = self._find_team(id)
-        if team:
-            return team
-        else:
-            raise IndexError  # If team not found
-
+        try:
+            return self._find_team(id)
+        except IndexError:
+            raise IndexError
+        
     def get_captain(self, team_id):
         """Takes a team id and returns it's captains player id"""
         self._update_teams()
@@ -61,26 +60,25 @@ class TeamLL():
     def add_player(self, player_id, team_id):
         """Take id's for a team and a player, adds that player to the team"""
         self._update_teams()
-        team = self._find_team(team_id)
-        if team:
+        try:
+            team = self._find_team(team_id)
             team.player_ids.append(player_id)
             self._write_teams()
-            return
-        else:
-            raise IndexError  # If team is not found
-
+        except IndexError:
+            raise IndexError
+            
+        
     def promote_to_captain(self, player_id, team_id):
         """Takes id's for a player and a team. Promotes that player to captain,
         if he's a part of the team"""
         self._update_teams()
-        team = self._find_team(team_id)
-        if team:
+        try:
+            team = self._find_team(team_id)
             # Throw error if player not in team
             if player_id not in team.player_ids:
-                raise IndexError
-            else:
-                # Assign new captain
+                raise IndexError #TODO: Annað exception
+            else: # Assign new captain
                 team.captain_id = player_id
                 self._write_teams()
-                return
-        raise IndexError  # If team is not found
+        except IndexError:
+            raise IndexError  # If team is not found
