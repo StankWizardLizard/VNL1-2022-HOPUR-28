@@ -35,24 +35,24 @@ class GuestMenuUI:
 			self.clear_user_menu()
 			self.display_user_menu()
 			choice = input(" > ")
-			choice.lower()
+			choice = choice.lower()
 			
 			match choice:
 				# if user wants to show teams
 				case "1":
-					self.prompt_team_table_option()
+					self.prompt_team_table_options()
 
 				# if user wants to show unplayed matches
 				case "2":
-					pass			
+					self.prompt_unplayed_match_table_options()			
 
 				# if user wants to show game results
 				case "3":
-					pass			
+					self.prompt_played_match_table_options()
 
 				# if user wants to show division table
 				case "4":
-					pass			
+					self.prompt_division_table()			
 
 				# if user wants to quit session
 				case "q":
@@ -66,11 +66,10 @@ class GuestMenuUI:
 	def display_team_table(self):
 		"""
 		Displays the team table from a given list from a specific range
-
-		example of expected team list : [{name:"foo", },{},{}]
+		expected to get a list of teams from logic layer
 		"""
 		
-		print("Showing {} of {}")
+		print("Showing {} of {} teams")
 		print("┌────┬────────────────┐")
 		print("│100)│                │")
 		print("├────┼────────────────┤")
@@ -94,12 +93,13 @@ class GuestMenuUI:
 		print("└────┴────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit")
 
-	def prompt_team_table_option(self):
+
+	def prompt_team_table_options(self):
 		while True:
 			self.clear_user_menu()
 			self.display_team_table()
 			choice = input(" > ")
-			choice.lower()		
+			choice = choice.lower()		
 
 			match choice:
 				# if user wants to see the next 10 items
@@ -120,15 +120,133 @@ class GuestMenuUI:
 
 
 	def display_unplayed_match_table(self):
-		pass
+		"""Displays the unfinished matches from a given list of matches"""
+		print("Unfinished Matches")
+		print("┌────┬──────────────────────────────────────┬────────────────────┐")
+		print("│100)│ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│99) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│98) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│97) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│96) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│95) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│94) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│93) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│92) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│91) │ HR Basement Match nr 1               │ Date:              │")
+		print("└────┴──────────────────────────────────────┴────────────────────┘")
+		print("(N)ext page, (B)ack Page, (Q)uit or Match number")
 
+	def prompt_unplayed_match_table_options(self):
+		"""Prompts the user to choose an option from list of options for the unplayed matches"""
+		while True:
+			self.clear_user_menu()
+			self.display_unplayed_match_table()
+			choice = input(" > ")
+			choice = choice.lower()
+
+			match choice:
+				# if user wants to see the next 10 items
+				case "n":
+					pass
+
+				# if user wants to see the last 10 items
+				case "b":
+					pass
+
+				# if user wants to quit
+				case "q":
+					break
+
+				# undocumented inputs get disregarded
+				case _:
+					pass
 
 	def display_results_table(self):
-		pass
+		print("Match Results")
+		print("┌────┬──────────────────────────────────────┬────────────────────┐")
+		print("│100)│ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│99) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│98) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│97) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│96) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│95) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│94) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│93) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│92) │ HR Basement Match nr 1               │ Date:              │")
+		print("├────┼──────────────────────────────────────┼────────────────────┤")
+		print("│91) │ HR Basement Match nr 1               │ Date:              │")
+		print("└────┴──────────────────────────────────────┴────────────────────┘")
+		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 
+
+	def prompt_played_match_table_options(self):
+		"""Prompts the user to choose an option from a list of options for the match table"""
+		while True:
+			self.clear_user_menu()
+			self.display_results_table()
+			choice = input(" > ")
+			choice = choice.lower()
+
+			match choice:
+				# if user wants to see the next 10 items
+				case "n":
+					pass
+
+				# if user wants to see the last 10 items
+				case "b":
+					pass
+
+				# if user wnats to quit
+				case "q":
+					break
+
+				# undocumented inputs get disregarded
+				case _:
+					pass
 
 	def display_division_table(self):
-		pass
+		print("Divisions")
 
+
+	def prompt_division_table(self):
+		while True:
+			self.clear_user_menu()
+			self.display_division_table()
+			choice = input(" > ")
+			choice = choice.lower()
+
+			match choice:
+				# if user wants to see the next 10 items
+				case "n":
+					pass
+
+				# if user wants to see the last 10 items
+				case "b":
+					pass
+
+				# if user wants to quit
+				case "q":
+					break
+
+				# undocumented inputs get disregarded
+				case _:
+					pass
 
 

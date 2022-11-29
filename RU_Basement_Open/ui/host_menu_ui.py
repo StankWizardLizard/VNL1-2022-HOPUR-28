@@ -29,7 +29,7 @@ class HostMenuUI(GuestMenuUI):
 			self.clear_user_menu()
 			self.display_user_menu()
 			choice = input(" > ")
-			choice.lower()
+			choice = choice.lower()
 
 			match choice:
 				# if user wants to show teams
@@ -50,8 +50,8 @@ class HostMenuUI(GuestMenuUI):
 
 				# if user wants to create / edit Clubs
 				case "5":
-					pass
-				
+					pass			
+	
 				# if user wants to create / edit Divisions
 				case "6":
 					pass
