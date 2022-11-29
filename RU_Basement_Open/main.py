@@ -1,4 +1,7 @@
-from ui.mainmenu_ui import MainMenu_UI
+from ui.main_menu_ui import MainMenuUI
 
 if __name__ == "__main__":
-    mainmenu = MainMenu_UI()
+	main_menu = MainMenuUI()
+	main_menu.prompt_login()
+
+
