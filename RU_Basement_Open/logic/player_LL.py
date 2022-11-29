@@ -5,7 +5,7 @@ class PlayerLL():
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         self.players = ""
-        self._update_players
+        self._update_players()
     
     #----- Internal methods -----#
     def _update_players(self):
@@ -19,10 +19,11 @@ class PlayerLL():
     #----- Reading methods -----#
     """Returns a match by id from data layer"""
     def get_player(self, id):
-        players = self.data_wrapper.get_all_players()
-        for player in players:
-            if player["id"] == id:
+        self._update_players()
+        for player in self.players:
+            if player.id == id:
                 return player
+        raise IndexError # If player not found
 
     def get_all_players(self):
         """Returns a list of all matches"""

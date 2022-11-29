@@ -29,9 +29,16 @@ class TeamLL():
         for team in self.teams:
             if team.id == id:
                 return team
-        raise IndexError #If team not found
+        raise IndexError  # If team not found
 
-    # ----- Writing methods -----""
+    def get_captain(self, team_id):
+        """Takes a team id and returns it's captains player id"""
+        self._update_teams()
+        team = self._find_team(team_id)
+        if team:
+            return team.captain_id
+        
+    # ----- Writing methods -----#
     def create_team(self, team):
         """Takes a team object and saves it to the data layer"""
         self._update_teams()
@@ -48,7 +55,7 @@ class TeamLL():
                 team.player_ids.append(player_id)
                 self._write_teams()
                 return
-        raise IndexError # If team is not found
+        raise IndexError  # If team is not found
 
     def promote_to_captain(self, player_id, team_id):
         """Takes id's for a player and a team. Promotes that player to captain,
@@ -64,6 +71,14 @@ class TeamLL():
                     team.captain_id = player_id
                     self._write_teams()
                     return
-        raise IndexError # If team is not found
-                
-                
+        raise IndexError  # If team is not found
+
+    # ----- helper methods -----#
+
+    def _find_team(self, id):
+        """ Searches for a team by id. If it exists, return it.
+        If not, return False """
+        for team in self.teams:
+            if team.id == id:
+                return team
+        return False
