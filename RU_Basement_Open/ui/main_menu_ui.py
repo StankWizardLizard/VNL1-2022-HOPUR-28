@@ -40,7 +40,7 @@ class MainMenuUI:
 			self.clear_main_menu()
 			self.display_main_menu()		
 			choice = input(" > ")
-			choice.lower()
+			choice = choice.lower()
 
 			match choice:
 

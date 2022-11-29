@@ -29,7 +29,7 @@ class CaptainMenuUI(GuestMenuUI):
 			self.clear_user_menu()
 			self.display_user_menu()
 			choice = input(" > ")
-			choice.lower()
+			choice = choice.lower()
 
 			match choice:
 				# if user wants to show teams
