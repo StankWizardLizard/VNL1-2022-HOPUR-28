@@ -17,6 +17,14 @@ class TeamLL():
         """Sends team data to data layer to update"""
         self.data_wrapper.write_teams(self.teams)
 
+    def _find_team(self, id):
+        """ Searches for a team by id. If it exists, return it.
+        If not, return False """
+        for team in self.teams:
+            if team.id == id:
+                return team
+        return False
+
     #----- Reading methods -----#
     def get_all_teams(self):
         """Returns a list of all teams from the data layer"""
@@ -76,13 +84,3 @@ class TeamLL():
                 self._write_teams()
                 return
         raise IndexError  # If team is not found
-
-    # ----- helper methods -----#
-
-    def _find_team(self, id):
-        """ Searches for a team by id. If it exists, return it.
-        If not, return False """
-        for team in self.teams:
-            if team.id == id:
-                return team
-        return False

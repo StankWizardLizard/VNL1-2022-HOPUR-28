@@ -34,16 +34,6 @@ class DivisionLL():
                 return division
         return False
 
-    def create_division(self, division):
-        """
-        Creates new devision. Gets division object as input and sends to storage layer
-        """
-        self._update_divisions()
-        division.id = get_random_id()
-        self.divisions.append(division)
-        self._write_divisions()
-        return division.id
-
     def _count_legs(self, home, results):
         win_home = 0
         for leg in results:
@@ -90,13 +80,14 @@ class DivisionLL():
           """
         leaderboard.sort(key=lambda x: x[1], reverse=True)
         for i in range(leaderboard)-1:
-            a_wins = leaderboard[i][1]
+            a_wins = leaderboard[i][1],
             a_leg_wins = leaderboard[i][3]
-            a_name = leaderboard[i][0]
+            a_name = leaderboard[i][0],
             a = leaderboard[i]
-            b_wins = leadboard[i+1][1]
+            b_wins = leaderboard[i+1][1],
             b_leg_wins = leaderboard[i+1][3]
             b_name = leaderboard[i+1][0]
+
             if a_wins == b_wins:
                 if a_leg_wins < b_leg_wins:
                     leaderboard[i] = leaderboard[i+1]
@@ -106,6 +97,7 @@ class DivisionLL():
                         leaderboard[i] = leaderboard[i+1]
                         leaderboard[i+1] = a
         return leaderboard
+    #----- Reading methods -----#
 
     def get_leaderboard(self):
         """TODO: gets_leaderboard and returns to ui
@@ -125,10 +117,23 @@ class DivisionLL():
         :returns: TODO
 
         """
-        divisions = self.data_wrapper.get_division_from_file()
-        for division in divisions:
-            if division["id"] == division_id:
-                return division
+        self._update_divisions()
+        division = self._find_division(division_id)
+        if division:
+            return division
+        else:
+            raise IndexError  # Raise if no match found
+
+    #----- Writing methods -----#
+    def create_division(self, division):
+        """
+        Creates new devision. Gets division object as input and sends to storage layer
+        """
+        self._update_divisions()
+        division.id = get_random_id()
+        self.divisions.append(division)
+        self._write_divisions()
+        return division.id
 
     def add_team(self, team_id, division_id):
         """Take id's for a tame and a division.
