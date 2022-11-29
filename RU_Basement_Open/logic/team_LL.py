@@ -39,4 +39,12 @@ class TeamLL():
         self.teams.append(team)
         self._write_teams()
         
+    def add_player(self,team_id ,player_id):
+        """Take id's for a team and a player, adds that player to the team"""
+        self._update_teams()
+        for team in self.teams:
+            if team.id == team_id:
+                team.player_ids.append(player_id)
+        self._update_teams()
+        
         
