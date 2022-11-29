@@ -16,6 +16,14 @@ class MatchLL():
     def _write_matches(self):
         """Sends match data to data layer to update"""
         self.data_wrapper.write_matches(self.matches)
+        
+    def _find_match(self, id):
+        """ Searches for a match by id. If it exists, return it.
+        If not, return False """
+        for match in self.matches:
+            if match.id == id:
+                return match
+        raise IndexError
 
     #----- Reading methods -----#
     def get_all_matches(self):
@@ -25,11 +33,12 @@ class MatchLL():
 
     def get_match(self, id):
         """Returns a match by id from data layer"""
-        self._update_matches
-        for match in self.matches:
-            if match.id == id:
-                return match
-        raise IndexError
+        self._update_matches()
+        try:
+            return self._find_match(id)
+        except IndexError:
+            raise IndexError
+
 
     def get_upcoming_matches(self):
         """Gets all matches from data layer and returns
@@ -61,20 +70,21 @@ class MatchLL():
 
     def set_date(self, id, new_date):
         """Sets a matches date and updates data layer"""
-        self._update_matches
-        for match in self.matches:
-            if match.id == id:
-                match.date = new_date
-                self._write_matches()
-                return
-        raise IndexError
+        self._update_matches()
+        try:
+            match = self._find_match(id)
+            match.date = new_date
+            self._write_matches
+        except IndexError:
+            raise IndexError
 
     def set_results(self, id, results):
         """Sets a matches results and uptades data layer"""
-        self._update_matches
-        for match in self.matches:
-            if match.id == id:
-                match.results = results
-                self._write_matches()
-                return
-        raise IndexError
+        self._update_matches()
+        try: 
+            match = self._find_match(id)
+            match.results = results
+            self._write_matches()
+        except IndexError:
+            raise IndexError
+        
