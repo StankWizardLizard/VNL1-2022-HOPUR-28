@@ -14,16 +14,24 @@ class ClubLL():
     def _write_clubs(self):
         """Sends club data to data layer to update"""
         self.data_wrapper.write_clubs(self.clubs)
-    
+        
+    def _find_club(self, id):
+        """ Searches for a club by id. If it exists, return it.
+        If not, return False """
+        for club in self.clubs:
+            if club.id == id:
+                return club
+        raise IndexError
+
     #----- Reading methods -----#
         
     def get_club(self, id):
         """Returns a club from the data layer by id"""
         self._update_clubs()
-        for club in self.clubs:
-            if club.id == id:
-                return club
-        raise IndexError
+        try:
+            return self._find_club(id)
+        except IndexError:
+            raise IndexError
 
     def get_all_clubs(self):
         """Returns a list of all clubs from the data layer"""
@@ -42,10 +50,12 @@ class ClubLL():
     def add_team(self, team_id, club_id):
         """Take id's for a team and a club, adds that team to the club"""
         self._update_clubs()
-        for club in self.clubs:
-            if club.id == club_id:
-                club.teams_id.append(team_id)
-        self._write_clubs()
+        try: 
+            club = self._find_club(club_id)
+            club.teams_id.append(team_id)
+            self._write_clubs()      
+        except IndexError:
+            raise IndexError
         
                 
 
