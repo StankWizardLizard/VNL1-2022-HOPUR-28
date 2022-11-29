@@ -12,32 +12,32 @@ class DataWrapper:
         self.team_io = TeamIO()
         self.club_io = ClubIO()
 
-    def get_players_from_file(self):
+    def get_all_players(self):
         return self.player_io.get_players_from_file()
     
-    def write_player_to_file(self, list_of_players):
-        return self.player_io.write_player_to_file(list_of_players)
+    def write_players(self, list_of_players):
+        self.player_io.write_player_to_file(list_of_players)
     
-    def get_matches_from_file(self):
+    def get_all_matches(self):
         return self.match_io.get_matches_from_file()
     
-    def write_match_to_file(self, list_of_matches):
-        return self.match_io.write_match_to_file(list_of_matches)
+    def write_matches(self, list_of_matches):
+        self.match_io.write_match_to_file(list_of_matches)
     
-    def get_divisions_from_file(self):
+    def get_all_divisions(self):
         return self.division_io.get_divisions_from_file()
 
-    def write_division_person_to_file(self, list_of_divsions):
-        return self.division_io.write_division_person_to_file(list_of_divsions)
+    def write_divisions(self, list_of_divsions):
+        self.division_io.write_division_person_to_file(list_of_divsions)
 
-    def get_teams_from_file(self):
+    def get_all_teams(self):
         return self.team_io.get_teams_from_file()
 
-    def write_team_person_to_file(self, list_of_teams):
-        return self.team_io.write_team_person_to_file(list_of_teams)
+    def write_teams(self, list_of_teams):
+        self.team_io.write_team_person_to_file(list_of_teams)
 
-    def get_clubs_from_file(self):
+    def get_all_clubs(self):
         return self.club_io.get_clubs_from_file()
 
-    def write_club_person_to_file(self, list_of_teams):
-        return self.club_io.write_club_person_to_file(list_of_teams)
+    def write_clubs(self, list_of_teams):
+        self.club_io.write_club_person_to_file(list_of_teams)
