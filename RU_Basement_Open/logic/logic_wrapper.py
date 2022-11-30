@@ -53,6 +53,9 @@ class LogicWrapper:
 
     def create_match(self, match):
         self.match_logic.create_match(match)
+    
+    def generate_matches(self, team_ids, division_id):
+        return self.match_logic.gen_matches(team_ids, division_id)
 
     def set_date(self, id, new_date):
         self.match_logic.set_date(id, new_date)
