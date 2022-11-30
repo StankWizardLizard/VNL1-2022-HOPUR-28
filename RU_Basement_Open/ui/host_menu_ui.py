@@ -62,15 +62,10 @@ class HostMenuUI(GuestMenuUI):
 	
 				# if user wants to create / edit Clubs
 				case "5":
-<<<<<<< HEAD
 					#clubs = Clubs()
 					#clubs.prompt_options()
 					pass
 						
-=======
-					pass			
-	
->>>>>>> main
 				# if user wants to create / edit Divisions
 				case "6":
 					#divisions = Divisions()
