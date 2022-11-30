@@ -1,4 +1,9 @@
+from ui.unplayed_matches_ui import UnplayedMatchesUI 
+from ui.divisions_table_ui import DivisionsTableUI
 from ui.guest_menu_ui import GuestMenuUI
+from ui.matches_ui import MatchesUI
+from ui.teams_ui import TeamsUI
+
 
 class CaptainMenuUI(GuestMenuUI):
 	def __init__(self, logic_wrapper, os):
@@ -6,7 +11,8 @@ class CaptainMenuUI(GuestMenuUI):
 		self.logic_wrapper = logic_wrapper
 		self.os = os
 
-	def display_user_menu(self):
+	
+	def display_menu(self):
 		"""Displays the menu for the captain"""
 
 		print(f"Logged in as {self.status}")
@@ -26,27 +32,32 @@ class CaptainMenuUI(GuestMenuUI):
 
 		while True:
 			# Display the menu and prompt the user for a choice
-			self.clear_user_menu()
-			self.display_user_menu()
+			self.clear_menu()
+			self.display_menu()
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
 				# if user wants to show teams
 				case "1":
-					pass
+					teams_ui = TeamsUI(self.logic_wrapper, self.os)
+					teams_ui.prompt_option()
 
 				# if user wants to show unplayed matches
 				case "2":
-					pass
+					unplayed_matches = UnplayedMatchesUI(self.logic_wrapper, self.os)
+					unplayed_matches.prompt_option()
+					#unplayed_matches.prompt_option()
 
 				# if user wants to show game results
 				case "3":
-					pass
+					matches = MatchesUI(self.logic_wrapper, self.os)
+					matches.prompt_option()
 
 				# if user wants to show division table
 				case "4":
-					pass
+					division_ui = DivisionsTableUI(self.logic_wrapper, self.os)
+					division_ui.prompt_option()
 
 				# if the user wants to edit matches
 				case "5":
@@ -58,6 +69,9 @@ class CaptainMenuUI(GuestMenuUI):
 				
 				# undocumented inputs get disregarded
 				case _:
+<<<<<<< HEAD
+					input("Invalid Input!")
+=======
 					pass
 
 
@@ -203,3 +217,4 @@ class CaptainMenuUI(GuestMenuUI):
 				case _:
 					break
 
+>>>>>>> main

@@ -1,4 +1,9 @@
+from ui.unplayed_matches_ui import UnplayedMatchesUI 
+from ui.divisions_table_ui import DivisionsTableUI
 from ui.guest_menu_ui import GuestMenuUI
+from ui.matches_ui import MatchesUI
+from ui.teams_ui import TeamsUI
+
 
 class HostMenuUI(GuestMenuUI):
 	def __init__(self, logic_wrapper, os):
@@ -6,7 +11,8 @@ class HostMenuUI(GuestMenuUI):
 		self.logic_wrapper = logic_wrapper
 		self.os = os
 
-	def display_user_menu(self):
+
+	def display_menu(self):
 		"""Displays the menu for the host"""
 
 		print(f"Logged in as {self.status}")
@@ -21,39 +27,54 @@ class HostMenuUI(GuestMenuUI):
 		print("│q) Log out            │")
 		print("└──────────────────────┘")
 
+
 	def prompt_option(self):
 		"""Prompts the user to choose an option from list of options"""
 
 		while True:
 			# Display the menu and prompt the user for a choice
-			self.clear_user_menu()
-			self.display_user_menu()
+			self.clear_menu()
+			self.display_menu()
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
 				# if user wants to show teams
 				case "1":
-					pass
+					teams_ui = TeamsUI(self.logic_wrapper, self.os)
+					teams_ui.prompt_option()
 
 				# if user wants to show unplayed matches
 				case "2":
-					pass
+					unplayed_matches = UnplayedMatchesUI(self.logic_wrapper, self.os)
+					unplayed_matches.prompt_option()
+					#unplayed_matches.prompt_option()
 
 				# if user wants to show game results
 				case "3":
-					pass
+					matches = MatchesUI(self.logic_wrapper, self.os)
+					matches.prompt_option()
 
 				# if user wants to show division table
 				case "4":
-					pass
-
+					division_ui = DivisionsTableUI(self.logic_wrapper, self.os)
+					division_ui.prompt_option()
+	
 				# if user wants to create / edit Clubs
 				case "5":
+<<<<<<< HEAD
+					#clubs = Clubs()
+					#clubs.prompt_options()
+					pass
+						
+=======
 					pass			
 	
+>>>>>>> main
 				# if user wants to create / edit Divisions
 				case "6":
+					#divisions = Divisions()
+					#divisions.prompt_options()
 					pass
 
 				# if user wants to quit session
@@ -62,5 +83,5 @@ class HostMenuUI(GuestMenuUI):
 
 				# undocumented inputs get disregarded
 				case _:
-					pass
+					input("Invalid Input!")
 
