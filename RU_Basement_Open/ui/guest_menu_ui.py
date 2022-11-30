@@ -46,6 +46,9 @@ class GuestMenuUI:
 				# if user wants to show teams
 				case "1":
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5f01190e85d7d418ea13bb30e347c0eb19c80d53
 					teams_ui = TeamsUI(self.logic_wrapper, self.os)
 					teams_ui.prompt_option()
 
@@ -53,7 +56,10 @@ class GuestMenuUI:
 				case "2":
 					unplayed_matches = UnplayedMatchesUI(self.logic_wrapper, self.os)
 					unplayed_matches.prompt_option()
+<<<<<<< HEAD
 					#unplayed_matches.prompt_option()
+=======
+>>>>>>> 5f01190e85d7d418ea13bb30e347c0eb19c80d53
 
 				# if user wants to show game results
 				case "3":
@@ -64,8 +70,11 @@ class GuestMenuUI:
 				case "4":
 					division_ui = DivisionsTableUI(self.logic_wrapper, self.os)
 					division_ui.prompt_option()
+<<<<<<< HEAD
 =======
 					self.prompt_team_table_options()
+=======
+>>>>>>> 5f01190e85d7d418ea13bb30e347c0eb19c80d53
 
 				# if user wants to show unplayed matches
 				case "2":
@@ -86,6 +95,7 @@ class GuestMenuUI:
 
 				# undocumented inputs get disregarded
 				case _:
+<<<<<<< HEAD
 <<<<<<< HEAD
 					input("Invalid Input!")
 =======
@@ -280,3 +290,6 @@ class GuestMenuUI:
 
 
 >>>>>>> main
+=======
+					input("Invalid Input!")
+>>>>>>> 5f01190e85d7d418ea13bb30e347c0eb19c80d53
