@@ -14,11 +14,11 @@ class TeamsUI:
 
 	def _get_all_teams_in_correct_format(self):
 		'''gets all teams from the logic layer and converts it into a format of a list with a list of teams inside
-		with <= 10 teams per list [[10 teams][10 teams]...[remaining matches]]'''
+		with <= 10 teams per list [[10 teams][10 teams]...[remaining teams]]'''
 		teams = get_all_teams(self.logic_wrapper)
 		new_teams = []
 		if len(teams) > 10:
-			for i in range(0, (len(teams)//10)):
+			for i in range(0, len(teams)//10):
 				team_page = []
 				for e in range(i*10, i*10+10):
 					team_page.append(teams[e].name)
@@ -27,7 +27,7 @@ class TeamsUI:
 				team_page = []
 				for x in teams[len(teams)-len(teams) % 10:]:
 					team_page.append(x.name)
-				new_teams.append(team_page)
+			new_teams.append(team_page)
 		else:
 			team_page = []
 			for x in teams:
@@ -58,15 +58,17 @@ class TeamsUI:
 
 		LINE = "─"
 		TEAM_NAME = "Team Name"
+		LM = 40 #Length of match box
+
 		all_team_size, showing_teams_size, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size} of {all_team_size} teams")
-		print(f"┌────┬{LINE:─^40}┐")
-		print(f"│ NR │{TEAM_NAME:^40}│")
-		print(f"├────┼{LINE:─^40}┤")
+		print(f"┌────┬{LINE:─^{LM}}┐")
+		print(f"│ NR │{TEAM_NAME:^{LM}}│")
+		print(f"├────┼{LINE:─^{LM}}┤")
 		for i in range(len(list_of_all_teams[showing_page])):
 			team_nr = str(i + showing_page * 10) + ")"
-			print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^40}│")
-		print(f"└────┴{LINE:─^40}┘")
+			print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{LM}}│")
+		print(f"└────┴{LINE:─^{LM}}┘")
 		print(self._display_menu_options(list_of_all_teams,showing_page))
 
 
@@ -83,7 +85,7 @@ class TeamsUI:
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"
 
-	def prompt_option(self, showing_page = 0):
+	def prompt_option(self, showing_page:int = 0):
 		'''Calls the display_menu method to print the show teams menu and then executes based on the input from the user'''
 		
 		while True:
