@@ -8,18 +8,18 @@
                                                               
  ##############################################################
 
- [X] Skilgreina reglur um forritun
- [X] Skilgreina reglur með git
- [X] búa til git branches
- [X] Flokka alla í hópa (Sirka)
- [X] Byrja að forrita ;)
+ [ ] Búa til UI Concepts
+ [ ] Klára UI Layer
+ [X] Klára Logic Layer
+ [X] Klára Data Layer
+ [X] Klára Model Classes
+ [ ] Tengja alla classa saman 
 
  ##############################################################
 
- Náðum að byrja á öllu mikilvægu, þurfum eins og er að betra
- skipuleggja þetta þannig að vinnuflæðið sé eins streamline og
- hægt er. Sofar allir eru að standa sig vel í verkefninu og er
- mjög glaður með progressið :)
+ Okkur gékk mjög vel og náðum mikið progress, náðum ekki alveg
+ að klára allt sem við plönnuðum að gera en við reynum að klára
+ restina á morgun :) 
 
  ##############################################################
 
