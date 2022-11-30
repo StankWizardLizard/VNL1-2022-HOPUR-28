@@ -71,4 +71,3 @@ class CaptainMenuUI(GuestMenuUI):
 				# undocumented inputs get disregarded
 				case _:
 					input("Invalid Input!")
-
