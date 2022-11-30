@@ -1,3 +1,5 @@
+from ui.display_table_for_matches import DisplayTableForMatchesUI
+
 class EditMatchesUI:
 
 	def __init__(self, logic_wrapper, os):
@@ -14,43 +16,6 @@ class EditMatchesUI:
 
 
 	def display_menu(self):
-		"""Display the the menu screen onto the terminal"""
-		print("TEMPLATE")
-		print("┌────┬──────────────────────────────────────┬────────────────────┐")
-		print("│    │                                      │                    │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│    │                                      │                    │")
-		print("└────┴──────────────────────────────────────┴────────────────────┘")
-		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
-
-
-	def prompt_option(self):
-		"""Prompts the user to choose an option from a list of options for the match table"""
-		while True:
-			self.clear_menu()
-			self.display_menu()
-			choice = input(" > ")
-			choice = choice.lower()
-
-			match choice:
-				# if user wants to see the next 10 items
-				case "n":
-					pass
-
-				# if user wants to see the last 10 items
-				case "b":
-					pass
-
-				# if user wnats to quit
-				case "q":
-					break
-
-				# undocumented inputs get disregarded
-				case _:
-					input("Invalid Input!")
-
-
-	def display_edit_matches_table(self):
 		"""
 		Displays edit matches window
 		"""
@@ -79,18 +44,21 @@ class EditMatchesUI:
 		print("└────┴──────────────────────────────────────┴────────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit or Match number")
 
-	def prompt_edit_matches(self):
+
+	def prompt_option(self):
 		""""Prompts the captain to select which Match to edit"""
 		while True:
-			self.clear_user_menu()
-			self.display_edit_matches_table()
+			self.clear_menu()
+			self.display_menu()
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
 				# if user wants to see match nr 1
 				case "1":
-					pass
+					edit_match = DisplayTableForMatchesUI(self.logic_wrapper,self.os)
+					edit_match.prompt_option()
+					
 
 				# if user wants to see match nr 2
 				case "2":
@@ -142,53 +110,4 @@ class EditMatchesUI:
 
 				# undocumented inputs get disregarded
 				case _:
-					pass
-
-	def display_table_for_matches(self):
-		"""
-		Displays match table for a specific match
-		"""
-		print("┌─────────────────────┬───────┬───────┬───────┬───────┬───────┬─────────────────────┐")
-		print("│      Home Team      │ Leg 1 │ Leg 2 │ Games │ Leg 2 │ Leg 1 │      Away Team      │")
-		print("├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-		print("│    Home Player 1    │       │       │  501  │       │       │    Away Player 1    │")
-		print("├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-		print("│    Home Player 2    │       │       │  501  │       │       │    Away Player 2    │")
-		print("├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-		print("│    Home Player 3    │       │       │  501  │       │       │    Away Player 3    │")
-		print("├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-		print("│    Home Player 4    │       │       │  501  │       │       │    Away Player 4    │")
-		print("╞═════════════════════╪═══════╪═══════╪═══════╪═══════╪═══════╪═════════════════════╡")
-		print("│    Home Player 1    │       │       │       │       │       │    Away Player 3    │")
-		print("├─────────────────────┤       │       │  301  │       │       ├─────────────────────┤")
-		print("│    Home Player 2    │       │       │       │       │       │    Away Player 4    │")
-		print("├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-		print("│    Home Player 3    │       │       │       │       │       │    Away Player 1    │")
-		print("├─────────────────────┤       │       │   C   │       │       ├─────────────────────┤")
-		print("│    Home Player 4    │       │       │       │       │       │    Away Player 2    │")
-		print("╞═════════════════════╪═══════╪═══════╪═══════╪═══════╪═══════╪═════════════════════╡")
-		print("│    Home Player 1    │       │       │       │       │       │    Away Player 1    │")
-		print("├─────────────────────┤       │       │       │       │       ├─────────────────────┤")
-		print("│    Home Player 2    │       │       │       │       │       │    Away Player 2    │")
-		print("├─────────────────────┤       │       │  501  │       │       ├─────────────────────┤")
-		print("│    Home Player 3    │       │       │       │       │       │    Away Player 3    │")
-		print("├─────────────────────┤       │       │       │       │       ├─────────────────────┤")
-		print("│    Home Player 4    │       │       │       │       │       │    Away Player 4    │")
-		print("├─────────────────────┴───────┴───────┼───────┼───────┴───────┴─────────────────────┤")
-		print("│                                     │ Score │                                     │")
-		print("└─────────────────────────────────────┴───────┴─────────────────────────────────────┘")
-
-	def prompt_input_match_data(self):
-		""""Prompts Captain to input match data"""
-		while True:
-			self.clear_user_menu()
-			self.display_table_for_matches()
-			choice = input(" > ")
-			choice = choice.lower()
-
-			match choice:
-				case _:
-					break
-
-
-
+					print("Invalid Input!")
