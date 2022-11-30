@@ -1,4 +1,4 @@
-class TemplateUI:
+class EditMatchesUI:
 
 	def __init__(self, logic_wrapper, os):
 		self.logic_wrapper = logic_wrapper
