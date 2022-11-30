@@ -1,7 +1,6 @@
-from ui.display_table_for_matches import DisplayTableForMatchesUI
+from ui.captain.display_table_for_matches import DisplayTableForMatchesUI
 
 class EditMatchesUI:
-
 	def __init__(self, logic_wrapper, os):
 		self.logic_wrapper = logic_wrapper
 		self.os = os
@@ -20,7 +19,7 @@ class EditMatchesUI:
 		Displays edit matches window
 		"""
 
-		print("")
+		print("Match List")
 		print("┌────┬──────────────────────────────────────┬────────────────────┐")
 		print("│100)│ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
@@ -56,6 +55,8 @@ class EditMatchesUI:
 			match choice:
 				# if user wants to see match nr 1
 				case "1":
+					# Remember to add a paramater for the match itself inside DisplayMatch
+					# Also to make it work for every case from 1 to 10
 					edit_match = DisplayTableForMatchesUI(self.logic_wrapper,self.os)
 					edit_match.prompt_option()
 					

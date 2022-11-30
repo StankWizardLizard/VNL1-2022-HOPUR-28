@@ -1,8 +1,11 @@
-from ui.unplayed_matches_ui import UnplayedMatchesUI 
-from ui.divisions_table_ui import DivisionsTableUI
-from ui.guest_menu_ui import GuestMenuUI
-from ui.matches_ui import MatchesUI
-from ui.teams_ui import TeamsUI
+from ui.guest.guest_matches_unplayed_ui import UnplayedMatchesUI 
+from ui.guest.guest_division_ui import DivisionsTableUI
+from ui.guest.guest_menu_ui import GuestMenuUI
+from ui.guest.guest_matches import MatchesUI
+from ui.guest.guest_teams_ui import TeamsUI
+
+from ui.host.host_divisions_ui import DivisionsUI
+from ui.host.host_clubs_ui import ClubsUI
 
 
 class HostMenuUI(GuestMenuUI):
@@ -19,7 +22,7 @@ class HostMenuUI(GuestMenuUI):
 		print("┌──────────────────────┐")
 		print("│1) Show Teams         │")
 		print("│2) Unplayed Matches   │")
-		print("│3) Results            │")
+		print("│3) Match Results      │")
 		print("│4) Divisions Table    │")
 		print("│5) Clubs              │")
 		print("│6) Divisions          │")
@@ -48,7 +51,6 @@ class HostMenuUI(GuestMenuUI):
 				case "2":
 					unplayed_matches = UnplayedMatchesUI(self.logic_wrapper, self.os)
 					unplayed_matches.prompt_option()
-					#unplayed_matches.prompt_option()
 
 				# if user wants to show game results
 				case "3":
@@ -62,15 +64,13 @@ class HostMenuUI(GuestMenuUI):
 	
 				# if user wants to create / edit Clubs
 				case "5":
-					#clubs = Clubs()
-					#clubs.prompt_options()
-					pass
+					clubs = ClubsUI(self.logic_wrapper, self.os)
+					clubs.prompt_option()
 						
 				# if user wants to create / edit Divisions
 				case "6":
-					#divisions = Divisions()
-					#divisions.prompt_options()
-					pass
+					divisions = DivisionsUI(self.logic_wrapper, self.os)
+					divisions.prompt_option()
 
 				# if user wants to quit session
 				case "q":
