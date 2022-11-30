@@ -1,8 +1,8 @@
 class DisplayTableForMatchesUI:
-
     def __init__(self, logic_wrapper, os):
         self.logic_wrapper = logic_wrapper
         self.os = os
+
 
     def clear_menu(self):
         """Clears the menu screen"""
@@ -11,10 +11,12 @@ class DisplayTableForMatchesUI:
         else:
             self.os.system("clear")
 
+
     def display_menu(self):
         """
         Displays match table for a specific match
         """
+        print("HR Basement Match nr 1")
         print("┌─────────────────────┬───────┬───────┬───────┬───────┬───────┬─────────────────────┐")
         print("│      Home Team      │ Leg 1 │ Leg 2 │ Games │ Leg 2 │ Leg 1 │      Away Team      │")
         print("├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
@@ -44,6 +46,7 @@ class DisplayTableForMatchesUI:
         print("├─────────────────────┴───────┴───────┼───────┼───────┴───────┴─────────────────────┤")
         print("│                                     │ Score │                                     │")
         print("└─────────────────────────────────────┴───────┴─────────────────────────────────────┘")
+
 
     def prompt_option(self):
         """"Prompts Captain to input match data"""
