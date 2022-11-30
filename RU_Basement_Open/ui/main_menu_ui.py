@@ -11,7 +11,15 @@ class MainMenuUI:
 		self.logic_wrapper = LogicWrapper()
 
 
-	def display_main_menu(self):
+	def clear_menu(self):
+		"""Clears the menu screen """
+		if(os.name == "nt"):
+			os.system("cls")
+		else:
+			os.system("clear")
+
+
+	def display_menu(self):
 		"""Displays the menu screen upon starting the program"""
 
 		print("Login as")
@@ -24,21 +32,13 @@ class MainMenuUI:
 		print("└────────────┘")
 
 
-	def clear_main_menu(self):
-		"""Clears the menu screen """
-		if(os.name == "nt"):
-			os.system("cls")
-		else:
-			os.system("clear")
-
-
 	def prompt_login(self):
 		"""Prompts the user to choose a login option"""
 
 		while True:
 			# Display the menu and prompt the user for a choice
-			self.clear_main_menu()
-			self.display_main_menu()		
+			self.clear_menu()
+			self.display_menu()		
 			choice = input(" > ")
 			choice = choice.lower()
 
@@ -66,6 +66,4 @@ class MainMenuUI:
 
 				# undocumented inputs get disregarded
 				case _:
-					pass
-
-
+					input("Invalid Input!")
