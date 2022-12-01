@@ -4,8 +4,7 @@ from ui.guest.guest_menu_ui import GuestMenuUI
 from ui.guest.guest_matches import MatchesUI
 from ui.guest.guest_teams_ui import TeamsUI
 
-from ui.captain.edit_matches_ui import EditMatchesUI
-
+from ui.captain.captain_match_table_ui import MatchesTableUI
 
 class CaptainMenuUI(GuestMenuUI):
 	def __init__(self, logic_wrapper, os):
@@ -59,10 +58,10 @@ class CaptainMenuUI(GuestMenuUI):
 					division_ui = DivisionsTableUI(self.logic_wrapper, self.os)
 					division_ui.prompt_option()
 
-				# if the user wants to edit matches
+				# if the user wants view table of matches to edit
 				case "5":
-					edit_matches_ui = EditMatchesUI(self.logic_wrapper, self.os)
-					edit_matches_ui.prompt_option()
+					matches_table_ui = MatchesTableUI(self.logic_wrapper, self.os)
+					matches_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":
