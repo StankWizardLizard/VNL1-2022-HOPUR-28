@@ -33,11 +33,11 @@ class MatchLL():
 
     def get_upcoming_matches(self):
         """Gets all matches from data layer and returns
-        thoes that have no documented results"""
+        those that have no documented results"""
         self._update_matches()
         ret_list = []
         for match in self.matches:
-            if True:  # TODO: COMPARE DATES
+            if not match.results:
                 ret_list.append(match)
         return ret_list
 
@@ -47,7 +47,7 @@ class MatchLL():
         self._update_matches()
         ret_list = []
         for match in self.matches:
-            if True:  # TODO: COMPARE DATES
+            if match.results:
                 ret_list.append(match)
         return ret_list
 
