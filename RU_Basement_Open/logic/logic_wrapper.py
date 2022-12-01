@@ -1,4 +1,5 @@
 from data.data_wrapper import DataWrapper
+from logic.master_LL import MasterLL
 from logic.match_LL import MatchLL
 from logic.player_LL import PlayerLL
 from logic.division_LL import DivisionLL
@@ -14,6 +15,13 @@ class LogicWrapper:
         self.division_logic = DivisionLL(self.data_wrapper)
         self.team_logic = TeamLL(self.data_wrapper)
         self.club_logic = ClubLL(self.data_wrapper)
+        
+        self.master_logic = MasterLL(self.match_logic, self.division_logic)
+        
+        
+    #----- Master methods -----#
+    def generate_division_matches(self, team_ids, division_id):
+        self.master_logic.generate_division_matches(team_ids, division_id)
 
     #----- Division methods -----#
     def create_division(self, division):
