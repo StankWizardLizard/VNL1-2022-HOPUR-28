@@ -1,19 +1,19 @@
-from ui.host.host_create_club_ui import CreateClubUI
-from ui.host.host_edit_club_ui import EditClubUI
+from ui.host.host_teams_create_ui import CreateTeamUI
+from ui.host.host_teams_edit_ui import EditTeamUI
 
 from ui.menu_frame import MenuFrame
 
-class ClubsUI(MenuFrame):
+class TeamsUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 
 
 	def display_menu(self):
 		"""Display the the menu screen onto the terminal"""
-		print("Clubs")
+		print("Teams")
 		print("┌──────────────────────────────────┐")
-		print("│  1) Create New Club              │")
-		print("│  2) Edit Club                    │")
+		print("│  1) Create New Team              │")
+		print("│  2) Edit Team                    │")
 		print("│                                  │")
 		print("│  q) Quit                         │")
 		print("└──────────────────────────────────┘")
@@ -30,13 +30,13 @@ class ClubsUI(MenuFrame):
 			match choice:
 				# if user wants to create a new club
 				case "1":
-					create_club_ui = CreateClubUI(self.logic_wrapper, self.os)
-					create_club_ui.prompt_option()
+					create_team_ui = CreateTeamUI(self.logic_wrapper, self.os)
+					create_team_ui.prompt_option()
 
 				# if user wants to edit clubs
 				case "2":
-					edit_club_ui = EditClubUI(self.logic_wrapper, self.os)
-					edit_club_ui.prompt_option()
+					edit_team_ui = EditTeamUI(self.logic_wrapper, self.os)
+					edit_team_ui.prompt_option()
 					
 				# if user wants to quit
 				case "q":

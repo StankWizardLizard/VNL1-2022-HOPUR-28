@@ -5,14 +5,6 @@ class CreateTeamUI(MenuFrame):
 		super().__init__(logic_wrapper, os)
 
 
-	def clear_menu(self):
-		"""Clears the menu screen"""
-		if(self.os.name == "nt"):
-			self.os.system("cls")
-		else:
-			self.os.system("clear")
-
-
 	def display_menu(self):
 		"""Display the the menu screen onto the terminal"""
 		print("TEMPLATE")
