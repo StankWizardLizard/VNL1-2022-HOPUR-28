@@ -9,14 +9,15 @@ import os
 class MainMenuUI:
 	def __init__(self):
 		self.logic_wrapper = LogicWrapper()
+		self.os = os
 
 
 	def clear_menu(self):
 		"""Clears the menu screen """
-		if(os.name == "nt"):
-			os.system("cls")
+		if(self.os.name == "nt"):
+			self.os.system("cls")
 		else:
-			os.system("clear")
+			self.os.system("clear")
 
 
 	def display_menu(self):

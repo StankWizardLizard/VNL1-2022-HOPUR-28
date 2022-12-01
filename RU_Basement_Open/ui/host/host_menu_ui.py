@@ -7,12 +7,10 @@ from ui.guest.guest_teams_ui import TeamsUI
 from ui.host.host_divisions_ui import DivisionsUI
 from ui.host.host_clubs_ui import ClubsUI
 
-
 class HostMenuUI(GuestMenuUI):
 	def __init__(self, logic_wrapper, os):
+		super().__init__(logic_wrapper, os)
 		self.status = "Host"
-		self.logic_wrapper = logic_wrapper
-		self.os = os
 
 
 	def display_menu(self):

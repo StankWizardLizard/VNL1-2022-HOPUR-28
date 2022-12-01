@@ -3,20 +3,12 @@ from ui.guest.guest_division_ui import DivisionsTableUI
 from ui.guest.guest_matches import MatchesUI
 from ui.guest.guest_teams_ui import TeamsUI
 
+from ui.menu_frame import MenuFrame
 
-class GuestMenuUI:
-	def __init__(self, logic_wrapper, os):
+class GuestMenuUI(MenuFrame):
+	def __init__(self,logic_wrapper, os):
+		super().__init__(logic_wrapper, os)
 		self.status = "Guest"
-		self.logic_wrapper = logic_wrapper
-		self.os = os
-
-
-	def clear_menu(self):
-		"""Clears the menu screen"""
-		if(self.os.name == "nt"):
-			self.os.system("cls")
-		else:
-			self.os.system("clear")
 
 
 	def display_menu(self):
@@ -26,7 +18,7 @@ class GuestMenuUI:
 		print("┌─────────────────────┐")
 		print("│1) Show Teams        │")
 		print("│2) Unplayed Matches  │")
-		print("│3) Results           │")
+		print("│3) Match Results     │")
 		print("│4) Division Table    │")
 		print("│                     │")
 		print("│q) Log out           │")
