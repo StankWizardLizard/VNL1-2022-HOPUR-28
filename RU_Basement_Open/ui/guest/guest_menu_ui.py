@@ -43,7 +43,7 @@ class GuestMenuUI(MenuFrame):
 
 				# if user wants to show unplayed matches
 				case "2":
-					unplayed_matches = UnplayedMatchesUI(self.logic_wrapper, self.os)
+					unplayed_matches = MatchesUI(self.logic_wrapper, self.os, is_finished=False)
 					unplayed_matches.prompt_option()
 
 				# if user wants to show game results
