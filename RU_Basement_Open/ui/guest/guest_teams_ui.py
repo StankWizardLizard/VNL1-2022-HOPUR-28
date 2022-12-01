@@ -1,22 +1,18 @@
 from ui.functions import *
+from ui.menu_frame import MenuFrame
 
-class TeamsUI:
-	def __init__(self, logic_wrapper, os):
-		self.logic_wrapper = logic_wrapper
-		self.os = os
+class TeamsUI(MenuFrame):
+	def __init__(self,logic_wrapper, os):
+		super().__init__(logic_wrapper, os)
 
-	def clear_menu(self):
-		"""Clears the console screen"""
-		if(self.os.name == "nt"):
-			self.os.system("cls")
-		else:
-			self.os.system("clear")
 
 	def _get_all_teams_in_correct_format(self):
 		'''gets all teams from the logic layer and converts it into a format of a list with a list of teams inside
 		with <= 10 teams per list [[10 teams][10 teams]...[remaining matches]]'''
+		
 		teams = get_all_teams(self.logic_wrapper)
 		new_teams = []
+
 		if len(teams) > 10:
 			for i in range(0, (len(teams)//10)):
 				team_page = []
@@ -28,12 +24,14 @@ class TeamsUI:
 				for x in teams[len(teams)-len(teams) % 10:]:
 					team_page.append(x.name)
 				new_teams.append(team_page)
+
 		else:
 			team_page = []
 			for x in teams:
 				team_page.append(x.name)
 			new_teams.append(team_page)
 		return new_teams
+
 
 	def _get_team_display_menu_sizes(self, list_of_all_teams:list=[], showing_page:int=0):
 		'''returns all the size caluclations for display_menu'''
@@ -52,6 +50,7 @@ class TeamsUI:
 		showing_teams_size = showing_page * 10 + len(list_of_all_teams[showing_page])
 
 		return all_team_size, showing_teams_size, showing_teams_size_start
+
 
 	def display_menu(self, showing_page:int = 0, list_of_all_teams: list= []):
 		"""Display the menu screen for the teams table"""
@@ -78,10 +77,13 @@ class TeamsUI:
 				return "(N)ext page, (Q)uit"
 			else:
 				return "(Q)uit"
+
 		elif showing_page+1 == len(list_of_all_teams):
 			return "(B)ack Page, (Q)uit"
+
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"
+
 
 	def prompt_option(self, showing_page = 0):
 		'''Calls the display_menu method to print the show teams menu and then executes based on the input from the user'''
@@ -91,7 +93,7 @@ class TeamsUI:
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, list_of_all_teams=list_of_all_teams)
 			choice = input(" > ")
-			choice = choice.lower()		
+			choice = choice.lower()
 
 			match choice:
 				# if user wants to see the next 10 items
