@@ -4,16 +4,14 @@ from ui.guest.guest_menu_ui import GuestMenuUI
 from ui.guest.guest_matches import MatchesUI
 from ui.guest.guest_teams_ui import TeamsUI
 
-
 from ui.captain.edit_matches_ui import EditMatchesUI
 
 
 class CaptainMenuUI(GuestMenuUI):
 	def __init__(self, logic_wrapper, os):
+		super().__init__(logic_wrapper, os)
 		self.status = "Captain"
-		self.logic_wrapper = logic_wrapper
-		self.os = os
-
+		
 	
 	def display_menu(self):
 		"""Displays the menu for the captain"""
@@ -22,7 +20,7 @@ class CaptainMenuUI(GuestMenuUI):
 		print("┌─────────────────────┐")
 		print("│1) Show Teams        │")
 		print("│2) Unplayed Matches  │")
-		print("│3) Mathc Results     │")
+		print("│3) Match Results     │")
 		print("│4) Divisions Table   │")
 		print("│5) Edit Matches      │")
 		print("│                     │")

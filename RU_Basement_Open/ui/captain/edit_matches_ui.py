@@ -1,17 +1,10 @@
 from ui.captain.display_table_for_matches import DisplayTableForMatchesUI
 
-class EditMatchesUI:
+from ui.menu_frame import MenuFrame
+
+class EditMatchesUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
-		self.logic_wrapper = logic_wrapper
-		self.os = os
-
-
-	def clear_menu(self):
-		"""Clears the menu screen"""
-		if(self.os.name == "nt"):
-			self.os.system("cls")
-		else:
-			self.os.system("clear")
+		super().__init__(logic_wrapper, os)
 
 
 	def display_menu(self):

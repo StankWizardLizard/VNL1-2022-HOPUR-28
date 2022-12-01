@@ -1,8 +1,8 @@
+from ui.menu_frame import MenuFrame
 
-class CreateTeamUI:
+class CreateTeamUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
-		self.logic_wrapper = logic_wrapper
-		self.os = os
+		super().__init__(logic_wrapper, os)
 
 
 	def clear_menu(self):

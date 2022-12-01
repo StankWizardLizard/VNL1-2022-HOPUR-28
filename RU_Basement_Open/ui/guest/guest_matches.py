@@ -1,18 +1,9 @@
 from ui.functions import *
+from ui.menu_frame import MenuFrame
 
-class MatchesUI:
-
-	def __init__(self, logic_wrapper, os):
-		self.logic_wrapper = logic_wrapper
-		self.os = os
-
-
-	def clear_menu(self):
-		"""Clears the menu screen"""
-		if(self.os.name == "nt"):
-			self.os.system("cls")
-		else:
-			self.os.system("clear")
+class MatchesUI(MenuFrame):
+	def __init__(self,logic_wrapper, os):
+			super().__init__(logic_wrapper, os)
 
 	def _get_all_concluded_matches_in_correct_format(self):
 		matches = get_all_concluded_matches(self.logic_wrapper)
