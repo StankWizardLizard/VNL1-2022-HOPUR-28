@@ -1,7 +1,7 @@
 from ui.functions import *
 from ui.menu_frame import MenuFrame
 
-class TeamsUI(MenuFrame):
+class TeamsTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 

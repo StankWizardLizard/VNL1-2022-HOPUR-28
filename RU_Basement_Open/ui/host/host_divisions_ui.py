@@ -1,5 +1,5 @@
-from ui.host.host_create_divisions_ui import CreateDivisionsUI
-from ui.host.host_edit_divisions_ui import EditDivisionsUI
+from ui.host.host_divisions_create_ui import CreateDivisionsUI
+from ui.host.host_divisions_edit_ui import EditDivisionsUI
 
 from ui.menu_frame import MenuFrame
 
@@ -12,7 +12,7 @@ class DivisionsUI(MenuFrame):
 		"""Display the the menu screen onto the terminal"""
 		print("Divisions")
 		print("┌──────────────────────────────────┐")
-		print("│  1) Create Division              │")
+		print("│  1) Create new Division          │")
 		print("│  2) Edit Division                │")
 		print("│                                  │")
 		print("│  q) Quit                         │")
