@@ -4,7 +4,7 @@ from ui.menu_frame import MenuFrame
 
 class EditMatchesUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
-		super.__init__(logic_wrapper, os)
+		super().__init__(logic_wrapper, os)
 
 
 	def display_menu(self):

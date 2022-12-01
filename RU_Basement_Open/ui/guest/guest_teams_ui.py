@@ -19,6 +19,7 @@ class TeamsUI(MenuFrame):
 				for e in range(i*10, i*10+10):
 					team_page.append(teams[e].name)
 				new_teams.append(team_page)
+				
 			if len(teams) % 10 != 0:
 				team_page = []
 				for x in teams[len(teams)-len(teams) % 10:]:
@@ -57,7 +58,9 @@ class TeamsUI(MenuFrame):
 
 		LINE = "─"
 		TEAM_NAME = "Team Name"
+
 		all_team_size, showing_teams_size, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
+		
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size} of {all_team_size} teams")
 		print(f"┌────┬{LINE:─^40}┐")
 		print(f"│ NR │{TEAM_NAME:^40}│")
@@ -66,6 +69,7 @@ class TeamsUI(MenuFrame):
 			team_nr = str(i + showing_page * 10) + ")"
 			print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^40}│")
 		print(f"└────┴{LINE:─^40}┘")
+
 		print(self._display_menu_options(list_of_all_teams,showing_page))
 
 
@@ -90,6 +94,7 @@ class TeamsUI(MenuFrame):
 		
 		while True:
 			list_of_all_teams = self._get_all_teams_in_correct_format()
+
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, list_of_all_teams=list_of_all_teams)
 			choice = input(" > ")
@@ -117,6 +122,7 @@ class TeamsUI(MenuFrame):
 				# undocumented inputs get disregarded
 				case _:
 					input("Invalid Input!")
+
 
 '''	def display_menu(self):
 		Display the menu screen for the teams table
