@@ -34,7 +34,7 @@ class MatchLL():
     def get_upcoming_matches(self):
         """Gets all matches from data layer and returns
         thoes that have no documented results"""
-        self._update_matches
+        self._update_matches()
         ret_list = []
         for match in self.matches:
             if True:  # TODO: COMPARE DATES
@@ -44,7 +44,7 @@ class MatchLL():
     def get_concluded_matches(self):
         """Gets all matches from data layer and returns
         those that have a documented result"""
-        self._update_matches
+        self._update_matches()
         ret_list = []
         for match in self.matches:
             if True:  # TODO: COMPARE DATES
