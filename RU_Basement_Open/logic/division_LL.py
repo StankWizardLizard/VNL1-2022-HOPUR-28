@@ -111,7 +111,7 @@ class DivisionLL():
             leaderboard.append(self._calculate_record(team, match))
         leaderboard = self._sort_leaderboard(leaderboard)
         return leaderboard
-
+    
     def get_division(self, division_id):
         """TODO: Docstring for get_division.
         :returns: TODO
@@ -137,6 +137,25 @@ class DivisionLL():
         Registers that team to the division."""
         self._update_divisions()
         division = self._find_division(division_id)
-        if division:
-            division.team_ids.append(team_id)
-            self._write_divisions()
+        division.team_ids.append(team_id)
+        self._write_divisions()
+        
+    def add_matches(self, match_ids, division_id):
+        """ Take a list of match ids and a division id.
+        Register those matches to the division"""
+        self._update_divisions()
+        division = self._find_division(division_id)
+        division.matches = match_ids
+        self._write_divisions()
+        
+    def set_dates(self, start_date, end_date, division_id):
+        """Takes a start and end date, and a division id.
+        Sets the divison's dates"""
+        self._update_divisions()
+        division = self._find_division(division_id)
+        division.start_date = start_date
+        division.end_date = end_date
+        self._write_divisions()
+        
+        
+        
