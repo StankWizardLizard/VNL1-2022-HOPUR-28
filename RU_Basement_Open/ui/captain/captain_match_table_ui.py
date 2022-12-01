@@ -1,38 +1,36 @@
-from ui.captain.display_table_for_matches import DisplayTableForMatchesUI
+from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
 
-class EditMatchesUI(MenuFrame):
+class MatchesTableUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 
 
 	def display_menu(self):
-		"""
-		Displays edit matches window
-		"""
+		"""Displays edit matches window"""
 
 		print("Match List")
 		print("┌────┬──────────────────────────────────────┬────────────────────┐")
-		print("│100)│ HR Basement Match nr 1               │ Date:              │")
+		print("│1)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│99) │ HR Basement Match nr 1               │ Date:              │")
+		print("│2)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│98) │ HR Basement Match nr 1               │ Date:              │")
+		print("│3)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│97) │ HR Basement Match nr 1               │ Date:              │")
+		print("│4)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│96) │ HR Basement Match nr 1               │ Date:              │")
+		print("│5)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│95) │ HR Basement Match nr 1               │ Date:              │")
+		print("│6)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│94) │ HR Basement Match nr 1               │ Date:              │")
+		print("│7)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│93) │ HR Basement Match nr 1               │ Date:              │")
+		print("│8)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│92) │ HR Basement Match nr 1               │ Date:              │")
+		print("│9)  │ HR Basement Match nr 1               │ Date:              │")
 		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│91) │ HR Basement Match nr 1               │ Date:              │")
+		print("│10) │ HR Basement Match nr 1               │ Date:              │")
 		print("└────┴──────────────────────────────────────┴────────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit or Match number")
 
@@ -50,10 +48,9 @@ class EditMatchesUI(MenuFrame):
 				case "1":
 					# Remember to add a paramater for the match itself inside DisplayMatch
 					# Also to make it work for every case from 1 to 10
-					edit_match = DisplayTableForMatchesUI(self.logic_wrapper,self.os)
-					edit_match.prompt_option()
+					match_edit_ui = MatchEditUI(self.logic_wrapper,self.os)
+					match_edit_ui.prompt_option()
 					
-
 				# if user wants to see match nr 2
 				case "2":
 					pass

@@ -7,15 +7,15 @@ class CreateClubUI(MenuFrame):
 
 	def display_menu(self):
 		"""Display the the menu screen onto the terminal"""
-		pass
+		print("Registering New Club")
 
 
 	def prompt_option(self):
 		"""Prompts the user to choose an option from a list of options for the match table"""
 		while True:
 			self.clear_menu()
-			
-			print("Registering New Club")
+			self.display_menu()
+
 			name = input("Enter Name of new club: ")
 			address = input("Address of new club: ")
 			phone = input("Phone number of club: ")
@@ -26,12 +26,12 @@ class CreateClubUI(MenuFrame):
 			match choice:
 				# if user wants to save the the club info
 				case "y":
-					# Save info
+					# save info
 					pass
 
-				# if user wants to see the last 10 items
+				# if user doesnt want to save info
 				case "n":
-					# Disregard info
+					# dont save info
 					pass
 
 				# if user wnats to quit
