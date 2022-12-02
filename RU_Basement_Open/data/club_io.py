@@ -1,9 +1,10 @@
 import json
 from models.club_mdl import ClubMdl
-from data.functions import  *
+from data.functions import *
+
 
 class ClubIO:
-    def __init__(self, club_filename = "file/club.json") -> None:
+    def __init__(self, club_filename="file/club.json") -> None:
         self.club_filename = club_filename
 
     def get_clubs_from_file(self):
@@ -14,11 +15,15 @@ class ClubIO:
         clubs = []
 
         for i in self.data["club_details"]:
-            club = ClubMdl(i["id"], i["teams_id"], i["name"], i["address"], i["phone"])
+            club = ClubMdl(
+                name=i["name"], address=i["address"], phone_nr=i["phone"],
+                id=i["id"], teams_id=i["teams_id"])
+
             clubs.append(club)
 
         return clubs
-    def write_club_person_to_file(self, clubs:list):
+
+    def write_club_person_to_file(self, clubs: list):
         '''takes in updated list of club objects converts it to a list of dicts, 
         and writes it to the json file'''
 
@@ -26,6 +31,6 @@ class ClubIO:
         for x in clubs:
             new_clubs.append(to_dict(x))
         club_details = {"club_details": new_clubs}
-        club_details_json = json.dumps(club_details, indent=4, ensure_ascii=False)
+        club_details_json = json.dumps(
+            club_details, indent=4, ensure_ascii=False)
         write_file_data(self.club_filename, club_details_json)
-
