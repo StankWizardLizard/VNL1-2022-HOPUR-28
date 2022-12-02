@@ -120,6 +120,9 @@ class DivisionLL():
         self._update_divisions()
         return self._find_division(division_id)
 
+    def get_match_ids(self, division_id):
+        """Takes a division id and returns a list of keys for it's matches"""
+        return self._find_division(division_id).matches
 
     #----- Writing methods -----#
     def create_division(self, division):
