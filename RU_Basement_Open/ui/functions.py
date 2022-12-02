@@ -3,6 +3,19 @@ from models.club_mdl import ClubMdl
 from models.team_mdl import TeamMdl
 from models.division_mdl import DivisionMdl
 
+def display_menu_options(list_of_displays:list=[], showing_page:int=0):
+		'''returns a string listing the available options of the menu'''
+
+		if showing_page == 0:
+			if len(list_of_displays) > 1:
+				return "(N)ext page, (Q)uit"
+			else:
+				return "(Q)uit"
+		elif showing_page+1 == len(list_of_displays):
+			return "(B)ack Page, (Q)uit"
+		else:
+			return"(N)ext page, (B)ack Page, (Q)uit"
+
 def create_player(
     logic_wrapper, name:str="", ssn:str="",
     mobile_nr:str="", home_nr:str="", address:str="", email:str=""):
