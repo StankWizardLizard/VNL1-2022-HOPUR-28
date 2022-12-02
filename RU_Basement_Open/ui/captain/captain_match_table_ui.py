@@ -1,6 +1,7 @@
 from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
+from ui.functions import *
 
 class MatchesTableUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):

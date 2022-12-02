@@ -38,40 +38,28 @@ class MatchesTableUI(MenuFrame):
 
 	def display_menu(self, showing_page:int=0, list_of_all_match_results:list=[]):
 		"""Display the menu screen for the  matches"""
-		LINE = "─"
+		EMPTY = "" 
+		NUMBER = "NR"
 		MATCH_NAME = "Match Name"
 		DATE = "Date"
+		NR = 4 #Length of number box
 		LM = 40 #Length of match box
 		LD = 20 #Length of date box
-		EMPTY = "" 
 
 		print("Match Results")
-		print(f"┌────┬{LINE:─^{LM}}┬{LINE:─^{LD}}┐")
-		print(f"│ NR │{MATCH_NAME:^{LM}}│{DATE:^{LD}}│")
-		print(f"├────┼{LINE:─^{LM}}┼{LINE:─^{LD}}┤")
+		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{LM}}┬{EMPTY:─^{LD}}┐")
+		print(f"│{NUMBER:^{NR}}│{MATCH_NAME:^{LM}}│{DATE:^{LD}}│")
+		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{LM}}┼{EMPTY:─^{LD}}┤")
 		try:
 			for i in range(len(list_of_all_match_results[showing_page])):
-				team_nr = str(i + showing_page * 10) + ")"
+				match_nr = str(i + showing_page * 10) + ")"
 				teams_playing =f"{list_of_all_match_results[showing_page][i][0]} vs {list_of_all_match_results[showing_page][i][1]}"
 				date = str(list_of_all_match_results[showing_page][i][2])
-				print(f"│{team_nr:^4}│{teams_playing:^{LM}}│{date:^{LD}}│")
+				print(f"│{match_nr:^4}│{teams_playing:^{LM}}│{date:^{LD}}│")
 		except IndexError:
-			print(f"│{team_nr:^4}│{list_of_all_match_results:^{LM}}│{showing_page:^{LD}}│")
-		print(f"└────┴{EMPTY:─^{LM}}┴{EMPTY:─^{LD}}┘")
+			print(f"│{EMPTY:^4}│{EMPTY:^{LM}}│{EMPTY:^{LD}}│")
+		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{LM}}┴{EMPTY:─^{LD}}┘")
 		
-
-	def _display_menu_options(self, list_of_all_match_results:list=[], showing_page:int=0):
-		'''returns a string listing the available options of the menu'''
-
-		if showing_page == 0:
-			if len(list_of_all_match_results) > 1:
-				return "(N)ext page, (Q)uit"
-			else:
-				return "(Q)uit"
-		elif showing_page+1 == len(list_of_all_match_results):
-			return "(B)ack Page, (Q)uit"
-		else:
-			return"(N)ext page, (B)ack Page, (Q)uit"
 
 
 	def prompt_option(self, showing_page:int = 0):
@@ -80,7 +68,7 @@ class MatchesTableUI(MenuFrame):
 		while True:
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, list_of_all_match_results=list_of_all_match_results)
-			print(self._display_menu_options(showing_page=showing_page, list_of_all_match_results=list_of_all_match_results))
+			print(display_menu_options(showing_page=showing_page, list_of_displays=list_of_all_match_results))
 			choice = input(" > ")
 			choice = choice.lower()
 			match choice:
@@ -106,55 +94,30 @@ class MatchesTableUI(MenuFrame):
 				case _:
 					input("Invalid Input!")
 
-'''def display_menu(self):
-		print("Match Results")
-		print("┌────┬──────────────────────────────────────┬────────────────────┐")
-		print("│ NR │ Match Name                           │ Date               │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│100)│ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│99) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│98) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│97) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│96) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│95) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│94) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│93) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│92) │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│91) │ HR Basement Match nr 1               │ Date:              │")
-		print("└────┴──────────────────────────────────────┴────────────────────┘")
-		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
-
-
-def prompt_option(self):
-	"""Prompts the user to choose an option from a list of options for the match table"""
-	while True:
-		self.clear_menu()
-		self.display_menu()
-		choice = input(" > ")
-		choice = choice.lower()
-
-		match choice:
-			# if user wants to see the next 10 items
-			case "n":
-				pass
-
-			# if user wants to see the last 10 items
-			case "b":
-				pass
-
-			# if user wnats to quit
-			case "q":
-				break
-
-			# undocumented inputs get disregarded
-			case _:
-				input("Invalid Input!")'''
+'''
+print("Match Results")
+print("┌────┬──────────────────────────────────────┬────────────────────┐")
+print("│ NR │ Match Name                           │ Date               │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│100)│ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│99) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│98) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│97) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│96) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│95) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│94) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│93) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│92) │ HR Basement Match nr 1               │ Date:              │")
+print("├────┼──────────────────────────────────────┼────────────────────┤")
+print("│91) │ HR Basement Match nr 1               │ Date:              │")
+print("└────┴──────────────────────────────────────┴────────────────────┘")
+print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
+'''
