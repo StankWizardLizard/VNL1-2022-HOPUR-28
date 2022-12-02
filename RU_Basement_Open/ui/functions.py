@@ -3,7 +3,7 @@ from models.club_mdl import ClubMdl
 from models.team_mdl import TeamMdl
 from models.division_mdl import DivisionMdl
 
-def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["", ""]]):
+def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[["", ""]]):
     '''
     Takes in a list of table columns and width of column, and a list of lists with data in those colums,
     then prints a table from those inputs
@@ -21,44 +21,51 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["
     #table
     if table_format:
         try:
+
+            #creates lists of lines and header data
             lines = [f"{EMPTY:─^{table_format[i][1]}}" for i in range(len(table_format))]
             header_data_list = [f"{table_format[i][0]:^{table_format[i][1]}}" for i in range(len(table_format))]
         except IndexError:
             print("Error table data incorrect")
+
+        #initial strings that will be printed
         header_data = "│"
         header_top = "┌"
         between = "├"
         footer = "└"
+
+        #converts header data list into a string with headers
         for x in header_data_list:
             header_data = header_data + x + SEPERATOR_DATA
+        
+        #generates lines for table in string format
         header_top = _generate_lines(header_top, lines, SEPERATOR_HEADER, END_HEADER)
         between = _generate_lines(between, lines, SEPERATOR_BETWEEN, END_BETWEEN)
         footer = _generate_lines(footer, lines, SEPERATOR_FOOTER, END_FOOTER)
 
-        #header
+        #prints header
         print(header_top)
         print(header_data)
         print(between)
 
-        #contents
-        if contents:
-            for j in range(len(contents)):
-                contents_print = [f"{contents[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
-                con = "│"
-                for e in range(len(contents_print)):
-                    con = con + contents_print[e] + SEPERATOR_DATA
-                print(con)
-                if j < len(contents)-1:
+        #prints table_data or an empty table if table_data is empty
+        if table_data:
+            for j in range(len(table_data)):
+                contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                contents = "│"
+                for e in range(len(contents_data_list)):
+                    contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                print(contents)
+                if j < len(table_data)-1:
                     print(between)
         else:
-            contents_print = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
-            con = "│"
-            for e in range(len(contents_print)):
-                con = con + contents_print[e] + SEPERATOR_DATA
-            print(con)
+            contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
+            contents = "│"
+            for e in range(len(contents_data_list)):
+                contents = contents + contents_data_list[e] + SEPERATOR_DATA
+            print(contents)
 
-
-        #footer
+        #prints footer
         print(footer)
     else:
         print("Error missing table data")
@@ -88,8 +95,8 @@ def display_menu_options(list_of_displays:list=[], showing_page:int=0):
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"
 
-def get_leaderboard(logic_wrapper, division_id):
-    leaderboard = logic_wrapper.get_leaderboard(division_id)
+def get_leaderboard(logic_wrapper):
+    leaderboard = logic_wrapper.get_leaderboard()
     return leaderboard
 
 

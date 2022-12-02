@@ -54,7 +54,6 @@ class TeamsTableUI(MenuFrame):
 	def display_menu(self, showing_page:int = 0, list_of_all_teams: list= []):
 		"""Display the menu screen for the teams table"""
 
-		EMPTY = "" 
 		NUMBER = "NR"
 		TEAM_NAME = "Team Name"
 		TN = 27 #Length of team name box
@@ -63,17 +62,22 @@ class TeamsTableUI(MenuFrame):
 		all_team_size, showing_teams_size, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
 		
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size} of {all_team_size} teams")
-		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{TN}}┐")
-		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{TN}}│")
-		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{TN}}┤")
+		#Format of table with a list of lists [row name, row width] #Generates a table with the correct format and data
+		table_format = [[NUMBER, NR], [TEAM_NAME, TN]]
 		try:
+		
+			#Fills in data for table
+			table_data = []
 			for i in range(len(list_of_all_teams[showing_page])):
 				team_nr = str(i + showing_page * 10) + ")"
-				print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{TN}}│")
+				team_name = list_of_all_teams[showing_page][i]
+				table_data.append([team_nr, team_name])
+
+			#Generates a table with the correct format and data
+			generate_table(table_format, table_data)
 		except IndexError:
-			print(f"│{EMPTY:^4}│{EMPTY:^{TN}}│")
-		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{TN}}┘")
-		print(display_menu_options(list_of_all_teams,showing_page))
+			generate_table(table_format, [])
+
 
 	def prompt_option(self, showing_page:int = 0):
 		'''Calls the display_menu method to print the show teams menu and then executes based on the input from the user'''
@@ -83,6 +87,7 @@ class TeamsTableUI(MenuFrame):
 
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, list_of_all_teams=list_of_all_teams)
+			print(display_menu_options(showing_page=showing_page, list_of_displays=list_of_all_teams))
 			choice = input(" > ")
 			choice = choice.lower()
 

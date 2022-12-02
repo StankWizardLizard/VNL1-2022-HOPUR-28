@@ -46,19 +46,23 @@ class MatchesTableUI(MenuFrame):
 		LD = 20 #Length of date box
 
 		print("Match Results")
+		#Format of table with a list of lists [row name, row width] #Generates a table with the correct format and data
 		table_format = [[NUMBER, NR], [MATCH_NAME, LM], [DATE, LD]]
 		try:
+
+			#Fills in data for table 
 			table_data = []
 			for i in range(len(list_of_all_match_results[showing_page])):
 				match_nr = str(i + showing_page * 10) + ")"
 				teams_playing =f"{list_of_all_match_results[showing_page][i][0]} vs {list_of_all_match_results[showing_page][i][1]}"
 				date = str(list_of_all_match_results[showing_page][i][2])
 				table_data.append([match_nr, teams_playing, date])
+
+			#Generates a table with the correct format and data
 			generate_table(table_format, table_data)
 		except IndexError:
-			pass
+			generate_table(table_format, [])
 		
-
 
 	def prompt_option(self, showing_page:int = 0):
 		"""Prompts the user to choose an option from a list of options for the match table"""

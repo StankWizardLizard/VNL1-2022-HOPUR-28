@@ -13,23 +13,29 @@ class DivisionsTableUI(MenuFrame):
         NR = 4 #Length of number box
         DN = 40 #Length of team name box
         print("Division")
+
+        #Format of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [DIVISION_NAME, DN]]
         try:
+            #Fills in data for table
             table_data = []
             for i in range(len(list_of_all_divisions[showing_page])):
                 division_nr = str(i + showing_page * 10) + ")"
                 division =f"{list_of_all_divisions[showing_page][i][0]}"
                 table_data.append([division_nr, division])
+            #Generates a table with the correct format and data
             generate_table(table_format, table_data)
         except IndexError:
-            pass
+            generate_table(table_format, [])
+
 
     def prompt_option(self, showing_page:int=0):
         '''list_of_divisions = get_divisions(self.logic_wrapper)'''
-        list_of_divisions = []
+        list_of_divisions = [[]]
         while True:
             self.clear_menu()
             self.display_menu(list_of_divisions, showing_page=showing_page)
+            print(display_menu_options(showing_page=showing_page, list_of_displays=list_of_divisions))
             choice = input(" > ")
             choice = choice.lower()
 
