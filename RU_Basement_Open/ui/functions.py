@@ -82,15 +82,15 @@ def _generate_lines(string:str, lines:list, seperator:str, end:str):
             string = string + lines[i] + end
     return string
 
-def display_menu_options(list_of_displays:list=[], showing_page:int=0):
+def display_menu_options(how_many_pages:int=1, showing_page:int=0):
 		'''returns a string listing the available options of the menu'''
 
 		if showing_page == 0:
-			if len(list_of_displays) > 1:
+			if how_many_pages > 0:
 				return "(N)ext page, (Q)uit"
 			else:
 				return "(Q)uit"
-		elif showing_page+1 == len(list_of_displays):
+		elif showing_page == how_many_pages:
 			return "(B)ack Page, (Q)uit"
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"

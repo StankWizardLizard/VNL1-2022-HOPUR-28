@@ -60,16 +60,17 @@ class DivisionTableUI(MenuFrame):
 	def prompt_option(self, division_id:str="", showing_page:int=0):
 		'''division_leaderboard = self._get_division_leaderboard_in_correct_format()'''
 		division_leaderboard = [["1"]]
+		pages_number = len(division_leaderboard) // 2
 		while True:
 			self.clear_menu()
 			self.display_menu()
-			print(display_menu_options(showing_page=showing_page, list_of_displays=division_leaderboard))
+			print(display_menu_options(showing_page=showing_page, how_many_pages=pages_number))
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
 				case "n":
-					if showing_page+1 == len(division_leaderboard):
+					if showing_page == pages_number:
 						input("Invalid Input!")
 					else:
 						showing_page += 1

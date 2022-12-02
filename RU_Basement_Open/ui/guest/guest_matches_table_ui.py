@@ -6,37 +6,7 @@ class MatchesTableUI(MenuFrame):
 		super().__init__(logic_wrapper, os)
 		self.is_finished = is_finished
 
-	def _get_all_matches_in_correct_format(self):
-		'''
-		gets all  table_data from the logic layer and converts it into a format of a list
-		with lists of lists containing information about the table_data with <= 10 table_data per list and
-		in a format of home team, then away team, then date  [[[match], [match]..]...[remaining table_data]]
-		'''
-		if self.is_finished:
-			table_data = get_all_concluded_matches(self.logic_wrapper)
-		else: 
-			table_data = get_all_unplayed_matches(self.logic_wrapper)
-		new_matches = []
-		if len(table_data) > 10:
-			for i in range(0, (len(table_data)//10)):
-				match_page = []
-				for e in range(i*10, i*10+10):
-					match_page.append([table_data[e].home_team, table_data[e].away_team, table_data[e].date])
-				if len(table_data) % 10 != 0:
-					match_page = []
-					for x in table_data[len(table_data)-len(table_data) % 10:]:
-						match_page.append(x.home_team, x.away_team, x.date)
-				new_matches.append(match_page)
-		else:
-			match_page = []
-			for x in table_data:
-				match_page.append([x.home_team, x.away_team, x.date])
-			new_matches.append(match_page)
-		return new_matches
-
-
-
-	def display_menu(self, showing_page:int=0, list_of_all_match_results:list=[]):
+	def display_menu(self, showing_page:int=0, matches:list=[]):
 		"""Display the menu screen for the  table_data"""
 		NUMBER = "NR"
 		MATCH_NAME = "Match Name"
@@ -52,31 +22,34 @@ class MatchesTableUI(MenuFrame):
 
 			#Fills in data for table 
 			table_data = []
-			for i in range(len(list_of_all_match_results[showing_page])):
-				match_nr = str(i + showing_page * 10) + ")"
-				teams_playing =f"{list_of_all_match_results[showing_page][i][0]} vs {list_of_all_match_results[showing_page][i][1]}"
-				date = str(list_of_all_match_results[showing_page][i][2])
+			for i in range(len(matches[showing_page*10:showing_page*10+10])):
+				match_nr = str(i+1) + ")"
+				teams_playing =f"{matches[i].home_team} vs {matches[i].away_team}"
+				date = str(matches[i].date)
 				table_data.append([match_nr, teams_playing, date])
 
 			#Generates a table with the correct format and data
 			generate_table(table_format, table_data)
 		except IndexError:
 			generate_table(table_format, [])
-		
 
 	def prompt_option(self, showing_page:int = 0):
 		"""Prompts the user to choose an option from a list of options for the match table"""
-		list_of_all_match_results = self._get_all_matches_in_correct_format()
+		if self.is_finished:
+			matches = get_all_concluded_matches(self.logic_wrapper)
+		else: 
+			matches = get_all_unplayed_matches(self.logic_wrapper)
+		page_numbers = len(matches) // 10
 		while True:
 			self.clear_menu()
-			self.display_menu(showing_page=showing_page, list_of_all_match_results=list_of_all_match_results)
-			print(display_menu_options(showing_page=showing_page, list_of_displays=list_of_all_match_results))
+			self.display_menu(showing_page=showing_page, matches=matches)
+			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers))
 			choice = input(" > ")
 			choice = choice.lower()
 			match choice:
 				# if user wants to see the next 10 items
 				case "n":
-					if showing_page+1 == len(list_of_all_match_results):
+					if showing_page == page_numbers:
 						input("Invalid Input!")
 					else:
 						showing_page += 1

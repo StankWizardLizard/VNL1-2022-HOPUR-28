@@ -32,16 +32,17 @@ class DivisionsTableUI(MenuFrame):
     def prompt_option(self, showing_page:int=0):
         '''list_of_divisions = get_divisions(self.logic_wrapper)'''
         list_of_divisions = [[]]
+        pages_number = len(list_of_divisions)//10
         while True:
             self.clear_menu()
             self.display_menu(list_of_divisions, showing_page=showing_page)
-            print(display_menu_options(showing_page=showing_page, list_of_displays=list_of_divisions))
+            print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
             choice = input(" > ")
             choice = choice.lower()
 
             match choice:
                 case "n":
-                    if showing_page+1 == len(list_of_divisions):
+                    if showing_page == pages_number:
                         input("Invalid Input!")
                     else:
                         showing_page += 1
