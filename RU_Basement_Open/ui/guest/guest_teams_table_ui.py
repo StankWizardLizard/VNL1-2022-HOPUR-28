@@ -54,37 +54,26 @@ class TeamsTableUI(MenuFrame):
 	def display_menu(self, showing_page:int = 0, list_of_all_teams: list= []):
 		"""Display the menu screen for the teams table"""
 
-		LINE = "─"
+		EMPTY = "" 
+		NUMBER = "NR"
 		TEAM_NAME = "Team Name"
 		LM = 40 #Length of match box
+		NR = 4 #Length of number box
 
 		all_team_size, showing_teams_size, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
 		
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size} of {all_team_size} teams")
-		print(f"┌────┬{LINE:─^{LM}}┐")
-		print(f"│ NR │{TEAM_NAME:^{LM}}│")
-		print(f"├────┼{LINE:─^{LM}}┤")
-		for i in range(len(list_of_all_teams[showing_page])):
-			team_nr = str(i + showing_page * 10) + ")"
-			print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{LM}}│")
-		print(f"└────┴{LINE:─^{LM}}┘")
-		print(self._display_menu_options(list_of_all_teams,showing_page))
-
-
-	def _display_menu_options(self, list_of_all_teams:list=[], showing_page:int=0):
-		'''returns a string listing the available options of the menu'''
-
-		if showing_page == 0:
-			if len(list_of_all_teams) > 1:
-				return "(N)ext page, (Q)uit"
-			else:
-				return "(Q)uit"
-
-		elif showing_page+1 == len(list_of_all_teams):
-			return "(B)ack Page, (Q)uit"
-
-		else:
-			return"(N)ext page, (B)ack Page, (Q)uit"
+		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{LM}}┐")
+		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{LM}}│")
+		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{LM}}┤")
+		try:
+			for i in range(len(list_of_all_teams[showing_page])):
+				team_nr = str(i + showing_page * 10) + ")"
+				print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{LM}}│")
+		except IndexError:
+			print(f"│{EMPTY:^4}│{EMPTY:^{LM}}│")
+		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{LM}}┘")
+		print(display_menu_options(list_of_all_teams,showing_page))
 
 	def prompt_option(self, showing_page:int = 0):
 		'''Calls the display_menu method to print the show teams menu and then executes based on the input from the user'''
@@ -121,55 +110,31 @@ class TeamsTableUI(MenuFrame):
 					input("Invalid Input!")
 
 
-'''	def display_menu(self):
-		Display the menu screen for the teams table
-		print("Showing {} of {} teams")
-		print("┌────┬────────────────┐")
-		print("│ NR │ Team Name      │")
-		print("├────┼────────────────┤")
-		print("│100)│                │")
-		print("├────┼────────────────┤")
-		print("│99) │                │")
-		print("├────┼────────────────┤")
-		print("│98) │                │")
-		print("├────┼────────────────┤")
-		print("│97) │                │")
-		print("├────┼────────────────┤")
-		print("│96) │                │")
-		print("├────┼────────────────┤")
-		print("│95) │                │")
-		print("├────┼────────────────┤")
-		print("│94) │                │")
-		print("├────┼────────────────┤")
-		print("│93) │                │")
-		print("├────┼────────────────┤")
-		print("│92) │                │")
-		print("├────┼────────────────┤")
-		print("│91) │                │")
-		print("└────┴────────────────┘")
-		print("(N)ext page, (B)ack Page, (Q)uit")
-
-	def prompt_option(self):
-		while True:
-			self.clear_menu()
-			self.display_menu()
-			choice = input(" > ")
-			choice = choice.lower()		
-
-			match choice:
-				# if user wants to see the next 10 items
-				case "n":
-					pass
-
-				# if user wants to see the last 10 items
-				case "b":
-					pass
-
-				# if user wants to quit
-				case "q":
-					break
-
-				# undocumented inputs get disregarded
-				case _:
-					input("Invalid Input!")
+'''
+Display the menu screen for the teams table
+print("Showing {} of {} teams")
+print("┌────┬────────────────┐")
+print("│ NR │ Team Name      │")
+print("├────┼────────────────┤")
+print("│100)│                │")
+print("├────┼────────────────┤")
+print("│99) │                │")
+print("├────┼────────────────┤")
+print("│98) │                │")
+print("├────┼────────────────┤")
+print("│97) │                │")
+print("├────┼────────────────┤")
+print("│96) │                │")
+print("├────┼────────────────┤")
+print("│95) │                │")
+print("├────┼────────────────┤")
+print("│94) │                │")
+print("├────┼────────────────┤")
+print("│93) │                │")
+print("├────┼────────────────┤")
+print("│92) │                │")
+print("├────┼────────────────┤")
+print("│91) │                │")
+print("└────┴────────────────┘")
+print("(N)ext page, (B)ack Page, (Q)uit")
 '''

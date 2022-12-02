@@ -1,6 +1,7 @@
 from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
+from ui.functions import *
 
 from ui.functions import get_all_concluded_matches
 from ui.functions import get_all_unplayed_matches
