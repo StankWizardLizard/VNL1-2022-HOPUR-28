@@ -2,6 +2,7 @@ from itertools import combinations
 from datetime import date
 from functions.get_random_id import get_random_id
 from models.match_mdl import MatchMdl
+from random import shuffle
 
 
 class MatchLL():
@@ -9,7 +10,7 @@ class MatchLL():
         self.data_wrapper = data_connection
         self.matches = ""
         self._update_matches
-        
+
     #----- Internal methods -----#
     def _update_matches(self):
         """Gets all matches from data layer"""
@@ -65,83 +66,53 @@ class MatchLL():
         year, month, day = [int(x) for x in date_ls]
         match_date = date(year, month, day)
         return match_date
-    
-    def get_start_and_end_date(self, match_ids:list):
+
+    def get_start_and_end_date(self, match_ids: list):
         """Takes a list of match ids and returns the
         lowest and highest date found"""
         dates = []
         for id in match_ids:
             dates.append(self.get_date(id))
         return (str(min(dates)), str(max(dates)))
-            
 
     #----- Writing methods -----#
-    def gen_matches(self, team_ids: list, division_id):
-        def team_in_list():
-            for matchup in match_day_ls:
-                if team_1 in matchup or team_2 in matchup:
-                    return True
-            return False
-        
-        def move_team_to_front(lst, team):
-            targetvalue = [matchup for matchup in lst if team in matchup]
-            if targetvalue:
-                targetvalue = targetvalue[0]
-                lst.insert(0, lst.pop(lst.index(targetvalue)))
-        
-        matchups_unassigned = [comb for comb in combinations(team_ids, 2)]
-        matchups_unassigned.insert(0, matchups_unassigned.pop(len(matchups_unassigned)-1))
-        matchups_unassigned.insert(0, matchups_unassigned.pop(len(matchups_unassigned)-1))
 
-        # print(matchups_unassigned)
-        match_days_ls = []
-        leftover = ""
-        while len(matchups_unassigned):
-            match_day_ls = []
-            competing_teams_set = set()
-            
-            if leftover:
-                move_team_to_front(matchups_unassigned, leftover)
-            
-            for matchup in matchups_unassigned[:]:
-                team_1, team_2 = matchup
-                if not team_in_list():
-                    competing_teams_set.update(matchup)
-                    match_day_ls.append(matchup)
-                    matchups_unassigned.remove(matchup)
-            
-            # x = Find team that did not compete
-            leftover = set(team_ids) - competing_teams_set
-            if leftover:
-                leftover = next(iter(leftover))
-            else:
-                leftover=None
-                
-            # print(leftover)
-            match_days_ls.append(match_day_ls)
-            
-            
+    def gen_matches(self, team_ids: list, division_id):
+        if len(team_ids) % 2:
+            team_ids.append("c")
+        l = len(team_ids)
+
+        t1 = team_ids[:l//2]
+        t2 = team_ids[l//2:]
+
+        match_days = []
+        for _ in range(l-1):
+            x = t1.pop()
+            t2.append(x)
+
+            y = t2.pop(0)
+            t1.insert(1, y)
+
+            fixtures = list(zip(t1, t2))
+            for fixture in fixtures:
+                if "c" in fixture:
+                    fixtures.remove(fixture)
+                    break
+
+            match_days.append(fixtures)
+
         i = 1
         match_ids = []
-        for day in match_days_ls:
+        for day in match_days:
             for matchup in day:
                 t1, t2 = matchup
-                match = MatchMdl(f"2022-12-{i}",t1, t2, division_id=division_id)
+                match = MatchMdl(f"2022-12-{i}", t1,
+                                 t2, division_id=division_id)
                 match_id = self.create_match(match)
                 match_ids.append(match_id)
             i += 1
+
         return match_ids
-                    
-        # Print match days
-        # print("\nmatch days: ")
-        # for match_day in match_days_ls:
-        #     print(match_day)
-        # print("no of match days: ", len(match_days_ls))        
-            
-            
-            
-        
-        
 
     def create_match(self, match):
         """Takes a match object and forwards it to the data layer"""
