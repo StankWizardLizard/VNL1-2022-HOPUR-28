@@ -3,8 +3,8 @@ from ui.menu_frame import MenuFrame
 
 class MatchesTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os, is_finished = True):
-			super().__init__(logic_wrapper, os)
-			self.is_finished = is_finished
+		super().__init__(logic_wrapper, os)
+		self.is_finished = is_finished
 
 	def _get_all_matches_in_correct_format(self):
 		'''

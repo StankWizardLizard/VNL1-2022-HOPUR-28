@@ -17,7 +17,7 @@ class HostMenuUI(MenuFrame):
 
 	def display_menu(self):
 		"""Displays the menu for the host"""
-
+		
 		print(f"Logged in as {self.status}")
 		print("┌──────────────────────┐")
 		print("│1) Show Teams         │")
