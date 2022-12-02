@@ -1,4 +1,4 @@
-from ui.guest.guest_division_table_ui import DivisionsTableUI
+from ui.guest.guest_divisions_table_ui import DivisionsTableUI
 from ui.guest.guest_matches_table_ui import MatchesTableUI
 from ui.guest.guest_teams_table_ui import TeamsTableUI
 

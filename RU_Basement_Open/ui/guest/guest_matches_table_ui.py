@@ -8,28 +8,28 @@ class MatchesTableUI(MenuFrame):
 
 	def _get_all_matches_in_correct_format(self):
 		'''
-		gets all  matches from the logic layer and converts it into a format of a list
-		with lists of lists containing information about the matches with <= 10 matches per list and
-		in a format of home team, then away team, then date  [[[match], [match]..]...[remaining matches]]
+		gets all  table_data from the logic layer and converts it into a format of a list
+		with lists of lists containing information about the table_data with <= 10 table_data per list and
+		in a format of home team, then away team, then date  [[[match], [match]..]...[remaining table_data]]
 		'''
 		if self.is_finished:
-			matches = get_all_concluded_matches(self.logic_wrapper)
+			table_data = get_all_concluded_matches(self.logic_wrapper)
 		else: 
-			matches = get_all_unplayed_matches(self.logic_wrapper)
+			table_data = get_all_unplayed_matches(self.logic_wrapper)
 		new_matches = []
-		if len(matches) > 10:
-			for i in range(0, (len(matches)//10)):
+		if len(table_data) > 10:
+			for i in range(0, (len(table_data)//10)):
 				match_page = []
 				for e in range(i*10, i*10+10):
-					match_page.append([matches[e].home_team, matches[e].away_team, matches[e].date])
-				if len(matches) % 10 != 0:
+					match_page.append([table_data[e].home_team, table_data[e].away_team, table_data[e].date])
+				if len(table_data) % 10 != 0:
 					match_page = []
-					for x in matches[len(matches)-len(matches) % 10:]:
+					for x in table_data[len(table_data)-len(table_data) % 10:]:
 						match_page.append(x.home_team, x.away_team, x.date)
 				new_matches.append(match_page)
 		else:
 			match_page = []
-			for x in matches:
+			for x in table_data:
 				match_page.append([x.home_team, x.away_team, x.date])
 			new_matches.append(match_page)
 		return new_matches
@@ -37,8 +37,7 @@ class MatchesTableUI(MenuFrame):
 
 
 	def display_menu(self, showing_page:int=0, list_of_all_match_results:list=[]):
-		"""Display the menu screen for the  matches"""
-		EMPTY = "" 
+		"""Display the menu screen for the  table_data"""
 		NUMBER = "NR"
 		MATCH_NAME = "Match Name"
 		DATE = "Date"
@@ -47,18 +46,17 @@ class MatchesTableUI(MenuFrame):
 		LD = 20 #Length of date box
 
 		print("Match Results")
-		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{LM}}┬{EMPTY:─^{LD}}┐")
-		print(f"│{NUMBER:^{NR}}│{MATCH_NAME:^{LM}}│{DATE:^{LD}}│")
-		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{LM}}┼{EMPTY:─^{LD}}┤")
+		table_format = [[NUMBER, NR], [MATCH_NAME, LM], [DATE, LD]]
 		try:
+			table_data = []
 			for i in range(len(list_of_all_match_results[showing_page])):
 				match_nr = str(i + showing_page * 10) + ")"
 				teams_playing =f"{list_of_all_match_results[showing_page][i][0]} vs {list_of_all_match_results[showing_page][i][1]}"
 				date = str(list_of_all_match_results[showing_page][i][2])
-				print(f"│{match_nr:^4}│{teams_playing:^{LM}}│{date:^{LD}}│")
+				table_data.append([match_nr, teams_playing, date])
+			generate_table(table_format, table_data)
 		except IndexError:
-			print(f"│{EMPTY:^4}│{EMPTY:^{LM}}│{EMPTY:^{LD}}│")
-		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{LM}}┴{EMPTY:─^{LD}}┘")
+			pass
 		
 
 

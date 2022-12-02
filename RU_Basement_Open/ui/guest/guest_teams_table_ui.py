@@ -57,22 +57,22 @@ class TeamsTableUI(MenuFrame):
 		EMPTY = "" 
 		NUMBER = "NR"
 		TEAM_NAME = "Team Name"
-		LM = 40 #Length of match box
+		TN = 27 #Length of team name box
 		NR = 4 #Length of number box
 
 		all_team_size, showing_teams_size, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
 		
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size} of {all_team_size} teams")
-		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{LM}}┐")
-		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{LM}}│")
-		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{LM}}┤")
+		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{TN}}┐")
+		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{TN}}│")
+		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{TN}}┤")
 		try:
 			for i in range(len(list_of_all_teams[showing_page])):
 				team_nr = str(i + showing_page * 10) + ")"
-				print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{LM}}│")
+				print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{TN}}│")
 		except IndexError:
-			print(f"│{EMPTY:^4}│{EMPTY:^{LM}}│")
-		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{LM}}┘")
+			print(f"│{EMPTY:^4}│{EMPTY:^{TN}}│")
+		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{TN}}┘")
 		print(display_menu_options(list_of_all_teams,showing_page))
 
 	def prompt_option(self, showing_page:int = 0):

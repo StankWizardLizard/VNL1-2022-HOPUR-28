@@ -19,7 +19,7 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["
     END_FOOTER = "┘"
 
     #table
-    if table_format and contents:
+    if table_format:
         try:
             lines = [f"{EMPTY:─^{table_format[i][1]}}" for i in range(len(table_format))]
             header_data_list = [f"{table_format[i][0]:^{table_format[i][1]}}" for i in range(len(table_format))]
@@ -41,19 +41,27 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["
         print(between)
 
         #contents
-        for j in range(len(contents)):
-            contents_print = [f"{contents[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+        if contents:
+            for j in range(len(contents)):
+                contents_print = [f"{contents[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                con = "│"
+                for e in range(len(contents_print)):
+                    con = con + contents_print[e] + SEPERATOR_DATA
+                print(con)
+                if j < len(contents)-1:
+                    print(between)
+        else:
+            contents_print = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
             con = "│"
             for e in range(len(contents_print)):
                 con = con + contents_print[e] + SEPERATOR_DATA
             print(con)
-            if j < len(contents)-1:
-                print(between)
+
 
         #footer
         print(footer)
     else:
-        print("Error table data incorrect")
+        print("Error missing table data")
 
 def _generate_lines(string:str, lines:list, seperator:str, end:str):
     '''
@@ -79,6 +87,11 @@ def display_menu_options(list_of_displays:list=[], showing_page:int=0):
 			return "(B)ack Page, (Q)uit"
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"
+
+def get_leaderboard(logic_wrapper, division_id):
+    leaderboard = logic_wrapper.get_leaderboard(division_id)
+    return leaderboard
+
 
 def create_player(
     logic_wrapper, name:str="", ssn:str="",
