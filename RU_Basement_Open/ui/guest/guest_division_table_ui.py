@@ -18,10 +18,14 @@ class DivisionsTableUI(MenuFrame):
 		WL = 6 #Length of wins/loss box
 		LW = 10 #Length oflegs won box
 
-		print("Divisions")
+		print("Division")
+
+		#Table header
 		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{TN}}┬{EMPTY:─^{WL}}┬{EMPTY:─^{WL}}┬{EMPTY:─^{LW}}┐")
 		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{TN}}│{WINS:^{WL}}│{LOSS:^{WL}}│{LEGS_WON:^{LW}}│")
 		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{TN}}┼{EMPTY:─^{WL}}┼{EMPTY:─^{WL}}┼{EMPTY:─^{LW}}┤")
+
+		#Table contents
 		try:
 			for i in range(len(list_of_division[showing_page])):
 				team_nr = str(i + showing_page * 10) + ")"
@@ -32,6 +36,8 @@ class DivisionsTableUI(MenuFrame):
 				print(f"│{team_nr:^4}│{team_name:^{TN}}│{wins:^{WL}}│{loss:^{WL}}│{legs_won:^{LW}}│")
 		except IndexError:
 			print(f"│{EMPTY:^4}│{EMPTY:^{TN}}│{EMPTY:^{WL}}│{EMPTY:^{WL}}│{EMPTY:^{LW}}│")
+
+		#Table footer
 		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{TN}}┴{EMPTY:─^{WL}}┴{EMPTY:─^{WL}}┴{EMPTY:─^{LW}}┘")
 
 	def prompt_option(self, division_id:str="", showing_page:int=0):
