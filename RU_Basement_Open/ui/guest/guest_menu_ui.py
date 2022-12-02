@@ -1,7 +1,6 @@
-from ui.guest.guest_matches_unplayed_ui import UnplayedMatchesUI 
-from ui.guest.guest_division_ui import DivisionsTableUI
-from ui.guest.guest_matches import MatchesUI
-from ui.guest.guest_teams_ui import TeamsUI
+from ui.guest.guest_division_table_ui import DivisionsTableUI
+from ui.guest.guest_matches_table_ui import MatchesTableUI
+from ui.guest.guest_teams_table_ui import TeamsTableUI
 
 from ui.menu_frame import MenuFrame
 
@@ -38,23 +37,23 @@ class GuestMenuUI(MenuFrame):
 			match choice:
 				# if user wants to show teams
 				case "1":
-					teams_ui = TeamsUI(self.logic_wrapper, self.os)
-					teams_ui.prompt_option()
+					team_table_ui = TeamsTableUI(self.logic_wrapper, self.os)
+					team_table_ui.prompt_option()
 
 				# if user wants to show unplayed matches
 				case "2":
-					unplayed_matches = MatchesUI(self.logic_wrapper, self.os, is_finished=False)
-					unplayed_matches.prompt_option()
+					match_table_ui = MatchesTableUI(self.logic_wrapper, self.os, False)
+					match_table_ui.prompt_option()
 
 				# if user wants to show game results
 				case "3":
-					matches = MatchesUI(self.logic_wrapper, self.os)
-					matches.prompt_option()
+					match_table_ui = MatchesTableUI(self.logic_wrapper, self.os)
+					match_table_ui.prompt_option()
 
 				# if user wants to show division table
 				case "4":
-					division_ui = DivisionsTableUI(self.logic_wrapper, self.os)
-					division_ui.prompt_option()
+					division_table_ui = DivisionsTableUI(self.logic_wrapper, self.os)
+					division_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":

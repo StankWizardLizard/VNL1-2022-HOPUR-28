@@ -1,24 +1,25 @@
 from ui.menu_frame import MenuFrame
 
-class CreateClubUI(MenuFrame):
+class CreatePlayerUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 
 
 	def display_menu(self):
 		"""Display the the menu screen onto the terminal"""
-		pass
+		print("Registering New Player")
 
 
 	def prompt_option(self):
 		"""Prompts the user to choose an option from a list of options for the match table"""
 		while True:
 			self.clear_menu()
-			
-			print("Registering New Club")
-			name = input("Enter Name of new club: ")
-			address = input("Address of new club: ")
-			phone = input("Phone number of club: ")
+			self.display_menu()
+
+			name = input("Enter Name of new player: ")
+			address = input("Address of new player: ")
+			phone = input("Phone number of player: ")
+			email = input("email address of player: ")
 
 			choice = input("Would you like to save? (y)es, (q)uit and any for no: ")
 			choice = choice.lower()
@@ -26,12 +27,12 @@ class CreateClubUI(MenuFrame):
 			match choice:
 				# if user wants to save the the club info
 				case "y":
-					# Save info
+					# save info
 					pass
 
-				# if user wants to see the last 10 items
+				# if user doesnt want to save info
 				case "n":
-					# Disregard info
+					# dont save info
 					pass
 
 				# if user wnats to quit
@@ -42,7 +43,7 @@ class CreateClubUI(MenuFrame):
 				case _:
 					input("Invalid Input!")
 
-			choice = input("Would you like to create another club? (y for yes, any for no): ")
+			choice = input("Would you like to create another player? (y for yes, any for no): ")
 			choice = choice.lower()
 
 			match choice:

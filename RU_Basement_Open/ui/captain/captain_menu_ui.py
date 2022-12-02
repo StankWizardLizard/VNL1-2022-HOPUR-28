@@ -1,13 +1,12 @@
-from ui.guest.guest_matches_unplayed_ui import UnplayedMatchesUI 
-from ui.guest.guest_division_ui import DivisionsTableUI
-from ui.guest.guest_menu_ui import GuestMenuUI
-from ui.guest.guest_matches import MatchesUI
-from ui.guest.guest_teams_ui import TeamsUI
+from ui.guest.guest_division_table_ui import DivisionsTableUI
+from ui.guest.guest_matches_table_ui import MatchesTableUI
+from ui.guest.guest_teams_table_ui import TeamsTableUI
 
-from ui.captain.edit_matches_ui import EditMatchesUI
+from ui.captain.captain_match_table_ui import MatchesTableUI
 
+from ui.menu_frame import MenuFrame
 
-class CaptainMenuUI(GuestMenuUI):
+class CaptainMenuUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 		self.status = "Captain"
@@ -15,7 +14,7 @@ class CaptainMenuUI(GuestMenuUI):
 	
 	def display_menu(self):
 		"""Displays the menu for the captain"""
-
+		
 		print(f"Logged in as {self.status}")
 		print("┌─────────────────────┐")
 		print("│1) Show Teams        │")
@@ -41,17 +40,17 @@ class CaptainMenuUI(GuestMenuUI):
 			match choice:
 				# if user wants to show teams
 				case "1":
-					teams_ui = TeamsUI(self.logic_wrapper, self.os)
+					teams_ui = TeamsTableUI(self.logic_wrapper, self.os)
 					teams_ui.prompt_option()
 
 				# if user wants to show unplayed matches
 				case "2":
-					unplayed_matches = UnplayedMatchesUI(self.logic_wrapper, self.os)
+					unplayed_matches = MatchesTableUI(self.logic_wrapper, self.os, False)
 					unplayed_matches.prompt_option()
 
 				# if user wants to show game results
 				case "3":
-					matches = MatchesUI(self.logic_wrapper, self.os)
+					matches = MatchesTableUI(self.logic_wrapper, self.os)
 					matches.prompt_option()
 
 				# if user wants to show division table
@@ -59,10 +58,10 @@ class CaptainMenuUI(GuestMenuUI):
 					division_ui = DivisionsTableUI(self.logic_wrapper, self.os)
 					division_ui.prompt_option()
 
-				# if the user wants to edit matches
+				# if the user wants view table of matches to edit
 				case "5":
-					edit_matches_ui = EditMatchesUI(self.logic_wrapper, self.os)
-					edit_matches_ui.prompt_option()
+					matches_table_ui = MatchesTableUI(self.logic_wrapper, self.os)
+					matches_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":
