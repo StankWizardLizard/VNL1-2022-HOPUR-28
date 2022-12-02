@@ -13,11 +13,11 @@ class HostMenuUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 		self.status = "Host"
-		
+
 
 	def display_menu(self):
 		"""Displays the menu for the host"""
-
+		
 		print(f"Logged in as {self.status}")
 		print("┌──────────────────────┐")
 		print("│1) Show Teams         │")

@@ -2,103 +2,119 @@ from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
 
-class MatchesTableUI(MenuFrame):
-	def __init__(self, logic_wrapper, os):
+from ui.functions import get_all_concluded_matches
+from ui.functions import get_all_unplayed_matches
+
+from math import ceil
+
+class CaptainMatchesTableUI(MenuFrame):
+	def __init__(self, logic_wrapper, os, match_finished_status = True):
 		super().__init__(logic_wrapper, os)
+		self.match_finished_status = match_finished_status
+		self.current_page_number = 0
+		self.page_number = 0
+		self.match_list = []
+
+
+	def get_match_list(self):
+		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
+
+		if(self.match_finished_status):
+			return get_all_concluded_matches(self.logic_wrapper)
+		else:
+			return get_all_unplayed_matches(self.logic_wrapper)
+
+
+	def format_match_list(self, match_list):
+		"""Given a list of matches, formats its so that each 'page' should contain 10 items and/or last page contains 10 items or less"""
+
+		formatted_list = []
+
+		# Split list into list of sublists that contain every 10 items
+		for i in range(ceil(len(match_list)/10)):
+			formatted_list.append(match_list[i*10:i*10+10])
+
+		return formatted_list
 
 
 	def display_menu(self):
-		"""Displays edit matches window"""
+		"""Displays the match table window and the options"""
 
-		print("Match List")
-		print("┌────┬──────────────────────────────────────┬────────────────────┐")
-		print("│1)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│2)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│3)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│4)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│5)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│6)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│7)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│8)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│9)  │ HR Basement Match nr 1               │ Date:              │")
-		print("├────┼──────────────────────────────────────┼────────────────────┤")
-		print("│10) │ HR Basement Match nr 1               │ Date:              │")
-		print("└────┴──────────────────────────────────────┴────────────────────┘")
-		print("(N)ext page, (B)ack Page, (Q)uit or Match number")
+		# Print the menu		
+		print("Showing page {}-{} of Matches")
+		print("┌────┬──────────────────────────────────────────────────────┬──────────────────┐")
+		print("│ NR │                         Match                        │       Date       │")
+
+		for i in range(0,len(self.match_list[self.current_page_number])):
+			current_match_number = str(i+1) + ')'
+			current_match = self.match_list[self.current_page_number][i]
+			print("├────┼──────────────────────────────────────────────────────┼──────────────────┤")
+			print(f"│{current_match_number:^4}│{current_match.home_team:^26}vs{current_match.away_team:^26}│ Date:{current_match.date:^12}│")
+
+		print("└────┴──────────────────────────────────────────────────────┴──────────────────┘")
+
+		# Print the options
+		if(self.current_page_number == 0):
+			if(len(self.match_list[self.current_page_number]) > 1):
+				print("(N)ext page, (Q)uit")
+			else:
+				print("(Q)uit")
+
+		elif(self.current_page_number+1 == len(self.match_list[self.current_page_number])):
+			print("(B)ack Page, (Q)uit")
+
+		else:
+			print("(N)ext page, (B)ack Page, (Q)uit")
 
 
 	def prompt_option(self):
-		""""Prompts the captain to select which Match to edit"""
+		""""Prompts the captain to select which option to pick, gives error when selected option doesnt exits"""
+
+		self.match_list = self.get_match_list()
+		self.match_list = self.format_match_list(self.match_list)
+		self.max_page_number = len(self.match_list)
+
 		while True:
 			self.clear_menu()
 			self.display_menu()
+
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
-				# if user wants to see match nr 1
-				case "1":
-					# Remember to add a paramater for the match itself inside DisplayMatch
-					# Also to make it work for every case from 1 to 10
-					match_edit_ui = MatchEditUI(self.logic_wrapper,self.os)
-					match_edit_ui.prompt_option()
-					
-				# if user wants to see match nr 2
-				case "2":
-					pass
-
-				# if user wants to see match nr 3
-				case "3":
-					pass
-
-				# if user wants to see match nr 4
-				case "4":
-					pass
-
-				# if user wants to see match nr 5
-				case "5":
-					pass
-
-				# if user wants to see match nr 6
-				case "6":
-					pass
-				
-				# if user wants to see match nr 7
-				case "7":
-					pass
-
-				# if user wants to see match nr 8
-				case "8":
-					pass
-
-				# if user wants to see match nr 9
-				case "9":
-					pass
-
-				# if user wants to see match nr 10
-				case "10":
-					pass
-
 				# if user wants to see the next 10 items
 				case "n":
-					pass
+					if(self.current_page_number+1 == self.max_page_number):
+						input("Invalid Input!")
+					else:
+						self.current_page_number += 1
 
 				# if user wants to see the last 10 items
 				case "b":
-					pass
+					if(self.current_page_number == 0):
+						input("Invalid Input")
+					else:
+						self.current_page_number -= 1
 
 				# if user wants to quit
 				case "q":
 					break
 
-				# undocumented inputs get disregarded
+				# undocumented input
 				case _:
-					print("Invalid Input!")
+					# check if choice is a decimal
+					if(choice.isdecimal()):
+						# check if item exists in current page of lists						
+						if(len(self.match_list[self.current_page_number]) > (int(choice)-1)):
+							# Check out the match
+							choice = int(choice) - 1
+							match_edit_ui = MatchEditUI(self.logic_wrapper, self.os, self.match_list[self.current_page_number][choice])
+							match_edit_ui.prompt_option()
+
+						else:
+							# not in options
+							input("Invalid Input!")
+
+					else:
+						# not in options
+						input("Invalid Input!")
