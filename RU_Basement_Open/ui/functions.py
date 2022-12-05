@@ -2,6 +2,8 @@ from models.player_mdl import PlayerMdl
 from models.club_mdl import ClubMdl
 from models.team_mdl import TeamMdl
 from models.division_mdl import DivisionMdl
+import string
+import re
 
 def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["", ""]]):
     '''
@@ -79,6 +81,43 @@ def display_menu_options(list_of_displays:list=[], showing_page:int=0):
 			return "(B)ack Page, (Q)uit"
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"
+
+def remove_punctuation(input_str):
+    """Removes all punctuation and whitespaces from a string"""
+    input_str = input_str.translate(str.maketrans('', '', string.punctuation)) # Remove punctuation
+    input_str = ''.join(input_str.split()) # Remove whitespaces
+    return input_str
+
+def get_input(display_string: str, number: bool = False, email: bool = False):
+    """Takes a string to display, asks for user input and does basic validation,
+    returns input once it's valid"""
+    while True:
+        valid = True
+        error_str = ""
+        choice = input(display_string).strip()
+        # Remove filler characters and check if the user'sm choice is numeric
+        if number:
+            choice = remove_punctuation(choice)
+            if not choice.isnumeric():
+                valid = False
+                error_str = " is not a number, try again..."
+        # Check whether the user's choice is a valid email
+        if email:
+            # Email validating regular expression
+            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+            if not (re.fullmatch(regex, choice)):
+                valid = False
+                error_str = " is not a valid email, try again..."
+        # Check whether the user's choice is empty
+        if choice == "":
+            valid = False
+            error_str = "Empty input, try again..."
+        # Return user's choice if all checks succeded
+        if valid:
+            return choice
+        print(choice + error_str)
+
+
 
 def create_player(
     logic_wrapper, name:str="", ssn:str="",

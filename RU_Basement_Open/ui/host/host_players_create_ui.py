@@ -1,40 +1,6 @@
 from ui.menu_frame import MenuFrame
 from models.player_mdl import PlayerMdl
-import re
-import string
-
-def remove_punctuation(input_str):
-    """Removes all punctuation and whitespaces from a string"""
-    input_str = input_str.translate(str.maketrans('', '', string.punctuation)) # Remove punctuation
-    input_str = ''.join(input_str.split()) # Remove whitespaces
-    return input_str
-
-def get_input(display_string: str, number: bool = False, email: bool = False):
-    """Takes a string to display, asks for user input and does basic validation,
-    returns input once it's valid"""
-    while True:
-        valid = True
-        choice = input(display_string).strip()
-        # Remove filler characters and check if the user'sm choice is numeric
-        if number:
-            choice = remove_punctuation(choice)
-            if not choice.isnumeric():
-                valid = False
-        # Check whether the user's choice is a valid email
-        if email:
-            # Email validating regular expression
-            regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
-            if not (re.fullmatch(regex, choice)):
-                valid = False
-        # Check whether the user's choice is empty
-        if choice == "":
-            valid = False
-        # Return user's choice if all checks succeded
-        if valid:
-            return choice
-        print(f"{choice}, is an invalid input...")
-
-
+from ui.functions import get_input
 class CreatePlayerUI(MenuFrame):
     def __init__(self, logic_wrapper, os):
         super().__init__(logic_wrapper, os)
