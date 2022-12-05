@@ -9,7 +9,8 @@
             "email": "a@a.a",
             "captain": false,
             "id": 1,
-            "team_id": 2
+            "team_id": 2,
+            "club_id": 2
         },
         {
             "name": "halli",
@@ -20,7 +21,8 @@
             "email": "b@b.b",
             "captain": false,
             "id": 2,
-            "team_id": 2
+            "team_id": 2,
+            "club_id": 1
         },
         {
             "name": "Gunni",
@@ -31,7 +33,8 @@
             "email": "c@c.c",
             "captain": false,
             "id": 3,
-            "team_id": 2
+            "team_id": 2,
+            "club_id": 2
         },
         {
             "name": "Tommi",
@@ -42,7 +45,8 @@
             "email": "d@d.d",
             "captain": false,
             "id": 2,
-            "team_id": 4
+            "team_id": 4,
+            "club_id": 2
         }
     ]
 }

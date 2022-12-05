@@ -15,7 +15,6 @@ class CreatePlayerUI(MenuFrame):
 		while True:
 			self.clear_menu()
 			self.display_menu()
-
 			name = input("Enter Name of new player: ")
 			address = input("Address of new player: ")
 			phone = input("Phone number of player: ")

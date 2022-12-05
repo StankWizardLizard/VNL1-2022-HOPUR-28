@@ -1,11 +1,10 @@
 from data.data_wrapper import DataWrapper
+from logic.club_LL import ClubLL
+from logic.division_LL import DivisionLL
 from logic.master_LL import MasterLL
 from logic.match_LL import MatchLL
 from logic.player_LL import PlayerLL
-from logic.division_LL import DivisionLL
 from logic.team_LL import TeamLL
-from logic.club_LL import ClubLL
-
 
 class LogicWrapper:
     def __init__(self):
@@ -15,7 +14,6 @@ class LogicWrapper:
         self.division_logic = DivisionLL(self.data_wrapper)
         self.team_logic = TeamLL(self.data_wrapper)
         self.club_logic = ClubLL(self.data_wrapper)
-        
         self.master_logic = MasterLL(self.match_logic, self.division_logic)
         
         
@@ -28,7 +26,7 @@ class LogicWrapper:
         return self.division_logic.create_division(division)
 
     def get_leaderboard(self):
-        return self.division_logic.get_leaderboard()
+        return self.master_logic.get_leaderboard()
 
     def get_division(self, id):
         return self.division_logic.get_division(id)
@@ -41,7 +39,7 @@ class LogicWrapper:
 
     def set_division_dates(self, start_date, end_date, division_id):
         self.division_logic.set_dates(start_date, end_date, division_id)
-        
+    
     #----- Player methods -----#
     def create_player(self, player):
         return self.player_logic.create_player(player)
@@ -51,6 +49,8 @@ class LogicWrapper:
 
     def get_all_players(self):
         return self.player_logic.get_all_players()
+    def get_players_by_club(self,clubs):
+        return self.player_logic.get_players_by_club(clubs)
 
     #----- Match methods -----#
     def get_all_matches(self):
@@ -112,3 +112,6 @@ class LogicWrapper:
 
     def add_team_to_club(self, team_id, club_id):
         self.club_logic.add_team(team_id, club_id)
+
+
+
