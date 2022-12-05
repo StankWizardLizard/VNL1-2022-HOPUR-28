@@ -1,44 +1,40 @@
 from ui.menu_frame import MenuFrame
+from ui.functions import *
 
 class EditClubUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
 
+	def display_menu(self, clubs:list=[], showing_page:int=0):
+		"""Display the menu screen for the  matches"""
+		NUMBER = "NR"
+		DIVISION_NAME = "Club Name"
+		NR = 4 #Length of number box
+		DN = 40 #Length of team name box
+		print("Division")
 
-	def display_menu(self):
-		"""Display the the menu screen onto the terminal"""
-		print("Clubs")
-		print("┌────┬──────────────────────────────────────┐")
-		print("│ nr │ Club Name                            │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│100)│ Club Name #1                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│99) │ Club Name #2                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│98) │ Club Name #3                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│97) │ Club Name #4                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│96) │ Club Name #5                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│95) │ Club Name #6                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│94) │ Club Name #7                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│93) │ Club Name #8                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│92) │ Club Name #9                         │")
-		print("├────┼──────────────────────────────────────┤")
-		print("│91) │ Club Name #10                        │")
-		print("└────┴──────────────────────────────────────┘")
-		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
+		#Format of table with a list of lists [row name, row width]
+		table_format = [[NUMBER, NR], [DIVISION_NAME, DN]]
+		try:
+			#Fills in data for table
+			table_data = []
+			for i in range(showing_page*10, showing_page*10+len(clubs[showing_page*10:showing_page*10+10])):
+				club_nr = str(i+1) + ")"
+				club =f"{clubs[i].name}"
+				table_data.append([club_nr, club])
+			#Generates a table with the correct format and data
+			generate_table(table_format, table_data)
+		except IndexError:
+			generate_table(table_format, [])
 
-
-	def prompt_option(self):
+	def prompt_option(self, showing_page = 0):
 		"""Prompts the user to choose an option from a list of options for the match table"""
+		clubs = self.logic_wrapper.get_all_clubs()
+		pages_number = len(clubs)//10
 		while True:
 			self.clear_menu()
-			self.display_menu()
+			self.display_menu(clubs, showing_page=showing_page)
+			print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
 			choice = input(" > ")
 			choice = choice.lower()
 
@@ -57,11 +53,12 @@ class EditClubUI(MenuFrame):
 
 				# if user wants to view the next 10 items
 				case "n":
-					pass
+					showing_page += 1
+
 
 				# if user wants to view the last 10 items
 				case "b":
-					pass
+					showing_page -= 1
 
 				# if user wnats to quit
 				case "q":
