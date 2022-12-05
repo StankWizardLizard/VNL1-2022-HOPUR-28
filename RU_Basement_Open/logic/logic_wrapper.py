@@ -51,6 +51,9 @@ class LogicWrapper:
 
     def get_all_players(self):
         return self.player_logic.get_all_players()
+    
+    def player_ssn_exists(self, ssn):
+        self.player_logic.ssn_exists(ssn)
 
     #----- Match methods -----#
     def get_all_matches(self):

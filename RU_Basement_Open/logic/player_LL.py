@@ -28,6 +28,13 @@ class PlayerLL():
     def get_all_players(self):
         """Returns a list of all matches"""
         return self.data_wrapper.get_all_players()
+    
+    def ssn_exists(self, ssn):
+        """Takes an ssn. If it already exists, throws an exception"""
+        self._update_players()
+        for player in self.players:
+            if player.ssn == ssn: # if ssn
+                raise FileExistsError 
 
     #----- Writing methods -----#
     def create_player(self, player):
@@ -37,3 +44,4 @@ class PlayerLL():
         self.players.append(player)
         self._write_players()
         return player.id
+    
