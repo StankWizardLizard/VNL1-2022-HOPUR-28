@@ -15,19 +15,20 @@ class CreatePlayerUI(MenuFrame):
             self.clear_menu()
             self.display_menu()
 
-            print("Select an existing team!")
-            teams = self.logic_wrapper.get_all_teams()
-            for team in teams:
-                print(team.name)
+            print("Select an existing club!")
+            clubs = self.logic_wrapper.get_all_clubs()
+            for i, club in enumerate(clubs):
+                print(i+1, club.name)
 
             while True:
                 try:
-                    team_name = get_input("Team Name: ")
-                    team_id = self.logic_wrapper.get_team_id_by_name(team_name)
+                    choice =  get_input("Club Id: ")
+                    club_id = clubs[int(choice)-1].id
                     break
-
                 except IndexError:
-                    print("Team does not exist")
+                    print("Invalid id, try again...")
+                except ValueError:
+                    print(f"{choice} is not a number")
 
             name = get_input("Enter Name of new player: ")
             address = get_input("Address of new player: ")
@@ -50,7 +51,7 @@ class CreatePlayerUI(MenuFrame):
                 case "y":
                     # save info
                     player = PlayerMdl(name=name, ssn=ssn, mobile_nr=mobile_nr,
-                                          home_nr=home_nr, address=address, email=email, team_id=team_id)
+                                          home_nr=home_nr, address=address, email=email, club_id=club_id)
                     self.logic_wrapper.create_player(player)
 
                 # if user doesnt want to save info

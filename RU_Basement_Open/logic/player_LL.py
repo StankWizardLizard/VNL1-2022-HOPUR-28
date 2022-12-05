@@ -28,7 +28,8 @@ class PlayerLL():
     def get_all_players(self):
         """Returns a list of all matches"""
         return self.data_wrapper.get_all_players()
-        def get_players_by_club(self,club):
+    
+    def get_players_by_club(self,club):
         """Returns a list of all players by club"""
         all_players = self.get_all_players()
         players_of_club = []
