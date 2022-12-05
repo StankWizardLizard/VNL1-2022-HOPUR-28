@@ -36,6 +36,15 @@ class ClubLL():
         self._update_clubs()
         return self.clubs
     
+    def name_exists(self, name):
+        """Takes a name. If it exists on a club, return True.
+        If not, return False"""
+        self._update_clubs()
+        for club in self.clubs:
+            if club.name == name:
+                return True
+        return False 
+
     #----- Writing methods -----#    
     def create_club(self, club):
         """Takes a club object and saves it to the data layer"""

@@ -118,3 +118,6 @@ class LogicWrapper:
 
     def add_team_to_club(self, team_id, club_id):
         self.club_logic.add_team(team_id, club_id)
+
+    def club_name_exists(self, club_name):
+        return self.club_logic.name_exists(club_name)
