@@ -4,8 +4,8 @@ from data.functions import *
 
 
 class ClubIO:
-    def __init__(self, club_filename="file/club.json") -> None:
-        self.club_filename = club_filename
+    def __init__(self, directory="files", filename="club.json") -> None:
+        self.club_filename = f"{directory}/{filename}"
 
     def get_clubs_from_file(self):
         '''returns data of clubs from json file as a list of objects'''

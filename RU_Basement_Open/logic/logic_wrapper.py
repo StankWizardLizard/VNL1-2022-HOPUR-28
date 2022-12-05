@@ -16,7 +16,7 @@ class LogicWrapper:
         self.team_logic = TeamLL(self.data_wrapper)
         self.club_logic = ClubLL(self.data_wrapper)
         
-        self.master_logic = MasterLL(self.match_logic, self.division_logic)
+        self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
         
         
     #----- Master methods -----#
@@ -28,7 +28,7 @@ class LogicWrapper:
         return self.division_logic.create_division(division)
 
     def get_leaderboard(self):
-        return self.division_logic.get_leaderboard()
+        return self.master_logic.get_leaderboard()
 
     def get_division(self, id):
         return self.division_logic.get_division(id)

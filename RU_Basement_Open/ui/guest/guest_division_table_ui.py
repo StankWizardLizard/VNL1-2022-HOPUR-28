@@ -1,13 +1,31 @@
 from ui.menu_frame import MenuFrame
 from ui.functions import *
 
-class DivisionsTableUI(MenuFrame):
+class DivisionTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os):
 			super().__init__(logic_wrapper, os)
 
-	def display_menu(self, list_of_division:list=[], showing_page:int=0):
+	def _get_division_leaderboard_in_correct_format(self):
+		division_leaderboard = get_leaderboard(self.logic_wrapper)
+		new_leaderboard = []
+		if len(division_leaderboard) > 10:
+			for i in range(0, (len(division_leaderboard)//10)):
+				division_page = []
+				for e in range(i*10, i*10+10):
+					division_page.append(division_leaderboard[e])
+				if len(division_leaderboard) % 10 != 0:
+					division_page = []
+					for x in division_leaderboard[len(division_leaderboard)-len(division_leaderboard) % 10:]:
+						division_page.append(x)
+				new_leaderboard.append(division_page)
+		else:
+			division_page = []
+			for x in division_leaderboard:
+				division_page.append([x])
+			new_leaderboard.append(division_page)
+		return new_leaderboard
+	def display_menu(self, division_leaderboard:list=[], showing_page:int=0):
 		"""Display the menu screen for the  matches"""
-		EMPTY = "" 
 		NUMBER = "NR"
 		TEAM_NAME = "Team Name"
 		WINS = "Wins"
@@ -20,37 +38,40 @@ class DivisionsTableUI(MenuFrame):
 
 		print("Division")
 
-		#Table header
-		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{TN}}┬{EMPTY:─^{WL}}┬{EMPTY:─^{WL}}┬{EMPTY:─^{LW}}┐")
-		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{TN}}│{WINS:^{WL}}│{LOSS:^{WL}}│{LEGS_WON:^{LW}}│")
-		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{TN}}┼{EMPTY:─^{WL}}┼{EMPTY:─^{WL}}┼{EMPTY:─^{LW}}┤")
-
-		#Table contents
+		#Format of table with a list of lists [row name, row width]
+		table_format = [[NUMBER, NR], [TEAM_NAME, TN], [WINS, WL], [LOSS, WL], [LEGS_WON, LW]]
 		try:
-			for i in range(len(list_of_division[showing_page])):
+			
+			#Fills in data for table 
+			table_data = []
+			for i in range(len(division_leaderboard[showing_page])):
 				team_nr = str(i + showing_page * 10) + ")"
-				team_name = f"{list_of_division[showing_page][i][0]}"
-				wins = f"{list_of_division[showing_page][i][1]}"
-				loss = f"{list_of_division[showing_page][i][2]}"
-				legs_won = str(list_of_division[showing_page][i][3])
-				print(f"│{team_nr:^4}│{team_name:^{TN}}│{wins:^{WL}}│{loss:^{WL}}│{legs_won:^{LW}}│")
-		except IndexError:
-			print(f"│{EMPTY:^4}│{EMPTY:^{TN}}│{EMPTY:^{WL}}│{EMPTY:^{WL}}│{EMPTY:^{LW}}│")
+				team_name = f"{division_leaderboard[showing_page][i][0]}"
+				wins = f"{division_leaderboard[showing_page][i][1]}"
+				loss = f"{division_leaderboard[showing_page][i][2]}"
+				legs_won = str(division_leaderboard[showing_page][i][3])
+				table_data.append([team_nr, team_name, wins, loss, legs_won])
 
-		#Table footer
-		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{TN}}┴{EMPTY:─^{WL}}┴{EMPTY:─^{WL}}┴{EMPTY:─^{LW}}┘")
+			#Generates a table with the correct format and data
+			generate_table(table_format, table_data)
+		except IndexError:
+			generate_table(table_format, [])
 
 	def prompt_option(self, division_id:str="", showing_page:int=0):
-		list_of_division = get_division(self.logic_wrapper, division_id=division_id)
+		'''Prompts the user to choose an option from a list of options for the division table'''
+		'''division_leaderboard = self._get_division_leaderboard_in_correct_format()'''
+		division_leaderboard = [["1"]]
+		pages_number = len(division_leaderboard) // 2
 		while True:
 			self.clear_menu()
 			self.display_menu()
+			print(display_menu_options(showing_page=showing_page, how_many_pages=pages_number))
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
 				case "n":
-					if showing_page+1 == len(list_of_division):
+					if showing_page == pages_number:
 						input("Invalid Input!")
 					else:
 						showing_page += 1

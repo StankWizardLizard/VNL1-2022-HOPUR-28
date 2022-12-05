@@ -4,8 +4,8 @@ from data.functions import *
 
 
 class TeamIO:
-    def __init__(self, team_filename="file/team.json") -> None:
-        self.team_filename = team_filename
+    def __init__(self, directory="files", filename="team.json") -> None:
+        self.team_filename = f"{directory}/{filename}"
 
     def get_teams_from_file(self):
         '''returns data of teams from json file as a list of objects'''

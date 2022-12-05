@@ -5,7 +5,7 @@ from models.division_mdl import DivisionMdl
 import string
 import re
 
-def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["", ""]]):
+def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[["", ""]]):
     '''
     Takes in a list of table columns and width of column, and a list of lists with data in those colums,
     then prints a table from those inputs
@@ -21,41 +21,56 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], contents:list=[["
     END_FOOTER = "┘"
 
     #table
-    if table_format and contents:
+    if table_format:
         try:
+
+            #creates lists of lines and header data
             lines = [f"{EMPTY:─^{table_format[i][1]}}" for i in range(len(table_format))]
             header_data_list = [f"{table_format[i][0]:^{table_format[i][1]}}" for i in range(len(table_format))]
         except IndexError:
             print("Error table data incorrect")
+
+        #initial strings that will be printed
         header_data = "│"
         header_top = "┌"
         between = "├"
         footer = "└"
+
+        #converts header data list into a string with headers
         for x in header_data_list:
             header_data = header_data + x + SEPERATOR_DATA
+        
+        #generates lines for table in string format
         header_top = _generate_lines(header_top, lines, SEPERATOR_HEADER, END_HEADER)
         between = _generate_lines(between, lines, SEPERATOR_BETWEEN, END_BETWEEN)
         footer = _generate_lines(footer, lines, SEPERATOR_FOOTER, END_FOOTER)
 
-        #header
+        #prints header
         print(header_top)
         print(header_data)
         print(between)
 
-        #contents
-        for j in range(len(contents)):
-            contents_print = [f"{contents[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
-            con = "│"
-            for e in range(len(contents_print)):
-                con = con + contents_print[e] + SEPERATOR_DATA
-            print(con)
-            if j < len(contents)-1:
-                print(between)
+        #prints table_data or an empty table if table_data is empty
+        if table_data:
+            for j in range(len(table_data)):
+                contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                contents = "│"
+                for e in range(len(contents_data_list)):
+                    contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                print(contents)
+                if j < len(table_data)-1:
+                    print(between)
+        else:
+            contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
+            contents = "│"
+            for e in range(len(contents_data_list)):
+                contents = contents + contents_data_list[e] + SEPERATOR_DATA
+            print(contents)
 
-        #footer
+        #prints footer
         print(footer)
     else:
-        print("Error table data incorrect")
+        print("Error missing table data")
 
 def _generate_lines(string:str, lines:list, seperator:str, end:str):
     '''
@@ -69,18 +84,23 @@ def _generate_lines(string:str, lines:list, seperator:str, end:str):
             string = string + lines[i] + end
     return string
 
-def display_menu_options(list_of_displays:list=[], showing_page:int=0):
+def display_menu_options(how_many_pages:int=1, showing_page:int=0):
 		'''returns a string listing the available options of the menu'''
 
 		if showing_page == 0:
-			if len(list_of_displays) > 1:
+			if how_many_pages > 0:
 				return "(N)ext page, (Q)uit"
 			else:
 				return "(Q)uit"
-		elif showing_page+1 == len(list_of_displays):
+		elif showing_page == how_many_pages:
 			return "(B)ack Page, (Q)uit"
 		else:
 			return"(N)ext page, (B)ack Page, (Q)uit"
+
+def get_leaderboard(logic_wrapper):
+    leaderboard = logic_wrapper.get_leaderboard()
+    return leaderboard
+
 
 def remove_punctuation(input_str):
     """Removes all punctuation and whitespaces from a string"""
