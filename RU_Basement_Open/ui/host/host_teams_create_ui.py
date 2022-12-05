@@ -44,7 +44,8 @@ class CreateTeamUI(MenuFrame):
 		"""Sends new team to logic layer for writing to storage"""
 		self.logic_wrapper.create_team(team_members)
 
-
+	def _sanitize_inputs(self,input,isInt = False, isStr = False,):
+		pass
 
 
 	def prompt_option(self):
