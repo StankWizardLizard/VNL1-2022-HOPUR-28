@@ -58,6 +58,7 @@ class DivisionTableUI(MenuFrame):
 			generate_table(table_format, [])
 
 	def prompt_option(self, division_id:str="", showing_page:int=0):
+		'''Prompts the user to choose an option from a list of options for the division table'''
 		'''division_leaderboard = self._get_division_leaderboard_in_correct_format()'''
 		division_leaderboard = [["1"]]
 		pages_number = len(division_leaderboard) // 2

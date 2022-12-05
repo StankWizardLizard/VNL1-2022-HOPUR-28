@@ -30,6 +30,7 @@ class GuestMenuUI(MenuFrame):
 		while True:
 			# Display the menu and prompt the user for a choice
 			self.clear_menu()
+			self.clear_menu()
 			self.display_menu()
 			choice = input(" > ")
 			choice = choice.lower()

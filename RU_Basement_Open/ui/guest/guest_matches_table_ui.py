@@ -1,5 +1,6 @@
 from ui.functions import *
 from ui.menu_frame import MenuFrame
+from ui.guest.guest_match_table_ui import MatchTableUI
 
 class MatchesTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os, is_finished = True):
@@ -67,7 +68,13 @@ class MatchesTableUI(MenuFrame):
 
 				# undocumented inputs get disregarded
 				case _:
-					input("Invalid Input!")
+					try:
+						if matches[int(choice)-1]:
+							match = matches[int(choice)-1]
+							match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
+							match_table_ui.prompt_option()
+					except IndexError:
+						input("Invalid Input!")
 
 '''
 print("Match Results")

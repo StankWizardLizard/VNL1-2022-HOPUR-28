@@ -30,6 +30,7 @@ class DivisionsTableUI(MenuFrame):
 
 
     def prompt_option(self, showing_page:int=0):
+        '''Prompts the user to choose an option from a list of options for the divisions table'''
         '''list_of_divisions = get_divisions(self.logic_wrapper)'''
         list_of_divisions = [[]]
         pages_number = len(list_of_divisions)//10

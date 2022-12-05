@@ -3,8 +3,8 @@ from models.match_mdl import MatchMdl
 from data.functions import  *
 
 class MatchIO:
-    def __init__(self, match_filename = "file/match.json"):
-        self.match_filename = match_filename
+    def __init__(self, directory="files", filename="match.json"):
+        self.match_filename = f"{directory}/{filename}"
     def get_matches_from_file(self):
         '''returns data of matches from json file as a list of objects'''
 
