@@ -35,7 +35,7 @@ class CreatePlayerUI(MenuFrame):
             home_nr = get_input("Home phone number of player: ", number= True)
             while True: #TODO: validate 10 characters
                 ssn = get_input("Input national id number of player: ", number=True)
-                if self.logic_wrapper.ssn_exists(ssn):
+                if not self.logic_wrapper.player_ssn_exists(ssn):
                     break
                 print(f"A player with ssn {ssn} already exists, try again...")
             
