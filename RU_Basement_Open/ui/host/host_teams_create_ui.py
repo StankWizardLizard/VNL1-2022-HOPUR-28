@@ -39,6 +39,11 @@ class CreateTeamUI(MenuFrame):
 
 		print("""└────┴─────────────────────────────────┘""")
 		print("Select (N)ext or player")
+	
+	def _write_new_team_to_storage(team_members):
+		pass
+
+
 
 
 
@@ -67,6 +72,9 @@ class CreateTeamUI(MenuFrame):
 					team_members.append(players_of_club[int(input(">"))])	
 
 			print("selected team members", team_name," ",team_members)
+
+			self._write_new_team_to_storage(team_members)
+
 
 			choice = input("Make another team with the same club or go back?")
 			
