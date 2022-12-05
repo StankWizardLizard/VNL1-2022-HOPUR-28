@@ -4,8 +4,8 @@ from data.functions import *
 
 
 class DivisionIO:
-    def __init__(self, division_filename="file/division.json") -> None:
-        self.division_filename = division_filename
+    def __init__(self, directory="files", filename="division.json") -> None:
+        self.division_filename = f"{directory}/{filename}"
 
     def get_divisions_from_file(self):
         '''returns data of divisions from json file as a list of objects'''
