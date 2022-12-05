@@ -17,7 +17,6 @@ class LogicWrapper:
         
         self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
         
-        self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
         
         
     #----- Master methods -----#
