@@ -1,11 +1,10 @@
 from data.data_wrapper import DataWrapper
+from logic.club_LL import ClubLL
+from logic.division_LL import DivisionLL
 from logic.master_LL import MasterLL
 from logic.match_LL import MatchLL
 from logic.player_LL import PlayerLL
-from logic.division_LL import DivisionLL
 from logic.team_LL import TeamLL
-from logic.club_LL import ClubLL
-
 
 class LogicWrapper:
     def __init__(self):
@@ -57,6 +56,9 @@ class LogicWrapper:
     
     def player_ssn_exists(self, ssn):
         return self.player_logic.ssn_exists(ssn)
+
+    def get_players_by_club(self,clubs):
+        return self.player_logic.get_players_by_club(clubs)
 
     #----- Match methods -----#
     def get_all_matches(self):

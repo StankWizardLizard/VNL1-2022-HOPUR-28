@@ -28,7 +28,16 @@ class PlayerLL():
     def get_all_players(self):
         """Returns a list of all matches"""
         return self.data_wrapper.get_all_players()
-    
+        def get_players_by_club(self,club):
+        """Returns a list of all players by club"""
+        all_players = self.get_all_players()
+        players_of_club = []
+        for player in all_players:
+            if club.id == player.club_id:
+                players_of_club.append(player)
+        return players_of_club
+
+
     def ssn_exists(self, ssn):
         """Takes an ssn. If it exists on a player, return True.
         If not, return False"""
