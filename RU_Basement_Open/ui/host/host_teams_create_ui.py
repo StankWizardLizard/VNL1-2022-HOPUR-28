@@ -40,9 +40,9 @@ class CreateTeamUI(MenuFrame):
 		print("""└────┴─────────────────────────────────┘""")
 		print("Select (N)ext or player")
 	
-	def _write_new_team_to_storage(self,team_members):
+	def _write_new_team_to_storage(self,team_name):
 		"""Sends new team to logic layer for writing to storage"""
-		self.logic_wrapper.create_team(team_members)
+		return self.logic_wrapper.create_team(TeamMdl(name=team_name))
 
 	def _sanitize_inputs(self,input,isInt = False, isStr = False,):
 		pass
@@ -56,26 +56,21 @@ class CreateTeamUI(MenuFrame):
 			clubs = self.logic_wrapper.get_all_clubs()
 			self.display_clubs_menu(clubs)
 			club_selected = clubs[int(input(">"))]
-			print(club_selected)
-			team_name = input("Enter Team Name: ")
+			team_id = self._write_new_team_to_storage(input("Enter Team Name: "))
 			#create team
 			players_of_club = self.logic_wrapper.get_players_by_club(club_selected)
-			team_members = []
 			for i in range(self._number_of_team_members()):
+				self._display_player_menu(players_of_club)
 				teammember_index = i+1
 				if i == 0:
-					self._display_player_menu(players_of_club)
 					print(f"Enter Captains TeamMember #{teammember_index} Name")
-					players_of_club[int(input(">"))].captain=True	
-					team_members.append(players_of_club[int(input(">"))])	
+					player_id = players_of_club[int(input(">"))].id
+					self.logic_wrapper.add_player_to_team(player_id,team_id)
+					self.logic_wrapper.promote_player(player_id,team_id)	
 				else:
 					print(f"Enter TeamMember #{teammember_index} Name")
-					team_members.append(players_of_club[int(input(">"))])	
-
-			print("selected team members", team_name," ",team_members)
-			self._write_new_team_to_storage(team_members)
-
-
+					player_id = players_of_club[int(input(">"))].id
+					self.logic_wrapper.add_player_to_team(player_id,team_id)
 			choice = input("Make another team with the same club or go back?")
 			
 			match choice:
