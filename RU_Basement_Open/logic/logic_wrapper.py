@@ -17,6 +17,8 @@ class LogicWrapper:
         
         self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
         
+        self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
+        
         
     #----- Master methods -----#
     def generate_division_matches(self, team_ids, division_id):
@@ -59,6 +61,9 @@ class LogicWrapper:
 
     def get_players_by_club(self,clubs):
         return self.player_logic.get_players_by_club(clubs)
+    
+    def player_ssn_exists(self, ssn):
+        return self.player_logic.ssn_exists(ssn)
 
     #----- Match methods -----#
     def get_all_matches(self):

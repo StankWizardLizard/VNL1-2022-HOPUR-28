@@ -38,6 +38,15 @@ class PlayerLL():
                 players_of_club.append(player)
         return players_of_club
 
+    
+    def ssn_exists(self, ssn):
+        """Takes an ssn. If it exists on a player, return True.
+        If not, return False"""
+        self._update_players()
+        for player in self.players:
+            if player.ssn == ssn: # if ssn
+                return True
+        return False 
 
     def ssn_exists(self, ssn):
         """Takes an ssn. If it exists on a player, return True.

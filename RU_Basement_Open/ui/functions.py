@@ -108,7 +108,7 @@ def remove_punctuation(input_str):
     input_str = ''.join(input_str.split()) # Remove whitespaces
     return input_str
 
-def get_input(display_string: str, number: bool = False, email: bool = False):
+def get_input(display_string: str, number: bool = False, email: bool = False, isInt = False,isStr = False):
     """Takes a string to display, asks for user input and does basic validation,
     returns input once it's valid"""
     while True:
@@ -135,6 +135,9 @@ def get_input(display_string: str, number: bool = False, email: bool = False):
         # Return user's choice if all checks succeded
         if valid:
             return choice
+        if isInt:
+            if choice.lower() in "qwertyuiopasdfghjklz:wxcvbnmæþ":
+                pass
         print(choice + error_str)
 
 
