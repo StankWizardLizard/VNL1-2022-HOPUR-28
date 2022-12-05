@@ -47,6 +47,13 @@ class TeamLL():
             return team.captain_id
         else:
             raise IndexError
+        
+    def get_id_by_name(self, team_name):
+        self._update_teams()
+        for team in self.teams:
+            if team.name == team_name:
+                return team.id
+        raise IndexError
 
     # ----- Writing methods -----#
     def create_team(self, team):
