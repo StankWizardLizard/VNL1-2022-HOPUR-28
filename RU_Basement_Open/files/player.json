@@ -1,2 +1,52 @@
 {
+    "player_details": [
+        {
+            "name": "Joe",
+            "ssn": "123155",
+            "mobile_nr": "1234",
+            "home_nr": "532",
+            "address": "asnfi",
+            "email": "asd@asdf.is",
+            "captain": false,
+            "club_id": "9f0d2c56-74e5-11ed-992d-8cc68119b558",
+            "id": "fb802e56-74e5-11ed-b999-8cc68119b558",
+            "team_id": ""
+        },
+        {
+            "name": "Palli",
+            "ssn": "43546",
+            "mobile_nr": "132564",
+            "home_nr": "134545",
+            "address": "asfriv",
+            "email": "asnce@asf.isfa",
+            "captain": false,
+            "club_id": "a410d522-74e5-11ed-b273-8cc68119b558",
+            "id": "081bd296-74e6-11ed-8284-8cc68119b558",
+            "team_id": ""
+        },
+        {
+            "name": "Axel",
+            "ssn": "9865",
+            "mobile_nr": "235465",
+            "home_nr": "23435",
+            "address": "nvesv",
+            "email": "safrv@adf.isd",
+            "captain": false,
+            "club_id": "a8a1aa99-74e5-11ed-9d7c-8cc68119b558",
+            "id": "195ffb15-74e6-11ed-8c6c-8cc68119b558",
+            "team_id": ""
+        },
+        {
+            "name": "dfvdg",
+            "ssn": "245697867",
+            "mobile_nr": "4325",
+            "home_nr": "8767",
+            "address": "sdafsf",
+            "email": "ascoije@afdf.is",
+            "captain": false,
+            "club_id": "b1ed92d7-74e5-11ed-a798-8cc68119b558",
+            "id": "25544bee-74e6-11ed-9a42-8cc68119b558",
+            "team_id": ""
+        }
+    ]
 }
