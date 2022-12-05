@@ -14,7 +14,8 @@ class LogicWrapper:
         self.division_logic = DivisionLL(self.data_wrapper)
         self.team_logic = TeamLL(self.data_wrapper)
         self.club_logic = ClubLL(self.data_wrapper)
-        self.master_logic = MasterLL(self.match_logic, self.division_logic)
+        
+        self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
         
         
     #----- Master methods -----#
@@ -39,7 +40,10 @@ class LogicWrapper:
 
     def set_division_dates(self, start_date, end_date, division_id):
         self.division_logic.set_dates(start_date, end_date, division_id)
-    
+        
+    def division_name_exists(self, division_name):
+        return self.division_logic.name_exists(division_name)    
+        
     #----- Player methods -----#
     def create_player(self, player):
         return self.player_logic.create_player(player)
@@ -51,6 +55,9 @@ class LogicWrapper:
         return self.player_logic.get_all_players()
     def get_players_by_club(self,clubs):
         return self.player_logic.get_players_by_club(clubs)
+    
+    def player_ssn_exists(self, ssn):
+        return self.player_logic.ssn_exists(ssn)
 
     #----- Match methods -----#
     def get_all_matches(self):
@@ -99,6 +106,9 @@ class LogicWrapper:
 
     def get_captain(self, team_id):
         return self.team_logic.get_captain(team_id)
+    
+    def get_team_id_by_name(self, team_name):
+        return self.team_logic.get_id_by_name(team_name)
 
     #----- Club methods -----#
     def get_club(self, id):
@@ -113,5 +123,5 @@ class LogicWrapper:
     def add_team_to_club(self, team_id, club_id):
         self.club_logic.add_team(team_id, club_id)
 
-
-
+    def club_name_exists(self, club_name):
+        return self.club_logic.name_exists(club_name)

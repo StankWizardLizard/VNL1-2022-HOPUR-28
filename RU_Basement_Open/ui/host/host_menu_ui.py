@@ -1,4 +1,4 @@
-from ui.guest.guest_division_table_ui import DivisionsTableUI
+from ui.guest.guest_divisions_table_ui import DivisionsTableUI
 from ui.guest.guest_matches_table_ui import MatchesTableUI
 from ui.guest.guest_teams_table_ui import TeamsTableUI
 
@@ -17,7 +17,7 @@ class HostMenuUI(MenuFrame):
 
 	def display_menu(self):
 		"""Displays the menu for the host"""
-
+		
 		print(f"Logged in as {self.status}")
 		print("┌──────────────────────┐")
 		print("│1) Show Teams         │")

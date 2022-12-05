@@ -7,28 +7,12 @@ class TeamsTableUI(MenuFrame):
 
 
 	def _get_all_teams_in_correct_format(self):
-		'''gets all teams from the logic layer and converts it into a format of a list with a list of teams inside
-		with <= 10 teams per list [[10 teams][10 teams]...[remaining teams]]'''
+		'''gets all teams from the logic layer and converts it into a correct format (for printing) of a list with team names'''
 		teams = get_all_teams(self.logic_wrapper)
 		new_teams = []
 
-		if len(teams) > 10:
-			for i in range(0, len(teams)//10):
-				team_page = []
-				for e in range(i*10, i*10+10):
-					team_page.append(teams[e].name)
-				new_teams.append(team_page)
-				
-			if len(teams) % 10 != 0:
-				team_page = []
-				for x in teams[len(teams)-len(teams) % 10:]:
-					team_page.append(x.name)
-			new_teams.append(team_page)
-		else:
-			team_page = []
-			for x in teams:
-				team_page.append(x.name)
-			new_teams.append(team_page)
+		for x in teams:
+			new_teams.append(x.name)
 		return new_teams
 
 
@@ -36,17 +20,19 @@ class TeamsTableUI(MenuFrame):
 		'''returns all the size caluclations for display_menu'''
 
 		#The z number for the "Showing x-y of z teams" in the teams display menu
-		#All the teams equal the length of all lists in list_of_all_teams except the last times 10, plus the length of the last list in list_of_all_teams
-		all_team_size = (len(list_of_all_teams)-1) * 10 + len(list_of_all_teams[-1])  
+		all_team_size = len(list_of_all_teams) 
 
 		#The x number for the "Showing x-y of z teams" in the teams display menu
-		#The first number represents the lowest number in a range of 10 numbers that the page is currently showing. Which equals 1 plus the page number times 10
 		showing_teams_size_start = 1 + showing_page * 10
 
 		#The y number for the "Showing x-y of z teams" in the teams display menu
-		#The second number represents the highest number in a range of 10 numbers that the page is currently showing. 
-		# hich equals 10 times the page number + length of the list curently showing
-		showing_teams_size = showing_page * 10 + len(list_of_all_teams[showing_page])
+		if showing_page*10+10 > len(list_of_all_teams):
+			if showing_page:
+				showing_teams_size = (showing_page*10+10)- ((len(list_of_all_teams) % (showing_page*10)))
+			else:
+				showing_teams_size = len(list_of_all_teams)
+		else:
+			showing_teams_size = showing_page * 10 + 10
 
 		return all_team_size, showing_teams_size, showing_teams_size_start
 
@@ -54,42 +40,48 @@ class TeamsTableUI(MenuFrame):
 	def display_menu(self, showing_page:int = 0, list_of_all_teams: list= []):
 		"""Display the menu screen for the teams table"""
 
-		EMPTY = "" 
 		NUMBER = "NR"
 		TEAM_NAME = "Team Name"
-		LM = 40 #Length of match box
+		TN = 27 #Length of team name box
 		NR = 4 #Length of number box
 
 		all_team_size, showing_teams_size, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
 		
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size} of {all_team_size} teams")
-		print(f"┌{EMPTY:─^{NR}}┬{EMPTY:─^{LM}}┐")
-		print(f"│{NUMBER:^{NR}}│{TEAM_NAME:^{LM}}│")
-		print(f"├{EMPTY:─^{NR}}┼{EMPTY:─^{LM}}┤")
+		#Format of table with a list of lists [row name, row width] #Generates a table with the correct format and data
+		table_format = [[NUMBER, NR], [TEAM_NAME, TN]]
 		try:
-			for i in range(len(list_of_all_teams[showing_page])):
-				team_nr = str(i + showing_page * 10) + ")"
-				print(f"│{team_nr:^4}│{list_of_all_teams[showing_page][i]:^{LM}}│")
+		
+			#Fills in data for table
+			table_data = []
+			for i in range(len(list_of_all_teams[showing_page*10:showing_page*10+10])):
+				team_nr = str(i+1) + ")"
+				team_name = list_of_all_teams[i]
+				table_data.append([team_nr, team_name])
+
+			#Generates a table with the correct format and data
+			generate_table(table_format, table_data)
 		except IndexError:
-			print(f"│{EMPTY:^4}│{EMPTY:^{LM}}│")
-		print(f"└{EMPTY:─^{NR}}┴{EMPTY:─^{LM}}┘")
-		print(display_menu_options(list_of_all_teams,showing_page))
+			generate_table(table_format, [])
+
 
 	def prompt_option(self, showing_page:int = 0):
 		'''Calls the display_menu method to print the show teams menu and then executes based on the input from the user'''
-		
+		list_of_all_teams = self._get_all_teams_in_correct_format()
+		page_numbers = len(list_of_all_teams)//10
+
 		while True:
-			list_of_all_teams = self._get_all_teams_in_correct_format()
 
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, list_of_all_teams=list_of_all_teams)
+			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers))
 			choice = input(" > ")
 			choice = choice.lower()
 
 			match choice:
 				# if user wants to see the next 10 items
 				case "n":
-					if showing_page+1 == len(list_of_all_teams):
+					if showing_page == page_numbers:
 						input("Invalid Input!")
 					else:
 						showing_page += 1

@@ -4,8 +4,8 @@ from data.functions import *
 
 
 class PlayerIO:
-    def __init__(self, player_filename="file/player.json"):
-        self.player_filename = player_filename
+    def __init__(self, directory="files", filename="player.json"):
+        self.player_filename = f"{directory}/{filename}"
 
     def get_players_from_file(self):
         '''returns data of players from json file as a list of objects'''

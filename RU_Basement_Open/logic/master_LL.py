@@ -1,9 +1,10 @@
 
 
 class MasterLL:
-    def __init__(self, match_logic_connection, division_logic_connection):
+    def __init__(self, match_logic_connection, division_logic_connection, data_wrapper):
         self.match_logic = match_logic_connection
         self.division_logic = division_logic_connection
+        self.data_wrapper = data_wrapper
         
     def update_division_start_and_end_date(self, division_id):
         match_ids = self.division_logic.get_match_ids(division_id)
@@ -54,9 +55,9 @@ class MasterLL:
         win_round = 0
         loss_round = 0
         for match in matches:
-            if team.id == match.homeTeam:
+            if team.id == match.home_team:
                 win_legs, loss_legs = self._count_legs(True, match.results)
-            elif team.id == match.awayTeam:
+            elif team.id == match.away_team:
                 loss_legs, win_legs = self._count_legs(False, match.results)
             else:
                 continue
@@ -78,7 +79,7 @@ class MasterLL:
 
           """
         leaderboard.sort(key=lambda x: x[1], reverse=True)
-        for i in range(leaderboard)-1:
+        for i in range(len(leaderboard)-1):
             a_wins = leaderboard[i][1],
             a_leg_wins = leaderboard[i][3]
             a_name = leaderboard[i][0],
