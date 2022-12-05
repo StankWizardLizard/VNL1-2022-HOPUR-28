@@ -17,7 +17,6 @@ class CreateClubUI(MenuFrame):
             self.clear_menu()
             self.display_menu()
 
-            print("lol")
             while True:
                 name = get_input("Enter Name of new club: ")
                 if not self.logic_wrapper.club_name_exists(name):
