@@ -34,13 +34,11 @@ class CreatePlayerUI(MenuFrame):
             mobile_nr = get_input("Mobile phone number of player: ", number=True)
             home_nr = get_input("Home phone number of player: ", number= True)
             while True:
-                try:
-                    ssn = get_input("Input national id number of player: ", number=True)
-                    self.logic_wrapper.player_ssn_exists(ssn)
+                ssn = get_input("Input national id number of player: ", number=True)
+                if self.logic_wrapper.ssn_exists(ssn):
                     break
-                except FileExistsError:
-                    print(f"A player with ssn {ssn} already exists, try again...")
-                
+                print(f"A player with ssn {ssn} already exists, try again...")
+            
             email = get_input("email address of player: ", email=True)
 
             choice = input(

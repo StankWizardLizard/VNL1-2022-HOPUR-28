@@ -30,11 +30,13 @@ class PlayerLL():
         return self.data_wrapper.get_all_players()
     
     def ssn_exists(self, ssn):
-        """Takes an ssn. If it already exists, throws an exception"""
+        """Takes an ssn. If it exists on a player, return True.
+        If not, return False"""
         self._update_players()
         for player in self.players:
             if player.ssn == ssn: # if ssn
-                raise FileExistsError 
+                return True
+        return False 
 
     #----- Writing methods -----#
     def create_player(self, player):
