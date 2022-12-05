@@ -8,13 +8,13 @@ class EditClubUI(MenuFrame):
 	def display_menu(self, clubs:list=[], showing_page:int=0):
 		"""Display the menu screen for the  matches"""
 		NUMBER = "NR"
-		DIVISION_NAME = "Club Name"
+		CLUB_NAME = "Club Name"
 		NR = 4 #Length of number box
 		DN = 40 #Length of team name box
-		print("Division")
+		print("Clubs")
 
 		#Format of table with a list of lists [row name, row width]
-		table_format = [[NUMBER, NR], [DIVISION_NAME, DN]]
+		table_format = [[NUMBER, NR], [CLUB_NAME, DN]]
 		try:
 			#Fills in data for table
 			table_data = []
