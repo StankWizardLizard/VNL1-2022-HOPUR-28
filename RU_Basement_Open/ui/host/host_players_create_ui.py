@@ -33,7 +33,7 @@ class CreatePlayerUI(MenuFrame):
             address = get_input("Address of new player: ")
             mobile_nr = get_input("Mobile phone number of player: ", number=True)
             home_nr = get_input("Home phone number of player: ", number= True)
-            while True:
+            while True: #TODO: validate 10 characters
                 ssn = get_input("Input national id number of player: ", number=True)
                 if self.logic_wrapper.ssn_exists(ssn):
                     break
