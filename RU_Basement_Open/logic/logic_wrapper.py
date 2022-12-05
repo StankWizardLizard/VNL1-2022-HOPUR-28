@@ -42,6 +42,9 @@ class LogicWrapper:
     def set_division_dates(self, start_date, end_date, division_id):
         self.division_logic.set_dates(start_date, end_date, division_id)
         
+    def division_name_exists(self, division_name):
+        return self.division_logic.name_exists(division_name)    
+        
     #----- Player methods -----#
     def create_player(self, player):
         return self.player_logic.create_player(player)
