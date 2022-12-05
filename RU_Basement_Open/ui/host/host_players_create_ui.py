@@ -49,9 +49,9 @@ class CreatePlayerUI(MenuFrame):
                 # if user wants to save the the club info
                 case "y":
                     # save info
-                    player_id = PlayerMdl(name=name, ssn=ssn, mobile_nr=mobile_nr,
+                    player = PlayerMdl(name=name, ssn=ssn, mobile_nr=mobile_nr,
                                           home_nr=home_nr, address=address, email=email, team_id=team_id)
-                    self.logic_wrapper.create_player(player_id)
+                    self.logic_wrapper.create_player(player)
 
                 # if user doesnt want to save info
                 case "n":
