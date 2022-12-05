@@ -6,11 +6,12 @@ from data.club_io import ClubIO
 
 class DataWrapper:
     def __init__(self):
-        self.player_io = PlayerIO()
-        self.match_io = MatchIO()
-        self.division_io = DivisionIO()
-        self.team_io = TeamIO()
-        self.club_io = ClubIO()
+        self.DIRECTORY = "files"
+        self.player_io = PlayerIO(directory=self.DIRECTORY)
+        self.match_io = MatchIO(directory=self.DIRECTORY)
+        self.division_io = DivisionIO(directory=self.DIRECTORY)
+        self.team_io = TeamIO(directory=self.DIRECTORY)
+        self.club_io = ClubIO(directory=self.DIRECTORY)
 
     #----- Player methods -----#
     def get_all_players(self):
