@@ -5,22 +5,26 @@ from ui.functions import *
 class DivisionsTableUI(MenuFrame):
     def __init__(self,logic_wrapper, os):
         super().__init__(logic_wrapper, os)
+        self.NR_OF_ENTRIES = 10 #How many entries per page
 
     def display_menu(self, list_of_all_divisions:list=[], showing_page:int=0):
         """Display the menu screen for the  matches"""
-        NUMBER = "NR"
-        DIVISION_NAME = "Division Name"
+
+        #Constants
+        NUMBER = "NR" #Header of "Number" column
+        DIVISION_NAME = "Division Name" #Header of "Division Name" column
         NR = 4 #Length of number box
         DN = 40 #Length of team name box
-        print("Division")
+
+        print("Divisions")
 
         #Format of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [DIVISION_NAME, DN]]
         try:
             #Fills in data for table
             table_data = []
-            for i in range(showing_page*10, showing_page*10+len(list_of_all_divisions[showing_page])):
-                division_nr = str(i + showing_page * 10) + ")"
+            for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(list_of_all_divisions[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
+                division_nr = str(i + showing_page * self.NR_OF_ENTRIES) + ")"
                 division =f"{list_of_all_divisions[showing_page][i][0]}"
                 table_data.append([division_nr, division])
             #Generates a table with the correct format and data
@@ -33,7 +37,7 @@ class DivisionsTableUI(MenuFrame):
         '''Prompts the user to choose an option from a list of options for the divisions table'''
         '''list_of_divisions = get_divisions(self.logic_wrapper)'''
         list_of_divisions = [[]]
-        pages_number = len(list_of_divisions)//10
+        pages_number = len(list_of_divisions)//self.NR_OF_ENTRIES
         while True:
             self.clear_menu()
             self.display_menu(list_of_divisions, showing_page=showing_page)

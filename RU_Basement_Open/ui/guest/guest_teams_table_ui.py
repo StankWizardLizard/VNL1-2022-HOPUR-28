@@ -4,6 +4,7 @@ from ui.menu_frame import MenuFrame
 class TeamsTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os):
 		super().__init__(logic_wrapper, os)
+		self.NR_OF_ENTRIES = 10
 
 
 	def _get_all_teams_in_correct_format(self):
@@ -23,16 +24,16 @@ class TeamsTableUI(MenuFrame):
 		all_team_size = len(list_of_all_teams) 
 
 		#The x number for the "Showing x-y of z teams" in the teams display menu
-		showing_teams_size_start = 1 + showing_page * 10
+		showing_teams_size_start = 1 + showing_page * self.NR_OF_ENTRIES
 
 		#The y number for the "Showing x-y of z teams" in the teams display menu
-		if showing_page*10+10 > len(list_of_all_teams):
+		if showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES > len(list_of_all_teams):
 			if showing_page:
-				showing_teams_size = (showing_page*10+10)- ((len(list_of_all_teams) % (showing_page*10)))
+				showing_teams_size = (showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES)- ((len(list_of_all_teams) % (showing_page*self.NR_OF_ENTRIES)))
 			else:
 				showing_teams_size = len(list_of_all_teams)
 		else:
-			showing_teams_size = showing_page * 10 + 10
+			showing_teams_size = showing_page * self.NR_OF_ENTRIES + self.NR_OF_ENTRIES
 
 		return all_team_size, showing_teams_size, showing_teams_size_start
 
@@ -54,7 +55,7 @@ class TeamsTableUI(MenuFrame):
 		
 			#Fills in data for table
 			table_data = []
-			for i in range(showing_page*10, showing_page*10+len(list_of_all_teams[showing_page*10:showing_page*10+10])):
+			for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(list_of_all_teams[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
 				team_nr = str(i+1) + ")"
 				team_name = list_of_all_teams[i]
 				table_data.append([team_nr, team_name])
@@ -68,7 +69,7 @@ class TeamsTableUI(MenuFrame):
 	def prompt_option(self, showing_page:int = 0):
 		'''Calls the display_menu method to print the show teams menu and then executes based on the input from the user'''
 		list_of_all_teams = self._get_all_teams_in_correct_format()
-		page_numbers = len(list_of_all_teams)//10
+		page_numbers = len(list_of_all_teams)//self.NR_OF_ENTRIES
 
 		while True:
 

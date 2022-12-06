@@ -5,8 +5,8 @@ from models.division_mdl import DivisionMdl
 
 def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[["", ""]]):
     '''
-    Takes in a list of table columns and width of column, and a list of lists with data in those colums,
-    then prints a table from those inputs
+    Takes in a list lists containing table row header and width of row, and a list of lists
+     containing data for each of those rows, then prints a table from those inputs
     '''
     #constants
     EMPTY = ""
@@ -22,13 +22,13 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
     if table_format:
         try:
 
-            #creates lists of lines and header data
+            #creates lists for lines and header data
             lines = [f"{EMPTY:─^{table_format[i][1]}}" for i in range(len(table_format))]
             header_data_list = [f"{table_format[i][0]:^{table_format[i][1]}}" for i in range(len(table_format))]
         except IndexError:
             print("Error table data incorrect")
 
-        #initial strings that will be printed
+        #initial strings that will be filled and later printed
         header_data = "│"
         header_top = "┌"
         between = "├"
