@@ -1,16 +1,2 @@
 {
-    "division_details": [
-        {
-            "id": "3ced379d-74e6-11ed-b43b-8cc68119b558",
-            "name": "Hunger games",
-            "team_ids": [],
-            "host_name": "ég",
-            "phone_nr": "235467",
-            "start_date": "",
-            "end_date": "",
-            "type": "L",
-            "rounds": "1",
-            "matches": []
-        }
-    ]
 }
