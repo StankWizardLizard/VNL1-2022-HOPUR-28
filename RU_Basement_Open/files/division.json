@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "division_details": [
         {
             "id": 1,
@@ -39,6 +40,29 @@
                 2,
                 3
             ]
+        },
+        {
+            "id": "00163752-7565-11ed-8029-9fdf909ae089",
+            "name": "Lion",
+            "team_ids": [
+                [
+                    1,
+                    2,
+                    3,
+                    6,
+                    7,
+                    8,
+                    9
+                ],
+                "3d48ce42-74ec-11ed-8029-9fdf909ae089"
+            ],
+            "host_name": "Me",
+            "phone_nr": "12211",
+            "start_date": "",
+            "end_date": "",
+            "type": "L",
+            "rounds": "16",
+            "matches": []
         },
         {
             "id": 1,
@@ -241,4 +265,7 @@
             ]
         }
     ]
+=======
+    
+>>>>>>> origin/Chris
 }

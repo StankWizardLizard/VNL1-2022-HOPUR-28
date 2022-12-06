@@ -34,10 +34,8 @@ class DivisionLL():
                 return division
         raise IndexError
 
-   
-    #----- Reading methods -----#
+    # ----- Reading methods -----#
 
-   
     def get_division(self, division_id):
         """TODO: Docstring for get_division.
         :returns: TODO
@@ -45,12 +43,28 @@ class DivisionLL():
         """
         self._update_divisions()
         return self._find_division(division_id)
+    def get_all_divisions(self):
+        """
+        Gets all divisions fron storage layer
+        """
+        self._update_divisions()
+        return self.divisions
+
 
     def get_match_ids(self, division_id):
         """Takes a division id and returns a list of keys for it's matches"""
         return self._find_division(division_id).matches
 
-    #----- Writing methods -----#
+    def name_exists(self, division_name):
+        """Takes a name. If it exists on a division, return True.
+        If not, return False"""
+        self._update_divisions()
+        for division in self.divisions:
+            if division.name == division_name:
+                return True
+        return False
+
+    # ----- Writing methods -----#
     def create_division(self, division):
         """
         Creates new devision. Gets division object as input and sends to storage layer
@@ -68,7 +82,7 @@ class DivisionLL():
         division = self._find_division(division_id)
         division.team_ids.append(team_id)
         self._write_divisions()
-        
+
     def add_matches(self, match_ids, division_id):
         """ Take a list of match ids and a division id.
         Register those matches to the division"""
@@ -76,7 +90,7 @@ class DivisionLL():
         division = self._find_division(division_id)
         division.matches = match_ids
         self._write_divisions()
-        
+
     def set_dates(self, start_date, end_date, division_id):
         """Takes a start and end date, and a division id.
         Sets the divison's dates"""
@@ -85,9 +99,3 @@ class DivisionLL():
         division.start_date = start_date
         division.end_date = end_date
         self._write_divisions()
-    
-
-
-
-        
-        
