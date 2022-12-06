@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "team_details": [
         {
             "name": "KR",
@@ -40,4 +41,6 @@
             "id": "3d48ce42-74ec-11ed-8029-9fdf909ae089"
         }
     ]
+=======
+>>>>>>> origin/Chris
 }

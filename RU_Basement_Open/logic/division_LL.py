@@ -43,6 +43,13 @@ class DivisionLL():
         """
         self._update_divisions()
         return self._find_division(division_id)
+    def get_all_divisions(self):
+        """
+        Gets all divisions fron storage layer
+        """
+        self._update_divisions()
+        return self.divisions
+
 
     def get_match_ids(self, division_id):
         """Takes a division id and returns a list of keys for it's matches"""

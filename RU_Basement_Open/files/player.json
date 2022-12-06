@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "player_details": [
         {
             "name": "lala",
@@ -42,4 +43,6 @@
         }
         
     ]
+=======
+>>>>>>> origin/Chris
 }

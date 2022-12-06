@@ -53,6 +53,10 @@ class LogicWrapper:
 
     def get_all_players(self):
         return self.player_logic.get_all_players()
+    
+    def player_ssn_exists(self, ssn):
+        return self.player_logic.ssn_exists(ssn)
+
     def get_players_by_club(self,clubs):
         return self.player_logic.get_players_by_club(clubs)
     
@@ -124,4 +128,8 @@ class LogicWrapper:
         self.club_logic.add_team(team_id, club_id)
 
     def club_name_exists(self, club_name):
+<<<<<<< HEAD
         return self.club_logic.name_exists(club_name)
+=======
+        return self.club_logic.name_exists(club_name)
+>>>>>>> origin/Chris

@@ -13,12 +13,14 @@ class TeamIO:
         self.data = load_file_data(self.team_filename)
 
         teams = []
-
-        for i in self.data["team_details"]:
-            team = TeamMdl(name=i["name"], player_ids=i["player_ids"],
-                           captain_id=i["captain_id"], id=i["id"])
-            teams.append(team)
-
+        try:
+            for i in self.data["team_details"]:
+                team = TeamMdl(name=i["name"], player_ids=i["player_ids"],
+                            captain_id=i["captain_id"], id=i["id"])
+                teams.append(team)
+        except KeyError:
+            pass
+        
         return teams
 
     def write_team_person_to_file(self, teams: list):
