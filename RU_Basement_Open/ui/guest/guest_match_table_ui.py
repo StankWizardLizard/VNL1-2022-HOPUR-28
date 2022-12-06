@@ -5,7 +5,7 @@ class MatchTableUI(MenuFrame):
 	def __init__(self, logic_wrapper, os, match):
 		super().__init__(logic_wrapper, os)
 		self.match = match
-		self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
+		self.points_list = self.match.results
 		
 		self.home_team_list = self.match.home_team_players
 		self.home_team_name = self.match.home_team
@@ -20,28 +20,25 @@ class MatchTableUI(MenuFrame):
 		"""Displays match table for a specific match"""
 
 		MATCH_NAME = f"{self.leage_name} Match nr. {self.match_number}"
-		HOME_TEAM = "Home Team"
-		AWAY_TEAM = "Away Team"
-		LEG_1 = "Leg 1"
-		LEG_2 = "Leg 2"
-		GAMES = "Games"
-		HT = 22 #"Home" and "Away Team" column width
-		LEGS = 7 #Legs column width
-		GM = 7 # Games column width
+		HOME_TEAM = "Home Team" # Header of "Home Team" column 
+		AWAY_TEAM = "Away Team" # Header of "Away Team" column 
+		SCORE = "Score" # Header of "Score" column 
+		GAME = "Game" # Header of "Games" column 
+		HT = 22 # Width of "Home Team" and "Away Team" column
+		SC = 7 # Width of "Legs" column
+		GM = 7 # Width of "Games" column 
 
-		LEG_1_FORMAT = [LEG_1, LEGS]
-		LEG_2_FORMAT = [LEG_2, LEGS]
 		table_format = [
-			[HOME_TEAM, HT], LEG_1_FORMAT,LEG_2_FORMAT, [GAMES, GM], LEG_2_FORMAT, LEG_1_FORMAT, [AWAY_TEAM, HT]
+			[HOME_TEAM, HT], [SCORE, SC], [GAME, GM], [SCORE, SC], [AWAY_TEAM, HT]
 			]
 
 		print(f"{MATCH_NAME}")
 		table_data = []
 		
 		for i in range(0, 7):
+			scores = self.points_list[i]
 			column = [
-			f"{i}", self.points_list[i][0], self.points_list[i][1], "Game",  
-			self.points_list[i][2], self.points_list[i][3], f"{i}"
+			f"{i}", scores[0], "Game",scores[2], f"{i}"
 			]
 			table_data.append(column)
 		generate_table(table_format, table_data)

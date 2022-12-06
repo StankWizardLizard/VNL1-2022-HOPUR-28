@@ -5,27 +5,27 @@ from ui.functions import *
 class DivisionsTableUI(MenuFrame):
     def __init__(self,logic_wrapper, os):
         super().__init__(logic_wrapper, os)
-        self.NR_OF_ENTRIES = 10 #Number of entries displayed per page 
+        self.NR_OF_ENTRIES = 10 # Number of entries displayed per page 
 
     def display_menu(self, list_of_all_divisions:list=[], showing_page:int=0):
         """Creates the format for the divisions table then fills in data from list_of_all_divisions 
 		and feeds it to generate_table function to print a table for the divsions"""
 
-        #Constants
-        NUMBER = "NR" #Header of "Number" column
+        # Constants
+        NUMBER = "NR" # Header of "Number" column
         DIVISION_NAME = "Division Name" #Header of "Division Name" column
-        NR = 4 #Width of "Number" column
-        DN = 40 #Width of "Team Name" column
+        NR = 4 # Width of "Number" column
+        DN = 40 # Width of "Team Name" column
 
         print("Divisions")
 
-        #Format of table with a list of lists for each column ex. [[column name, column width], [column name, column width]]
+        # Format of table with a list of lists for each column ex. [[column name, column width], [column name, column width]]
         table_format = [[NUMBER, NR], [DIVISION_NAME, DN]]
         try:
-            #Fills in the list data for table with lists containing data for every row (make sure every row has data for all columns)
+            # Fills in the list data for table with lists containing data for every row (make sure every row has data for all columns)
             table_data = []
-            #Range starts from which page you are viewing times how many entries per page,
-			#to which page you are viewing times how many entries per page plus how many entries there are in that page.
+            # Range starts from which page you are viewing times how many entries per page,
+			# to which page you are viewing times how many entries per page plus how many entries there are in that page.
             for i in range(
                 showing_page*self.NR_OF_ENTRIES, 
                 showing_page*self.NR_OF_ENTRIES+len(list_of_all_divisions[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
@@ -33,13 +33,14 @@ class DivisionsTableUI(MenuFrame):
                 division_nr = str(i + 1 + showing_page * self.NR_OF_ENTRIES) + ")"
                 division =f"{list_of_all_divisions[i].name}"
                 table_data.append([division_nr, division])
-            #Generates a table with the correct format and data
-            #example:
-            #table_format = [[column1 name, column1 width], [column2 name, column2 width]]
-			#table_data = [["column1 info", "column2 info"], ["column1 info", "column2 info"]...]
-            #generate_table(table_format, table_data)
+            # Generates a table with the correct format and data
+            # example:
+            # table_format = [[column1 name, column1 width], [column2 name, column2 width]]
+			# table_data = [["column1 info", "column2 info"], ["column1 info", "column2 info"]...]
+            # generate_table(table_format, table_data)
             generate_table(table_format, table_data)
         except IndexError:
+            # Generates an empty table if list_of_all_divisions gives wrong data
             generate_table(table_format, [])
 
 
@@ -74,7 +75,8 @@ class DivisionsTableUI(MenuFrame):
                 case "q":
                     break
                 
-                # checks if user inputed number of a division and opens DivisionTableUI if they did
+                # checks if user inputed number of a division and opens DivisionTableUI if they did,
+                # otherwise prints invalid input
                 case _:
                     if choice.isnumeric():
                         try:
