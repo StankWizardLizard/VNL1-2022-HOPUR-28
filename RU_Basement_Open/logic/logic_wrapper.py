@@ -26,11 +26,14 @@ class LogicWrapper:
     def create_division(self, division):
         return self.division_logic.create_division(division)
 
-    def get_leaderboard(self):
-        return self.master_logic.get_leaderboard()
+    def get_leaderboard(self, division):
+        return self.master_logic.get_leaderboard(division)
 
     def get_division(self, id):
         return self.division_logic.get_division(id)
+
+    def get_all_divisions(self):
+        return self.division_logic.get_all_divisions()
 
     def add_team_to_division(self, team_id, division_id):
         return self.division_logic.add_team(team_id, division_id)
@@ -128,8 +131,4 @@ class LogicWrapper:
         self.club_logic.add_team(team_id, club_id)
 
     def club_name_exists(self, club_name):
-<<<<<<< HEAD
         return self.club_logic.name_exists(club_name)
-=======
-        return self.club_logic.name_exists(club_name)
->>>>>>> origin/Chris

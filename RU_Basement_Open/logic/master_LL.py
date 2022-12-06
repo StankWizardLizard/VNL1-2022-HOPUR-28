@@ -31,7 +31,7 @@ class MasterLL:
         all_matches = self.data_wrapper.get_all_matches()
         matches_in_division = []
         for match in all_matches:
-            if match.division.id == divison.id:
+            if match.division_id == divison.id:
                 matches_in_division.append(match)
         
 
@@ -40,7 +40,7 @@ class MasterLL:
         teams_in_division = []
 
         for team in all_teams:
-            if team.id in divison.team_id:
+            if team.id in divison.team_ids:
                 teams_in_division.append(team)
 
         leaderboard = []
@@ -102,7 +102,7 @@ class MasterLL:
             b_wins = leaderboard[i+1][1],
             b_leg_wins = leaderboard[i+1][3]
             b_name = leaderboard[i+1][0]
-
+            print(a_name,b_name)
             if a_wins == b_wins:
                 if a_leg_wins < b_leg_wins:
                     leaderboard[i] = leaderboard[i+1]
