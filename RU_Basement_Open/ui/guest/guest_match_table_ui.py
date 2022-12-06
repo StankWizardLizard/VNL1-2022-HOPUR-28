@@ -12,8 +12,9 @@ class MatchTableUI(MenuFrame):
 		self.away_team_list = self.match.away_team_players
 		self.away_team_name = self.match.away_team
 
-		self.match_number = "1"
-		self.leage_name = "HR Basement Open"
+		self.match_number = self.match.id
+		division = self.logic_wrapper.get_division(self.match.division_id)
+		self.leage_name = division.name
 
 	def display_menu(self):
 		"""Displays match table for a specific match"""
