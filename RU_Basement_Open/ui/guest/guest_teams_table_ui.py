@@ -54,7 +54,7 @@ class TeamsTableUI(MenuFrame):
 		
 			#Fills in data for table
 			table_data = []
-			for i in range(len(list_of_all_teams[showing_page*10:showing_page*10+10])):
+			for i in range(showing_page*10, showing_page*10+len(list_of_all_teams[showing_page*10:showing_page*10+10])):
 				team_nr = str(i+1) + ")"
 				team_name = list_of_all_teams[i]
 				table_data.append([team_nr, team_name])

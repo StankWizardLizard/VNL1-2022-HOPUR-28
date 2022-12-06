@@ -23,7 +23,7 @@ class MatchesTableUI(MenuFrame):
 
 			#Fills in data for table 
 			table_data = []
-			for i in range(len(matches[showing_page*10:showing_page*10+10])):
+			for i in range(showing_page*10, showing_page*10+len(matches[showing_page*10:showing_page*10+10])):
 				match_nr = str(i+1) + ")"
 				teams_playing =f"{matches[i].home_team} vs {matches[i].away_team}"
 				date = str(matches[i].date)
@@ -68,12 +68,15 @@ class MatchesTableUI(MenuFrame):
 
 				# undocumented inputs get disregarded
 				case _:
-					try:
-						if matches[int(choice)-1]:
-							match = matches[int(choice)-1]
-							match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
-							match_table_ui.prompt_option()
-					except IndexError:
+					if choice.isnumeric():
+						try:
+							if matches[int(choice)-1]:
+								match = matches[int(choice)-1]
+								match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
+								match_table_ui.prompt_option()
+						except IndexError:
+							input("Invalid Input!")
+					else:
 						input("Invalid Input!")
 
 '''

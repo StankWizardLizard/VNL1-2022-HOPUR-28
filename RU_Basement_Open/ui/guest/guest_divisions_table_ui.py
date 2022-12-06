@@ -19,7 +19,7 @@ class DivisionsTableUI(MenuFrame):
         try:
             #Fills in data for table
             table_data = []
-            for i in range(len(list_of_all_divisions[showing_page])):
+            for i in range(showing_page*10, showing_page*10+len(list_of_all_divisions[showing_page])):
                 division_nr = str(i + showing_page * 10) + ")"
                 division =f"{list_of_all_divisions[showing_page][i][0]}"
                 table_data.append([division_nr, division])

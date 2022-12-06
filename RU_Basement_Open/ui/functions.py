@@ -49,21 +49,27 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
         print(between)
 
         #prints table_data or an empty table if table_data is empty
-        if table_data:
-            for j in range(len(table_data)):
-                contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+        try:
+            if table_data:
+                for j in range(len(table_data)):
+                    contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                    contents = "│"
+                    for e in range(len(contents_data_list)):
+                        contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                    print(contents)
+                    if j < len(table_data)-1:
+                        print(between)
+            else:
+                contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
                 contents = "│"
                 for e in range(len(contents_data_list)):
-                    contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                    try:
+                        contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                    except IndexError:
+                        contents = contents + SEPERATOR_DATA
                 print(contents)
-                if j < len(table_data)-1:
-                    print(between)
-        else:
-            contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
-            contents = "│"
-            for e in range(len(contents_data_list)):
-                contents = contents + contents_data_list[e] + SEPERATOR_DATA
-            print(contents)
+        except IndexError:
+            print("Error table data incorrect")
 
         #prints footer
         print(footer)
