@@ -25,9 +25,9 @@ class MatchTableUI(MenuFrame):
 		LEG_1 = "Leg 1"
 		LEG_2 = "Leg 2"
 		GAMES = "Games"
-		HT = 22 #Home and away team row width
-		LEGS = 7 #Legs row width
-		GM = 7 # Games row width
+		HT = 22 #"Home" and "Away Team" column width
+		LEGS = 7 #Legs column width
+		GM = 7 # Games column width
 
 		LEG_1_FORMAT = [LEG_1, LEGS]
 		LEG_2_FORMAT = [LEG_2, LEGS]
