@@ -11,7 +11,8 @@ class MasterLL:
         start_date, end_date= self.match_logic.get_start_and_end_date(match_ids)
         self.division_logic.set_dates(start_date, end_date, division_id)
     
-    def generate_division_matches(self, team_ids, division_id):
+    def generate_division_matches(self, division_id):
+        team_ids = self.division_logic.get_team_ids(division_id)
         match_ids = self.match_logic.gen_matches(team_ids, division_id)
         self.division_logic.add_matches(match_ids, division_id)
         self.update_division_start_and_end_date(division_id)

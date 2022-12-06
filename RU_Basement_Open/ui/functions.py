@@ -136,6 +136,7 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
         if valid:
             return choice
         if isInt:
+<<<<<<< HEAD
             try:
                 if "." in choice:
                     error_str = "Input must be integer"
@@ -143,6 +144,10 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
                     return int(choice)
             except ValueError:
                 error_str = "Input must be an integer, try again"
+=======
+            if choice.lower() in "qwertyuiopasdfghjklz:wxcvbnmæþ":
+                pass
+>>>>>>> origin/main
         print(choice + error_str)
 
 
