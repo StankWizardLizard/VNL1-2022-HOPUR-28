@@ -22,6 +22,7 @@ class DivisionIO:
             pass
         
         return divisions
+        
 
     def write_division_person_to_file(self, divisions: list):
         '''takes in updated list of division objects converts it to a list of dicts, 

@@ -13,14 +13,6 @@ class PlayerIO:
         self.data = load_file_data(self.player_filename)
 
         players = []
-<<<<<<< HEAD
-
-        for i in self.data["player_details"]:
-            player = PlayerMdl(name=i["name"], ssn=i["ssn"], mobile_nr=i["mobile_nr"], home_nr=i["home_nr"],
-                               address=i["address"], email=i["email"], id=i["id"], club_id=i["club_id"])
-            players.append(player)
-
-=======
         try:
             for i in self.data["player_details"]:
                 player = PlayerMdl(name=i["name"], ssn=i["ssn"], mobile_nr=i["mobile_nr"], home_nr=i["home_nr"],
@@ -29,7 +21,6 @@ class PlayerIO:
         except KeyError:
             pass
         
->>>>>>> origin/Chris
         return players
 
     def write_player_to_file(self, players: list):

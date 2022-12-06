@@ -27,7 +27,6 @@ class MasterLL:
 
         """
 
-
         all_matches = self.data_wrapper.get_all_matches()
         matches_in_division = []
         for match in all_matches:
@@ -84,9 +83,6 @@ class MasterLL:
             loss_round += loss_legs
 
         return [team.name, win_games, loss_games, win_round, loss_round]
-
-        return record
-
     def _sort_leaderboard(self, leaderboard):
         """
         fully sorts leaderboard by wins, leg wins, and then alphabetically
