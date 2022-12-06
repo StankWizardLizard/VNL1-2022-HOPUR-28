@@ -28,6 +28,34 @@ class PlayerLL():
     def get_all_players(self):
         """Returns a list of all matches"""
         return self.data_wrapper.get_all_players()
+    
+    def get_players_by_club(self,club):
+        """Returns a list of all players by club"""
+        all_players = self.get_all_players()
+        players_of_club = []
+        for player in all_players:
+            if club.id == player.club_id:
+                players_of_club.append(player)
+        return players_of_club
+
+    
+    def ssn_exists(self, ssn):
+        """Takes an ssn. If it exists on a player, return True.
+        If not, return False"""
+        self._update_players()
+        for player in self.players:
+            if player.ssn == ssn: # if ssn
+                return True
+        return False 
+
+    def ssn_exists(self, ssn):
+        """Takes an ssn. If it exists on a player, return True.
+        If not, return False"""
+        self._update_players()
+        for player in self.players:
+            if player.ssn == ssn: # if ssn
+                return True
+        return False 
 
     #----- Writing methods -----#
     def create_player(self, player):
@@ -37,3 +65,4 @@ class PlayerLL():
         self.players.append(player)
         self._write_players()
         return player.id
+    

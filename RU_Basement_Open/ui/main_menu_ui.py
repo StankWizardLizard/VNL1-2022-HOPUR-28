@@ -1,5 +1,4 @@
 from logic.logic_wrapper import LogicWrapper
-
 from ui.captain.captain_menu_ui import CaptainMenuUI
 from ui.host.host_menu_ui import HostMenuUI
 from ui.guest.guest_menu_ui import GuestMenuUI 

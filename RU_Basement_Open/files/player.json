@@ -7,9 +7,8 @@
             "home_nr": 123,
             "address": "home",
             "email": "a@a.a",
-            "captain": false,
-            "id": 1,
-            "team_id": 2
+            "club_id": 2,
+            "id": 1
         },
         {
             "name": "halli",
@@ -18,9 +17,8 @@
             "home_nr": 1234,
             "address": "home is where the heart is",
             "email": "b@b.b",
-            "captain": false,
-            "id": 2,
-            "team_id": 2
+            "club_id": 1,
+            "id": 2
         },
         {
             "name": "Gunni",
@@ -29,9 +27,8 @@
             "home_nr": 12345,
             "address": "your moms house",
             "email": "c@c.c",
-            "captain": false,
-            "id": 3,
-            "team_id": 2
+            "club_id": 2,
+            "id": 3
         },
         {
             "name": "Tommi",
@@ -40,9 +37,9 @@
             "home_nr": 123456,
             "address": "your moms house",
             "email": "d@d.d",
-            "captain": false,
-            "id": 2,
-            "team_id": 4
+            "club_id": 2,
+            "id": 2
         }
+        
     ]
 }
