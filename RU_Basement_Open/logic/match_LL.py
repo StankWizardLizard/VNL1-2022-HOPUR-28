@@ -11,7 +11,47 @@ class MatchLL():
         self.matches = ""
         self._update_matches
 
-    #----- Internal methods -----#
+    # ----- Internal methods -----#
+    def _count_qps(self, qp_str):
+        qp_ls = qp_str.strip().split(",")
+        score = 0
+        for turn in qp_ls:
+            # In or out shot
+            if "n" in turn or "u" in turn:
+                score += 1
+                turn = turn.replace("n", "")
+                turn = turn.replace("u", "")
+
+            # Regular 301 or 501 throw
+            if turn.isnumeric():
+                turn = int(turn)
+                if turn > 93:
+                    score += 1
+                if turn > 119:
+                    score += 1
+                if turn > 169:
+                    score += 1
+                continue
+
+            # Cricket hit
+            if "h" in turn:
+                turn = int(turn.replace("h", ""))
+                if turn > 4:
+                    score += 1
+                if turn > 6:
+                    score += 1
+                if turn == 9:
+                    score += 1
+                continue
+
+            # Cricket Bullseye
+            if "b" in turn:
+                turn = int(turn.replace("b", ""))
+                score += turn
+                if turn >= 5:
+                    score -= 1
+        return score
+
     def _update_matches(self):
         """Gets all matches from data layer"""
         self.matches = self.data_wrapper.get_all_matches()
@@ -28,7 +68,29 @@ class MatchLL():
                 return match
         raise IndexError
 
-    #----- Reading methods -----#
+    # ----- Reading methods -----#
+    def get_all_player_qp_strings(self, player_id):
+        """Takes a player id, returns a list of that player's quality point strings from all matches"""
+        self._update_matches()
+        matches = self.get_all_matches()
+        qp_ls = []
+        for match in matches:
+            for player in match.quality_points:
+                if player == player_id:
+                    qp_ls.append(match.quality_points[player])
+        return qp_ls
+    
+    
+
+    def get_player_total_qps(self, player_id):
+        """Takes a player id, returns the player's total quality points from all matches"""
+        qp_ls = self.get_all_player_qp_strings(player_id)
+        total_score = 0
+        for qp_str in qp_ls:
+            total_score += self._count_qps(qp_str)
+        return total_score
+        
+        
     def get_all_matches(self):
         """Returns a list of all matches"""
         self._update_matches()
@@ -75,7 +137,7 @@ class MatchLL():
             dates.append(self.get_date(id))
         return (str(min(dates)), str(max(dates)))
 
-    #----- Writing methods -----#
+    # ----- Writing methods -----#
 
     def gen_matches(self, team_ids: list, division_id):
         if len(team_ids) % 2:
@@ -106,7 +168,7 @@ class MatchLL():
         for day in match_days:
             for matchup in day:
                 t1, t2 = matchup
-                match = MatchMdl(f"2022-12-{i}", t1, #TODO: Take division start date
+                match = MatchMdl(f"2022-12-{i}", t1,  # TODO: Take division start date
                                  t2, division_id=division_id)
                 match_id = self.create_match(match)
                 match_ids.append(match_id)

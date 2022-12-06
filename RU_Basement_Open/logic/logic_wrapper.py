@@ -91,7 +91,9 @@ class LogicWrapper:
 
     def get_division_start_and_end_date(self, match_ids):
         return self.match_logic.get_start_and_end_date(match_ids)
-        
+    
+    def get_player_total_qps(self, player_id):
+        return self.match_logic.get_player_total_qps(player_id)
         
     #----- Team methods -----#
     def get_all_teams(self):
