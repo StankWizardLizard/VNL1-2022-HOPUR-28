@@ -92,14 +92,14 @@ class MasterLL:
           """
         leaderboard.sort(key=lambda x: x[1], reverse=True)
         for i in range(len(leaderboard)-1):
-            a_wins = leaderboard[i][1],
-            a_leg_wins = leaderboard[i][3]
-            a_name = leaderboard[i][0],
+            a_wins = int(leaderboard[i][1])
+            a_leg_wins = int(leaderboard[i][3])
+            a_name = str(leaderboard[i][0])
             a = leaderboard[i]
-            b_wins = leaderboard[i+1][1],
-            b_leg_wins = leaderboard[i+1][3]
-            b_name = leaderboard[i+1][0]
-            print(a_name,b_name)
+            b_wins = int(leaderboard[i+1][1])
+            b_leg_wins = int(leaderboard[i+1][3])
+            b_name = str(leaderboard[i+1][0])
+
             if a_wins == b_wins:
                 if a_leg_wins < b_leg_wins:
                     leaderboard[i] = leaderboard[i+1]
