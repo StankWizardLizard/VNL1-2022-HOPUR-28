@@ -16,8 +16,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -47,9 +46,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -79,8 +76,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -110,9 +106,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -142,8 +136,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -173,9 +166,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -205,8 +196,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -236,9 +226,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -268,8 +256,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -299,9 +286,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -331,8 +316,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -362,9 +346,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -394,8 +376,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -425,9 +406,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -457,8 +436,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -488,9 +466,7 @@
                 "9847845632",
                 "9839846531"
             ],
-            "results": [
-                
-            ],
+            "results": [],
             "quality_points": {
                 "1904002120": 5,
                 "1234567890": 7,
@@ -503,6 +479,120 @@
             },
             "division_id": 1,
             "id": 1
+        },
+        {
+            "date": "2022-12-1",
+            "home_team": 2,
+            "away_team": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "fc77410a-7577-11ed-b278-acde48001122",
+            "id": "05ed50b2-7578-11ed-b278-acde48001122"
+        },
+        {
+            "date": "2022-12-1",
+            "home_team": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "away_team": "3d48ce42-74ec-11ed-8029-9fdf909ae089",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "fc77410a-7577-11ed-b278-acde48001122",
+            "id": "05edc5ce-7578-11ed-b278-acde48001122"
+        },
+        {
+            "date": "2022-12-2",
+            "home_team": 2,
+            "away_team": "3d48ce42-74ec-11ed-8029-9fdf909ae089",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "fc77410a-7577-11ed-b278-acde48001122",
+            "id": "05ee0e76-7578-11ed-b278-acde48001122"
+        },
+        {
+            "date": "2022-12-2",
+            "home_team": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "away_team": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "fc77410a-7577-11ed-b278-acde48001122",
+            "id": "05ee56e2-7578-11ed-b278-acde48001122"
+        },
+        {
+            "date": "2022-12-3",
+            "home_team": 2,
+            "away_team": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "fc77410a-7577-11ed-b278-acde48001122",
+            "id": "05eeb060-7578-11ed-b278-acde48001122"
+        },
+        {
+            "date": "2022-12-3",
+            "home_team": "3d48ce42-74ec-11ed-8029-9fdf909ae089",
+            "away_team": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "fc77410a-7577-11ed-b278-acde48001122",
+            "id": "05eeee68-7578-11ed-b278-acde48001122"
         }
     ]
 }
