@@ -3,7 +3,7 @@ from ui.functions import *
 from models.division_mdl import DivisionMdl
 
 class DivisionTableUI(MenuFrame):
-	def __init__(self,logic_wrapper, os, division = DivisionMdl("Reykjavik Open", )):
+	def __init__(self,logic_wrapper, os, division:DivisionMdl = DivisionMdl("Reykjavik Open")):
 			super().__init__(logic_wrapper, os)
 			self.division = division
 			self.NR_OF_ENTRIES = 10
@@ -34,11 +34,11 @@ class DivisionTableUI(MenuFrame):
 				showing_page*self.NR_OF_ENTRIES,
 				showing_page*self.NR_OF_ENTRIES+len(division_leaderboard[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
 				):
-				team_nr = str(i + showing_page * self.NR_OF_ENTRIES) + ")"
-				team_name = f"{division_leaderboard[showing_page][i][0]}"
-				wins = f"{division_leaderboard[showing_page][i][1]}"
-				loss = f"{division_leaderboard[showing_page][i][2]}"
-				legs_won = str(division_leaderboard[showing_page][i][3])
+				team_nr = str(i + 1+  showing_page * self.NR_OF_ENTRIES) + ")"
+				team_name = f"{division_leaderboard[i][0]}"
+				wins = f"{division_leaderboard[i][1]}"
+				loss = f"{division_leaderboard[i][2]}"
+				legs_won = str(division_leaderboard[i][3])
 				table_data.append([team_nr, team_name, wins, loss, legs_won])
 
 			#Generates a table with the correct format and data
@@ -46,10 +46,9 @@ class DivisionTableUI(MenuFrame):
 		except IndexError:
 			generate_table(table_format, [])
 
-	def prompt_option(self, division_id:str="", showing_page:int=0):
+	def prompt_option(self, showing_page:int=0):
 		'''Prompts the user to choose an option from a list of options for the division table'''
-		'''division_leaderboard = self.logic_wrapper.get_leaderboard()'''
-		division_leaderboard = []
+		division_leaderboard = self.logic_wrapper.get_leaderboard(self.division)
 		pages_number = len(division_leaderboard) // 2
 		while True:
 			self.clear_menu()

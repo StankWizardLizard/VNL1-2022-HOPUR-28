@@ -23,9 +23,12 @@ class DivisionsTableUI(MenuFrame):
         try:
             #Fills in data for table
             table_data = []
-            for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(list_of_all_divisions[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
-                division_nr = str(i + showing_page * self.NR_OF_ENTRIES) + ")"
-                division =f"{list_of_all_divisions[showing_page][i][0]}"
+            for i in range(
+                showing_page*self.NR_OF_ENTRIES, 
+                showing_page*self.NR_OF_ENTRIES+len(list_of_all_divisions[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
+                ):
+                division_nr = str(i + 1 + showing_page * self.NR_OF_ENTRIES) + ")"
+                division =f"{list_of_all_divisions[i].name}"
                 table_data.append([division_nr, division])
             #Generates a table with the correct format and data
             generate_table(table_format, table_data)
@@ -35,8 +38,7 @@ class DivisionsTableUI(MenuFrame):
 
     def prompt_option(self, showing_page:int=0):
         '''Prompts the user to choose an option from a list of options for the divisions table'''
-        '''list_of_divisions = get_divisions(self.logic_wrapper)'''
-        list_of_divisions = [[]]
+        list_of_divisions = self.logic_wrapper.get_all_divisions()
         pages_number = len(list_of_divisions)//self.NR_OF_ENTRIES
         while True:
             self.clear_menu()
@@ -67,9 +69,19 @@ class DivisionsTableUI(MenuFrame):
                     division_table_ui = DivisionTableUI(self.logic_wrapper, self.os)
                     division_table_ui.prompt_option(1)
 
-                # undocumented inputs get disregarded
+                # checks if user inputed number of a division and opens DivisionTableUI if they did
                 case _:
-                    input("Invalid Input!")
+                    if choice.isnumeric():
+                        try:
+                            if list_of_divisions[int(choice)-1]:
+                                division = list_of_divisions[int(choice)-1]
+                                division_table_ui = DivisionTableUI(self.logic_wrapper, self.os, division)
+                                division_table_ui.prompt_option()
+                        except IndexError:
+                            input("Invalid Input!")
+                    # undocumented inputs get disregarded
+                    else:
+                        input("Invalid Input!")
 
 '''
 print("Divisions")

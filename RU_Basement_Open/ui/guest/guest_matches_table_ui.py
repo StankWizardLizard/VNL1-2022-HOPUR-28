@@ -67,7 +67,7 @@ class MatchesTableUI(MenuFrame):
 				case "q":
 					break
 
-				# checks if user inputed number of a match
+				# checks if user inputed number of a match and opens MatchTableUI if they did
 				case _:
 					if choice.isnumeric():
 						try:
