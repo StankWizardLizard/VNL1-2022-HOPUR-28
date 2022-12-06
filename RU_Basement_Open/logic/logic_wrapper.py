@@ -18,6 +18,7 @@ class LogicWrapper:
         self.master_logic = MasterLL(self.match_logic, self.division_logic, self.data_wrapper)
         
         
+        
     #----- Master methods -----#
     def generate_division_matches(self, team_ids, division_id):
         self.master_logic.generate_division_matches(team_ids, division_id)

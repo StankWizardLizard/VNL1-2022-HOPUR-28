@@ -11,7 +11,8 @@ class MasterLL:
         start_date, end_date= self.match_logic.get_start_and_end_date(match_ids)
         self.division_logic.set_dates(start_date, end_date, division_id)
     
-    def generate_division_matches(self, team_ids, division_id):
+    def generate_division_matches(self, division_id):
+        team_ids = self.division_logic.get_team_ids(division_id)
         match_ids = self.match_logic.gen_matches(team_ids, division_id)
         self.division_logic.add_matches(match_ids, division_id)
         self.update_division_start_and_end_date(division_id)
@@ -26,7 +27,6 @@ class MasterLL:
         :returns: leaderboard
 
         """
-
 
         all_matches = self.data_wrapper.get_all_matches()
         matches_in_division = []
@@ -84,9 +84,6 @@ class MasterLL:
             loss_round += loss_legs
 
         return [team.name, win_games, loss_games, win_round, loss_round]
-
-        return record
-
     def _sort_leaderboard(self, leaderboard):
         """
         fully sorts leaderboard by wins, leg wins, and then alphabetically
