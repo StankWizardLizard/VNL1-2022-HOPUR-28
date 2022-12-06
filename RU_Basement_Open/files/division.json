@@ -64,38 +64,204 @@
             "matches": []
         },
         {
-            "id": "bc84d4a2-756a-11ed-8029-9fdf909ae089",
-            "name": "lions",
+            "id": 1,
+            "name": "aa",
             "team_ids": [
-                [
-                    1,
-                    2,
-                    3,
-                    6,
-                    7,
-                    8,
-                    9
-                ],
-                "3d48ce42-74ec-11ed-8029-9fdf909ae089",
+                1,
                 2,
-                [
-                    1,
-                    2,
-                    3,
-                    6,
-                    7,
-                    8,
-                    9
-                ],
-                "3d48ce42-74ec-11ed-8029-9fdf909ae089"
+                3
             ],
             "host_name": "name",
-            "phone_nr": "8441799",
-            "start_date": "",
-            "end_date": "",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
             "type": "L",
-            "rounds": "16",
-            "matches": []
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": 1,
+            "name": "aa",
+            "team_ids": [
+                1,
+                2,
+                3
+            ],
+            "host_name": "name",
+            "phone_nr": 1234567,
+            "start_date": "24.12.22",
+            "end_date": "25.12.22",
+            "type": "L",
+            "rounds": 2,
+            "matches": [
+                1,
+                2,
+                3
+            ]
         }
     ]
 }

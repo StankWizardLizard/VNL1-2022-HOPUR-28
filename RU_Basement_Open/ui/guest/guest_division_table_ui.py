@@ -1,31 +1,17 @@
 from ui.menu_frame import MenuFrame
 from ui.functions import *
+from models.division_mdl import DivisionMdl
 
 class DivisionTableUI(MenuFrame):
-	def __init__(self,logic_wrapper, os):
+	def __init__(self,logic_wrapper, os, division = DivisionMdl("Reykjavik Open", )):
 			super().__init__(logic_wrapper, os)
+			self.division = division
+			self.NR_OF_ENTRIES = 10
 
-	def _get_division_leaderboard_in_correct_format(self):
-		division_leaderboard = get_leaderboard(self.logic_wrapper)
-		new_leaderboard = []
-		if len(division_leaderboard) > 10:
-			for i in range(0, (len(division_leaderboard)//10)):
-				division_page = []
-				for e in range(i*10, i*10+10):
-					division_page.append(division_leaderboard[e])
-				if len(division_leaderboard) % 10 != 0:
-					division_page = []
-					for x in division_leaderboard[len(division_leaderboard)-len(division_leaderboard) % 10:]:
-						division_page.append(x)
-				new_leaderboard.append(division_page)
-		else:
-			division_page = []
-			for x in division_leaderboard:
-				division_page.append([x])
-			new_leaderboard.append(division_page)
-		return new_leaderboard
 	def display_menu(self, division_leaderboard:list=[], showing_page:int=0):
 		"""Display the menu screen for the  matches"""
+
+		#Constants
 		NUMBER = "NR"
 		TEAM_NAME = "Team Name"
 		WINS = "Wins"
@@ -36,16 +22,19 @@ class DivisionTableUI(MenuFrame):
 		WL = 6 #Length of wins/loss box
 		LW = 10 #Length oflegs won box
 
-		print("Division")
+		print(self.division.name)
 
-		#Format of table with a list of lists [row name, row width]
+		#Format rows of table with a list of lists [row name, row width]
 		table_format = [[NUMBER, NR], [TEAM_NAME, TN], [WINS, WL], [LOSS, WL], [LEGS_WON, LW]]
 		try:
 			
-			#Fills in data for table 
+			#Fills in data for table by with a list of lists containing data for every row
 			table_data = []
-			for i in range(len(division_leaderboard[showing_page])):
-				team_nr = str(i + showing_page * 10) + ")"
+			for i in range(
+				showing_page*self.NR_OF_ENTRIES,
+				showing_page*self.NR_OF_ENTRIES+len(division_leaderboard[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
+				):
+				team_nr = str(i + showing_page * self.NR_OF_ENTRIES) + ")"
 				team_name = f"{division_leaderboard[showing_page][i][0]}"
 				wins = f"{division_leaderboard[showing_page][i][1]}"
 				loss = f"{division_leaderboard[showing_page][i][2]}"
@@ -59,8 +48,8 @@ class DivisionTableUI(MenuFrame):
 
 	def prompt_option(self, division_id:str="", showing_page:int=0):
 		'''Prompts the user to choose an option from a list of options for the division table'''
-		'''division_leaderboard = self._get_division_leaderboard_in_correct_format()'''
-		division_leaderboard = [["1"]]
+		'''division_leaderboard = self.logic_wrapper.get_leaderboard()'''
+		division_leaderboard = []
 		pages_number = len(division_leaderboard) // 2
 		while True:
 			self.clear_menu()
@@ -76,7 +65,7 @@ class DivisionTableUI(MenuFrame):
 					else:
 						showing_page += 1
 
-				# if user wants to see the last 10 items
+				# if user wants to see the last NR_OF_ENTRIES items
 				case "b":
 					if showing_page == 0:
 						input("Invalid Input!")

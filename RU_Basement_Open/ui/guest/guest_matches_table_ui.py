@@ -6,6 +6,7 @@ class MatchesTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os, is_finished = True):
 		super().__init__(logic_wrapper, os)
 		self.is_finished = is_finished
+		self.NR_OF_ENTRIES = 10
 
 	def display_menu(self, showing_page:int=0, matches:list=[]):
 		"""Display the menu screen for the  table_data"""
@@ -23,7 +24,7 @@ class MatchesTableUI(MenuFrame):
 
 			#Fills in data for table 
 			table_data = []
-			for i in range(len(matches[showing_page*10:showing_page*10+10])):
+			for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(matches[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
 				match_nr = str(i+1) + ")"
 				teams_playing =f"{matches[i].home_team} vs {matches[i].away_team}"
 				date = str(matches[i].date)
@@ -40,7 +41,7 @@ class MatchesTableUI(MenuFrame):
 			matches = get_all_concluded_matches(self.logic_wrapper)
 		else: 
 			matches = get_all_unplayed_matches(self.logic_wrapper)
-		page_numbers = len(matches) // 10
+		page_numbers = len(matches) // self.NR_OF_ENTRIES
 		while True:
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, matches=matches)
@@ -48,14 +49,14 @@ class MatchesTableUI(MenuFrame):
 			choice = input(" > ")
 			choice = choice.lower()
 			match choice:
-				# if user wants to see the next 10 items
+				# if user wants to see the next NR_OF_ENTRIES items
 				case "n":
 					if showing_page == page_numbers:
 						input("Invalid Input!")
 					else:
 						showing_page += 1
 
-				# if user wants to see the last 10 items
+				# if user wants to see the last NR_OF_ENTRIES items
 				case "b":
 					if showing_page == 0:
 						input("Invalid Input!")
@@ -66,14 +67,18 @@ class MatchesTableUI(MenuFrame):
 				case "q":
 					break
 
-				# undocumented inputs get disregarded
+				# checks if user inputed number of a match
 				case _:
-					try:
-						if matches[int(choice)-1]:
-							match = matches[int(choice)-1]
-							match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
-							match_table_ui.prompt_option()
-					except IndexError:
+					if choice.isnumeric():
+						try:
+							if matches[int(choice)-1]:
+								match = matches[int(choice)-1]
+								match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
+								match_table_ui.prompt_option()
+						except IndexError:
+							input("Invalid Input!")
+				# undocumented inputs get disregarded
+					else:
 						input("Invalid Input!")
 
 '''
