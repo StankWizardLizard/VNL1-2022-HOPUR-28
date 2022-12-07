@@ -24,9 +24,9 @@ class LogicWrapper:
     def generate_division_matches(self, team_ids, division_id):
         self.master_logic.generate_division_matches(team_ids, division_id)
 
-    def get_qp_leaderboard_by_division(self, division_id):
-        return self.master_logic.get_qp_leaderboard_by_division(division_id)
-        
+    def get_player_leaderboard_by_division(self, division_id, category):
+        return self.master_logic.get_player_leaderboard_by_division(division_id, category)
+       
     # ----- Division methods -----#
     def create_division(self, division):
         return self.division_logic.create_division(division)
