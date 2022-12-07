@@ -13,13 +13,16 @@ class DivisionIO:
         self.data = load_file_data(self.division_filename)
 
         divisions = []
-
-        for i in self.data["division_details"]:
-            division = DivisionMdl(id=i["id"], name=i["name"], team_ids=i["team_ids"], host_name=i["host_name"], phone_nr=i["phone_nr"],
-                                   start_date=i["start_date"], end_date=i["end_date"], type=i["type"], rounds=i["rounds"], matches=i["matches"])
-            divisions.append(division)
-
+        try:
+            for i in self.data["division_details"]:
+                division = DivisionMdl(id=i["id"], name=i["name"], team_ids=i["team_ids"], host_name=i["host_name"], phone_nr=i["phone_nr"],
+                                    start_date=i["start_date"], end_date=i["end_date"], type=i["type"], rounds=i["rounds"], matches=i["matches"])
+                divisions.append(division)
+        except KeyError:
+            pass
+        
         return divisions
+        
 
     def write_division_person_to_file(self, divisions: list):
         '''takes in updated list of division objects converts it to a list of dicts, 

@@ -106,7 +106,7 @@ class MatchLL():
         for day in match_days:
             for matchup in day:
                 t1, t2 = matchup
-                match = MatchMdl(f"2022-12-{i}", t1,
+                match = MatchMdl(f"2022-12-{i}", t1, #TODO: Take division start date
                                  t2, division_id=division_id)
                 match_id = self.create_match(match)
                 match_ids.append(match_id)

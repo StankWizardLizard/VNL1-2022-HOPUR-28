@@ -11,11 +11,12 @@ class MatchIO:
         self.data = load_file_data(self.match_filename)
 
         matches = []
-
-        for i in self.data["match_details"]:
-            match = MatchMdl(i["date"], i["home_team"], i["away_team"], i["home_team_players"], i["away_team_players"], i["division_id"], i["results"], i["quality_points"], i["id"] )
-            matches.append(match)
-
+        try:
+            for i in self.data["match_details"]:
+                match = MatchMdl(i["date"], i["home_team"], i["away_team"], i["home_team_players"], i["away_team_players"], i["division_id"], i["results"], i["quality_points"], i["id"] )
+                matches.append(match)
+        except KeyError:
+            pass
         return matches
     def write_match_to_file(self, matches:list):
         '''takes in updated list of match objects, converts it to a list of dicts, 

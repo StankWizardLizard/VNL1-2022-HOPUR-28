@@ -13,14 +13,16 @@ class ClubIO:
         self.data = load_file_data(self.club_filename)
 
         clubs = []
+        try:
+            for i in self.data["club_details"]:
+                club = ClubMdl(
+                    name=i["name"], address=i["address"], phone_nr=i["phone"],
+                    id=i["id"], teams_id=i["teams_id"])
 
-        for i in self.data["club_details"]:
-            club = ClubMdl(
-                name=i["name"], address=i["address"], phone_nr=i["phone"],
-                id=i["id"], teams_id=i["teams_id"])
-
-            clubs.append(club)
-
+                clubs.append(club)
+        except KeyError:
+            pass
+        
         return clubs
 
     def write_club_person_to_file(self, clubs: list):
