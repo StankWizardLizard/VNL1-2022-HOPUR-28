@@ -85,13 +85,11 @@ class MatchesTableUI(MenuFrame):
 				#  checks if user inputed number of a match and opens MatchTableUI if it is correct, otherwise prints invalid input
 				case _:
 					if choice.isnumeric():
-						try:
-							if matches[int(choice)-1]:
-								match = matches[int(choice)-1]
-								match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
-								match_table_ui.prompt_option()
-						except IndexError:
-							input("Error!")
+						if matches[int(choice)-1]:
+							match = matches[int(choice)-1]
+							match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
+							match_table_ui.prompt_option()
+					
 				#  undocumented inputs get disregarded
 					else:
 						input("Invalid Input!")

@@ -5,7 +5,7 @@ from models.division_mdl import DivisionMdl
 import string
 import re
 
-def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[["", ""]]):
+def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[]):
     '''
     Takes in a list of table columns and width of column, and a list of lists with data in those colums,
     then prints a table from those inputs
@@ -44,22 +44,24 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
         header_top = _generate_lines(header_top, lines, SEPERATOR_HEADER, END_HEADER)
         between = _generate_lines(between, lines, SEPERATOR_BETWEEN, END_BETWEEN)
         footer = _generate_lines(footer, lines, SEPERATOR_FOOTER, END_FOOTER)
-        empty_line = _generate_lines(header_data, lines, SEPERATOR_DATA, SEPERATOR_DATA)
 
         #prints header
         print(header_top)
         print(header_data)
-        print(between)       
+        if table_data:
+            print(between)  
+        else:
+            print(footer)    
 
         #prints table_data or an empty table if table_data is empty
         try:
             if table_data:
                 for j in range(len(table_data)):
                     column_size = 1
-                    # for y in range(len(table_data[j])): #TODO:
-                    #     if type(table_data[j][y]) is list:
-                    #         if column_size < len(table_data[j][y]):
-                    #             column_size = len(table_data[j][y])
+                    for y in range(len(table_data[j])):
+                        if type(table_data[j][y]) is list:
+                            if column_size < len(table_data[j][y]):
+                                column_size = len(table_data[j][y])
                     if column_size == 1:
                         contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
                         contents = "│"
@@ -68,31 +70,31 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
                         print(contents)
                         if j < len(table_data)-1:
                             print(between)
-                    # else:
-                    #     middle = column_size // 2
-                    #     for c in range(len(table_data[j])):
-                    #         if c == middle:
-                    #             contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list else f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
-                    #         else:
-                    #             contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list else f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
-                    #         contents = "│"
-                    #         for e in range(len(contents_data_list)):
-                    #             contents = contents + contents_data_list[e] + SEPERATOR_DATA
-                    #         print(contents)
-                    #         if c == len(table_data[j])-1:
-                    #             if j < len(table_data)-1:
-                    #                 print(between)
-            else:
-                contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
-                contents = "│"
-                for e in range(len(contents_data_list)):
-                    contents = contents + contents_data_list[e] + SEPERATOR_DATA
-                print(contents)
+                    else:
+                        middle = column_size // 2
+                        for c in range(column_size):
+                            if c == middle:
+                                contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list else f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                            else:
+                                contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list else f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
+                            contents = "│"
+                            for e in range(len(contents_data_list)):
+                                contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                            print(contents)
+                            if c == column_size-1:
+                                if j < len(table_data)-1:
+                                    print(between)
+                #prints footer
+                print(footer)
+            # else:
+            #     contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
+            #     contents = "│"
+            #     for e in range(len(contents_data_list)):
+            #         contents = contents + contents_data_list[e] + SEPERATOR_DATA
+            #     print(contents)
         except TypeError:
             print("Error: wrong data type")
 
-        #prints footer
-        print(footer)
     else:
         print("Error: missing table data")
 
