@@ -1,9 +1,11 @@
 
 
 class MasterLL:
-    def __init__(self, match_logic_connection, division_logic_connection, data_wrapper):
+    def __init__(self, match_logic_connection, division_logic_connection,team_logic_connection, player_logic_connection , data_wrapper):
         self.match_logic = match_logic_connection
         self.division_logic = division_logic_connection
+        self.team_logic = team_logic_connection
+        self.player_logic = player_logic_connection
         self.data_wrapper = data_wrapper
         
     def update_division_start_and_end_date(self, division_id):
@@ -21,7 +23,34 @@ class MasterLL:
         self.match_logic.set_date(self, match_id, new_date)
         self.update_division_start_and_end_date(division_id)
 
-
+    def _get_players_by_division(self, division_id):
+        """Takes a division id, returns a list of all players competing in that division"""
+        # get all teams in division
+        team_ids = self.division_logic.get_team_ids(division_id)
+        player_ids = []
+        players = []
+        # get all players in each team
+        for team_id in team_ids:
+            curr_player_ids = self.team_logic.get_players(team_id)
+            player_ids = player_ids + curr_player_ids  # append current teams players to all players
+        # get player object for each player id
+        for player_id in player_ids:
+            player = self.player_logic.get_player(player_id)
+            players.append(player)
+        return players
+    
+    def get_qp_leaderboard_by_division(self, division_id):
+        """Takes a division id, returns a sorted list of players by their scored quality points"""
+        players = self._get_players_by_division(division_id)
+        result_list = []
+        # Get result for each player and store in a dic with their name
+        for player in players:
+            qps = self.match_logic.get_player_total_qps_by_division(player.id, division_id)
+            result_list.append({"player_name" : player.name, "qps": qps})
+        # Sort dictionary by name
+        result_list = sorted(result_list, key=lambda x: x["qps"], reverse=True)
+        return result_list
+                
     def get_leaderboard(self):
         """TODO: gets_leaderboard and returns to ui
         :returns: leaderboard
