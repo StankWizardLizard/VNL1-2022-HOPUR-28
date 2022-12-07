@@ -14,12 +14,12 @@ class MatchTableUI(MenuFrame):
 
 		self.match_number = self.match.id
 		division = self.logic_wrapper.get_division(self.match.division_id)
-		self.leage_name = division.name
+		self.league_name = division.name
 
 	def display_menu(self):
 		"""Displays match table for a specific match"""
 
-		MATCH_NAME = f"{self.leage_name} Match nr. {self.match_number}"
+		MATCH_NAME = f"{self.league_name} Match nr. {self.match_number}"
 		HOME_TEAM = "Home Team" # Header of "Home Team" column 
 		AWAY_TEAM = "Away Team" # Header of "Away Team" column 
 		SCORE = "Score" # Header of "Score" column 
@@ -32,13 +32,21 @@ class MatchTableUI(MenuFrame):
 			[HOME_TEAM, HT], [SCORE, SC], [GAME, GM], [SCORE, SC], [AWAY_TEAM, HT]
 			]
 
-		print(f"{MATCH_NAME}")
+		print(f"{MATCH_NAME}: {self.home_team_name} vs {self.away_team_name}")
+
 		table_data = []
 		
+		games = ["501", "501", "501", "501", "301", "C", "501"]
+		players =["1","1","1","1","1","1","1"]
+
 		for i in range(0, 7):
-			scores = self.points_list[i]
+			player_home = players[i]
+			player_away = players[i]
+			points_home = f"{self.points_list[i][0]}"
+			points_away = f"{self.points_list[i][1]}"
+			game = games[i]
 			column = [
-			f"{i}", scores[0], "Game",scores[2], f"{i}"
+			player_home, points_home, game, points_away, player_away
 			]
 			table_data.append(column)
 		generate_table(table_format, table_data)

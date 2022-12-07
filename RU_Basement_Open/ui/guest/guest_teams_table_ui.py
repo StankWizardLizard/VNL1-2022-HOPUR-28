@@ -36,7 +36,7 @@ class TeamsTableUI(MenuFrame):
 		all_team_size, showing_teams_size_end, showing_teams_size_start = self._get_team_display_menu_sizes(list_of_all_teams=list_of_all_teams, showing_page=showing_page)
 		print(f"Showing {showing_teams_size_start}-{showing_teams_size_end} of {all_team_size} teams")
 
-		# Format of table with a list of lists for each column ex. [[column name, column width], [column name, column width]]
+		# Format of table with a list of lists containing strings for each column ex. [[column name, column width], [column name, column width]]
 		table_format = [[NUMBER, NR], [TEAM_NAME, TN]]
 		try:
 		

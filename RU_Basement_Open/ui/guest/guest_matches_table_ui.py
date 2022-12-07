@@ -24,7 +24,7 @@ class MatchesTableUI(MenuFrame):
 		else:
 			print("Unplayed Matches")
 
-		# Format of table with a list of lists for each column ex. [[column name, column width], [column name, column width]]
+		# Format of table with a list of lists containing strings for each column ex. [[column name, column width], [column name, column width]]
 		table_format = [[NUMBER, NR], [MATCH_NAME, LM], [DATE, LD]]
 		try:
 
