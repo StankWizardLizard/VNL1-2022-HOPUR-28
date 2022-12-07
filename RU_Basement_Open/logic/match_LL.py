@@ -1,8 +1,7 @@
-from itertools import combinations
 from datetime import date
 from functions.get_random_id import get_random_id
 from models.match_mdl import MatchMdl
-from random import shuffle
+from collections import defaultdict
 
 
 class MatchLL():
@@ -52,6 +51,39 @@ class MatchLL():
                     score -= 1
         return score
 
+    def _get_highest_shots(self, qp_str):
+        """Takes a quality point string, returns the values of 
+        the highest inshot, outshot and shot found"""
+        qp_ls = qp_str.strip().split(",")
+        highest_shot = 0
+        highest_inshot = 0
+        highest_outshot = 0
+        for turn in qp_ls:
+            # If the turn was an inshot
+            if "n" in turn:
+                turn = int(turn.replace("n", ""))
+                if turn > highest_inshot:
+                    highest_inshot = turn
+            # if the turn was an outshot
+            elif "u" in turn:
+                turn = int(turn.replace("u", ""))
+                if turn > highest_outshot:
+                    highest_outshot = turn
+            # else the turn was a regular shot
+            elif turn.isnumeric():
+                turn = int(turn)
+                if turn > highest_shot:
+                    highest_shot = turn
+                    
+        # if a in- or outshot was higher than the current highest 
+        # regular shot, set the regular shot to match.
+        if highest_inshot > highest_shot:
+            highest_shot = highest_inshot
+        if highest_outshot > highest_shot:
+            highest_shot = highest_outshot
+                    
+        return highest_shot, highest_inshot, highest_outshot
+    
     def _update_matches(self):
         """Gets all matches from data layer"""
         self.matches = self.data_wrapper.get_all_matches()
@@ -70,25 +102,46 @@ class MatchLL():
 
     # ----- Reading methods -----#
     def get_all_player_qp_strings(self, player_id):
-        """Takes a player id, returns a list of that player's quality point strings from all matches"""
+        """Takes a player id, returns a dictionary of divisions as keys 
+        and a list of that player's quality point strings from all matches 
+        in that division as values"""
         self._update_matches()
         matches = self.get_all_matches()
-        qp_ls = []
+        qp_dict = defaultdict(list)
         for match in matches:
             for player in match.quality_points:
                 if player == player_id:
-                    qp_ls.append(match.quality_points[player])
-        return qp_ls
-    
-    
+                    qp_dict[match.division_id].append(
+                        match.quality_points[player])
+        return qp_dict
 
-    def get_player_total_qps(self, player_id):
-        """Takes a player id, returns the player's total quality points from all matches"""
-        qp_ls = self.get_all_player_qp_strings(player_id)
+    def get_player_total_qps_by_division(self, player_id, division_id):
+        """Takes a player and division id, returns the player's total 
+        quality points scored from all matches in that division"""
+        qp_dict = self.get_all_player_qp_strings(player_id)
+        qp_ls = qp_dict[division_id]
         total_score = 0
         for qp_str in qp_ls:
             total_score += self._count_qps(qp_str)
         return total_score
+    
+    def get_player_highest_shots_by_division(self, player_id, division_id):
+        """Takes a player and division_id, returns the player's scores for his
+        highest in-, out and regular shots he hit in all matches of that division"""
+        qp_dict = self.get_all_player_qp_strings(player_id)
+        qp_ls = qp_dict[division_id]
+        highest_shot = 0
+        highest_inshot = 0
+        highest_outshot = 0
+        for qp_str in qp_ls:
+            shot, inshot, outshot = self._get_highest_shots(qp_str)
+            if shot > highest_shot:
+                highest_shot = shot
+            if inshot > highest_inshot:
+                highest_inshot = inshot
+            if outshot > highest_outshot:
+                highest_outshot = outshot
+        return highest_shot, highest_inshot, highest_outshot
         
         
     def get_all_matches(self):
