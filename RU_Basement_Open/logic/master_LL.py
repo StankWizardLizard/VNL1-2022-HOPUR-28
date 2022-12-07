@@ -64,6 +64,78 @@ class MasterLL:
             result_list, key=lambda x: x["result"], reverse=True)
         return result_list
 
+    def get_player_statistics_by_division(self, player_id, division_id):
+        """Takes a player and division id, returns a dict containing that players
+        name, his winrate in 301, 501, cricket and quad-501 along with his total
+        quality points, highest in- and outshot and highest shot overall."""
+        total_score_dict = {   
+        "score_501" : [0, 0],
+        "score_301" : [0, 0],
+        "score_cricket" : [0, 0],
+        "score_501_quad" : [0, 0]
+        }
+        
+        matches = self.match_logic.get_matches_by_division(division_id)
+        for match in matches:
+            if match.results != []:
+                score = self._count_player_wins_in_match(player_id, match)
+                # Add results to total score
+                for key in total_score_dict:
+                    total_score_dict[key] = [sum(value) for value in zip(total_score_dict[key], score[key])]
+        
+        return total_score_dict
+            
+    def _count_player_wins_in_match(self, player_id, match):
+        """Takes a player id and a matcj object, counts and returns the players winrates"""
+        def increment_score(score_ls, win):
+            if win:
+                score_ls[0] = score_ls[0] + 1
+            else:
+                score_ls[1] = score_ls[1] + 1
+        
+        score_501 = [0, 0]
+        score_301 = [0, 0]
+        score_cricket = [0, 0]
+        score_501_quad = [0, 0]
+        # when 0 <= i <= 3 game type is 501 
+        # when i = 4 game type is 301 
+        # when i = 5 game type is cricket 
+        # when i = 6 game type is 501 quad 
+        for i, game in enumerate(match.results):
+            # Check whether the player won or lost the game
+            # if not game:
+            #     continue
+            if player_id in game['home_plr']:
+                if game['result'][0] > game['result'][1]:
+                    win = True
+                if game['result'][0] < game['result'][1]:
+                    win = False
+            elif player_id in game['away_plr']:
+                if game['result'][0] < game['result'][1]:
+                    win = True
+                if game['result'][0] > game['result'][1]:
+                    win = False
+            else:
+                continue
+            # Increment score for a game type depending on which game is being read
+            if 0 <= i and i <= 3:
+                increment_score(score_501, win)                
+            if i == 4:
+                increment_score(score_301, win)                
+            if i == 5:
+                increment_score(score_cricket, win)                
+            if i == 6:
+                increment_score(score_501_quad, win)                
+            
+        return {
+            "score_301" : score_301,
+            "score_501" : score_501,
+            "score_cricket" : score_cricket,
+            "score_501_quad" : score_501_quad,
+        }
+                
+            
+
     def get_leaderboard(self,divison):
         """TODO: gets_leaderboard and returns to ui
         :returns: leaderboard

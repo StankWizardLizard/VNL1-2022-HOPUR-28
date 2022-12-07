@@ -74,16 +74,16 @@ class MatchLL():
                 turn = int(turn)
                 if turn > highest_shot:
                     highest_shot = turn
-                    
-        # if a in- or outshot was higher than the current highest 
+
+        # if a in- or outshot was higher than the current highest
         # regular shot, set the regular shot to match.
         if highest_inshot > highest_shot:
             highest_shot = highest_inshot
         if highest_outshot > highest_shot:
             highest_shot = highest_outshot
-                    
+
         return highest_shot, highest_inshot, highest_outshot
-    
+
     def _update_matches(self):
         """Gets all matches from data layer"""
         self.matches = self.data_wrapper.get_all_matches()
@@ -124,7 +124,7 @@ class MatchLL():
         for qp_str in qp_ls:
             total_score += self._count_qps(qp_str)
         return total_score
-    
+
     def get_player_highest_shots_by_division(self, player_id, division_id):
         """Takes a player and division_id, returns the player's scores for his
         highest in-, out and regular shots he hit in all matches of that division"""
@@ -142,8 +142,7 @@ class MatchLL():
             if outshot > highest_outshot:
                 highest_outshot = outshot
         return highest_shot, highest_inshot, highest_outshot
-        
-        
+
     def get_all_matches(self):
         """Returns a list of all matches"""
         self._update_matches()
@@ -153,6 +152,15 @@ class MatchLL():
         """Returns a match by id from data layer"""
         self._update_matches()
         return self._find_match(id)
+
+    def get_matches_by_division(self, division_id):
+        """Takes a division id, returns a list of match objects for that division """
+        self._update_matches()
+        match_ls = []
+        for match in self.matches:
+            if match.division_id == division_id:
+                match_ls.append(match)
+        return match_ls
 
     def get_upcoming_matches(self):
         """Gets all matches from data layer and returns
