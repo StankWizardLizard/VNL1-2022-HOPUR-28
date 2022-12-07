@@ -1,32 +1,148 @@
 {
     "club_details": [
         {
-            "id": "9f0d2c56-74e5-11ed-992d-8cc68119b558",
-            "teams_id": [],
-            "name": "KR",
-            "address": "adrw",
-            "phone": "324"
+            "id": 1,
+            "teams_id": [
+                1,
+                2,
+                3,
+                4
+            ],
+            "name": "lala",
+            "address": "heima",
+            "phone": 123
         },
         {
-            "id": "a410d522-74e5-11ed-b273-8cc68119b558",
-            "teams_id": [],
-            "name": "FH",
-            "address": "asfrg",
-            "phone": "124"
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
         },
         {
-            "id": "a8a1aa99-74e5-11ed-9d7c-8cc68119b558",
-            "teams_id": [],
-            "name": "Dusty",
-            "address": "dsefjnj",
-            "phone": "1234"
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
         },
         {
-            "id": "b1ed92d7-74e5-11ed-a798-8cc68119b558",
-            "teams_id": [],
-            "name": "Pragma",
-            "address": "sadsvf",
-            "phone": "2346"
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
+        },
+        {
+            "id": 2,
+            "teams_id": [
+                5,
+                6,
+                7,
+                8
+            ],
+            "name": "Man United",
+            "address": "götunni",
+            "phone": 1234567
         }
     ]
 }

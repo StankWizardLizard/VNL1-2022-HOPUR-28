@@ -64,16 +64,30 @@ class MasterLL:
             result_list, key=lambda x: x["result"], reverse=True)
         return result_list
 
-    def get_leaderboard(self):
+    def get_leaderboard(self,divison):
         """TODO: gets_leaderboard and returns to ui
         :returns: leaderboard
 
         """
-        matches = self.data_wrapper.get_all_matches()
-        teams = self.data_wrapper.get_all_teams()
+
+        all_matches = self.data_wrapper.get_all_matches()
+        matches_in_division = []
+        for match in all_matches:
+            if match.division.id == divison.id:
+                matches_in_division.append(match)
+        
+
+
+        all_teams = self.data_wrapper.get_all_teams()
+        teams_in_division = []
+
+        for team in all_teams:
+            if team.id in divison.team_id:
+                teams_in_division.append(team)
+
         leaderboard = []
-        for team in teams:
-            leaderboard.append(self._calculate_record(team, matches))
+        for team in teams_in_division:
+            leaderboard.append(self._calculate_record(team, matches_in_division))
         leaderboard = self._sort_leaderboard(leaderboard)
         return leaderboard
 
@@ -112,9 +126,6 @@ class MasterLL:
             loss_round += loss_legs
 
         return [team.name, win_games, loss_games, win_round, loss_round]
-
-        return record
-
     def _sort_leaderboard(self, leaderboard):
         """
         fully sorts leaderboard by wins, leg wins, and then alphabetically

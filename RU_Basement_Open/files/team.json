@@ -1,59 +1,351 @@
 {
     "team_details": [
         {
-            "name": "Bla",
-            "captain_id": "fb802e56-74e5-11ed-b999-8cc68119b558",
+            "name": "KR",
+            "captain_id": 3,
             "player_ids": [
-                "fb802e56-74e5-11ed-b999-8cc68119b558",
-                "fb802e56-74e5-11ed-b999-8cc68119b558",
-                "fb802e56-74e5-11ed-b999-8cc68119b558",
-                "fb802e56-74e5-11ed-b999-8cc68119b558"
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
             ],
-            "id": "9d4af10d-74ec-11ed-8c2e-8cc68119b558"
+            "id": 2
         },
         {
-            "name": "safg",
-            "captain_id": "081bd296-74e6-11ed-8284-8cc68119b558",
-            "player_ids": [
-                "081bd296-74e6-11ed-8284-8cc68119b558",
-                "081bd296-74e6-11ed-8284-8cc68119b558",
-                "081bd296-74e6-11ed-8284-8cc68119b558",
-                "081bd296-74e6-11ed-8284-8cc68119b558"
-            ],
-            "id": "a8a2dfb6-74ec-11ed-adfa-8cc68119b558"
+            "name": 2,
+            "captain_id": 3,
+            "player_ids": "KR",
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
         },
         {
-            "name": "Hallo",
-            "captain_id": "195ffb15-74e6-11ed-8c6c-8cc68119b558",
+            "name": "Lions",
+            "captain_id": 1,
             "player_ids": [
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558",
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558",
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558",
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558"
+                1,
+                3,
+                2,
+                3
             ],
-            "id": "b3f24e18-74ec-11ed-86b6-8cc68119b558"
+            "id": "3d48ce42-74ec-11ed-8029-9fdf909ae089"
         },
         {
-            "name": "4",
-            "captain_id": "25544bee-74e6-11ed-9a42-8cc68119b558",
+            "name": "KR",
             "player_ids": [
-                "25544bee-74e6-11ed-9a42-8cc68119b558",
-                "25544bee-74e6-11ed-9a42-8cc68119b558",
-                "25544bee-74e6-11ed-9a42-8cc68119b558",
-                "25544bee-74e6-11ed-9a42-8cc68119b558"
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
             ],
-            "id": "bbb220d6-74ec-11ed-a583-8cc68119b558"
+            "captain_id": 3,
+            "id": 2
         },
         {
-            "name": "lol",
-            "captain_id": "195ffb15-74e6-11ed-8c6c-8cc68119b558",
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
             "player_ids": [
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558",
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558",
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558",
-                "195ffb15-74e6-11ed-8c6c-8cc68119b558"
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
             ],
-            "id": "c6175b9b-74ec-11ed-9652-8cc68119b558"
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
+        },
+        {
+            "name": "KR",
+            "player_ids": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ],
+            "captain_id": 3,
+            "id": 2
+        },
+        {
+            "name": 2,
+            "player_ids": "KR",
+            "captain_id": 3,
+            "id": [
+                1,
+                2,
+                3,
+                6,
+                7,
+                8,
+                9
+            ]
         }
     ]
 }

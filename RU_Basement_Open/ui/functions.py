@@ -136,8 +136,13 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
         if valid:
             return choice
         if isInt:
-            if choice.lower() in "qwertyuiopasdfghjklz:wxcvbnmæþ":
-                pass
+            try:
+                if "." in choice:
+                    error_str = "Input must be integer"
+                else:
+                    return int(choice)
+            except ValueError:
+                error_str = "Input must be an integer, try again"
         print(choice + error_str)
 
 
