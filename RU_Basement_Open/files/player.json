@@ -1,1 +1,84 @@
-{}
+{
+    "player_details": [
+        {
+            "name": "Palli",
+            "ssn": "1231231231",
+            "mobile_nr": "321",
+            "home_nr": "213",
+            "address": "asdf",
+            "email": "p@lli.is",
+            "club_id": "256b0aa4-7714-11ed-8fa9-8cc68119b558",
+            "id": "50cc4a6e-7714-11ed-85b2-8cc68119b558"
+        },
+        {
+            "name": "Geiri",
+            "ssn": "1231231232",
+            "mobile_nr": "123",
+            "home_nr": "123",
+            "address": "gullendi",
+            "email": "s@geir.is",
+            "club_id": "256b0aa4-7714-11ed-8fa9-8cc68119b558",
+            "id": "61c63b41-7714-11ed-b492-8cc68119b558"
+        },
+        {
+            "name": "Villi",
+            "ssn": "1231231233",
+            "mobile_nr": "2134",
+            "home_nr": "23143",
+            "address": "sads",
+            "email": "villi@la.is",
+            "club_id": "256b0aa4-7714-11ed-8fa9-8cc68119b558",
+            "id": "704162d1-7714-11ed-93c8-8cc68119b558"
+        },
+        {
+            "name": "Haffi",
+            "ssn": "1231231234",
+            "mobile_nr": "123",
+            "home_nr": "123",
+            "address": "dalvik",
+            "email": "haffi@h.is",
+            "club_id": "256b0aa4-7714-11ed-8fa9-8cc68119b558",
+            "id": "897c3577-7714-11ed-b5db-8cc68119b558"
+        },
+        {
+            "name": "Elon Must",
+            "ssn": "1231231235",
+            "mobile_nr": "1225",
+            "home_nr": "12432",
+            "address": "mars",
+            "email": "elon@tesla.com",
+            "club_id": "338a8baa-7714-11ed-a4ef-8cc68119b558",
+            "id": "93228787-7720-11ed-b100-8cc68119b558"
+        },
+        {
+            "name": "Jeff Bezoz",
+            "ssn": "1231231236",
+            "mobile_nr": "123",
+            "home_nr": "132",
+            "address": "Hell",
+            "email": "mazon@gmali.com",
+            "club_id": "338a8baa-7714-11ed-a4ef-8cc68119b558",
+            "id": "a775fd2b-7720-11ed-9dfe-8cc68119b558"
+        },
+        {
+            "name": "Björgólfur thor",
+            "ssn": "1231231237",
+            "mobile_nr": "123",
+            "home_nr": "123",
+            "address": "gróska",
+            "email": "lala@ga.is",
+            "club_id": "338a8baa-7714-11ed-a4ef-8cc68119b558",
+            "id": "bba62c05-7720-11ed-8df3-8cc68119b558"
+        },
+        {
+            "name": "Gummi Emil",
+            "ssn": "1231231238",
+            "mobile_nr": "123",
+            "home_nr": "123",
+            "address": "gym",
+            "email": "ge@mil.is",
+            "club_id": "338a8baa-7714-11ed-a4ef-8cc68119b558",
+            "id": "cdbd3025-7720-11ed-a445-8cc68119b558"
+        }
+    ]
+}

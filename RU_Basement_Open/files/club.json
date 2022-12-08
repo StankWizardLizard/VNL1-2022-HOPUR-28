@@ -1,2 +1,22 @@
 {
+    "club_details": [
+        {
+            "id": "256b0aa4-7714-11ed-8fa9-8cc68119b558",
+            "teams_id": [
+                "0c855ba0-7720-11ed-9528-8cc68119b558"
+            ],
+            "name": "Test FC",
+            "address": "hr",
+            "phone": "1234"
+        },
+        {
+            "id": "338a8baa-7714-11ed-a4ef-8cc68119b558",
+            "teams_id": [
+                "e5d17869-7720-11ed-aaf1-8cc68119b558"
+            ],
+            "name": "Try FC",
+            "address": "Hí",
+            "phone": "12344"
+        }
+    ]
 }
