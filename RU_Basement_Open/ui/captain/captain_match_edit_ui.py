@@ -5,7 +5,6 @@ from ui.menu_frame import MenuFrame
 # Error correction in writing down quality points for players (make it so they cant give them more than possible or below possible)
 
 # Function to get Quality points from user
-# Function to save Data to file
 # Function to read Data from file
 
 class MatchEditUI(MenuFrame):
@@ -13,18 +12,21 @@ class MatchEditUI(MenuFrame):
         super().__init__(logic_wrapper, os)
         self.match = match
 
-        # Mockups of how the lists/dicts that hold info should look
+        self.home_team_name = self.logic_wrapper.get_team(self.match.home_team).name
+        self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
+
+        self.get_match_information()
+
         self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
         self.player_list = [("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("","")]
         self.quality_points = {"":"", "":""}
-        #self.get_match_information()
 
     def display_menu(self):
         """Displays match table for a specific match"""
 
         Table = f"""
 ┌──────────────────────────────────────────┬───────┬───────┬───────┬───────┬───────┬──────────────────────────────────────────┐
-│{self.match.home_team:^42}│ Leg 1 │ Leg 2 │ Games │ Leg 2 │ Leg 1 │{self.match.away_team:^42}│
+│{self.home_team_name:^42}│ Leg 1 │ Leg 2 │ Games │ Leg 2 │ Leg 1 │{self.away_team_name:^42}│
 ├──────────────────────────────────────────┼───────┼───────┼───────┼───────┼───────┼──────────────────────────────────────────┤
 │{self.player_list[0][0]:^42}│{self.points_list[0][0]:^7}│{self.points_list[0][1]:^7}│  501  │{self.points_list[0][2]:^7}│{self.points_list[0][3]:^7}│{self.player_list[0][1]:^42}│
 ├──────────────────────────────────────────┼───────┼───────┼───────┼───────┼───────┼──────────────────────────────────────────┤
@@ -173,7 +175,6 @@ class MatchEditUI(MenuFrame):
 
             # Duos Matchup 
             for match_number in range(4,8):
-                # TODO # ADD ERRROR CORRECTION HERE SO THEY WONT PICK THE SAME MATCHUP
 
                 # Pick from Home and save the pick
                 home_player = self.pick_players_from_list(home_team)
@@ -205,6 +206,8 @@ class MatchEditUI(MenuFrame):
 
     def get_match_information(self):
         """Get points, players, quality points for a given match"""
+        # TODO UNFINISHED
+
         # Get results
         results = self.match.results
         
