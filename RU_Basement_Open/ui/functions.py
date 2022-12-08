@@ -2,6 +2,7 @@ from models.player_mdl import PlayerMdl
 from models.club_mdl import ClubMdl
 from models.team_mdl import TeamMdl
 from models.division_mdl import DivisionMdl
+from datetime import datetime
 import string
 import re
 
@@ -131,7 +132,18 @@ def remove_punctuation(input_str):
     input_str = ''.join(input_str.split()) # Remove whitespaces
     return input_str
 
-def get_input(display_string: str, number: bool = False, email: bool = False, isInt = False,isStr = False):
+def get_date_input(display_string: str):
+    """Takes a string to display, asks for user input and validates if it is a date
+    of format 'YYYY-MM-DD' """
+    while True:
+        choice = input(display_string).strip()
+        try:
+            datetime.strptime(choice, '%Y-%m-%d')
+            return choice
+        except ValueError:
+            print("Invalid input, date should be on format YYYY-MM-DD")
+
+def get_input(display_string: str, number: bool = False, email: bool = False, isInt = False,isStr = False, length=None):
     """Takes a string to display, asks for user input and does basic validation,
     returns input once it's valid"""
     while True:
@@ -156,8 +168,7 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
             valid = False
             error_str = "Empty input, try again..."
         # Return user's choice if all checks succeded
-        if valid:
-            return choice
+        
         if isInt:
             try:
                 if "." in choice:
@@ -166,6 +177,14 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
                     return int(choice)
             except ValueError:
                 error_str = "Input must be an integer, try again"
+                valid = False
+                
+        if length is not None and valid == True:
+            if len(choice) != length:
+                valid = False
+                error_str = f" is invalid, input must be of lenght {length}"
+        if valid:
+            return choice
         print(choice + error_str)
 
 

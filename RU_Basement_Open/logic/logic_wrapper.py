@@ -17,12 +17,12 @@ class LogicWrapper:
         self.club_logic = ClubLL(self.data_wrapper)
 
         self.master_logic = MasterLL(
-            self.match_logic, self.division_logic, self.team_logic, self.player_logic, self.data_wrapper)
+            self.match_logic, self.division_logic, self.team_logic, self.player_logic, self.club_logic, self.data_wrapper)
 
     # ----- Master methods -----#
 
-    def generate_division_matches(self, team_ids, division_id):
-        self.master_logic.generate_division_matches(team_ids, division_id)
+    def generate_division_matches(self, team_ids, division_id, start_date, days_between_matchdays, rounds):
+        self.master_logic.generate_division_matches(team_ids, division_id, start_date, days_between_matchdays, rounds)
 
     def get_player_leaderboard_by_division(self, division_id, category):
         return self.master_logic.get_player_leaderboard_by_division(division_id, category)
@@ -32,6 +32,9 @@ class LogicWrapper:
 
     def get_team_names_by_division(self, division_id):
         return self.master_logic.get_team_names_by_division(division_id)
+    
+    def team_name_exists_on_club(self, name, club_id):
+        return self.master_logic.team_name_exists_on_club(name, club_id)
     
     # ----- Division methods -----#
     def create_division(self, division):
@@ -93,8 +96,8 @@ class LogicWrapper:
     def create_match(self, match):
         self.match_logic.create_match(match)
 
-    def generate_matches(self, team_ids, division_id):
-        return self.match_logic.gen_matches(team_ids, division_id)
+    def generate_matches(self, team_ids, division_id, start_date, days_between_matchdays, rounds):
+        return self.match_logic.gen_matches(team_ids, division_id, start_date, days_between_matchdays, rounds)
 
     def set_match_date(self, id, new_date):
         self.match_logic.set_date(id, new_date)
