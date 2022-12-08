@@ -54,57 +54,6 @@
                 "7eecf770-76f8-11ed-81c1-acde48001122"
             ],
             "id": "960dc744-7708-11ed-90c4-acde48001122"
-        },
-        {
-            "name": "Chris Dream Team",
-            "captain_id": "",
-            "player_ids": [],
-            "id": "729de6fe-7728-11ed-a3bf-34415db72ee1"
-        },
-        {
-            "name": "Team Tea m",
-            "captain_id": "",
-            "player_ids": [],
-            "id": "c5b084ec-7728-11ed-8914-34415db72ee1"
-        },
-        {
-            "name": "Gylfi Dream Team",
-            "captain_id": "",
-            "player_ids": [],
-            "id": "d8388e18-7728-11ed-9a90-34415db72ee1"
-        },
-        {
-            "name": "Man UNITED Dream Team",
-            "captain_id": "ad18a90a-7707-11ed-a63e-acde48001122",
-            "player_ids": [
-                "ad18a90a-7707-11ed-a63e-acde48001122",
-                "ce19ad66-7707-11ed-a63e-acde48001122",
-                "32a5727e-7708-11ed-ba24-acde48001122",
-                "bdb3aa44-7707-11ed-a63e-acde48001122"
-            ],
-            "id": "a4cb3bbd-7729-11ed-b6f9-34415db72ee1"
-        },
-        {
-            "name": "The Bpys",
-            "captain_id": "bdb3aa44-7707-11ed-a63e-acde48001122",
-            "player_ids": [
-                "bdb3aa44-7707-11ed-a63e-acde48001122",
-                "32a5727e-7708-11ed-ba24-acde48001122",
-                "ad18a90a-7707-11ed-a63e-acde48001122",
-                "ce19ad66-7707-11ed-a63e-acde48001122"
-            ],
-            "id": "e4e55f5e-7729-11ed-b973-34415db72ee1"
-        },
-        {
-            "name": "Pump Dream Team",
-            "captain_id": "535638f6-76f8-11ed-81c1-acde48001122",
-            "player_ids": [
-                "535638f6-76f8-11ed-81c1-acde48001122",
-                "7eecf770-76f8-11ed-81c1-acde48001122",
-                "67530de8-76f8-11ed-81c1-acde48001122",
-                "fba8a76e-76f8-11ed-87b9-acde48001122"
-            ],
-            "id": "29f99f0e-772a-11ed-8cc6-34415db72ee1"
         }
     ]
 }

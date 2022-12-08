@@ -2,38 +2,28 @@
     "club_details": [
         {
             "id": "da835f84-7644-11ed-b839-acde48001122",
-            "teams_id": [
-                "29f99f0e-772a-11ed-8cc6-34415db72ee1"
-            ],
+            "teams_id": [],
             "name": "Pump FC",
             "address": "Iceland",
             "phone": "0987654"
         },
         {
             "id": "faf55c54-7644-11ed-b839-acde48001122",
-            "teams_id": [
-                "729de6fe-7728-11ed-a3bf-34415db72ee1",
-                "c5b084ec-7728-11ed-8914-34415db72ee1"
-            ],
+            "teams_id": [],
             "name": "Chris FC",
             "address": "Akranes",
             "phone": "69696969"
         },
         {
             "id": "fc8e615e-7645-11ed-a99f-acde48001122",
-            "teams_id": [
-                "d8388e18-7728-11ed-9a90-34415db72ee1"
-            ],
+            "teams_id": [],
             "name": "GylfiFC",
             "address": "HR",
             "phone": "123654987"
         },
         {
             "id": "5656b8d2-76fd-11ed-b382-acde48001122",
-            "teams_id": [
-                "a4cb3bbd-7729-11ed-b6f9-34415db72ee1",
-                "e4e55f5e-7729-11ed-b973-34415db72ee1"
-            ],
+            "teams_id": [],
             "name": "Man UTD",
             "address": "Akureyri",
             "phone": "112112112"
