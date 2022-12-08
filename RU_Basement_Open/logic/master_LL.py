@@ -1,11 +1,12 @@
 
 
 class MasterLL:
-    def __init__(self, match_logic_connection, division_logic_connection, team_logic_connection, player_logic_connection, data_wrapper):
+    def __init__(self, match_logic_connection, division_logic_connection, team_logic_connection, player_logic_connection, club_logic_connection, data_wrapper):
         self.match_logic = match_logic_connection
         self.division_logic = division_logic_connection
         self.team_logic = team_logic_connection
         self.player_logic = player_logic_connection
+        self.club_logic = club_logic_connection
         self.data_wrapper = data_wrapper
 
     def update_division_start_and_end_date(self, division_id):
@@ -223,3 +224,9 @@ class MasterLL:
                         leaderboard[i] = leaderboard[i+1]
                         leaderboard[i+1] = a
         return leaderboard
+
+    def team_name_exists_on_club(self, name, club_id):
+        """Takes a team name and a club id, if that team name exists on that club, return True
+        else return False"""
+        team_ids = self.club_logic.get_teams(club_id)
+        return self.team_logic.team_name_exists(name, team_ids)

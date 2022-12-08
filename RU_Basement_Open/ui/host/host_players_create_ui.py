@@ -14,9 +14,9 @@ class CreatePlayerUI(MenuFrame):
         while True:
             self.clear_menu()
             self.display_menu()
+            clubs = self.logic_wrapper.get_all_clubs()
 
             print("Select an existing club!")
-            clubs = self.logic_wrapper.get_all_clubs()
             for i, club in enumerate(clubs):
                 print(i+1, club.name)
 

@@ -17,7 +17,7 @@ class LogicWrapper:
         self.club_logic = ClubLL(self.data_wrapper)
 
         self.master_logic = MasterLL(
-            self.match_logic, self.division_logic, self.team_logic, self.player_logic, self.data_wrapper)
+            self.match_logic, self.division_logic, self.team_logic, self.player_logic, self.club_logic, self.data_wrapper)
 
     # ----- Master methods -----#
 
@@ -29,6 +29,9 @@ class LogicWrapper:
        
     def get_player_statistics_by_division(self, player_id, division_id):  
         return self.master_logic.get_player_statistics_by_division(player_id, division_id)
+    
+    def team_name_exists_on_club(self, name, club_id):
+        return self.master_logic.team_name_exists_on_club(self, name, club_id)
     
     # ----- Division methods -----#
     def create_division(self, division):

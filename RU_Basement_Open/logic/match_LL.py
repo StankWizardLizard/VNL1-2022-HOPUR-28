@@ -273,9 +273,10 @@ class MatchLL():
         match.date = new_date
         self._write_matches
 
-    def set_results(self, id, results):
+    def set_results(self, id, home_team_players, away_team_players, results, quality_points):
         """Sets a matches results and uptades data layer"""
         self._update_matches()
         match = self._find_match(id)
         match.results = results
         self._write_matches()
+
