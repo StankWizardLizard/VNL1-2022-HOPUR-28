@@ -35,9 +35,7 @@ class MatchesTableUI(MenuFrame):
 			for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(matches[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
 				match_nr = str(i+1) + ")"
 				home_team = self.logic_wrapper.get_team(matches[i].home_team)
-				print (home_team)
 				away_team = self.logic_wrapper.get_team(matches[i].away_team)
-				print (away_team)
 				teams_playing =f"{home_team.name} vs {away_team.name}"
 				date = str(matches[i].date)
 				table_data.append([match_nr, teams_playing, date])

@@ -8,9 +8,9 @@ class MatchTableUI(MenuFrame):
 		self.points_list = self.match.results
 		
 		self.home_team_list = self.match.home_team_players
-		self.home_team_name = self.match.home_team
+		self.home_team_name = self.logic_wrapper.get_team(self.match.home_team).name
 		self.away_team_list = self.match.away_team_players
-		self.away_team_name = self.match.away_team
+		self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
 
 		self.match_number = self.match.id
 		division = self.logic_wrapper.get_division(self.match.division_id)
@@ -19,8 +19,6 @@ class MatchTableUI(MenuFrame):
 	def display_menu(self):
 		"""Displays match table for a specific match"""
 
-		MATCH_NAME = f"{self.league_name} Match nr. {self.match_number}: "
-		TEAM_NAMES = f"{self.home_team_name} vs {self.away_team_name}"
 		HOME_TEAM = "Home Team" # Header of "Home Team" column 
 		AWAY_TEAM = "Away Team" # Header of "Away Team" column 
 		SCORE = "Score" # Header of "Score" column 
@@ -28,14 +26,17 @@ class MatchTableUI(MenuFrame):
 		HT = 22 # Width of "Home Team" and "Away Team" column
 		SC = 7 # Width of "Legs" column
 		GM = 7 # Width of "Games" column 
-		ts = HT*2+SC*2+GM+4
+
+		ts = HT*2+SC*2+GM+4 # Width of match_name title header
+		match_name = f"{self.league_name} Match nr. {self.match_number}: "
+		team_name = f"{self.home_team_name} vs {self.away_team_name}"
 
 		table_format = [
 			[HOME_TEAM, HT], [SCORE, SC], [GAME, GM], [SCORE, SC], [AWAY_TEAM, HT]
 			]
 		
 
-		generate_table([[MATCH_NAME, ts]],[[TEAM_NAMES]])
+		generate_table([[match_name, ts]],[[team_name]])
 
 		table_data = []
 		
@@ -89,7 +90,10 @@ class MatchTableUI(MenuFrame):
 		teams_table_format = [[home_team, HT], [away_team, HT]]
 		teams_table_data = []
 		for i in range(4):
-			column = [self.home_team_list[i], self.away_team_list[i]]
+			if self.home_team_list and self.away_team_list:
+				column = [self.home_team_list[i], self.away_team_list[i]]
+			else:
+				column = ["", ""]
 			teams_table_data.append(column)
 		generate_table(teams_table_format, teams_table_data)
 
