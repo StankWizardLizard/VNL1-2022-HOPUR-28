@@ -2,6 +2,7 @@ from models.player_mdl import PlayerMdl
 from models.club_mdl import ClubMdl
 from models.team_mdl import TeamMdl
 from models.division_mdl import DivisionMdl
+from datetime import datetime
 import string
 import re
 
@@ -107,6 +108,17 @@ def remove_punctuation(input_str):
     input_str = input_str.translate(str.maketrans('', '', string.punctuation)) # Remove punctuation
     input_str = ''.join(input_str.split()) # Remove whitespaces
     return input_str
+
+def get_date_input(display_string: str):
+    """Takes a string to display, asks for user input and validates if it is a date
+    of format 'YYYY-MM-DD' """
+    while True:
+        choice = input(display_string).strip()
+        try:
+            datetime.strptime(choice, '%Y-%m-%d')
+            return choice
+        except ValueError:
+            print("Invalid input, date should be on format YYYY-MM-DD")
 
 def get_input(display_string: str, number: bool = False, email: bool = False, isInt = False,isStr = False):
     """Takes a string to display, asks for user input and does basic validation,

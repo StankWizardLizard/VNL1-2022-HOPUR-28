@@ -21,8 +21,8 @@ class LogicWrapper:
 
     # ----- Master methods -----#
 
-    def generate_division_matches(self, team_ids, division_id):
-        self.master_logic.generate_division_matches(team_ids, division_id)
+    def generate_division_matches(self, team_ids, division_id, start_date, days_between_matchdays, rounds):
+        self.master_logic.generate_division_matches(team_ids, division_id, start_date, days_between_matchdays, rounds)
 
     def get_player_leaderboard_by_division(self, division_id, category):
         return self.master_logic.get_player_leaderboard_by_division(division_id, category)
@@ -87,8 +87,8 @@ class LogicWrapper:
     def create_match(self, match):
         self.match_logic.create_match(match)
 
-    def generate_matches(self, team_ids, division_id):
-        return self.match_logic.gen_matches(team_ids, division_id)
+    def generate_matches(self, team_ids, division_id, start_date, days_between_matchdays, rounds):
+        return self.match_logic.gen_matches(team_ids, division_id, start_date, days_between_matchdays, rounds)
 
     def set_match_date(self, id, new_date):
         self.match_logic.set_date(id, new_date)

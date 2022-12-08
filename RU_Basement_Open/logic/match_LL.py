@@ -229,8 +229,9 @@ class MatchLL():
             # Add generated fixtures to a match-day
             match_days.append(fixtures)
         # Multiply the match-day list by specified rounds
+        print(match_days)
         match_days = rounds*match_days
-
+    
         match_ids = []
         dt = self._date_str_to_obj(start_date)
         # Populate a match model class for each fixture and save to
