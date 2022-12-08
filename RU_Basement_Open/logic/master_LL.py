@@ -151,7 +151,7 @@ class MasterLL:
         all_matches = self.data_wrapper.get_all_matches()
         matches_in_division = []
         for match in all_matches:
-            if match.division.id == divison.id:
+            if match.division_id == divison.id:
                 matches_in_division.append(match)
         
 
@@ -160,7 +160,7 @@ class MasterLL:
         teams_in_division = []
 
         for team in all_teams:
-            if team.id in divison.team_id:
+            if team.id in divison.team_ids:
                 teams_in_division.append(team)
 
         leaderboard = []
@@ -212,13 +212,13 @@ class MasterLL:
           """
         leaderboard.sort(key=lambda x: x[1], reverse=True)
         for i in range(len(leaderboard)-1):
-            a_wins = leaderboard[i][1],
-            a_leg_wins = leaderboard[i][3]
-            a_name = leaderboard[i][0],
+            a_wins = int(leaderboard[i][1])
+            a_leg_wins = int(leaderboard[i][3])
+            a_name = str(leaderboard[i][0])
             a = leaderboard[i]
-            b_wins = leaderboard[i+1][1],
-            b_leg_wins = leaderboard[i+1][3]
-            b_name = leaderboard[i+1][0]
+            b_wins = int(leaderboard[i+1][1])
+            b_leg_wins = int(leaderboard[i+1][3])
+            b_name = str(leaderboard[i+1][0])
 
             if a_wins == b_wins:
                 if a_leg_wins < b_leg_wins:
@@ -230,6 +230,20 @@ class MasterLL:
                         leaderboard[i+1] = a
         return leaderboard
 
+    def get_team_names_by_division(self, division_id):
+        """Takes match id and returns the team names that are playing matches"""
+        team_names = []
+        
+
+        match_ids = self.division_logic.get_match_ids(division_id)
+        team_ids = self.match_logic.get_teams(match_ids)
+        for match in team_ids:
+            a = []
+            for team_id in match:
+                team_name = self.team_logic.get_team(team_id).name
+                a.append(team_name)
+            team_names.append(tuple(a))
+        return team_names
     def team_name_exists_on_club(self, name, club_id):
         """Takes a team name and a club id, if that team name exists on that club, return True
         else return False"""

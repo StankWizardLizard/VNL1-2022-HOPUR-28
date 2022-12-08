@@ -198,6 +198,15 @@ class MatchLL():
             dates.append(self.get_date(id))
         return (str(min(dates)), str(max(dates)))
 
+    def get_teams(self, match_ids: list):
+        """Takes the match id to find team id"""
+        team_ids = []
+        for match_id in match_ids:
+            match = self.get_match(match_id)
+            team_ids.append((match.home_team, match.away_team))
+        return team_ids
+
+
     # ----- Writing methods -----#
 
     def gen_matches(self, team_ids: list, division_id, start_date, days_between_matchdays, rounds):

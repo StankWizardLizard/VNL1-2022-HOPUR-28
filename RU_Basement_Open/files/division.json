@@ -1,4 +1,28 @@
 {
     "division_details": [
+        {
+            "id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "name": "Ru Basement Open",
+            "team_ids": [
+                "93e66c7e-76f8-11ed-81c1-acde48001122",
+                "7badd70e-7708-11ed-90c4-acde48001122",
+                "588fa432-7708-11ed-8680-acde48001122",
+                "8828c3cc-7708-11ed-90c4-acde48001122"
+            ],
+            "host_name": "Ragnhildur",
+            "phone_nr": "456789",
+            "start_date": "2022-12-01",
+            "end_date": "2022-12-03",
+            "type": "L",
+            "rounds": "2",
+            "matches": [
+                "4ca1fa6e-770b-11ed-8c9b-acde48001122",
+                "4ca2232c-770b-11ed-8c9b-acde48001122",
+                "4ca235f6-770b-11ed-8c9b-acde48001122",
+                "4ca246ae-770b-11ed-8c9b-acde48001122",
+                "4ca25766-770b-11ed-8c9b-acde48001122",
+                "4ca267c4-770b-11ed-8c9b-acde48001122"
+            ]
+        }
     ]
 }
