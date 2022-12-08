@@ -1,11 +1,12 @@
 
 
 class MasterLL:
-    def __init__(self, match_logic_connection, division_logic_connection, team_logic_connection, player_logic_connection, data_wrapper):
+    def __init__(self, match_logic_connection, division_logic_connection, team_logic_connection, player_logic_connection, club_logic_connection, data_wrapper):
         self.match_logic = match_logic_connection
         self.division_logic = division_logic_connection
         self.team_logic = team_logic_connection
         self.player_logic = player_logic_connection
+        self.club_logic = club_logic_connection
         self.data_wrapper = data_wrapper
 
     def update_division_start_and_end_date(self, division_id):
@@ -14,9 +15,9 @@ class MasterLL:
             match_ids)
         self.division_logic.set_dates(start_date, end_date, division_id)
 
-    def generate_division_matches(self, division_id):
+    def generate_division_matches(self, division_id, start_date, days_between_matchdays, rounds):
         team_ids = self.division_logic.get_team_ids(division_id)
-        match_ids = self.match_logic.gen_matches(team_ids, division_id)
+        match_ids = self.match_logic.gen_matches(team_ids, division_id, start_date, days_between_matchdays, rounds)
         self.division_logic.add_matches(match_ids, division_id)
         self.update_division_start_and_end_date(division_id)
 
@@ -74,8 +75,13 @@ class MasterLL:
         "score_cricket" : [0, 0],
         "score_501_quad" : [0, 0]
         }
-        
+        # player_matches = []
         matches = self.match_logic.get_matches_by_division(division_id)
+        # for match in matches:
+        #     if player_id in match.home_platers or playaaasdasf:
+        #         player_matchers.append(mathc)
+                
+        # playerÖmatches = plasdafme[-numer:]
         for match in matches:
             if match.results != []:
                 score = self._count_player_wins_in_match(player_id, match)
@@ -228,6 +234,7 @@ class MasterLL:
         """Takes match id and returns the team names that are playing matches"""
         team_names = []
         
+
         match_ids = self.division_logic.get_match_ids(division_id)
         team_ids = self.match_logic.get_teams(match_ids)
         for match in team_ids:
@@ -237,3 +244,8 @@ class MasterLL:
                 a.append(team_name)
             team_names.append(tuple(a))
         return team_names
+    def team_name_exists_on_club(self, name, club_id):
+        """Takes a team name and a club id, if that team name exists on that club, return True
+        else return False"""
+        team_ids = self.club_logic.get_teams(club_id)
+        return self.team_logic.team_name_exists(name, team_ids)
