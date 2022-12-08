@@ -51,6 +51,9 @@ class TeamLL():
             if team.name == team_name:
                 return team.id
         raise IndexError
+    
+    def get_players(self, team_id):
+        return self.get_team(team_id).player_ids 
 
     # ----- Writing methods -----#
     def create_team(self, team):

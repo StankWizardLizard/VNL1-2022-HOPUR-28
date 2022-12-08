@@ -24,7 +24,8 @@ class PlayerLL():
             if player.id == id:
                 return player
         raise IndexError # If player not found
-
+        
+        
     def get_all_players(self):
         """Returns a list of all matches"""
         return self.data_wrapper.get_all_players()

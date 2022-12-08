@@ -2,7 +2,7 @@ class PlayerMdl():
     def __init__(
             self, name:str="", ssn:str="", mobile_nr:str="",
             home_nr:str="", address:str="", email:str="",
-            team_id:str="", id:str="",club_id:str=""):
+            id:str="",club_id:str=""):
 
         self.name = name
         self.ssn = ssn

@@ -1,10 +1,10 @@
 from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
-from ui.functions import *
 
 from ui.functions import get_all_concluded_matches
 from ui.functions import get_all_unplayed_matches
+from ui.functions import get_all_matches
 
 from math import ceil
 
@@ -19,6 +19,8 @@ class CaptainMatchesTableUI(MenuFrame):
 
 	def get_match_list(self):
 		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
+
+		return get_all_unplayed_matches(self.logic_wrapper)
 
 		if(self.match_finished_status):
 			return get_all_concluded_matches(self.logic_wrapper)
@@ -41,31 +43,22 @@ class CaptainMatchesTableUI(MenuFrame):
 	def display_menu(self):
 		"""Displays the match table window and the options"""
 
-		# Print the menu		
-		print("Showing page {}-{} of Matches")
-		print("┌────┬──────────────────────────────────────────────────────┬──────────────────┐")
-		print("│ NR │                         Match                        │       Date       │")
+		# Print the menu
+		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Matches")
+		print("┌────┬────────────────────────────────────────────────────────┬──────────────────┐")
+		print("│ NR │                          Match                         │       Date       │")
 
-		for i in range(0,len(self.match_list[self.current_page_number])):
-			current_match_number = str(i+1) + ')'
-			current_match = self.match_list[self.current_page_number][i]
-			print("├────┼──────────────────────────────────────────────────────┼──────────────────┤")
-			print(f"│{current_match_number:^4}│{current_match.home_team:^26}vs{current_match.away_team:^26}│ Date:{current_match.date:^12}│")
+		try:
+			for i in range(0,len(self.match_list[self.current_page_number])):
+				current_match_number = str(i+1) + ')'
+				current_match = self.match_list[self.current_page_number][i]
+				print("├────┼────────────────────────────────────────────────────────┼──────────────────┤")
+				print(f"│{current_match_number:^4}│{current_match.home_team:^27}vs{current_match.away_team:^27}│ Date:{current_match.date:^12}│")
+		except IndexError:
+			pass
 
-		print("└────┴──────────────────────────────────────────────────────┴──────────────────┘")
-
-		# Print the options
-		if(self.current_page_number == 0):
-			if(len(self.match_list[self.current_page_number]) > 1):
-				print("(N)ext page, (Q)uit")
-			else:
-				print("(Q)uit")
-
-		elif(self.current_page_number+1 == len(self.match_list[self.current_page_number])):
-			print("(B)ack Page, (Q)uit")
-
-		else:
-			print("(N)ext page, (B)ack Page, (Q)uit")
+		print("└────┴────────────────────────────────────────────────────────┴──────────────────┘")
+		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 
 
 	def prompt_option(self):
