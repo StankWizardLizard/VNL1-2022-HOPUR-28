@@ -54,6 +54,18 @@ class TeamLL():
     
     def get_players(self, team_id):
         return self.get_team(team_id).player_ids 
+    
+    def get_teams_by_club(self, club_id):
+        """Takes a club"""
+    
+    def team_name_exists(self, name, team_ids):
+        """Takes name and a list of team ids, if that name exists on any of the teams,
+        return True, else return False"""
+        for team_id in team_ids:
+            team = self.get_team(team_id)
+            if team.name == name:
+                return True
+        return False
 
     # ----- Writing methods -----#
     def create_team(self, team):

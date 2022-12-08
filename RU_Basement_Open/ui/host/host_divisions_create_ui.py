@@ -1,6 +1,6 @@
 from ui.menu_frame import MenuFrame
 from models.division_mdl import DivisionMdl
-from ui.functions import generate_table, get_input
+from ui.functions import generate_table, get_input, get_date_input
 
 
 class CreateDivisionsUI(MenuFrame):
@@ -28,6 +28,9 @@ class CreateDivisionsUI(MenuFrame):
             host = get_input("Enter name of the host: ")
             phone = get_input("Enter phone number: ", number=True)
             rounds = get_input("Enter ammount of rounds: ", number=True)
+            start_date = get_date_input("Enter division start date: ")
+            days_between_matchdays = get_input(
+                "Enter amount of rest days between match days: ", number=True)
             # User can choose to save or disregard the information he just wrote
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")
@@ -75,7 +78,7 @@ class CreateDivisionsUI(MenuFrame):
                 
                 try:
                     choice = get_input(
-                        "Choose a team to add to division or press q to quit: ")
+                        "Choose a teams to add to division, press 'q' when done: ")
                     if choice.lower() == "q":
                         # User cannot quit unless atleast two teams are selected
                         if team_counter < 2:
@@ -96,8 +99,8 @@ class CreateDivisionsUI(MenuFrame):
                     print(f"{choice} is not a number")
             # Call to logic layer to automatically generate matches
             self.logic_wrapper.master_logic.generate_division_matches(
-                division_id)
-            
+                division_id, start_date, int(days_between_matchdays), int(rounds))
+
             choice = input(
                 "Would you like to create another Division? (y for yes, any for no): ")
             match choice.lower():
