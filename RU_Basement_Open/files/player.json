@@ -1,49 +1,174 @@
 {
     "player_details": [
         {
-            "name": "Joe",
-            "ssn": "123155",
-            "mobile_nr": "1234",
-            "home_nr": "532",
-            "address": "asnfi",
-            "email": "asd@asdf.is",
-            "captain": false,
-            "club_id": "9f0d2c56-74e5-11ed-992d-8cc68119b558",
-            "id": "fb802e56-74e5-11ed-b999-8cc68119b558"
+            "name": "Runar",
+            "ssn": "1305032530",
+            "mobile_nr": "6599505",
+            "home_nr": "1010101",
+            "address": "Salahverfi",
+            "email": "runar@runar.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "535638f6-76f8-11ed-81c1-acde48001122"
         },
         {
-            "name": "Palli",
-            "ssn": "43546",
-            "mobile_nr": "132564",
-            "home_nr": "134545",
-            "address": "asfriv",
-            "email": "asnce@asf.isfa",
-            "captain": false,
-            "club_id": "a410d522-74e5-11ed-b273-8cc68119b558",
-            "id": "081bd296-74e6-11ed-8284-8cc68119b558"
+            "name": "Jón",
+            "ssn": "2301032340",
+            "mobile_nr": "6669505",
+            "home_nr": "6669505",
+            "address": "Fossvogur",
+            "email": "jon@jon.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "67530de8-76f8-11ed-81c1-acde48001122"
         },
         {
-            "name": "Axel",
-            "ssn": "9865",
-            "mobile_nr": "235465",
-            "home_nr": "23435",
-            "address": "nvesv",
-            "email": "safrv@adf.isd",
-            "captain": false,
-            "club_id": "a8a1aa99-74e5-11ed-9d7c-8cc68119b558",
-            "id": "195ffb15-74e6-11ed-8c6c-8cc68119b558"
+            "name": "Vigfus",
+            "ssn": "0101013040",
+            "mobile_nr": "112112112",
+            "home_nr": "112112112",
+            "address": "Laugardalur",
+            "email": "vigfus@vigfus.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "7eecf770-76f8-11ed-81c1-acde48001122"
         },
         {
-            "name": "dfvdg",
-            "ssn": "245697867",
-            "mobile_nr": "4325",
-            "home_nr": "8767",
-            "address": "sdafsf",
-            "email": "ascoije@afdf.is",
-            "captain": false,
-            "club_id": "b1ed92d7-74e5-11ed-a798-8cc68119b558",
-            "id": "25544bee-74e6-11ed-9a42-8cc68119b558"
+            "name": "Halldor",
+            "ssn": "0506032530",
+            "mobile_nr": "6599505",
+            "home_nr": "6599505",
+            "address": "Kopavogur",
+            "email": "halldor@halldor.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "fba8a76e-76f8-11ed-87b9-acde48001122"
+        },
+        {
+            "name": "Gummi",
+            "ssn": "12345678",
+            "mobile_nr": "98765432",
+            "home_nr": "987654",
+            "address": "Akranes",
+            "email": "gummi@gummi.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "065564b4-76fd-11ed-b382-acde48001122"
+        },
+        {
+            "name": "Kris",
+            "ssn": "64567",
+            "mobile_nr": "4567654",
+            "home_nr": "765456",
+            "address": "Kef City",
+            "email": "kris@kris.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "3547d982-76fd-11ed-b382-acde48001122"
+        },
+        {
+            "name": "salah",
+            "ssn": "9919911991",
+            "mobile_nr": "9991199",
+            "home_nr": "9991199",
+            "address": "egypt",
+            "email": "salah@mo.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "3af993e8-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "nunez",
+            "ssn": "34567876",
+            "mobile_nr": "987654",
+            "home_nr": "87654",
+            "address": "liverpool",
+            "email": "darwin@nunez.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "4fe36162-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "Klopp",
+            "ssn": "345457",
+            "mobile_nr": "874745656",
+            "home_nr": "85756763",
+            "address": "Liverpool",
+            "email": "klopp@pool.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "6474b3c4-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "Friðrik",
+            "ssn": "656789",
+            "mobile_nr": "9876546",
+            "home_nr": "765678",
+            "address": "HR",
+            "email": "frikki@hr.is",
+            "club_id": "fc8e615e-7645-11ed-a99f-acde48001122",
+            "id": "75671370-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "arnor",
+            "ssn": "914281928",
+            "mobile_nr": "98765678",
+            "home_nr": "8765678",
+            "address": "Hr",
+            "email": "arnor@hr.is",
+            "club_id": "fc8e615e-7645-11ed-a99f-acde48001122",
+            "id": "806d1b66-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "hildur",
+            "ssn": "876123123",
+            "mobile_nr": "9876789",
+            "home_nr": "98761273",
+            "address": "HR",
+            "email": "hildur@hr.is",
+            "club_id": "fc8e615e-7645-11ed-a99f-acde48001122",
+            "id": "8c6ddd74-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "Fernandes",
+            "ssn": "19263781623",
+            "mobile_nr": "12389127398",
+            "home_nr": "1982737891723",
+            "address": "Portugal",
+            "email": "fernandes@manu.is",
+            "club_id": "5656b8d2-76fd-11ed-b382-acde48001122",
+            "id": "ad18a90a-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "rashford",
+            "ssn": "927348972",
+            "mobile_nr": "9234987234",
+            "home_nr": "27389472",
+            "address": "England",
+            "email": "rashford@manu.is",
+            "club_id": "5656b8d2-76fd-11ed-b382-acde48001122",
+            "id": "bdb3aa44-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "martial",
+            "ssn": "739573934057",
+            "mobile_nr": "8484847",
+            "home_nr": "84848474",
+            "address": "England",
+            "email": "martial@manu.is",
+            "club_id": "5656b8d2-76fd-11ed-b382-acde48001122",
+            "id": "ce19ad66-7707-11ed-a63e-acde48001122"
+        },
+        {
+            "name": "casemiro",
+            "ssn": "9876567",
+            "mobile_nr": "987656",
+            "home_nr": "98765678",
+            "address": "brazil",
+            "email": "casemiro@manu.is",
+            "club_id": "5656b8d2-76fd-11ed-b382-acde48001122",
+            "id": "32a5727e-7708-11ed-ba24-acde48001122"
+        },
+        {
+            "name": "Gylfi",
+            "ssn": "12391237",
+            "mobile_nr": "91827361",
+            "home_nr": "9871623",
+            "address": "HR",
+            "email": "gylfi@hr.is",
+            "club_id": "fc8e615e-7645-11ed-a99f-acde48001122",
+            "id": "731e5802-7708-11ed-90c4-acde48001122"
         }
-        
     ]
 }

@@ -223,3 +223,17 @@ class MasterLL:
                         leaderboard[i] = leaderboard[i+1]
                         leaderboard[i+1] = a
         return leaderboard
+
+    def get_team_names_by_division(self, division_id):
+        """Takes match id and returns the team names that are playing matches"""
+        team_names = []
+        
+        match_ids = self.division_logic.get_match_ids(division_id)
+        team_ids = self.match_logic.get_teams(match_ids)
+        for match in team_ids:
+            a = []
+            for team_id in match:
+                team_name = self.team_logic.get_team(team_id).name
+                a.append(team_name)
+            team_names.append(tuple(a))
+        return team_names
