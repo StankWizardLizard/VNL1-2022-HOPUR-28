@@ -145,7 +145,7 @@ class MasterLL:
         all_matches = self.data_wrapper.get_all_matches()
         matches_in_division = []
         for match in all_matches:
-            if match.division.id == divison.id:
+            if match.division_id == divison.id:
                 matches_in_division.append(match)
         
 
@@ -154,7 +154,7 @@ class MasterLL:
         teams_in_division = []
 
         for team in all_teams:
-            if team.id in divison.team_id:
+            if team.id in divison.team_ids:
                 teams_in_division.append(team)
 
         leaderboard = []
@@ -206,13 +206,13 @@ class MasterLL:
           """
         leaderboard.sort(key=lambda x: x[1], reverse=True)
         for i in range(len(leaderboard)-1):
-            a_wins = leaderboard[i][1],
-            a_leg_wins = leaderboard[i][3]
-            a_name = leaderboard[i][0],
+            a_wins = int(leaderboard[i][1])
+            a_leg_wins = int(leaderboard[i][3])
+            a_name = str(leaderboard[i][0])
             a = leaderboard[i]
-            b_wins = leaderboard[i+1][1],
-            b_leg_wins = leaderboard[i+1][3]
-            b_name = leaderboard[i+1][0]
+            b_wins = int(leaderboard[i+1][1])
+            b_leg_wins = int(leaderboard[i+1][3])
+            b_name = str(leaderboard[i+1][0])
 
             if a_wins == b_wins:
                 if a_leg_wins < b_leg_wins:

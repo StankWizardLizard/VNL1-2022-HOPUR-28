@@ -37,8 +37,8 @@ class LogicWrapper:
     def create_division(self, division):
         return self.division_logic.create_division(division)
 
-    def get_leaderboard(self):
-        return self.master_logic.get_leaderboard()
+    def get_leaderboard(self, division):
+        return self.master_logic.get_leaderboard(division)
 
     def get_division(self, id):
         return self.division_logic.get_division(id)

@@ -5,44 +5,83 @@ class MatchTableUI(MenuFrame):
 	def __init__(self, logic_wrapper, os, match):
 		super().__init__(logic_wrapper, os)
 		self.match = match
-		self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
+		self.points_list = self.match.results
 		
 		self.home_team_list = self.match.home_team_players
 		self.home_team_name = self.match.home_team
 		self.away_team_list = self.match.away_team_players
 		self.away_team_name = self.match.away_team
 
-		self.match_number = "1"
-		self.leage_name = "HR Basement Open"
+		self.match_number = self.match.id
+		division = self.logic_wrapper.get_division(self.match.division_id)
+		self.league_name = division.name
 
 	def display_menu(self):
 		"""Displays match table for a specific match"""
 
-		MATCH_NAME = f"{self.leage_name} Match nr. {self.match_number}"
-		HOME_TEAM = "Home Team"
-		AWAY_TEAM = "Away Team"
-		LEG_1 = "Leg 1"
-		LEG_2 = "Leg 2"
-		GAMES = "Games"
-		HT = 22 #Home and away team row width
-		LEGS = 7 #Legs row width
-		GM = 7 # Games row width
+		MATCH_NAME = f"{self.league_name} Match nr. {self.match_number}: "
+		TEAM_NAMES = f"{self.home_team_name} vs {self.away_team_name}"
+		HOME_TEAM = "Home Team" # Header of "Home Team" column 
+		AWAY_TEAM = "Away Team" # Header of "Away Team" column 
+		SCORE = "Score" # Header of "Score" column 
+		GAME = "Game" # Header of "Games" column 
+		HT = 22 # Width of "Home Team" and "Away Team" column
+		SC = 7 # Width of "Legs" column
+		GM = 7 # Width of "Games" column 
+		ts = HT*2+SC*2+GM+4
 
-		LEG_1_FORMAT = [LEG_1, LEGS]
-		LEG_2_FORMAT = [LEG_2, LEGS]
 		table_format = [
-			[HOME_TEAM, HT], LEG_1_FORMAT,LEG_2_FORMAT, [GAMES, GM], LEG_2_FORMAT, LEG_1_FORMAT, [AWAY_TEAM, HT]
+			[HOME_TEAM, HT], [SCORE, SC], [GAME, GM], [SCORE, SC], [AWAY_TEAM, HT]
 			]
+		
 
-		print(f"{MATCH_NAME}")
+		generate_table([[MATCH_NAME, ts]],[[TEAM_NAMES]])
+
 		table_data = []
 		
+		games = ["501", "501", "501", "501", "301", "C", "501"]
+		players =["1","1","1",["1", "2", "3"],"1","1","1"]
+
 		for i in range(0, 7):
+			try:
+				player_home = players[i]
+			except IndexError:
+				player_home = ""
+			try:
+				player_away = players[i]
+			except IndexError:
+				player_away = ""
+			try:
+				points_home = f"{self.points_list[i][0]}"
+			except IndexError:
+				points_home = ""
+			try:
+				points_away = f"{self.points_list[i][1]}"
+			except IndexError:
+				points_away = ""
+			game = games[i]
 			column = [
-			f"{i}", self.points_list[i][0], self.points_list[i][1], "Game",  
-			self.points_list[i][2], self.points_list[i][3], f"{i}"
+			player_home, points_home, game, points_away, player_away
 			]
 			table_data.append(column)
+		try:
+			points_away = 0
+			points_home = 0
+			for j in range(0,7):
+				if self.points_list[i][0] == "2":
+					points_home += 1
+				elif self.points_list[i][1] == "2":
+					points_away += 1
+			points_away = str(points_away)
+			points_home = str(points_home)
+		except IndexError:
+			points_home = ""
+			points_away = ""
+		game = "Total"
+		column = [
+		self.home_team_name, points_home, game, points_away, self.away_team_name
+		]
+		table_data.append(column)
 		generate_table(table_format, table_data)
 
 		home_team = "Home: " + self.home_team_name
