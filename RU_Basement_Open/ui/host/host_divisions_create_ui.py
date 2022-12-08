@@ -98,7 +98,7 @@ class CreateDivisionsUI(MenuFrame):
                 except ValueError:
                     print(f"{choice} is not a number")
             # Call to logic layer to automatically generate matches
-            self.logic_wrapper.master_logic.generate_division_matches(
+            self.logic_wrapper.generate_division_matches(
                 division_id, start_date, int(days_between_matchdays), int(rounds))
 
             choice = input(
