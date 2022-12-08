@@ -1,6 +1,6 @@
 from ui.menu_frame import MenuFrame
 from models.division_mdl import DivisionMdl
-from ui.functions import get_input, get_date_input
+from ui.functions import generate_table, get_input, get_date_input
 
 
 class CreateDivisionsUI(MenuFrame):
@@ -62,15 +62,20 @@ class CreateDivisionsUI(MenuFrame):
             added_teams = []
             while True:
                 # Print avalable teams
-                print(f"Select which teams to compete in {name}")
-                print("Teams:")  # TODO: gera fallega töflu
+                table_format = [["NR", 4], ["Teams:", 40]]
+                table_data = []
+                table_header = f"Select which teams to compete in {name}"
+                generate_table([[table_header,45]])
                 for i, team in enumerate(teams):
-                    print(i+1, team.name)
-                # Print teams already added
-                print("------added teams------")
+                    table_data.append([i+1, team.name])
+                generate_table(table_format, table_data)
+                # Print teams already added 
+                generate_table([["------added teams------", 45]])
+                table_data = []
                 for i, team in enumerate(added_teams):
-                    print(i+1, team.name)
-
+                    table_data.append([i+1, team.name])
+                generate_table(table_format, table_data)
+                
                 try:
                     choice = get_input(
                         "Choose a teams to add to division, press 'q' when done: ")
@@ -93,7 +98,7 @@ class CreateDivisionsUI(MenuFrame):
                 except ValueError:
                     print(f"{choice} is not a number")
             # Call to logic layer to automatically generate matches
-            self.logic_wrapper.master_logic.generate_division_matches(
+            self.logic_wrapper.generate_division_matches(
                 division_id, start_date, int(days_between_matchdays), int(rounds))
 
             choice = input(

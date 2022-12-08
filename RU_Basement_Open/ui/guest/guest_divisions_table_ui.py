@@ -52,7 +52,7 @@ class DivisionsTableUI(MenuFrame):
         while True:
             self.clear_menu()
             self.display_menu(list_of_divisions, showing_page=showing_page)
-            print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
+            print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page), "or select division by number")
             choice = input(" > ")
             choice = choice.lower()
 

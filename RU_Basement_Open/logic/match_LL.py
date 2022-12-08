@@ -238,7 +238,6 @@ class MatchLL():
             # Add generated fixtures to a match-day
             match_days.append(fixtures)
         # Multiply the match-day list by specified rounds
-        print(match_days)
         match_days = rounds*match_days
     
         match_ids = []
@@ -282,10 +281,13 @@ class MatchLL():
         match.date = new_date
         self._write_matches
 
-    def set_results(self, id, home_team_players, away_team_players, results, quality_points):
+    def set_results(self, id, home_players, away_players, results, qps):
         """Sets a matches results and uptades data layer"""
         self._update_matches()
         match = self._find_match(id)
+        match.home_team_players = home_players
+        match.away_team_players = away_players
         match.results = results
+        match.quality_points = qps
         self._write_matches()
 
