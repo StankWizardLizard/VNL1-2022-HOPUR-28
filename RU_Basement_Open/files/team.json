@@ -1,14 +1,59 @@
 {
     "team_details": [
         {
-            "name": "KR",
-            "captain_id": "25544bee-74e6-11ed-9a42-8cc68119b558",
+            "name": "DoriDartTeam",
+            "captain_id": "7eecf770-76f8-11ed-81c1-acde48001122",
             "player_ids": [
-                "25544bee-74e6-11ed-9a42-8cc68119b558",
-                "081bd296-74e6-11ed-8284-8cc68119b558",
-                "fb802e56-74e5-11ed-b999-8cc68119b558"
+                "7eecf770-76f8-11ed-81c1-acde48001122",
+                "535638f6-76f8-11ed-81c1-acde48001122",
+                "67530de8-76f8-11ed-81c1-acde48001122",
+                "fba8a76e-76f8-11ed-87b9-acde48001122"
             ],
-            "id": 2
+            "id": "93e66c7e-76f8-11ed-81c1-acde48001122"
+        },
+        {
+            "name": "Frontline",
+            "captain_id": "32a5727e-7708-11ed-ba24-acde48001122",
+            "player_ids": [
+                "32a5727e-7708-11ed-ba24-acde48001122",
+                "ad18a90a-7707-11ed-a63e-acde48001122",
+                "bdb3aa44-7707-11ed-a63e-acde48001122",
+                "ce19ad66-7707-11ed-a63e-acde48001122"
+            ],
+            "id": "588fa432-7708-11ed-8680-acde48001122"
+        },
+        {
+            "name": "HRStaff",
+            "captain_id": "731e5802-7708-11ed-90c4-acde48001122",
+            "player_ids": [
+                "731e5802-7708-11ed-90c4-acde48001122",
+                "75671370-7707-11ed-a63e-acde48001122",
+                "806d1b66-7707-11ed-a63e-acde48001122",
+                "8c6ddd74-7707-11ed-a63e-acde48001122"
+            ],
+            "id": "7badd70e-7708-11ed-90c4-acde48001122"
+        },
+        {
+            "name": "GoatDarts",
+            "captain_id": "6474b3c4-7707-11ed-a63e-acde48001122",
+            "player_ids": [
+                "6474b3c4-7707-11ed-a63e-acde48001122",
+                "065564b4-76fd-11ed-b382-acde48001122",
+                "3547d982-76fd-11ed-b382-acde48001122",
+                "3af993e8-7707-11ed-a63e-acde48001122"
+            ],
+            "id": "8828c3cc-7708-11ed-90c4-acde48001122"
+        },
+        {
+            "name": "YNWA",
+            "captain_id": "fba8a76e-76f8-11ed-87b9-acde48001122",
+            "player_ids": [
+                "fba8a76e-76f8-11ed-87b9-acde48001122",
+                "535638f6-76f8-11ed-81c1-acde48001122",
+                "67530de8-76f8-11ed-81c1-acde48001122",
+                "7eecf770-76f8-11ed-81c1-acde48001122"
+            ],
+            "id": "960dc744-7708-11ed-90c4-acde48001122"
         }
     ]
 }
