@@ -1,5 +1,6 @@
 from ui.menu_frame import MenuFrame
 from ui.functions import *
+from ui.host.division_edit_ui import EditDivisionUI
 
 class EditDivisionsUI(MenuFrame):
 	def __init__(self, logic_wrapper, os):
@@ -7,14 +8,6 @@ class EditDivisionsUI(MenuFrame):
 
 
 	def display_menu(self, divisions:list=[], showing_page:int=0):
-		# """Display the the menu screen onto the terminal"""
-		# print("TEMPLATE")
-		# print("┌────┬──────────────────────────────────────┬────────────────────┐")
-		# print("│    │                                      │                    │")
-		# print("├────┼──────────────────────────────────────┼────────────────────┤")
-		# print("│    │                                      │                    │")
-		# print("└────┴──────────────────────────────────────┴────────────────────┘")
-		# print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 		"""Display the menu screen for the  division"""
 		NUMBER = "NR"
 		DIVISION_NAME = "Division Name"
@@ -63,11 +56,12 @@ class EditDivisionsUI(MenuFrame):
 
 				# undocumented inputs get disregarded
 				case _:
-					if choice .isnumeric:
+					if choice.isnumeric():
 						try:
 							if divisions[int(choice) -1]:
-								division = self.logic_wrapper.get_divisions(divisions[int(choice) -1].id)
-								pass # TODO: Finish this function!!!!!
+								division = self.logic_wrapper.get_division(divisions[int(choice) -1].id)
+								divisionui = EditDivisionUI(self.logic_wrapper, self.os, division)
+								divisionui.prompt_option()
 						except IndexError: 
 							input("Invalid Input!")
 					# undocumented inputs get disregarded

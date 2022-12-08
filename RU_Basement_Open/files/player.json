@@ -1,45 +1,64 @@
 {
     "player_details": [
         {
-            "name": "lala",
-            "ssn": 123,
-            "mobile_nr": 123,
-            "home_nr": 123,
-            "address": "home",
-            "email": "a@a.a",
-            "club_id": 2,
-            "id": 1
+            "name": "dori",
+            "ssn": "123",
+            "mobile_nr": "56789",
+            "home_nr": "123",
+            "address": "56789",
+            "email": "d@d.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "bf9aba0e-7645-11ed-8f23-acde48001122"
         },
         {
-            "name": "halli",
-            "ssn": 1234,
-            "mobile_nr": 1234,
-            "home_nr": 1234,
-            "address": "home is where the heart is",
-            "email": "b@b.b",
-            "club_id": 1,
-            "id": 2
+            "name": "palmi",
+            "ssn": "987654",
+            "mobile_nr": "98765",
+            "home_nr": "87654",
+            "address": "drangakor",
+            "email": "h@h.is",
+            "club_id": "faf55c54-7644-11ed-b839-acde48001122",
+            "id": "b13f4572-7647-11ed-955b-acde48001122"
         },
         {
-            "name": "Gunni",
-            "ssn": 12345,
-            "mobile_nr": 12345,
-            "home_nr": 12345,
-            "address": "your moms house",
-            "email": "c@c.c",
-            "club_id": 2,
-            "id": 3
+            "name": "Runar",
+            "ssn": "1305032530",
+            "mobile_nr": "6599505",
+            "home_nr": "1010101",
+            "address": "Salahverfi",
+            "email": "runar@runar.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "535638f6-76f8-11ed-81c1-acde48001122"
         },
         {
-            "name": "Tommi",
-            "ssn": 123456,
-            "mobile_nr": 123456,
-            "home_nr": 123456,
-            "address": "your moms house",
-            "email": "d@d.d",
-            "club_id": 2,
-            "id": 2
+            "name": "Jón",
+            "ssn": "2301032340",
+            "mobile_nr": "6669505",
+            "home_nr": "6669505",
+            "address": "Fossvogur",
+            "email": "jon@jon.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "67530de8-76f8-11ed-81c1-acde48001122"
+        },
+        {
+            "name": "Vigfus",
+            "ssn": "0101013040",
+            "mobile_nr": "112112112",
+            "home_nr": "112112112",
+            "address": "Laugardalur",
+            "email": "vigfus@vigfus.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "7eecf770-76f8-11ed-81c1-acde48001122"
+        },
+        {
+            "name": "Halldor",
+            "ssn": "0506032530",
+            "mobile_nr": "6599505",
+            "home_nr": "6599505",
+            "address": "Kopavogur",
+            "email": "halldor@halldor.is",
+            "club_id": "da835f84-7644-11ed-b839-acde48001122",
+            "id": "fba8a76e-76f8-11ed-87b9-acde48001122"
         }
-        
     ]
 }

@@ -96,12 +96,12 @@ class CreateTeamUI(MenuFrame):
 				teammember_index = i+1
 				if i == 0:
 					i = int(get_input(f"Enter Captains TeamMember #{teammember_index} Index",number=True))
-					player_id = players_of_club[i].id
+					player_id = players_of_club[i-1].id
 					self.logic_wrapper.add_player_to_team(player_id,team_id)
 					self.logic_wrapper.promote_player(player_id,team_id)	
 				else:
 					i = int(get_input(f"Enter TeamMember #{teammember_index} Index",number=True))
-					player_id = players_of_club[i].id
+					player_id = players_of_club[i-1].id
 					self.logic_wrapper.add_player_to_team(player_id,team_id)
 			choice = input("Make another team with the same club or go back?")
 			
