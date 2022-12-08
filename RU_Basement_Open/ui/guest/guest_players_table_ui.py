@@ -69,6 +69,11 @@ class PlayersTableUI(MenuFrame):
         then takes input from the user to choose an option from the list of options printed for the players table'''
         if not self.team:
             list_of_players = self.logic_wrapper.get_all_players()
+        else:
+            list_of_players = []
+            team_players = self.logic_wrapper.get_players(self.team.id)
+            for x in team_players:
+                list_of_players.append(self.logic_wrapper.get_player(x))
         page_numbers = len(list_of_players)//self.NR_OF_ENTRIES
 
         while True:

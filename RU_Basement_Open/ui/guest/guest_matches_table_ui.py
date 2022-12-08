@@ -34,7 +34,11 @@ class MatchesTableUI(MenuFrame):
 			# to which page you are viewing times how many entries per page plus how many entries there are in that page.
 			for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(matches[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
 				match_nr = str(i+1) + ")"
-				teams_playing =f"{matches[i].home_team} vs {matches[i].away_team}"
+				home_team = self.logic_wrapper.get_team(matches[i].home_team)
+				print (home_team)
+				away_team = self.logic_wrapper.get_team(matches[i].away_team)
+				print (away_team)
+				teams_playing =f"{home_team.name} vs {away_team.name}"
 				date = str(matches[i].date)
 				table_data.append([match_nr, teams_playing, date])
 
@@ -46,6 +50,7 @@ class MatchesTableUI(MenuFrame):
 			generate_table(table_format, table_data)
 		except IndexError:
 			# Generates an empty table if matches gives wrong data
+			pass
 			generate_table(table_format, [])
 
 	def prompt_option(self, showing_page:int = 0):

@@ -1,4 +1,5 @@
 from ui.functions import *
+from ui.guest.guest_players_table_ui import PlayersTableUI
 from ui.menu_frame import MenuFrame
 
 class TeamsTableUI(MenuFrame):
@@ -93,9 +94,17 @@ class TeamsTableUI(MenuFrame):
 				case "q":
 					break
 
-				#  undocumented inputs get disregarded
+				# 
 				case _:
-					input("Invalid Input!")
+					if choice.isnumeric():
+						if list_of_all_teams[int(choice)-1]:
+							team = list_of_all_teams[int(choice)-1]
+							team_table_ui = PlayersTableUI(self.logic_wrapper, self.os, team)
+							team_table_ui.prompt_option()
+					
+				#  undocumented inputs get disregarded
+					else:
+						input("Invalid Input!")
 
 
 '''
