@@ -79,9 +79,12 @@ class LogicWrapper:
 
     def get_concluded_matches(self):
         return self.match_logic.get_concluded_matches()
-
+    def get_upcoming_matches_by_div(self,division):
+        return self.match_logic.get_upcoming_matches_by_div(division)
+    def get_concluded_matches_by_div(self, division):
+        return self.match_logic.get_concluded_matches_by_div(division)
     def create_match(self, match):
-        self.match_logic.create_match(match)
+        return self.match_logic.create_match(match)
     
     def generate_matches(self, team_ids, division_id):
         return self.match_logic.gen_matches(team_ids, division_id)

@@ -1,6 +1,7 @@
 from ui.guest.guest_divisions_table_ui import DivisionsTableUI
 from ui.guest.guest_matches_table_ui import MatchesTableUI
 from ui.guest.guest_teams_table_ui import TeamsTableUI
+from ui.guest.guest_division_stats_ui import DivisionStatsUI
 
 from ui.menu_frame import MenuFrame
 
@@ -18,7 +19,7 @@ class GuestMenuUI(MenuFrame):
 		print("│1) Show Teams        │")
 		print("│2) Unplayed Matches  │")
 		print("│3) Match Results     │")
-		print("│4) Division Table    │")
+		print("│4) Division Stats    │")
 		print("│                     │")
 		print("│q) Log out           │")
 		print("└─────────────────────┘")
