@@ -7,8 +7,8 @@ import re
 
 def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[["", ""]]):
     '''
-    Takes in a list lists containing table row header and width of row, and a list of lists
-     containing data for each of those rows, then prints a table from those inputs
+    Takes in a list of table columns and width of column, and a list of lists with data in those colums,
+    then prints a table from those inputs
     '''
     #constants
     EMPTY = ""
@@ -24,13 +24,13 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
     if table_format:
         try:
 
-            #creates lists for lines and header data
+            #creates lists of lines and header data
             lines = [f"{EMPTY:─^{table_format[i][1]}}" for i in range(len(table_format))]
             header_data_list = [f"{table_format[i][0]:^{table_format[i][1]}}" for i in range(len(table_format))]
         except IndexError:
             print("Error table data incorrect")
 
-        #initial strings that will be filled and later printed
+        #initial strings that will be printed
         header_data = "│"
         header_top = "┌"
         between = "├"
@@ -51,27 +51,21 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
         print(between)
 
         #prints table_data or an empty table if table_data is empty
-        try:
-            if table_data:
-                for j in range(len(table_data)):
-                    contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
-                    contents = "│"
-                    for e in range(len(contents_data_list)):
-                        contents = contents + contents_data_list[e] + SEPERATOR_DATA
-                    print(contents)
-                    if j < len(table_data)-1:
-                        print(between)
-            else:
-                contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
+        if table_data:
+            for j in range(len(table_data)):
+                contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
                 contents = "│"
                 for e in range(len(contents_data_list)):
-                    try:
-                        contents = contents + contents_data_list[e] + SEPERATOR_DATA
-                    except IndexError:
-                        contents = contents + SEPERATOR_DATA
+                    contents = contents + contents_data_list[e] + SEPERATOR_DATA
                 print(contents)
-        except IndexError:
-            print("Error table data incorrect")
+                if j < len(table_data)-1:
+                    print(between)
+        else:
+            contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
+            contents = "│"
+            for e in range(len(contents_data_list)):
+                contents = contents + contents_data_list[e] + SEPERATOR_DATA
+            print(contents)
 
         #prints footer
         print(footer)

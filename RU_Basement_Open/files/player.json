@@ -39,6 +39,7 @@
             "email": "ascoije@afdf.is",
             "club_id": "b1ed92d7-74e5-11ed-a798-8cc68119b558",
             "id": "25544bee-74e6-11ed-9a42-8cc68119b558"
+<<<<<<< HEAD
         },
         {
             "name": "n",
@@ -49,6 +50,8 @@
             "email": "a@a.is",
             "club_id": 2,
             "id": "8fbaa41c-7702-11ed-8029-9fdf909ae089"
+=======
+>>>>>>> d124c652bd22e1b59716676a46f3539b78f39fd5
         }
     ]
 }

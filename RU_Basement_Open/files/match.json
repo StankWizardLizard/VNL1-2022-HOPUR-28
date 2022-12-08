@@ -109,6 +109,7 @@
             "quality_points": {},
             "division_id": "f63780bf-762e-11ed-91b0-8cc68119b558",
             "id": "fdad1ba1-762e-11ed-a83c-8cc68119b558"
+<<<<<<< HEAD
         },
         {
             "date": "2022-12-1",
@@ -3890,6 +3891,8 @@
             "quality_points": {},
             "division_id": "baaa9010-7702-11ed-8029-9fdf909ae089",
             "id": "c950ab7c-7702-11ed-8029-9fdf909ae089"
+=======
+>>>>>>> d124c652bd22e1b59716676a46f3539b78f39fd5
         }
     ]
 }
