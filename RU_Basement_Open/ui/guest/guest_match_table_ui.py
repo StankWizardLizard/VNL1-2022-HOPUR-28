@@ -43,8 +43,14 @@ class MatchTableUI(MenuFrame):
 		players =["1","1","1",["1", "2", "3"],"1","1","1"]
 
 		for i in range(0, 7):
-			player_home = players[i]
-			player_away = players[i]
+			try:
+				player_home = players[i]
+			except IndexError:
+				player_home = ""
+			try:
+				player_away = players[i]
+			except IndexError:
+				player_away = ""
 			try:
 				points_home = f"{self.points_list[i][0]}"
 			except IndexError:
