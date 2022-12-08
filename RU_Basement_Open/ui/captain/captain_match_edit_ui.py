@@ -12,7 +12,7 @@ class MatchEditUI(MenuFrame):
         super().__init__(logic_wrapper, os)
         self.match = match
 
-        self.get_match_information()
+        #self.get_match_information()
 
         self.home_team_name = self.logic_wrapper.get_team(self.match.home_team).name
         self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
@@ -200,7 +200,7 @@ class MatchEditUI(MenuFrame):
             self.home_team_players = [player for player in home_team_pick]
 
             # Set match away player list
-            self.away_team_player = [player for player in away_team_pick]
+            self.away_team_players = [player for player in away_team_pick]
 
             # Let user pick the matchup for the second 4 games
             for match_game_number in range(4,8):
@@ -247,6 +247,9 @@ class MatchEditUI(MenuFrame):
         
         print(dir(self.match),end="\n\n")
         print(self.match.results)
+        print(self.match.quality_points)
+        print(self.match.home_team_players)
+        print(self.match.away_team_players)
         input()
 
         pass
@@ -306,7 +309,12 @@ class MatchEditUI(MenuFrame):
 
         # Save match results
         #self.logic_wrapper.set_match_results(self.match.id, results, quality_points)
-        self.logic_wrapper.set_match_results(self.match.id, results)
+
+        home_team = [player.id for player in self.home_team_players]
+        away_team = [player.id for player in self.away_team_players]
+        quality_points = {}
+
+        self.logic_wrapper.set_match_results(self.match.id, home_team, away_team, results, quality_points)
 
 
 
@@ -321,36 +329,38 @@ class MatchEditUI(MenuFrame):
 
     def prompt_option(self):
         """"Prompts Captain to input match data"""
+        try:
+            while True:
+                # Display Menu 
+                self.clear_menu()
+                self.display_menu()
+                self.display_options()
 
-        while True:
+                # Get option choice from user
+                choice = input(" > ")
+                choice = choice.lower()
 
-            # Display Menu 
-            self.clear_menu()
-            self.display_menu()
-            self.display_options()
+                match choice:
+                    case "1":
+                        # Set Matchup of team
+                        self.get_matchup()
 
-            # Get option choice from user
-            choice = input(" > ")
-            choice = choice.lower()
+                    case "2":
+                        # Set points
+                        self.get_points()
+                    
+                    case "3":
+                        # Set Quality Points to players
+                        self.get_quality_points()
 
-            match choice:
-                case "1":
-                    # Set Matchup of team
-                    self.get_matchup()
+                    case "q":
+                        # Save progress and quit
+                        break
 
-                case "2":
-                    # Set points
-                    self.get_points()
-                
-                case "3":
-                    # Set Quality Points to players
-                    self.get_quality_points()
+                    case _:
+                        input("Invalid Input!")
 
-                case "q":
-                    # Save progress and quit
-                    break
+            self.save_match_information()
 
-                case _:
-                    input("Invalid Input!")
-
-        self.save_match_information()
+        except:
+            input("Exiting without saving")
