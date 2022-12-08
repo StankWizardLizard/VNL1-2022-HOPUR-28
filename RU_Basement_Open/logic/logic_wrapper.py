@@ -34,11 +34,14 @@ class LogicWrapper:
     def create_division(self, division):
         return self.division_logic.create_division(division)
 
-    def get_leaderboard(self):
-        return self.master_logic.get_leaderboard()
+    def get_leaderboard(self, division):
+        return self.master_logic.get_leaderboard(division)
 
     def get_division(self, id):
         return self.division_logic.get_division(id)
+
+    def get_all_divisions(self):
+        return self.division_logic.get_all_divisions()
 
     def add_team_to_division(self, team_id, division_id):
         return self.division_logic.add_team(team_id, division_id)
@@ -126,6 +129,9 @@ class LogicWrapper:
 
     def get_team_id_by_name(self, team_name):
         return self.team_logic.get_id_by_name(team_name)
+
+    def get_players(self, team_id):
+        return self.team_logic.get_players(team_id)
 
     # ----- Club methods -----#
     def get_club(self, id):
