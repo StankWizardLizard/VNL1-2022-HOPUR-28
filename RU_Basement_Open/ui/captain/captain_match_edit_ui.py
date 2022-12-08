@@ -12,17 +12,36 @@ class MatchEditUI(MenuFrame):
         super().__init__(logic_wrapper, os)
         self.match = match
 
+        self.get_match_information()
+
         self.home_team_name = self.logic_wrapper.get_team(self.match.home_team).name
         self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
 
-        self.get_match_information()
-
         self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
         self.player_list = [("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("","")]
+        self.player_id_list = [("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("","")]
         self.quality_points = {"":"", "":""}
 
     def display_menu(self):
         """Displays match table for a specific match"""
+
+        # For loop through player id list
+        self.player_list = []
+        for home_player_id, away_player_id in self.player_id_list:
+            # Check if player exists, if so value to his name else to nothing
+            try:
+                home_player_name = self.logic_wrapper.get_player(home_player_id).name
+            except IndexError:
+                home_player_name = ""
+
+            # Check if player exists, if so value to his name else to nothing
+            try:
+                away_player_name = self.logic_wrapper.get_player(away_player_id).name
+            except IndexError:
+                away_player_name = ""
+
+            # Update player_list
+            self.player_list.append((home_player_name, away_player_name))
 
         Table = f"""
 ┌──────────────────────────────────────────┬───────┬───────┬───────┬───────┬───────┬──────────────────────────────────────────┐
@@ -96,16 +115,16 @@ class MatchEditUI(MenuFrame):
 
 
 
-    def display_player_table(self, player_list):
+    def display_player_table(self, player_list, team_name):
         """Displays a table of a given player list"""
 
         print("┌────┬──────────────────────────────────────────┐")
-        print("│ NR │                   Name                   │")
+        print(f"│ NR │{team_name.name:^42}│")
 
         try:
             for current_player_number in range(0, len(player_list)):
                 print("├────┼──────────────────────────────────────────┤")
-                print(f"│{current_player_number+1:^4}│{player_list[current_player_number]:^42}│")
+                print(f"│{current_player_number+1:^4}│{player_list[current_player_number].name:^42}│")
         except IndexError:
             pass
 
@@ -113,7 +132,7 @@ class MatchEditUI(MenuFrame):
 
 
 
-    def pick_players_from_list(self,team_list):
+    def pick_players_from_list(self,team_list, team_name):
         """Given a list of players, let user choose one and return it"""
         # Get Matchup for Home team
         while True:
@@ -121,7 +140,7 @@ class MatchEditUI(MenuFrame):
             # Clear Menu and display match table and team table
             self.clear_menu()
             self.display_menu()
-            self.display_player_table(team_list)
+            self.display_player_table(team_list, team_name)
 
             # Let user choose a player to add
             player_choice = input(" > ")
@@ -133,59 +152,73 @@ class MatchEditUI(MenuFrame):
                 if(player_choice >= 0 and len(team_list)-1 >= player_choice):
                 
                     # Picked player gets saved
-                    player = team_list[player_choice]
-
-                    # remove the player from the list of available players
-                    team_list.remove(team_list[player_choice])
-
-                    break
+                    return team_list[player_choice]
 
                 else:
                     input("Invalid Input!")
             else:
                 input("Invalid Input!")
-        
-        return player
 
 
 
     def get_matchup(self):
         """Get the player matchup from the user and update the table"""
         while True:
-            # TODO MAKE THIS ONE FOR LOOP
+            # Get an instance of home team
+            home_team = self.logic_wrapper.get_team(self.match.home_team)
 
-            # Create copies of Home and Away team list
-            home_team = [x for x in self.match.home_team_players]
-            away_team = [x for x in self.match.away_team_players]
+            # Get all instances of players in home team
+            home_team_players = [self.logic_wrapper.get_player(player) for player in home_team.player_ids] # List of player classes
+            home_team_pick = []
 
-            # Singles Matchup
-            for match_number in range(0,4):
+            # Get an instance of away team
+            away_team = self.logic_wrapper.get_team(self.match.away_team)
 
-                # Pick from Home and save the pick
-                home_player = self.pick_players_from_list(home_team)
-                self.player_list[match_number] = (home_player, "")
+            # Get all instances of players in away team
+            away_team_players = [self.logic_wrapper.get_player(player) for player in away_team.player_ids] # List of player classes
+            away_team_pick = []
 
-                # Pick from Away and save the pick
-                away_player = self.pick_players_from_list(away_team)
-                self.player_list[match_number] = (home_player, away_player)
+            # Let user pick the matchup for the first 4 games
+            for match_game_number in range(0,4):
+                # Pick from Home team, remove from roster pick and add to player list
+                home_player = self.pick_players_from_list(home_team_players, home_team)
+                home_team_players.remove(home_player)
+                home_team_pick.append(home_player)
 
-            # Create copies of Home and Away team list
-            home_team = [x for x in self.match.home_team_players]
-            away_team = [x for x in self.match.away_team_players]
+                # Update board
+                self.player_id_list[match_game_number] = (home_player.id, "")
 
-            # Duos Matchup 
-            for match_number in range(4,8):
+                # Pick from Away team, remove from roster pick and add to player list
+                away_player = self.pick_players_from_list(away_team_players, away_team)
+                away_team_players.remove(away_player)
+                away_team_pick.append(away_player)
 
-                # Pick from Home and save the pick
-                home_player = self.pick_players_from_list(home_team)
-                self.player_list[match_number] = (home_player, "")
+                # Update board
+                self.player_id_list[match_game_number] = (home_player.id, away_player.id)
 
-                # Pick from Away and save the pick
-                away_player = self.pick_players_from_list(away_team)
-                self.player_list[match_number] = (home_player, away_player)
+            # Set match home player list
+            self.home_team_players = [player for player in home_team_pick]
 
-            # Quads Matchup
-            self.player_list[8:12] = self.player_list[0:4]
+            # Set match away player list
+            self.away_team_player = [player for player in away_team_pick]
+
+            # Let user pick the matchup for the second 4 games
+            for match_game_number in range(4,8):
+                # Pick from Home team, remove from roster pick and add to player list
+                home_player = self.pick_players_from_list(home_team_pick, home_team)
+                home_team_pick.remove(home_player)
+
+                # Update board
+                self.player_id_list[match_game_number] = (home_player.id, "")
+
+                # Pick from Away team, remove from roster pick and add to player list
+                away_player = self.pick_players_from_list(away_team_pick, away_team)
+                away_team_pick.remove(away_player)
+
+                # Update board
+                self.player_id_list[match_game_number] = (home_player.id, away_player.id)
+
+            self.player_id_list[8:12] = self.player_id_list[0:4]
 
             self.clear_menu()
             self.display_menu()
@@ -200,6 +233,7 @@ class MatchEditUI(MenuFrame):
 
                 case _:
                     # Dont save info about the match
+                    self.player_id_list = [("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("","")]
                     self.player_list = [("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("","")]
 
 
@@ -209,18 +243,8 @@ class MatchEditUI(MenuFrame):
         # TODO UNFINISHED
 
         # Get results
-        results = self.match.results
+        # results = self.match.results
         
-        # if empty then set variables to default values
-        if(len(results)==0):
-            print("IS EMPTY")
-            self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
-            self.player_list = [("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("",""),("","")]
-        # otherwise just read from match results and format to desired format
-        else:
-            print("ISNT EMPTY")
-
-
         print(dir(self.match),end="\n\n")
         print(self.match.results)
         input()
@@ -235,7 +259,7 @@ class MatchEditUI(MenuFrame):
         results = []
 
         # Section off the Singles Games
-        singles_players = self.player_list[0:4]
+        singles_players = self.player_id_list[0:4]
         singles_results = self.points_list[0:4]
     
         # iterate through both lists and format dicts
@@ -248,7 +272,7 @@ class MatchEditUI(MenuFrame):
             results.append(match)
 
         # Section off the Duo Games
-        duos_players = self.player_list[4:8]
+        duos_players = self.player_id_list[4:8]
         duos_results = self.points_list[4:6]
 
         # Format First Duo Match
@@ -268,7 +292,7 @@ class MatchEditUI(MenuFrame):
         results.append(match)
 
         # Section off Quad game
-        quads_players = self.player_list[8:12]
+        quads_players = self.player_id_list[8:12]
         quads_results = self.points_list[-1]
 
         # Format the Quad game
@@ -298,9 +322,6 @@ class MatchEditUI(MenuFrame):
     def prompt_option(self):
         """"Prompts Captain to input match data"""
 
-        # Get pre-existing match info if it exists
-        self.get_match_information()
-        
         while True:
 
             # Display Menu 
