@@ -1,5 +1,6 @@
 from ui.guest.guest_divisions_table_ui import DivisionsTableUI
 from ui.guest.guest_matches_table_ui import MatchesTableUI
+from ui.guest.guest_players_table_ui import PlayersTableUI
 from ui.guest.guest_teams_table_ui import TeamsTableUI
 
 from ui.menu_frame import MenuFrame
@@ -55,6 +56,10 @@ class GuestMenuUI(MenuFrame):
 				case "4":
 					division_table_ui = DivisionsTableUI(self.logic_wrapper, self.os)
 					division_table_ui.prompt_option()
+
+				case "5":
+					players_table_ui = PlayersTableUI(self.logic_wrapper, self.os)
+					players_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":

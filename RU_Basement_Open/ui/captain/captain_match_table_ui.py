@@ -55,7 +55,6 @@ class CaptainMatchesTableUI(MenuFrame):
 		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 
 
-
 	def prompt_option(self):
 		""""Prompts the captain to select which option to pick, gives error when selected option doesnt exits"""
 
