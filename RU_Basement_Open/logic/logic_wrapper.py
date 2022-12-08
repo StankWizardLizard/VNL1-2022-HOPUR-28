@@ -111,8 +111,8 @@ class LogicWrapper:
     def get_player_total_qps_by_division(self, player_id, division_id):
         return self.match_logic.get_player_total_qps_by_division(player_id, division_id)
 
-    def get_player_highest_shots_by_division(self, player_id, division_id):
-        return self.match_logic.get_player_highest_shots_by_division(player_id, division_id)
+    def get_player_highest_shots_by_division(self, player_id, division_id, last_n_matches=None):
+        return self.match_logic.get_player_highest_shots_by_division(player_id, division_id, last_n_matches)
     # ----- Team methods -----#
 
     def get_all_teams(self):

@@ -81,10 +81,10 @@ class MasterLL:
             if player_id in (match.home_team_players + match.away_team_players):
                 player_matches.append(match)
 
+        # Filter for last n matches
         if last_n_matches is not None:
             if last_n_matches > len(player_matches):
                 raise IndexError(f"{last_n_matches} exeeds matches played by player")
-            # Check only last n matches
             matches = player_matches[-last_n_matches:]
         
         for match in matches:
