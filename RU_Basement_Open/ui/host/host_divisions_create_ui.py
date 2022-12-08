@@ -1,6 +1,6 @@
 from ui.menu_frame import MenuFrame
 from models.division_mdl import DivisionMdl
-from ui.functions import get_input
+from ui.functions import generate_table, get_input
 
 
 class CreateDivisionsUI(MenuFrame):
@@ -59,14 +59,19 @@ class CreateDivisionsUI(MenuFrame):
             added_teams = []
             while True:
                 # Print avalable teams
-                print(f"Select which teams to compete in {name}")
-                print("Teams:")  # TODO: gera fallega töflu
+                table_format = [["NR", 4], ["Teams:", 40]]
+                table_data = []
+                table_header = f"Select which teams to compete in {name}"
+                generate_table([[table_header,45]])
                 for i, team in enumerate(teams):
-                    print(i+1, team.name)
+                    table_data.append([i+1, team.name])
+                generate_table(table_format, table_data)
                 # Print teams already added 
-                print("------added teams------")
+                generate_table([["------added teams------", 45]])
+                table_data = []
                 for i, team in enumerate(added_teams):
-                    print(i+1, team.name)
+                    table_data.append([i+1, team.name])
+                generate_table(table_format, table_data)
                 
                 try:
                     choice = get_input(
@@ -74,7 +79,7 @@ class CreateDivisionsUI(MenuFrame):
                     if choice.lower() == "q":
                         # User cannot quit unless atleast two teams are selected
                         if team_counter < 2:
-                            print("Pleas choose atleast 2 teams")
+                            print("Please choose atleast 2 teams")
                             continue
                         break
                     i = int(choice)-1

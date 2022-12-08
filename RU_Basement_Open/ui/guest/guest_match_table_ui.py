@@ -40,15 +40,14 @@ class MatchTableUI(MenuFrame):
 		table_data = []
 		
 		games = ["501", "501", "501", "501", "301", "C", "501"]
-		players =["1","1","1",["1", "2", "3"],"1","1","1"]
 
 		for i in range(0, len(games)):
 			try:
-				player_home = players[i]
+				player_home = self.points_list[i][2]
 			except IndexError:
 				player_home = ""
 			try:
-				player_away = players[i]
+				player_away = self.points_list[i][3]
 			except IndexError:
 				player_away = ""
 			try:
@@ -86,13 +85,13 @@ class MatchTableUI(MenuFrame):
 
 		home_team = self.home_team_name
 		away_team = self.away_team_name
-		teams_table_format = [[home_team, HT], [away_team, HT]]
+		teams_table_format = [[home_team, HT], ["Quality Points", 15], [away_team, HT], ["Quality Points", 15]]
 		teams_table_data = []
 		for i in range(4):
 			if self.home_team_list and self.away_team_list:
-				column = [self.home_team_list[i], self.away_team_list[i]]
+				column = [self.home_team_list[i], "", self.away_team_list[i], ""]
 			else:
-				column = ["", ""]
+				column = ["", "", "", ""]
 			teams_table_data.append(column)
 		generate_table(teams_table_format, teams_table_data)
 
