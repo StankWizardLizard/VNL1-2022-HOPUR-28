@@ -27,8 +27,8 @@ class LogicWrapper:
     def get_player_leaderboard_by_division(self, division_id, category):
         return self.master_logic.get_player_leaderboard_by_division(division_id, category)
        
-    def get_player_statistics_by_division(self, player_id, division_id):  
-        return self.master_logic.get_player_statistics_by_division(player_id, division_id)
+    def get_player_statistics_by_division(self, player_id, division_id, last_n_matches=None):  
+        return self.master_logic.get_player_statistics_by_division(player_id, division_id, last_n_matches)
 
     def get_team_names_by_division(self, division_id):
         return self.master_logic.get_team_names_by_division(division_id)

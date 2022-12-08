@@ -65,7 +65,7 @@ class MasterLL:
             result_list, key=lambda x: x["result"], reverse=True)
         return result_list
 
-    def get_player_statistics_by_division(self, player_id, division_id):
+    def get_player_statistics_by_division(self, player_id, division_id, last_n_matches):
         """Takes a player and division id, returns a dict containing that players
         name, his winrate in 301, 501, cricket and quad-501 along with his total
         quality points, highest in- and outshot and highest shot overall."""
@@ -75,13 +75,18 @@ class MasterLL:
         "score_cricket" : [0, 0],
         "score_501_quad" : [0, 0]
         }
-        # player_matches = []
+        player_matches = []
         matches = self.match_logic.get_matches_by_division(division_id)
-        # for match in matches:
-        #     if player_id in match.home_platers or playaaasdasf:
-        #         player_matchers.append(mathc)
-                
-        # playerÖmatches = plasdafme[-numer:]
+        for match in matches:
+            if player_id in (match.home_team_players + match.away_team_players):
+                player_matches.append(match)
+
+        if last_n_matches is not None:
+            if last_n_matches > len(player_matches):
+                raise IndexError(f"{last_n_matches} exeeds matches played by player")
+            # Check only last n matches
+            matches = player_matches[-last_n_matches:]
+        
         for match in matches:
             if match.results != []:
                 score = self._count_player_wins_in_match(player_id, match)
@@ -190,6 +195,8 @@ class MasterLL:
         win_round = 0
         loss_round = 0
         for match in matches:
+            if match.results == []:
+                continue
             if team.id == match.home_team:
                 win_legs, loss_legs = self._count_legs(True, match.results)
             elif team.id == match.away_team:

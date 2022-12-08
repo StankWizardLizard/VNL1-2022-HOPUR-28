@@ -120,6 +120,7 @@ class MatchLL():
         quality points scored from all matches in that division"""
         qp_dict = self.get_all_player_qp_strings(player_id)
         qp_ls = qp_dict[division_id]
+        
         total_score = 0
         for qp_str in qp_ls:
             total_score += self._count_qps(qp_str)
