@@ -2,10 +2,6 @@ from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
 
-from ui.functions import get_all_concluded_matches
-from ui.functions import get_all_unplayed_matches
-from ui.functions import get_all_matches
-
 from math import ceil
 
 class CaptainMatchesTableUI(MenuFrame):
@@ -17,15 +13,12 @@ class CaptainMatchesTableUI(MenuFrame):
 		self.match_list = []
 
 
+
 	def get_match_list(self):
 		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
 
-		return get_all_unplayed_matches(self.logic_wrapper)
+		return self.logic_wrapper.get_upcoming_matches()
 
-		if(self.match_finished_status):
-			return get_all_concluded_matches(self.logic_wrapper)
-		else:
-			return get_all_unplayed_matches(self.logic_wrapper)
 
 
 	def format_match_list(self, match_list):
@@ -40,11 +33,12 @@ class CaptainMatchesTableUI(MenuFrame):
 		return formatted_list
 
 
+
 	def display_menu(self):
 		"""Displays the match table window and the options"""
 
 		# Print the menu
-		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Matches")
+		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Unfinished Matches")
 		print("┌────┬────────────────────────────────────────────────────────┬──────────────────┐")
 		print("│ NR │                          Match                         │       Date       │")
 
@@ -59,6 +53,7 @@ class CaptainMatchesTableUI(MenuFrame):
 
 		print("└────┴────────────────────────────────────────────────────────┴──────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
+
 
 
 	def prompt_option(self):
