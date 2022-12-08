@@ -21,13 +21,6 @@ class CreateTeamUI(MenuFrame):
         print("""└────┴─────────────────────────────────┘""")
         print("Select (N)ext, (Q)uit or club")
 
-    def _number_of_team_members(self):
-            print("How many team members (must atleast be 4)?")
-            number_of_team_members = int(input("> "))
-            while number_of_team_members < 4:
-                number_of_team_members = input(
-                    "invalid number of team members. Try again \n >")
-            return number_of_team_members
 
     def _display_player_menu(self, players_list):
         print("""
@@ -57,7 +50,7 @@ class CreateTeamUI(MenuFrame):
             back = False
             
             while True:
-                choice = get_input("> ")
+                choice = get_input(" > ")
                 if choice.lower() == "q":
                     back = True
                     break
@@ -83,7 +76,6 @@ class CreateTeamUI(MenuFrame):
             while True:
                 team_name = get_input("Enter Team Name: ")
                 a = self.logic_wrapper.team_name_exists_on_club(team_name, club_selected.id)
-                print(a)
                 if not a:
                     break
                 print(f"A team with name {team_name} already exists on {club_selected.name}, try again...")
@@ -107,7 +99,7 @@ class CreateTeamUI(MenuFrame):
                         string = f"Choose player {player_counter+1}, press 'q' when done" 
                     
                     print(string)
-                    choice = get_input("> ")
+                    choice = get_input(" > ")
                     if choice.lower() == "q":
                         # User cannot quit unless atleast two teams are selected
                         if player_counter < 4:
@@ -128,7 +120,7 @@ class CreateTeamUI(MenuFrame):
                     print(f"{choice} is not a number") 
             
             print("Make another team with the same club? y for yes and any for no ")
-            choice = input("> ")
+            choice = input(" > ")
             
             match choice.strip().lower():
                 case "y":

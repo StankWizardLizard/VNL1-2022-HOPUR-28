@@ -138,7 +138,10 @@ def get_date_input(display_string: str):
     while True:
         choice = input(display_string).strip()
         try:
-            datetime.strptime(choice, '%Y-%m-%d')
+            start_date = datetime.strptime(choice, '%Y-%m-%d')
+            if start_date < datetime.now():
+                print(f"{start_date} has already passed")
+                continue
             return choice
         except ValueError:
             print("Invalid input, date should be on format YYYY-MM-DD")
