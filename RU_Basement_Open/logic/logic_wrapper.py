@@ -29,6 +29,9 @@ class LogicWrapper:
        
     def get_player_statistics_by_division(self, player_id, division_id):  
         return self.master_logic.get_player_statistics_by_division(player_id, division_id)
+
+    def get_team_names_by_division(self, division_id):
+        return self.master_logic.get_team_names_by_division(division_id)
     
     # ----- Division methods -----#
     def create_division(self, division):
@@ -129,6 +132,9 @@ class LogicWrapper:
 
     def get_team_id_by_name(self, team_name):
         return self.team_logic.get_id_by_name(team_name)
+
+    def get_players(self, team_id):
+        return self.team_logic.get_players(team_id)
 
     # ----- Club methods -----#
     def get_club(self, id):

@@ -57,13 +57,13 @@ class EditDivisionsUI(MenuFrame):
 				# undocumented inputs get disregarded
 				case _:
 					if choice.isnumeric():
-						try:
+						# try:
 							if divisions[int(choice) -1]:
-								division = self.logic_wrapper.get_division(divisions[int(choice) -1].id)
+								division = divisions[int(choice) -1]
 								divisionui = EditDivisionUI(self.logic_wrapper, self.os, division)
 								divisionui.prompt_option()
-						except IndexError: 
-							input("Invalid Input!")
+						# except IndexError:
+						# 	input("Invalid Input!")
 					# undocumented inputs get disregarded
-					else:
-						input("Invalid Input!")
+					# else:
+					# 	input("Invalid Input!")

@@ -7,11 +7,9 @@ class EditDivisionUI(MenuFrame):
         self.division = division
 
 
-    def display_menu(self, matches:list=[], showing_page:int=0):
-        """Display the menu screen for the  division"""
-        print(dir(self.division))
-        print(self.division.matches)
-        input()
+    def display_menu(self, team_names:list=[], showing_page:int=0):
+        """Display the menu screen for the  division
+            Prints Names of Team in match in table  """
         NUMBER = "NR"
         DIVISION_MATCHES_NAME = "Division Matches"
         NR = 4 #Length of number box
@@ -23,10 +21,10 @@ class EditDivisionUI(MenuFrame):
         try:
             #Fills in data for table
             table_data = []
-            for i in range(showing_page*10, showing_page*10+len(matches[showing_page*10:showing_page*10+10])):
-                matches_nr = str(i+1) + ")"
-                matches =f"{matches[i]}"
-                table_data.append([matches_nr, matches])
+            for i in range(showing_page*10, showing_page*10+len(team_names[showing_page*10:showing_page*10+10])):
+                team_names_nr = str(i+1) + ")"
+                team_name =f"{team_names[i][0]} vs {team_names[i][1]}"
+                table_data.append([team_names_nr, team_name])
             #Generates a table with the correct format and data
             generate_table(table_format, table_data)
         except IndexError:
@@ -35,11 +33,11 @@ class EditDivisionUI(MenuFrame):
 
     def prompt_option(self, showing_page = 0, id = 1):
         """Prompts the user to choose an option from a list of options for the match table"""
-        matches = self.logic_wrapper.get_all_matches()
-        pages_number = len(matches)//10
+        team_names = self.logic_wrapper.get_team_names_by_division(self.division.id)
+        pages_number = len(team_names)//10
         while True:
             self.clear_menu()
-            self.display_menu(matches, showing_page=showing_page)
+            self.display_menu(team_names, showing_page=showing_page)
             print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
             choice = input(" > ")
             choice = choice.lower()

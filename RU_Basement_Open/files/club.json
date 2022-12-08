@@ -20,6 +20,13 @@
             "name": "GylfiFC",
             "address": "HR",
             "phone": "123654987"
+        },
+        {
+            "id": "5656b8d2-76fd-11ed-b382-acde48001122",
+            "teams_id": [],
+            "name": "Man UTD",
+            "address": "Akureyri",
+            "phone": "112112112"
         }
     ]
 }

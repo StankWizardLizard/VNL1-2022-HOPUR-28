@@ -80,6 +80,8 @@ class CreateTeamUI(MenuFrame):
 			print(display_menu_options(len(clubs)//10, showing_page=showing_page))
 			select_club_choice = input(">")
 			match select_club_choice:
+				case "q":
+					break
 				case "n":
 					showing_page += 1
 					continue
