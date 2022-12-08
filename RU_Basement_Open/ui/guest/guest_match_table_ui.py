@@ -19,8 +19,6 @@ class MatchTableUI(MenuFrame):
 	def display_menu(self):
 		"""Displays match table for a specific match"""
 
-		MATCH_NAME = f"{self.league_name} Match nr. {self.match_number}: "
-		TEAM_NAMES = f"{self.home_team_name} vs {self.away_team_name}"
 		HOME_TEAM = "Home Team" # Header of "Home Team" column 
 		AWAY_TEAM = "Away Team" # Header of "Away Team" column 
 		SCORE = "Score" # Header of "Score" column 
@@ -28,14 +26,17 @@ class MatchTableUI(MenuFrame):
 		HT = 22 # Width of "Home Team" and "Away Team" column
 		SC = 7 # Width of "Legs" column
 		GM = 7 # Width of "Games" column 
+		
 		ts = HT*2+SC*2+GM+4
+		match_name = f"{self.league_name} Match nr. {self.match_number}: "
+		team_name = f"{self.home_team_name} vs {self.away_team_name}"
 
 		table_format = [
 			[HOME_TEAM, HT], [SCORE, SC], [GAME, GM], [SCORE, SC], [AWAY_TEAM, HT]
 			]
 		
 
-		generate_table([[MATCH_NAME, ts]],[[TEAM_NAMES]])
+		generate_table([[match_name, ts]],[[team_name]])
 
 		table_data = []
 		
