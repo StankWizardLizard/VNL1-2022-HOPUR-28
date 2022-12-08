@@ -77,7 +77,7 @@ class CreateDivisionsUI(MenuFrame):
                     if choice.lower() == "q":
                         # User cannot quit unless atleast two teams are selected
                         if team_counter < 2:
-                            print("Pleas choose atleast 2 teams")
+                            print("Please choose atleast 2 teams")
                             continue
                         break
                     i = int(choice)-1

@@ -31,7 +31,7 @@ class LogicWrapper:
         return self.master_logic.get_player_statistics_by_division(player_id, division_id)
     
     def team_name_exists_on_club(self, name, club_id):
-        return self.master_logic.team_name_exists_on_club(self, name, club_id)
+        return self.master_logic.team_name_exists_on_club(name, club_id)
     
     # ----- Division methods -----#
     def create_division(self, division):

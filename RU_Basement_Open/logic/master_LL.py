@@ -75,8 +75,13 @@ class MasterLL:
         "score_cricket" : [0, 0],
         "score_501_quad" : [0, 0]
         }
-        
+        # player_matches = []
         matches = self.match_logic.get_matches_by_division(division_id)
+        # for match in matches:
+        #     if player_id in match.home_platers or playaaasdasf:
+        #         player_matchers.append(mathc)
+                
+        # playerÖmatches = plasdafme[-numer:]
         for match in matches:
             if match.results != []:
                 score = self._count_player_wins_in_match(player_id, match)
