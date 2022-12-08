@@ -62,18 +62,8 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
         try:
             if table_data:
                 for j in range(len(table_data)):
-                    #If row is normal sized it just prints the row in one line
-                    # if column_size == 1:
-                    #     contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
-                    #     contents = "│"
-                    #     for e in range(len(contents_data_list)):
-                    #         contents = contents + contents_data_list[e] + SEPERATOR_DATA
-                    #     print(contents)
-                    #     if j < len(table_data)-1:
-                    #         print(between)
-                    #if row is larger than one it will print each entry of the larger column in a new line and the other data in the middle of the row
-                    # else:
-                    #Checks if row needs to be larger for more than one entry in a column (if )
+                    # Checks if row needs to be larger for more than one entry in a column (if column data is given as a list of strings instead of a string)
+                    # Sets size of the row (how many lines needed) as the size of the largest list
                     column_size = 1
                     for y in range(len(table_data[j])):
                         if type(table_data[j][y]) is list:
@@ -81,15 +71,15 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
                                 column_size = len(table_data[j][y])
                     middle = column_size // 2
                     for c in range(column_size):
-                        # if c == middle:
                         contents_data_list = [
+                            # If column data is a list that has a c index in that list then it  the c index of that list
                             f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) > c 
+                            # If column data is a list that doesn't have a c index or is a string and c is not the middle line, it prints nothing at the c column line
                             else f"{EMPTY:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) <= c or c != middle  
+                            # If it's a string, and the row length is normal or it's the approxamitely middle line of the row,
                             else f"{table_data[j][i]:^{table_format[i][1]}}" 
                             for i in range(len(table_format))
                         ]
-                        # else:
-                        #     contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) > c else f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
                         contents = "│"
                         for e in range(len(contents_data_list)):
                             contents = contents + contents_data_list[e] + SEPERATOR_DATA
@@ -275,3 +265,17 @@ def get_player(logic_wrapper, id):
     new_date = input("Input new date YYYY-MM-DD: ")
     logic_wrapper.set_date(id, new_date)
     print_matches(logic_wrapper)'''
+
+#If row is normal sized it just prints the row in one line
+                    # if column_size == 1:
+                    #     contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                    #     contents = "│"
+                    #     for e in range(len(contents_data_list)):
+                    #         contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                    #     print(contents)
+                    #     if j < len(table_data)-1:
+                    #         print(between)
+                    #if row is larger than one it will print each entry of the larger column in a new line and the other data in the middle of the row
+                    # else:
+# else:
+                        #     contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) > c else f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
