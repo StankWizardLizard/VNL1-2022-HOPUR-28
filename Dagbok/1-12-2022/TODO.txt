@@ -1,0 +1,25 @@
+
+ ██╗  ██╗ ██████╗ ██████╗ ██╗   ██╗██████╗     ██████╗  █████╗ 
+ ██║  ██║██╔═══██╗██╔══██╗██║   ██║██╔══██╗    ╚════██╗██╔══██╗
+ ███████║██║   ██║██████╔╝██║   ██║██████╔╝     █████╔╝╚█████╔╝
+ ██╔══██║██║   ██║██╔═══╝ ██║   ██║██╔══██╗    ██╔═══╝ ██╔══██╗
+ ██║  ██║╚██████╔╝██║     ╚██████╔╝██║  ██║    ███████╗╚█████╔╝
+ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚════╝ 
+                                                              
+ ##############################################################
+
+ [ ] Tweak'a Logic Layer
+ [ ] Tengja alla classa saman 
+ [ ] Klára UI Layer
+ [ ] Klára functionality
+
+ ##############################################################
+
+ Erum smá fastir með Ui Layerinn og að tengja allt saman, vantar
+ að hafa functionality til að búa til leikmenn og view'a annars
+ er ekki mikið progress í dag :(, reynum að ná functionality til
+ að bua til allskonar á morgun 
+
+ ##############################################################
+
+                  Muna að mæta kl 11:00 á morgun :)
