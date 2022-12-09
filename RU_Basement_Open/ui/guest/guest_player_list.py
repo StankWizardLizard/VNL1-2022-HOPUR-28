@@ -6,7 +6,7 @@ class PlayerList(MenuFrame):
     def __init__(self,logic_wrapper, os, division:DivisionMdl = DivisionMdl("Reykjavik Open")):
             super().__init__(logic_wrapper, os)
             self.division = division
-            self.NR_OF_ENTRIES = 10
+            self.NR_OF_ENTRIES = 1
 
     def display_menu(self, showing_page:int=0, players_in_div:list=[]):
         """Display the menu screen for the  matches"""
@@ -20,6 +20,7 @@ class PlayerList(MenuFrame):
 
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [TEAM_NAME, TN]] 
+
 
         try:
             
@@ -42,6 +43,7 @@ class PlayerList(MenuFrame):
     def prompt_option(self, showing_page:int=0):
         '''Prompts the user to choose an option from a list of options for the division table'''
         division_leaderboard = self.logic_wrapper.get_leaderboard(self.division)
+
         
         players_in_div = []
         all_teams = self.logic_wrapper.get_all_teams()

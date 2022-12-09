@@ -1,0 +1,246 @@
+@startuml local
+
+
+class MainMenuUI #A020F0 {
+    logic_wrapper
+    os
+    display_menu()
+    prompt_login()
+}
+class HostMenuUI #A020F0{
+    logic_wrapper
+    os
+    status 
+    display_menu()
+    prompt_option()
+}
+class GuestMenuUI #A020F0{
+    logic_wrapper
+    os
+    status
+    display_menu()
+    prompt_option()
+}
+class CaptainMenuUI #A020F0{
+    logic_wrapper
+    os
+    status
+    display_menu()
+    prompt_option()
+}
+class TeamsTableUI #A020F0{
+    logic_wrapper
+    os
+    - get_team_display_menu_sizes(list_of_all_teams,showing_page)
+    display_menu(showing_page,list_of_all_teams)
+    prompt_option(showing_page)
+
+}
+class MatchesTableUI #A020F0{
+    logic_wrapper
+    os
+    is_finished
+    NR_OF_ENTRIES
+    division
+    display_menu(showing_page,matches)
+    prompt_option(showing_page)
+}
+class PlayersTableUI #A020F0{
+    logic_wrapper
+    os
+    NR_OF_ENTRIES
+    team 
+    - get_dispay_menu_sizes(list_of_players,showing_page)
+    display_menu(showing_page,list_of_players)
+    prompt_option(showing_page)
+}
+class DivisionsStatsUI  #A020F0{
+    logic_wrapper
+    os
+    NR_OF_ENTRIES
+    division
+    display_menu(list_of_all_divisions,showing_page)
+    prompt_option(showing_page)
+}
+class DivisionTableUI  #A020F0{
+    logic_wrapper
+    os
+    NR_OF_ENTRIES
+    display_menu(division_leaderboard, showing_page)
+    prompt_option(showing_page)
+}
+class MatchTableUI  #A020F0{
+    logic_wrapper
+    os
+    match 
+    points_list
+    home_team_list
+    home_team_name
+    away_team_list
+    away_team_name
+    match_number
+    division
+    league_name
+    display_menu()
+    prompt_option()
+}
+class InShotTable  #A020F0{
+    logic_wrapper
+    os
+    match
+    division
+    NR_OF_ENTRIES
+    display_menu(division_leaderboard,showing_page)
+    prompt_option(showing_page)
+}
+class OutShotTable  #A020F0{
+    logic_wrapper
+    os
+    match
+    division
+    NR_OF_ENTRIES
+    display_menu(division_leaderboard,showing_page)
+    prompt_option(showing_page)
+}
+class QPSTable  #A020F0{
+    logic_wrapper
+    os
+    match
+    division
+    NR_OF_ENTRIES
+    display_menu(division_leaderboard,showing_page)
+    prompt_option(showing_page)
+}
+class PlayerList  #A020F0{
+    logic_wrapper
+    os
+    division
+    NR_OF_ENTRIES
+    display_menu(showing_page)
+    prompt_option(showing_page)
+}
+class EditDivisionUI  #A020F0{
+    logic_wrapper
+    os
+    division
+    display_menu(team_names,showing_page)
+    prompt_option(showing_page,id)
+}
+class CreateClubUI #A020F0{
+    logic_wrapper
+    os
+    display_menu()
+    prompt_option()
+}
+
+class CreateDivisionsUI #A020F0{
+    logic_wrapper
+    os
+    display_menu()
+    prompt_option()
+}
+class EditDivisionsUI #A020F0{
+    logic_wrapper
+    os
+    display_menu()
+    prompt_option()
+}
+class CreatePlayerUI #A020F0{
+    logic_wrapper
+    os
+    display_menu()
+    prompt_option()
+}
+class CreateTeamUI #A020F0{
+    logic_wrapper
+    os
+    display_menu()
+    prompt_option()
+}
+
+
+class DivisionsUI #A020F0{
+    logic_wrapper
+    os
+    display_menu()
+    prompt_option()
+}
+
+class CaptainMatchesTableUI #A020F0{
+    logic_wrapper
+    os
+    match_finished_satus
+    current_page_number
+    page_number 
+    match_list[]
+    get_match_list()
+    format_match_list(match_list)
+    display_menu()
+    prompt_option()
+}
+class MatchEditUI #A020F0{
+    logic_wrapper
+    os
+    match
+    home_team_name
+    away_team_name
+    display_menu()
+    display_options()
+    get_points()
+    get_quality_points()
+    get_matchup()
+    display_player_table(player_list,team_name)
+    pick_players_from_list(team_list, team_name)
+    get_match_information()
+    save_match_information()
+    prompt_option()
+}
+class PlayerStats #A020F0{
+    logic_wrapper
+    os
+    player
+    division
+    NR_OF_ENTRIES
+    display_menu(games_past)
+    prompt_option(showing_page)
+}
+
+
+
+HostMenuUI     ---     MainMenuUI 
+GuestMenuUI    ---     MainMenuUI 
+CaptainMenuUI  ---     MainMenuUI 
+                    
+                    
+TeamsTableUI   ---     HostMenuUI 
+MatchesTableUI ---     HostMenuUI 
+DivisionTableUI ---    HostMenuUI 
+CreatePlayerUI --- HostMenuUI
+CreateTeamUI --- HostMenuUI
+CreateClubUI --- HostMenuUI
+DivisionsUI     ---    HostMenuUI 
+CreateDivisionsUI --- DivisionsUI
+EditDivisionsUI --- DivisionsUI
+EditDivisionUI --- EditDivisionsUI
+                     
+TeamsTableUI    ---   GuestMenuUI 
+MatchesTableUI  ---   GuestMenuUI 
+DivisionTableUI ---   GuestMenuUI 
+PlayersTableUI  ---   GuestMenuUI 
+        
+TeamsTableUI          ---       CaptainMenuUI 
+    PlayersTableUI    --- TeamsTableUI
+MatchesTableUI        ---      CaptainMenuUI
+    MatchTableUI      --- MatchesTableUI
+DivisionTableUI       ---      CaptainMenuUI
+    DivisionsStatsUI --- DivisionTableUI
+    MatchesTableUI --- DivisionsStatsUI
+    PlayerList --- DivisionsStatsUI
+        PlayerStats --- PlayerList
+    QPSTable --- DivisionsStatsUI
+    InShotTable --- DivisionsStatsUI
+    OutShotTable --- DivisionsStatsUI
+CaptainMatchesTableUI ---      CaptainMenuUI  
+    MatchEditUI --- CaptainMatchesTableUI
+        
+@enduml

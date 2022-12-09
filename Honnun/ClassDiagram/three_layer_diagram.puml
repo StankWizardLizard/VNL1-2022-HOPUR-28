@@ -1,124 +1,33 @@
 @startuml
 
-class MainMenuUI  #B4a7e5 {
-    LogicWrapper
-    display_mainmenu()
-    select_login()
-}
-class PostLoginMenuUI #B4a7e5 {
-    LogicWrapper
-    display_hostmenu()
-    select()
-}
-class LeaderboardUI #B4a7e5 {
-    LogicWrapper
-    display()
-    select()
-    get_leaderboard()
-}
-class TeamsUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    edit_teams()
-    create_team()
-    get_team()
-}
-class UnplayedMatches #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    get_unplayed_matches()
-}
-class ResultsUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    get_results()
-}
-class DivisionTableUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    get_division_table()
-}
-class ClubsUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    create_new_club()
-    edit_club()
-    get_clubs()
-}
-class DivisionUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    create_division()
-    add_team_to_division()
-    edit_division()
-    get_divison()
-}
-class MatchesUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-    edit_match()
-    add_match()
-    view_scoreboard()
-    get_matches()
-}
-class LoginMenuUI #B4a7e5{
-    LogicWrapper
-    display()
-    select()
-}
 
-class PlayerUI #B4a7e5 {
-    LogicWrapper
-    display()
-    select()
-    remove_player()
-    add_player()
-    change_captain()
-    get_players()
-    get_player()
-}
 
-class ScoreboardUI #B4a7e5 {
-    LogicWrapper
-    display_scoreboard()
-    add_scoreboard()
-    edit_scoreboard()
-    get_scoreboard()
+class UIClasses #A020F0{
+
+}
+class MainMenuUI #A020F0{
+
+}
+class LogicClasses #EB937F{}
+class DataClasses  #ADD1b2{}
+
+
+class LogicWrapper{
+    all_logic_layer_classes
+    allexposedLLfunctions()
+}
+class DataWrapper{
+    all_storage_layer_classes
+    allexposedIOfunctions()
 }
 
 
-
-
-
-
+UIClasses --MainMenuUI
 MainMenuUI  --  LogicWrapper
-LeaderboardUI -- LogicWrapper
-ScoreboardUI -- LogicWrapper
-DivisionUI -- LogicWrapper
-PostLoginMenuUI --  LogicWrapper
-UnplayedMatches -- LogicWrapper
-TeamsUI -- LogicWrapper
-DivisionTableUI -- LogicWrapper
-ClubsUI --  LogicWrapper
-MatchesUI -- LogicWrapper
-LoginMenuUI -- LogicWrapper
-ResultsUI -- LogicWrapper
-PlayerUI-- LogicWrapper
+LogicWrapper -- LogicClasses
+LogicClasses -- DataWrapper
+DataWrapper -- DataClasses
 
-
-
-PlayerLL -- DataWrapper 
-TeamLL -- DataWrapper 
-ClubLL -- DataWrapper 
-DivisionLL -- DataWrapper 
-MatchLL -- DataWrapper 
 
 /'
 Data layer

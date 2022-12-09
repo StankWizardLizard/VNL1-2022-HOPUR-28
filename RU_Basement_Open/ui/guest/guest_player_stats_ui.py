@@ -28,7 +28,6 @@ class PlayerStats(MenuFrame):
 
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[PLAYER_NAME, PN], [Q_PTS, Q],[HIGH_PTS,Q],[INN_PTS,Q],[OUT_PTS,Q],[S_501,Q],[S_301,Q],[S_CRICKET,Q],[S_QUAD,Q]] 
-
         try:
             
             #Fills in data for table by with a list of lists containing data for every row
