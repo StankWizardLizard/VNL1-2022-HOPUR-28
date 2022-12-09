@@ -1,11 +1,12 @@
 from ui.guest.guest_divisions_table_ui import DivisionsTableUI
 from ui.guest.guest_matches_table_ui import MatchesTableUI
 from ui.guest.guest_teams_table_ui import TeamsTableUI
+from ui.host.host_clubs_create_ui import CreateClubUI
 
 from ui.host.host_divisions_ui import DivisionsUI
-from ui.host.host_players_ui import PlayersUI
-from ui.host.host_clubs_ui import ClubsUI
-from ui.host.host_teams_ui import TeamsUI
+from ui.host.host_players_create_ui import CreatePlayerUI
+from ui.host.host_teams_create_ui import CreateTeamUI
+
 
 from ui.menu_frame import MenuFrame
 
@@ -24,9 +25,9 @@ class HostMenuUI(MenuFrame):
 		print("│2) All Unplayed Matches   │")
 		print("│3) All Match Results      │")
 		print("│4) Divisions Stats        │")
-		print("│5) Edit Players           │")
-		print("│6) Edit Teams             │")
-		print("│7) Edit Clubs             │")
+		print("│5) Create Players         │")
+		print("│6) Create Teams           │")
+		print("│7) Create Clubs           │")
 		print("│8) Edit Divisions         │")
 		print("│                          │")
 		print("│q) Log out                │")
@@ -66,18 +67,18 @@ class HostMenuUI(MenuFrame):
 
 				# if user wants to create / edit Players
 				case "5":
-					players_ui = PlayersUI(self.logic_wrapper, self.os)
-					players_ui.prompt_option()
+					create_club_ui = CreatePlayerUI(self.logic_wrapper, self.os)
+					create_club_ui.prompt_option()
 
 				# if user wants to create / edit Teams
 				case "6":
-					teams_ui = TeamsUI(self.logic_wrapper, self.os)
-					teams_ui.prompt_option()
+					create_team_ui = CreateTeamUI(self.logic_wrapper, self.os)
+					create_team_ui.prompt_option()
 						
 				# if user wants to create / edit Clubs
 				case "7":
-					clubs_ui = ClubsUI(self.logic_wrapper, self.os)
-					clubs_ui.prompt_option()
+					create_club_ui = CreateClubUI(self.logic_wrapper, self.os)
+					create_club_ui.prompt_option()
 						
 				# if user wants to create / edit Divisions
 				case "8":
