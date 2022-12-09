@@ -127,11 +127,11 @@ class MatchEditUI(MenuFrame):
                             case _:
                                 input("Invalid Input")
 
-                self.clear_menu()
-                self.display_menu()
-                            
-                choice = input("would you like to save the table? (y for yes and any for no): ")
-                choice = choice.strip().lower()
+            self.clear_menu()
+            self.display_menu()
+                        
+            choice = input("would you like to save the table? (y for yes and any for no): ")
+            choice = choice.strip().lower()
 
                 match choice:
                     case "y":
@@ -318,7 +318,7 @@ class MatchEditUI(MenuFrame):
             self.display_menu()
 
             choice = input("would you like to save the table? (y for yes and any for no): ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 case "y":
@@ -513,7 +513,7 @@ class MatchEditUI(MenuFrame):
 
                 # Get option choice from user
                 choice = input(" > ")
-                choice = choice.lower()
+                choice = choice.strip().lower()
 
                 match choice:
                     case "1":
@@ -536,6 +536,7 @@ class MatchEditUI(MenuFrame):
                         input("Invalid Input!")
 
 
+            self.save_match_information()
             self.save_match_information()
 
         except:

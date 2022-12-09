@@ -48,7 +48,7 @@ class CreateDivisionsUI(MenuFrame):
             # User can choose to save or disregard the information he just wrote
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")
-            match choice.lower():
+            match choice.strip().lower():
                 # if user wants to see the next 10 items
                 case "y":
                     # Save info
@@ -126,7 +126,7 @@ class CreateDivisionsUI(MenuFrame):
 
             choice = input(
                 "Would you like to create another Division? (y for yes, any for no): ")
-            match choice.lower():
+            match choice.strip().lower():
                 # if user wants to add another club
                 case "y":
                     pass
