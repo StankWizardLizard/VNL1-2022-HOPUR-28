@@ -407,7 +407,7 @@ class MatchEditUI(MenuFrame):
 
             # Iterate through results and format data properly
             for game in self.match.results:
-                print(game,end="\n\n")
+                #print(game,end="\n\n")
 
                 # Format Players
                 for home_player, away_player in zip(game["home_plr"],game["away_plr"]):
@@ -512,10 +512,11 @@ class MatchEditUI(MenuFrame):
                 self.display_options()
 
                 # Get option choice from user
-                choice = input(" > ")
-                choice = choice.strip().lower()
-
-                match choice:
+                match_choice = input(" > ")
+                match_choice = match_choice.lower()
+                match_choice = match_choice.strip()
+        
+                match match_choice:
                     case "1":
                         # Set Matchup of team
                         self.get_matchup()
@@ -528,15 +529,13 @@ class MatchEditUI(MenuFrame):
                         # Set Quality Points to players
                         self.get_quality_points()
 
-                    case "q":
-                        # Save progress and quit
+                    case 'q':
                         break
 
                     case _:
                         input("Invalid Input!")
 
 
-            self.save_match_information()
             self.save_match_information()
 
         except:

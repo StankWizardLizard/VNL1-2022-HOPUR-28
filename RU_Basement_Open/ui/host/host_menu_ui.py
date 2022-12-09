@@ -8,6 +8,8 @@ from ui.host.host_players_create_ui import CreatePlayerUI
 from ui.host.host_teams_create_ui import CreateTeamUI
 
 
+from ui.captain.captain_match_table_ui import CaptainMatchesTableUI
+
 from ui.menu_frame import MenuFrame
 
 class HostMenuUI(MenuFrame):
@@ -29,6 +31,7 @@ class HostMenuUI(MenuFrame):
 		print("│6) Create Teams           │")
 		print("│7) Create Clubs           │")
 		print("│8) Edit Divisions         │")
+		print("│9) Edit Matches           │")
 		print("│                          │")
 		print("│q) Log out                │")
 		print("└──────────────────────────┘")
@@ -84,6 +87,10 @@ class HostMenuUI(MenuFrame):
 				case "8":
 					divisions_ui = DivisionsUI(self.logic_wrapper, self.os)
 					divisions_ui.prompt_option()
+
+				case "9":
+					match_table_ui = CaptainMatchesTableUI(self.logic_wrapper, self.os, True)
+					match_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":

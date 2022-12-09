@@ -37,10 +37,10 @@ class ClubIO  #ADD1b2 {
     write_clubs_to_file()
 }
 
-DataWrapper *-- MatchIO
-DataWrapper *-- PlayerIO
-DataWrapper *-- DivisionIO
-DataWrapper *-- TeamIO
-DataWrapper *-- ClubIO
+DataWrapper -- MatchIO
+DataWrapper -- PlayerIO
+DataWrapper -- DivisionIO
+DataWrapper -- TeamIO
+DataWrapper -- ClubIO
 
 @enduml

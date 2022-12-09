@@ -16,9 +16,11 @@ class CaptainMatchesTableUI(MenuFrame):
 
 	def get_match_list(self):
 		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
-
-		return self.logic_wrapper.get_all_matches() # Remember to change this for final and only for host
-		return self.logic_wrapper.get_upcoming_matches()
+		
+		if(self.match_finished_status == True):
+			return self.logic_wrapper.get_concluded_matches() # Remember to change this for final and only for host
+		else:
+			return self.logic_wrapper.get_upcoming_matches()
 
 
 
@@ -56,7 +58,7 @@ class CaptainMatchesTableUI(MenuFrame):
 				print("├────┼──────────────────────────────────────────────────────────┼──────────────────┼───────────────────────────┤")
 				print(f"│{current_match_number:^4}│{home_team:^27} vs {away_team:^27}│ Date:{current_match.date:^12}│{division:^27}│")
 
-		except IndexError:
+		except IndexError as e:
 			pass
 
 		print("└────┴──────────────────────────────────────────────────────────┴──────────────────┴───────────────────────────┘")
@@ -88,7 +90,7 @@ class CaptainMatchesTableUI(MenuFrame):
 				# if user wants to see the last 10 items
 				case "b":
 					if(self.current_page_number == 0):
-						input("Invalid Input")		#input()
+						input("Invalid Input")
 
 					else:
 						self.current_page_number -= 1
@@ -101,7 +103,7 @@ class CaptainMatchesTableUI(MenuFrame):
 				case _:
 					# check if choice is a decimal
 					try:
-						if(choice.isdecimal()):
+						if(choice.isnumeric()):
 							# check if item exists in current page of lists						
 							if(len(self.match_list[self.current_page_number]) > (int(choice)-1)):
 								# Check out the match
@@ -112,8 +114,12 @@ class CaptainMatchesTableUI(MenuFrame):
 							else:
 								# not in options
 								input("Invalid Input!")
+								
 					except IndexError:
 						print("Invalid id, try again...")
-					else:
+
+					#else:
+					#	print(choice)
 						# not in options
-						input("Invalid Input!")
+					#	print("ERR4")
+					#	input("Invalid Input!")
