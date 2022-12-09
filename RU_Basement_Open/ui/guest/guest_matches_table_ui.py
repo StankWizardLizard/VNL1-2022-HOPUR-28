@@ -27,30 +27,30 @@ class MatchesTableUI(MenuFrame):
 
 		# Format of table with a list of lists containing strings for each column ex. [[column name, column width], [column name, column width]]
 		table_format = [[NUMBER, NR], [MATCH_NAME, LM], [DATE, LD]]
-		# try:
+		try:
 
-		# Fills in the list data for table with lists containing data for every row (make sure every row has data for all columns)
-		table_data = []
-		# Range starts from which page you are viewing times how many entries per page,
-		# to which page you are viewing times how many entries per page plus how many entries there are in that page.
-		for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(matches[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
-			match_nr = str(i+1) + ")"
-			home_team = self.logic_wrapper.get_team(matches[i].home_team)
-			away_team = self.logic_wrapper.get_team(matches[i].away_team)
-			teams_playing =f"{home_team.name} vs {away_team.name}"
-			date = str(matches[i].date)
-			table_data.append([match_nr, teams_playing, date])
+			# Fills in the list data for table with lists containing data for every row (make sure every row has data for all columns)
+			table_data = []
+			# Range starts from which page you are viewing times how many entries per page,
+			# to which page you are viewing times how many entries per page plus how many entries there are in that page.
+			for i in range(showing_page*self.NR_OF_ENTRIES, showing_page*self.NR_OF_ENTRIES+len(matches[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])):
+				match_nr = str(i+1) + ")"
+				home_team = self.logic_wrapper.get_team(matches[i].home_team)
+				away_team = self.logic_wrapper.get_team(matches[i].away_team)
+				teams_playing =f"{home_team.name} vs {away_team.name}"
+				date = str(matches[i].date)
+				table_data.append([match_nr, teams_playing, date])
 
-		# Generates a table with the correct format and data
-		# example:
-		# table_format = [[column1 name, column1 width], [column2 name, column2 width]]
-		# table_data = [["column1 info", "column2 info"], ["column1 info", "column2 info"]...]
-		# generate_table(table_format, table_data)
-		generate_table(table_format, table_data)
-		# except IndexError:
-		# 	# Generates an empty table if matches gives wrong data
-		# 	pass
-		# 	generate_table(table_format, [])
+			# Generates a table with the correct format and data
+			# example:
+			# table_format = [[column1 name, column1 width], [column2 name, column2 width]]
+			# table_data = [["column1 info", "column2 info"], ["column1 info", "column2 info"]...]
+			# generate_table(table_format, table_data)
+			generate_table(table_format, table_data)
+		except IndexError:
+			# Generates an empty table if matches gives wrong data
+			pass
+			generate_table(table_format, [])
 
 	def prompt_option(self, showing_page:int = 0):
 		'''Checks if user wants matches that are finished or unplayed, 
@@ -63,7 +63,6 @@ class MatchesTableUI(MenuFrame):
 		page_numbers = len(matches) // self.NR_OF_ENTRIES
 		while True:
 			self.clear_menu()
-			print(matches)
 			self.display_menu(showing_page=showing_page, matches=matches)
 			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers),"or select match by number")
 			choice = input(" > ")
@@ -95,39 +94,11 @@ class MatchesTableUI(MenuFrame):
 								match = matches[int(choice)-1]
 								match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
 								match_table_ui.prompt_option()
-					except IndexError:
-						print("Invalid id, try again...")
-      
-				#  undocumented inputs get disregarded
+					#  undocumented inputs get disregarded
 						else:
 							input("Invalid Input!")
 					except IndexError:
-						input("Invalid Input!")
+						print("Invalid id, try again...")
+      
+					
 
-'''
-print("Match Results")
-print("┌────┬──────────────────────────────────────┬────────────────────┐")
-print("│ NR │ Match Name                           │ Date               │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│100)│ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│99) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│98) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│97) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│96) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│95) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│94) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│93) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│92) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│91) │ HR Basement Match nr 1               │ Date:              │")
-print("└────┴──────────────────────────────────────┴────────────────────┘")
-print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
-'''
