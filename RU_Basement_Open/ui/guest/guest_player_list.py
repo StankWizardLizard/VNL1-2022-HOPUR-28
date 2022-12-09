@@ -6,7 +6,7 @@ class PlayerList(MenuFrame):
     def __init__(self,logic_wrapper, os, division:DivisionMdl = DivisionMdl("Reykjavik Open")):
             super().__init__(logic_wrapper, os)
             self.division = division
-            self.NR_OF_ENTRIES = 1
+            self.NR_OF_ENTRIES = 10
 
     def display_menu(self, showing_page:int=0, players_in_div:list=[]):
         """Display the menu screen for the  matches"""
@@ -36,7 +36,7 @@ class PlayerList(MenuFrame):
 
             #Generates a table with the correct format and data
             generate_table(table_format, table_data)
-            return players_in_div
+        
         except IndexError:
             generate_table(table_format, [])
 
