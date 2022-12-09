@@ -16,15 +16,15 @@ class CaptainMenuUI(MenuFrame):
 		"""Displays the menu for the captain"""
 		
 		print(f"Logged in as {self.status}")
-		print("┌─────────────────────┐")
-		print("│1) Show Teams        │")
-		print("│2) Unplayed Matches  │")
-		print("│3) Match Results     │")
-		print("│4) Divisions Table   │")
-		print("│5) Edit Matches      │")
-		print("│                     │")
-		print("│q) Log out           │")
-		print("└─────────────────────┘")
+		print("┌─────────────────────────┐")
+		print("│1) Show Teams            │")
+		print("│2) All Unplayed Matches  │")
+		print("│3) All Match Results     │")
+		print("│4) Divisions Table       │")
+		print("│5) Edit Matches          │")
+		print("│                         │")
+		print("│q) Log out               │")
+		print("└─────────────────────────┘")
 
 
 	def prompt_option(self):
@@ -36,8 +36,7 @@ class CaptainMenuUI(MenuFrame):
 			self.display_menu()
 	
 			choice = input(" > ")
-			choice = choice.lower()
-
+			choice = choice.strip().lower()
 			match choice:
 				# if user wants to show teams
 				case "1":
@@ -61,7 +60,7 @@ class CaptainMenuUI(MenuFrame):
 
 				# if the user wants view table of matches to edit
 				case "5":
-					matches_table_ui = CaptainMatchesTableUI(self.logic_wrapper, self.os)
+					matches_table_ui = CaptainMatchesTableUI(self.logic_wrapper, self.os, False)
 					matches_table_ui.prompt_option()
 
 				# if user wants to quit session

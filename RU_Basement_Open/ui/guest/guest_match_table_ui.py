@@ -12,6 +12,7 @@ class MatchTableUI(MenuFrame):
 		self.away_team_list = self.match.away_team_players
 		self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
 
+		self.quality_points = self.match.quality_points
 		self.match_number = self.match.id
 		division = self.logic_wrapper.get_division(self.match.division_id)
 		self.league_name = division.name
@@ -43,33 +44,49 @@ class MatchTableUI(MenuFrame):
 
 		for i in range(0, len(games)):
 			try:
-				player_home = self.points_list[i][2]
+				if len(self.points_list[i]['home_plr']) == 1:
+					player_home = self.logic_wrapper.get_player(self.points_list[i]['home_plr'][0])
+					player_home_name = player_home.name
+				else:
+					player_home_name = []
+					for j in range(len(self.points_list[i]['home_plr'])):
+						player_home_temp = self.logic_wrapper.get_player(self.points_list[i]['home_plr'][j])
+						player_home = player_home_temp.name
+						player_home_name.append(player_home)
 			except IndexError:
-				player_home = ""
+				player_home_name = ""
 			try:
-				player_away = self.points_list[i][3]
+				if len(self.points_list[i]['away_plr']) == 1:
+					player_away = self.logic_wrapper.get_player(self.points_list[i]['away_plr'][0])
+					player_away_name = player_away.name
+				else:
+					player_away_name = []
+					for j in range(len(self.points_list[i]['away_plr'])):
+						player_away_temp = self.logic_wrapper.get_player(self.points_list[i]['away_plr'][j])
+						player_away = player_away_temp.name
+						player_away_name.append(player_away)
 			except IndexError:
-				player_away = ""
+				player_away_name = ""
 			try:
-				points_home = f"{self.points_list[i][0]}"
+				points_home = f"{self.points_list[i]['result'][0]}"
 			except IndexError:
 				points_home = ""
 			try:
-				points_away = f"{self.points_list[i][1]}"
+				points_away = f"{self.points_list[i]['result'][1]}"
 			except IndexError:
 				points_away = ""
 			game = games[i]
 			column = [
-			player_home, points_home, game, points_away, player_away
+			player_home_name, points_home, game, points_away, player_away_name
 			]
 			table_data.append(column)
 		try:
 			points_away = 0
 			points_home = 0
 			for j in range(0,7):
-				if self.points_list[i][0] == "2":
+				if self.points_list[i]['result'][0] == 2:
 					points_home += 1
-				elif self.points_list[i][1] == "2":
+				elif self.points_list[i]['result'][1] == 2:
 					points_away += 1
 			points_away = str(points_away)
 			points_home = str(points_home)
@@ -85,11 +102,23 @@ class MatchTableUI(MenuFrame):
 
 		home_team = self.home_team_name
 		away_team = self.away_team_name
-		teams_table_format = [[home_team, HT], ["Quality Points", 15], [away_team, HT], ["Quality Points", 15]]
+		teams_table_format = [[home_team, HT], ["Quality Points", 16], [away_team, HT], ["Quality Points", 16]]
 		teams_table_data = []
 		for i in range(4):
 			if self.home_team_list and self.away_team_list:
-				column = [self.home_team_list[i], "", self.away_team_list[i], ""]
+				home_team_player = self.logic_wrapper.get_player(self.home_team_list[i])
+				home_team_player_name = home_team_player.name
+				away_team_player = self.logic_wrapper.get_player(self.away_team_list[i])
+				away_team_player_name = away_team_player.name
+				try:
+					home_team_player_qp = self.quality_points[self.home_team_list[i]]
+				except KeyError:
+					home_team_player_qp = ""
+				try:
+					away_team_player_qp = self.quality_points[self.away_team_list[i]]
+				except KeyError:
+					away_team_player_qp = ""
+				column = [home_team_player_name, home_team_player_qp, away_team_player_name, away_team_player_qp]
 			else:
 				column = ["", "", "", ""]
 			teams_table_data.append(column)
@@ -106,7 +135,7 @@ class MatchTableUI(MenuFrame):
 			print(display_menu_options(how_many_pages=0, showing_page=0))
 
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				case "q":
@@ -114,33 +143,3 @@ class MatchTableUI(MenuFrame):
 
 				case _:
 					input("Invalid Input!")
-
-'''print(f"┌─────────────────────┬───────┬───────┬───────┬───────┬───────┬─────────────────────┐")
-print(f"│      Home Team      │ Leg 1 │ Leg 2 │ Games │ Leg 2 │ Leg 1 │      Away Team      │")
-print(f"├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-print(f"│    Home Player 1    │{self.points_list[0][0]:^7}│{self.points_list[0][1]:^7}│  501  │{self.points_list[0][2]:^7}│{self.points_list[0][3]:^7}│    Away Player 1    │")
-print(f"├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-print(f"│    Home Player 2    │{self.points_list[1][0]:^7}│{self.points_list[1][1]:^7}│  501  │{self.points_list[1][2]:^7}│{self.points_list[1][3]:^7}│    Away Player 2    │")
-print(f"├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-print(f"│    Home Player 3    │{self.points_list[2][0]:^7}│{self.points_list[2][1]:^7}│  501  │{self.points_list[2][2]:^7}│{self.points_list[2][3]:^7}│    Away Player 3    │")
-print(f"├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-print(f"│    Home Player 4    │{self.points_list[3][0]:^7}│{self.points_list[3][1]:^7}│  501  │{self.points_list[3][2]:^7}│{self.points_list[3][3]:^7}│    Away Player 4    │")
-print(f"╞═════════════════════╪═══════╪═══════╪═══════╪═══════╪═══════╪═════════════════════╡")
-print(f"│    Home Player 1    │       │       │       │       │       │    Away Player 3    │")
-print(f"├─────────────────────┤{self.points_list[4][0]:^7}│{self.points_list[4][1]:^7}│  301  │{self.points_list[4][2]:^7}│{self.points_list[4][3]:^7}├─────────────────────┤")
-print(f"│    Home Player 2    │       │       │       │       │       │    Away Player 4    │")
-print(f"├─────────────────────┼───────┼───────┼───────┼───────┼───────┼─────────────────────┤")
-print(f"│    Home Player 3    │       │       │       │       │       │    Away Player 1    │")
-print(f"├─────────────────────┤{self.points_list[5][0]:^7}│{self.points_list[5][1]:^7}│   C   │{self.points_list[5][2]:^7}│{self.points_list[5][3]:^7}├─────────────────────┤")
-print(f"│    Home Player 4    │       │       │       │       │       │    Away Player 2    │")
-print(f"╞═════════════════════╪═══════╪═══════╪═══════╪═══════╪═══════╪═════════════════════╡")
-print(f"│    Home Player 1    │       │       │       │       │       │    Away Player 1    │")
-print(f"├─────────────────────┤       │       │       │       │       ├─────────────────────┤")
-print(f"│    Home Player 2    │       │       │       │       │       │    Away Player 2    │")
-print(f"├─────────────────────┤{self.points_list[6][0]:^7}│{self.points_list[6][1]:^7}│  501  │{self.points_list[6][2]:^7}│{self.points_list[6][3]:^7}├─────────────────────┤")
-print(f"│    Home Player 3    │       │       │       │       │       │    Away Player 3    │")
-print(f"├─────────────────────┤       │       │       │       │       ├─────────────────────┤")
-print(f"│    Home Player 4    │       │       │       │       │       │    Away Player 4    │")
-print(f"├─────────────────────┴───────┴───────┼───────┼───────┴───────┴─────────────────────┤")
-print(f"│                                     │ Score │                                     │")
-print(f"└─────────────────────────────────────┴───────┴─────────────────────────────────────┘")'''

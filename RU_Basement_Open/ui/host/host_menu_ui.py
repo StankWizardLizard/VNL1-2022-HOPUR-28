@@ -7,6 +7,8 @@ from ui.host.host_players_ui import PlayersUI
 from ui.host.host_clubs_ui import ClubsUI
 from ui.host.host_teams_ui import TeamsUI
 
+from ui.captain.captain_match_table_ui import CaptainMatchesTableUI
+
 from ui.menu_frame import MenuFrame
 
 class HostMenuUI(MenuFrame):
@@ -19,18 +21,19 @@ class HostMenuUI(MenuFrame):
 		"""Displays the menu for the host"""
 		
 		print(f"Logged in as {self.status}")
-		print("┌──────────────────────┐")
-		print("│1) Show Teams         │")
-		print("│2) Unplayed Matches   │")
-		print("│3) Match Results      │")
-		print("│4) Divisions Table    │")
-		print("│5) Players            │")
-		print("│6) Teams              │")
-		print("│7) Clubs              │")
-		print("│8) Divisions          │")
-		print("│                      │")
-		print("│q) Log out            │")
-		print("└──────────────────────┘")
+		print("┌──────────────────────────┐")
+		print("│1) Show Teams             │")
+		print("│2) All Unplayed Matches   │")
+		print("│3) All Match Results      │")
+		print("│4) Divisions Table        │")
+		print("│5) Edit Players           │")
+		print("│6) Edit Teams             │")
+		print("│7) Edit Clubs             │")
+		print("│8) Edit Divisions         │")
+		print("│9) Edit Matches           │")
+		print("│                          │")
+		print("│q) Log out                │")
+		print("└──────────────────────────┘")
 
 
 	def prompt_option(self):
@@ -41,7 +44,7 @@ class HostMenuUI(MenuFrame):
 			self.clear_menu()
 			self.display_menu()
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				# if user wants to show teams
@@ -83,6 +86,10 @@ class HostMenuUI(MenuFrame):
 				case "8":
 					divisions_ui = DivisionsUI(self.logic_wrapper, self.os)
 					divisions_ui.prompt_option()
+
+				case "9":
+					match_table_ui = CaptainMatchesTableUI(self.logic_wrapper, self.os, True)
+					match_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":

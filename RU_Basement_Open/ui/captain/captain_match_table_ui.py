@@ -16,9 +16,11 @@ class CaptainMatchesTableUI(MenuFrame):
 
 	def get_match_list(self):
 		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
-
-		return self.logic_wrapper.get_all_matches() # Remember to change this for final and only for host
-		return self.logic_wrapper.get_upcoming_matches()
+		
+		if(self.match_finished_status == True):
+			return self.logic_wrapper.get_concluded_matches() # Remember to change this for final and only for host
+		else:
+			return self.logic_wrapper.get_upcoming_matches()
 
 
 
@@ -40,8 +42,8 @@ class CaptainMatchesTableUI(MenuFrame):
 
 		# Print the menu
 		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Unfinished Matches")
-		print("┌────┬──────────────────────────────────────────────────────────┬──────────────────┐")
-		print("│ NR │                           Match                          │       Date       │")
+		print("┌────┬──────────────────────────────────────────────────────────┬──────────────────┬───────────────────────────┐")
+		print("│ NR │                           Match                          │       Date       │          Division         │")
 
 		try:
 			for i in range(0,len(self.match_list[self.current_page_number])):
@@ -51,13 +53,15 @@ class CaptainMatchesTableUI(MenuFrame):
 				home_team = self.logic_wrapper.get_team(current_match.home_team).name
 				away_team = self.logic_wrapper.get_team(current_match.away_team).name
 
-				print("├────┼──────────────────────────────────────────────────────────┼──────────────────┤")
-				print(f"│{current_match_number:^4}│{home_team:^27} vs {away_team:^27}│ Date:{current_match.date:^12}│")
+				division = self.logic_wrapper.get_division(current_match.division_id).name
 
-		except IndexError:
+				print("├────┼──────────────────────────────────────────────────────────┼──────────────────┼───────────────────────────┤")
+				print(f"│{current_match_number:^4}│{home_team:^27} vs {away_team:^27}│ Date:{current_match.date:^12}│{division:^27}│")
+
+		except IndexError as e:
 			pass
 
-		print("└────┴──────────────────────────────────────────────────────────┴──────────────────┘")
+		print("└────┴──────────────────────────────────────────────────────────┴──────────────────┴───────────────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 
 
@@ -73,7 +77,7 @@ class CaptainMatchesTableUI(MenuFrame):
 			self.display_menu()
 
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				# if user wants to see the next 10 items
@@ -86,7 +90,7 @@ class CaptainMatchesTableUI(MenuFrame):
 				# if user wants to see the last 10 items
 				case "b":
 					if(self.current_page_number == 0):
-						input("Invalid Input")		#input()
+						input("Invalid Input")
 
 					else:
 						self.current_page_number -= 1
@@ -99,7 +103,7 @@ class CaptainMatchesTableUI(MenuFrame):
 				case _:
 					# check if choice is a decimal
 					try:
-						if(choice.isdecimal()):
+						if(choice.isnumeric()):
 							# check if item exists in current page of lists						
 							if(len(self.match_list[self.current_page_number]) > (int(choice)-1)):
 								# Check out the match
@@ -110,8 +114,12 @@ class CaptainMatchesTableUI(MenuFrame):
 							else:
 								# not in options
 								input("Invalid Input!")
+								
 					except IndexError:
 						print("Invalid id, try again...")
-					else:
+
+					#else:
+					#	print(choice)
 						# not in options
-						input("Invalid Input!")
+					#	print("ERR4")
+					#	input("Invalid Input!")

@@ -30,7 +30,7 @@ class DivisionsTableUI(MenuFrame):
                 showing_page*self.NR_OF_ENTRIES, 
                 showing_page*self.NR_OF_ENTRIES+len(list_of_all_divisions[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
                 ):
-                division_nr = str(i + 1 + showing_page * self.NR_OF_ENTRIES) + ")"
+                division_nr = str(i + 1) + ")"
                 division =f"{list_of_all_divisions[i].name}"
                 table_data.append([division_nr, division])
             # Generates a table with the correct format and data
@@ -54,7 +54,7 @@ class DivisionsTableUI(MenuFrame):
             self.display_menu(list_of_divisions, showing_page=showing_page)
             print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page), "or select division by number")
             choice = input(" > ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 # if user wants to see the next self.NR_OF_ENTRIES items

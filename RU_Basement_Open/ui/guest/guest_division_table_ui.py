@@ -38,7 +38,7 @@ class DivisionTableUI(MenuFrame):
 				showing_page*self.NR_OF_ENTRIES,
 				showing_page*self.NR_OF_ENTRIES+len(division_leaderboard[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
 				):
-				team_nr = str(i + 1+  showing_page * self.NR_OF_ENTRIES) + ")"
+				team_nr = str(i +1) + ")"
 				team_name = f"{division_leaderboard[i][0]}"
 				wins = f"{division_leaderboard[i][1]}"
 				loss = f"{division_leaderboard[i][2]}"
@@ -65,7 +65,7 @@ class DivisionTableUI(MenuFrame):
 			self.display_menu(division_leaderboard=division_leaderboard, showing_page=showing_page)
 			print(display_menu_options(showing_page=showing_page, how_many_pages=pages_number))
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				#  if user wants to see the next NR_OF_ENTRIES items
