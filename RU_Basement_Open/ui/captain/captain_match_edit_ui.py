@@ -407,7 +407,7 @@ class MatchEditUI(MenuFrame):
 
             # Iterate through results and format data properly
             for game in self.match.results:
-                print(game,end="\n\n")
+                #print(game,end="\n\n")
 
                 # Format Players
                 for home_player, away_player in zip(game["home_plr"],game["away_plr"]):
