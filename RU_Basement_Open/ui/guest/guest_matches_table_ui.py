@@ -56,9 +56,9 @@ class MatchesTableUI(MenuFrame):
 		then calls the a method to print a table of all teams then a method to print menu options, 
 		then takes input from the user to choose an option from the list of options printed for the teams table'''
 		if self.is_finished:
-			matches = get_all_concluded_matches(self.logic_wrapper)
+			matches = self.logic_wrapper.get_concluded_matches()
 		else: 
-			matches = get_all_unplayed_matches(self.logic_wrapper)
+			matches = self.logic_wrapper.get_upcoming_matches()
 		page_numbers = len(matches) // self.NR_OF_ENTRIES
 		while True:
 			self.clear_menu()
