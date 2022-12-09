@@ -26,6 +26,59 @@ class MasterLL:
             players.append(player)
         return players
 
+    def get_player_leaderboard_by_division(self, division_id, category):
+        """Takes a division id and a category, returns a sorted list 
+        of player by their score in the specified category"""
+        players = self._get_players_by_division(division_id)
+        result_list = []
+        # Get result for each player and store in a dict with their name
+        for player in players:
+            if category == "inshot":
+                _, result, _ = self.match_logic.get_player_highest_shots_by_division(
+                    player.id, division_id)
+            elif category == "outshot":
+                _, _, result = self.match_logic.get_player_highest_shots_by_division(
+                    player.id, division_id)
+            elif category == "qps":
+                result = self.match_logic.get_player_total_qps_by_division(
+                    player.id, division_id)
+
+            result_list.append({"player_name": player.name, "result": result})
+        # Sort dictionary by name
+        result_list = sorted(
+            result_list, key=lambda x: x["result"], reverse=True)
+        return result_list
+
+    def get_player_statistics_by_division(self, player_id, division_id, last_n_matches):
+        """Takes a player and division id, returns a dict containing that players
+        name, his winrate in 301, 501, cricket and quad-501 along with his total
+        quality points, highest in- and outshot and highest shot overall."""
+        total_score_dict = {   
+        "score_501" : [0, 0,0],
+        "score_301" : [0, 0,0],
+        "score_cricket" : [0, 0,0],
+        "score_501_quad" : [0, 0,0]
+        }
+        player_matches = []
+        matches = self.match_logic.get_matches_by_division(division_id)
+        for match in matches:
+            if player_id in (match.home_team_players + match.away_team_players):
+                player_matches.append(match)
+
+        # Filter for last n matches
+        if last_n_matches is not None:
+            if last_n_matches > len(player_matches):
+                raise IndexError(f"{last_n_matches} exeeds matches played by player")
+            matches = player_matches[-last_n_matches:]
+        
+        for match in matches:
+            if match.results != []:
+                score = self._count_player_wins_in_match(player_id, match)
+                # Add results to total score
+                for key in total_score_dict:
+                    total_score_dict[key] = [sum(value) for value in zip(total_score_dict[key], score[key])]
+        return total_score_dict
+            
     def _count_player_wins_in_match(self, player_id, match):
         """Takes a player id and a matcj object, counts and returns the players winrates"""
         def increment_score(score_ls, win):
@@ -66,7 +119,11 @@ class MasterLL:
             if i == 5:
                 increment_score(score_cricket, win)
             if i == 6:
-                increment_score(score_501_quad, win)
+                increment_score(score_501_quad, win)                
+        score_501[2]=1-score_501[0]/(score_501[0]+score_501[1])*100
+        score_301[2]=1-score_301[0]/(score_301[0]+score_301[1])*100
+        score_cricket[2]=1-score_cricket[0]/(score_cricket[0]+score_cricket[1])*100
+        score_501_quad[2]=1-score_501_quad[0]/(score_501_quad[0]+score_501_quad[1])*100
 
         return {
             "score_301": score_301,
@@ -241,6 +298,7 @@ class MasterLL:
     def get_team_names_by_division(self, division_id):
         """Takes match id and returns the team names that are playing matches"""
         team_names = []
+        
 
         match_ids = self.division_logic.get_match_ids(division_id)
         team_ids = self.match_logic.get_teams(match_ids)
@@ -257,3 +315,4 @@ class MasterLL:
         else return False"""
         team_ids = self.club_logic.get_teams(club_id)
         return self.team_logic.team_name_exists(name, team_ids)
+

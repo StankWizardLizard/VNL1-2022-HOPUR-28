@@ -28,28 +28,26 @@ class MatchTableUI(MenuFrame):
 		GM = 7 # Width of "Games" column 
 
 		ts = HT*2+SC*2+GM+4 # Width of match_name title header
-		match_name = f"{self.league_name} Match nr. {self.match_number}: "
-		team_name = f"{self.home_team_name} vs {self.away_team_name}"
+		team_names = f"{self.home_team_name} vs {self.away_team_name}"
 
 		table_format = [
 			[HOME_TEAM, HT], [SCORE, SC], [GAME, GM], [SCORE, SC], [AWAY_TEAM, HT]
 			]
 		
 
-		generate_table([[match_name, ts]],[[team_name]])
+		generate_table([[self.league_name, ts]],[[team_names]])
 
 		table_data = []
 		
 		games = ["501", "501", "501", "501", "301", "C", "501"]
-		players =["1","1","1",["1", "2", "3"],"1","1","1"]
 
-		for i in range(0, 7):
+		for i in range(0, len(games)):
 			try:
-				player_home = players[i]
+				player_home = self.points_list[i][2]
 			except IndexError:
 				player_home = ""
 			try:
-				player_away = players[i]
+				player_away = self.points_list[i][3]
 			except IndexError:
 				player_away = ""
 			try:
@@ -85,15 +83,15 @@ class MatchTableUI(MenuFrame):
 		table_data.append(column)
 		generate_table(table_format, table_data)
 
-		home_team = "Home: " + self.home_team_name
-		away_team = "Away: " + self.away_team_name
-		teams_table_format = [[home_team, HT], [away_team, HT]]
+		home_team = self.home_team_name
+		away_team = self.away_team_name
+		teams_table_format = [[home_team, HT], ["Quality Points", 15], [away_team, HT], ["Quality Points", 15]]
 		teams_table_data = []
 		for i in range(4):
 			if self.home_team_list and self.away_team_list:
-				column = [self.home_team_list[i], self.away_team_list[i]]
+				column = [self.home_team_list[i], "", self.away_team_list[i], ""]
 			else:
-				column = ["", ""]
+				column = ["", "", "", ""]
 			teams_table_data.append(column)
 		generate_table(teams_table_format, teams_table_data)
 

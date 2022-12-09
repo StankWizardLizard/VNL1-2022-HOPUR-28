@@ -207,6 +207,21 @@ class MatchLL():
             if match.results:
                 ret_list.append(match)
         return ret_list
+    
+    def get_concluded_matches_by_div(self,division):
+        self._update_matches()
+        ret_list = []
+        for match in self.matches:
+            if match.results and division.id==match.division_id:
+                ret_list.append(match)
+        return ret_list
+    def get_upcoming_matches_by_div(self,division):
+        self._update_matches()
+        ret_list = []
+        for match in self.matches:
+            if not match.results and division.id == match.division_id:
+                ret_list.append(match)
+        return ret_list
 
     def get_date(self, id):
         """Takes a match id, returns the matches date"""
