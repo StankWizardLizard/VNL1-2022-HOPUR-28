@@ -100,6 +100,22 @@ class MatchLL():
                 return match
         raise IndexError
 
+    def _date_obj_to_str(self, date_object):
+        """Takes a date string on the format "YYYY-MM-DD" and returns
+        a corrisponding datetime object"""
+        return date_object.strftime("%Y-%m-%d")
+
+    def _date_str_to_obj(self, date_string):
+        """Takes a datetime object and returns it's string representation 
+        on the form "YYYY-MM-DD" """
+        return datetime.strptime(date_string, '%Y-%m-%d')
+
+    def _get_last_n_matches(self, qp_ls, last_n_matches):
+        """Takes a quality point list and filters it for last n matches""" 
+        if last_n_matches > len(qp_ls):
+            raise IndexError(f"{last_n_matches} exeeds matches played by player")
+        return qp_ls[-last_n_matches:]
+    
     # ----- Reading methods -----#
     def get_all_player_qp_strings(self, player_id):
         """Takes a player id, returns a dictionary of divisions as keys 
@@ -115,12 +131,6 @@ class MatchLL():
                         match.quality_points[player])
         return qp_dict
 
-    def _get_last_n_matches(self, qp_ls, last_n_matches):
-        """Takes a quality point list and filters it for last n matches""" 
-        if last_n_matches > len(qp_ls):
-            raise IndexError(f"{last_n_matches} exeeds matches played by player")
-        return qp_ls[-last_n_matches:]
-    
     def get_player_total_qps_by_division(self, player_id, division_id, last_n_matches=None):
         """Takes a player and division id, returns the player's total 
         quality points scored from all matches in that division"""
@@ -224,7 +234,6 @@ class MatchLL():
 
 
     # ----- Writing methods -----#
-
     def gen_matches(self, team_ids: list, division_id, start_date, days_between_matchdays, rounds):
         # Add a rest day if number of teams is odd
         if len(team_ids) % 2:
@@ -254,7 +263,6 @@ class MatchLL():
             # Add generated fixtures to a match-day
             match_days.append(fixtures)
         # Multiply the match-day list by specified rounds
-        print(match_days)
         match_days = rounds*match_days
     
         match_ids = []
@@ -272,16 +280,6 @@ class MatchLL():
             dt += timedelta(days=days_between_matchdays)
         # Return a list of generated match ids
         return match_ids
-
-    def _date_obj_to_str(self, date_object):
-        """Takes a date string on the format "YYYY-MM-DD" and returns
-        a corrisponding datetime object"""
-        return date_object.strftime("%Y-%m-%d")
-
-    def _date_str_to_obj(self, date_string):
-        """Takes a datetime object and returns it's string representation 
-        on the form "YYYY-MM-DD" """
-        return datetime.strptime(date_string, '%Y-%m-%d')
 
     def create_match(self, match):
         """Takes a match object and forwards it to the data layer"""

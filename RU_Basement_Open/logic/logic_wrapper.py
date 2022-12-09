@@ -133,9 +133,6 @@ class LogicWrapper:
     def get_captain(self, team_id):
         return self.team_logic.get_captain(team_id)
 
-    def get_team_id_by_name(self, team_name):
-        return self.team_logic.get_id_by_name(team_name)
-
     def get_players(self, team_id):
         return self.team_logic.get_players(team_id)
 
