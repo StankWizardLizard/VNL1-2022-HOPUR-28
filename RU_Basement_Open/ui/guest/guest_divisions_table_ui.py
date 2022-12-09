@@ -85,35 +85,7 @@ class DivisionsTableUI(MenuFrame):
                                 division_stats_ui = DivisionStatsUI(self.logic_wrapper, self.os, division)
                                 division_stats_ui.prompt_option()
                         except IndexError:
-                            input("Invalid Input!")
+                            print("Invalid id, try again...")
                     # undocumented inputs get disregarded
                     else:
                         input("Invalid Input!")
-
-'''
-print("Divisions")
-print("┌────┬──────────────────────────────────────┐")
-print("│ NR │ Division Name                        │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("├────┼──────────────────────────────────────┤")
-print("│100)│ Division Name 1                      │")
-print("└────┴──────────────────────────────────────┘")
-print("(N)ext page, (B)ack Page, (Q)uit or Division Number")
-'''

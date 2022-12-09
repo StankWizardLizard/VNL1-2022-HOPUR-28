@@ -1,11 +1,11 @@
 {
     "club_details": [
         {
-            "id": "6e761224-770b-11ed-8029-9fdf909ae089",
+            "id": "8db5a9dd-77d5-11ed-9c8c-8cc68119b558",
             "teams_id": [],
-            "name": "LionsClub",
-            "address": "Háaleiti 22",
-            "phone": "8441799"
+            "name": "Tesst",
+            "address": "lala land",
+            "phone": "1231231"
         }
     ]
 }

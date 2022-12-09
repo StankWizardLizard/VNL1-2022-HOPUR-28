@@ -1,14 +1,3 @@
 {
-    "player_details": [
-        {
-            "name": "Villi",
-            "ssn": "14",
-            "mobile_nr": "8441799",
-            "home_nr": "888888",
-            "address": "Háaleiti22",
-            "email": "a@a.is",
-            "club_id": "6e761224-770b-11ed-8029-9fdf909ae089",
-            "id": "862da058-770b-11ed-8029-9fdf909ae089"
-        }
-    ]
+
 }

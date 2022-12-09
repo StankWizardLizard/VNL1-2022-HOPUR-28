@@ -1,15 +1,3 @@
 {
-    "team_details": [
-        {
-            "name": "LionsTeam",
-            "captain_id": "862da058-770b-11ed-8029-9fdf909ae089",
-            "player_ids": [
-                "862da058-770b-11ed-8029-9fdf909ae089",
-                "862da058-770b-11ed-8029-9fdf909ae089",
-                "862da058-770b-11ed-8029-9fdf909ae089",
-                "862da058-770b-11ed-8029-9fdf909ae089"
-            ],
-            "id": "8d5386e0-770b-11ed-8029-9fdf909ae089"
-        }
-    ]
+
 }

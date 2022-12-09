@@ -1,0 +1,46 @@
+@startuml lol
+
+class DataWrapper{
+    directory
+    MatchIO
+    PlayerIO
+    DivisionIO
+    TeamIO
+    PlayerIO
+    allexposedIOfunctions()
+}
+
+class PlayerIO #ADD1b2{
+    filename
+    get_players_from_file()
+    write_players_to_file()
+
+}
+class MatchIO #ADD1b2{
+    filename
+    get_matches_from_file()
+    write_matches_to_file()
+}
+class DivisionIO #ADD1b2{
+    filename
+    get_divisions_from_file()
+    write_divisions_to_file()
+}
+class TeamIO  #ADD1b2  {
+    filename
+    get_teams_from_file()
+    write_teams_to_file()
+}
+class ClubIO  #ADD1b2 {
+    filename
+    get_clubs_from_file()
+    write_clubs_to_file()
+}
+
+DataWrapper *-- MatchIO
+DataWrapper *-- PlayerIO
+DataWrapper *-- DivisionIO
+DataWrapper *-- TeamIO
+DataWrapper *-- ClubIO
+
+@enduml
