@@ -100,18 +100,20 @@ class CaptainMatchesTableUI(MenuFrame):
 				# undocumented input
 				case _:
 					# check if choice is a decimal
-					if(choice.isdecimal()):
-						# check if item exists in current page of lists						
-						if(len(self.match_list[self.current_page_number]) > (int(choice)-1)):
-							# Check out the match
-							choice = int(choice) - 1
-							match_edit_ui = MatchEditUI(self.logic_wrapper, self.os, self.match_list[self.current_page_number][choice])
-							match_edit_ui.prompt_option()
+					try:
+						if(choice.isdecimal()):
+							# check if item exists in current page of lists						
+							if(len(self.match_list[self.current_page_number]) > (int(choice)-1)):
+								# Check out the match
+								choice = int(choice) - 1
+								match_edit_ui = MatchEditUI(self.logic_wrapper, self.os, self.match_list[self.current_page_number][choice])
+								match_edit_ui.prompt_option()
 
-						else:
-							# not in options
-							input("Invalid Input!")
-
+							else:
+								# not in options
+								input("Invalid Input!")
+					except IndexError:
+						print("Invalid id, try again...")
 					else:
 						# not in options
 						input("Invalid Input!")

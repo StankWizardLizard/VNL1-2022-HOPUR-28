@@ -93,65 +93,10 @@ class ScoreboardUI #B4a7e5 {
     get_scoreboard()
 }
 
-class PersonLL #EB937F{
-    Person
-    PersonIO
-    create_person()
-    get_all_players()
-    get_person( person_id )   
-}
-
-class MatchLL #EB937F{
-    Match
-    MatchIO
-    create_match()
-    get_all_matches()
-    get_upcoming_matches()
-    get_concluded_matches()
-    change_date()
-    set_results()
-    change_results()
-    get_match( match_id )   
-}
-
-class DivisionLL #EB937F {
-    Division
-    DivisionIO
-    create_division()
-    get_leaderboard()
-    get_division( division_id )
-}
-
-class TeamLL #EB937F{
-    Team
-    TeamIO
-    create_team()
-    get_all_teams()
-    get_team( team_id )
-}
-
-class ClubLL #EB937F {
-    Club
-    ClubIO
-    create_club()
-    get_club( club_id )
-}
-
-class LogicWrapper{
-    TeamLL
-    ClubLL
-    DivisionLL
-    MatchLL
-    allexposedLLfunctions()
-}
 
 
 
-LogicWrapper -- TeamLL
-LogicWrapper -- PersonLL
-LogicWrapper -- ClubLL
-LogicWrapper -- DivisionLL
-LogicWrapper -- MatchLL
+
 
 MainMenuUI  --  LogicWrapper
 LeaderboardUI -- LogicWrapper
@@ -169,55 +114,15 @@ PlayerUI-- LogicWrapper
 
 
 
-PersonLL -- StorageWrapper 
-TeamLL -- StorageWrapper 
-ClubLL -- StorageWrapper 
-DivisionLL -- StorageWrapper 
-MatchLL -- StorageWrapper 
+PlayerLL -- DataWrapper 
+TeamLL -- DataWrapper 
+ClubLL -- DataWrapper 
+DivisionLL -- DataWrapper 
+MatchLL -- DataWrapper 
 
 /'
-Storage layer
+Data layer
 '/
-class StorageWrapper{
-    MatchIO
-    PersonIO
-    DivisionIO
-    TeamIO
-    PlayerIO
-    allexposedIOfunctions()
 
-}
-
-class PersonIO #ADD1b2{
-    persons_filename
-    get_person_from_file()
-    write_person_to_file()
-
-}
-class MatchIO #ADD1b2{
-    match_filename
-    get_match_from_file()
-    write_match_to_file()
-
-}
-class DivisionIO #ADD1b2{
-    get_division_from_file()
-    write_division_person_to_file()
-}
-class TeamIO  #ADD1b2  {
-    get_team_from_file()
-    write_team_person_to_file()
-}
-class ClubIO  #ADD1b2 {
-    get_club_from_file()
-    write_club_person_to_file()
-
-}
-
-StorageWrapper -- MatchIO
-StorageWrapper -- PersonIO
-StorageWrapper -- DivisionIO
-StorageWrapper -- TeamIO
-StorageWrapper -- ClubIO
 
 @enduml
