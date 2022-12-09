@@ -1,43 +1,86 @@
 {
     "division_details": [
         {
-            "id": 1,
-            "name": "aa",
+            "id": "6d50a3d8-77e1-11ed-b2bf-8cc68119b558",
+            "name": "The Thunder Dome",
             "team_ids": [
-                1,
-                2,
-                3
+                "296b9b4d-77db-11ed-8e1d-8cc68119b558",
+                "d49276ca-77dc-11ed-bb77-8cc68119b558",
+                "fcad59f3-77dc-11ed-88c8-8cc68119b558",
+                "830ca60d-77de-11ed-80bd-8cc68119b558"
             ],
-            "host_name": "name",
-            "phone_nr": 1234567,
-            "start_date": "24.12.22",
-            "end_date": "25.12.22",
+            "host_name": "max",
+            "phone_nr": "1231231",
+            "start_date": "2022-12-24",
+            "end_date": "2022-12-26",
             "type": "L",
-            "rounds": 2,
+            "rounds": "1",
             "matches": [
-                1,
-                2,
-                3
+                "8a8dac1b-77e1-11ed-8e8a-8cc68119b558",
+                "8a8f3305-77e1-11ed-b00a-8cc68119b558",
+                "8a909343-77e1-11ed-b458-8cc68119b558",
+                "8a91f65d-77e1-11ed-a2bb-8cc68119b558",
+                "8a9352fb-77e1-11ed-8d9a-8cc68119b558",
+                "8a94f53c-77e1-11ed-b44a-8cc68119b558"
             ]
         },
         {
-            "id": 1,
-            "name": "aa",
+            "id": "9d533e8e-77e1-11ed-af1c-8cc68119b558",
+            "name": "Quick game of darts",
             "team_ids": [
-                1,
-                2,
-                3
+                "fcad59f3-77dc-11ed-88c8-8cc68119b558",
+                "830ca60d-77de-11ed-80bd-8cc68119b558"
             ],
-            "host_name": "name",
-            "phone_nr": 1234567,
-            "start_date": "24.12.22",
-            "end_date": "25.12.22",
+            "host_name": "me",
+            "phone_nr": "1231231",
+            "start_date": "2022-12-10",
+            "end_date": "2022-12-10",
             "type": "L",
-            "rounds": 2,
+            "rounds": "1",
             "matches": [
-                1,
-                2,
-                3
+                "a213515d-77e1-11ed-85a4-8cc68119b558"
+            ]
+        },
+        {
+            "id": "ed5d79d8-77e3-11ed-94e7-8cc68119b558",
+            "name": "Filler",
+            "team_ids": [
+                "296b9b4d-77db-11ed-8e1d-8cc68119b558",
+                "d49276ca-77dc-11ed-bb77-8cc68119b558",
+                "fcad59f3-77dc-11ed-88c8-8cc68119b558",
+                "830ca60d-77de-11ed-80bd-8cc68119b558"
+            ],
+            "host_name": "lots lotsson",
+            "phone_nr": "1231231",
+            "start_date": "2024-01-01",
+            "end_date": "2024-01-12",
+            "type": "L",
+            "rounds": "4",
+            "matches": [
+                "f0d4271c-77e3-11ed-904e-8cc68119b558",
+                "f0d5ae33-77e3-11ed-a6bc-8cc68119b558",
+                "f0d70d82-77e3-11ed-a875-8cc68119b558",
+                "f0d89428-77e3-11ed-9e41-8cc68119b558",
+                "f0d9f3cc-77e3-11ed-b9e7-8cc68119b558",
+                "f0db7a86-77e3-11ed-aaec-8cc68119b558",
+                "f0dd0146-77e3-11ed-a88d-8cc68119b558",
+                "f0de60e4-77e3-11ed-9ac7-8cc68119b558",
+                "f0dfc123-77e3-11ed-988a-8cc68119b558",
+                "f0e16e4e-77e3-11ed-a4ef-8cc68119b558",
+                "f0e2cdf6-77e3-11ed-97cb-8cc68119b558",
+                "f0e454c4-77e3-11ed-9139-8cc68119b558",
+                "f0e5db59-77e3-11ed-a35b-8cc68119b558",
+                "f0e742a6-77e3-11ed-9121-8cc68119b558",
+                "f0e8f006-77e3-11ed-99a7-8cc68119b558",
+                "f0ea76c1-77e3-11ed-accf-8cc68119b558",
+                "f0ec248a-77e3-11ed-a4b9-8cc68119b558",
+                "f0edd24b-77e3-11ed-80c5-8cc68119b558",
+                "f0ef5906-77e3-11ed-93e7-8cc68119b558",
+                "f0f10735-77e3-11ed-9e32-8cc68119b558",
+                "f0f28f64-77e3-11ed-9dc5-8cc68119b558",
+                "f0f41615-77e3-11ed-ab3e-8cc68119b558",
+                "f0f5c444-77e3-11ed-9b2e-8cc68119b558",
+                "f0f74a93-77e3-11ed-8195-8cc68119b558"
             ]
         }
     ]
