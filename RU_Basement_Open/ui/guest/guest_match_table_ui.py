@@ -54,7 +54,7 @@ class MatchTableUI(MenuFrame):
 						player_home = player_home_temp.name
 						player_home_name.append(player_home)
 			except IndexError:
-				player_home_name = self.logic_wrapper.get_player(self.points_list[i]['home_plr'])
+				player_home_name = ""
 			try:
 				if len(self.points_list[i]['away_plr']) == 1:
 					player_away = self.logic_wrapper.get_player(self.points_list[i]['away_plr'][0])
