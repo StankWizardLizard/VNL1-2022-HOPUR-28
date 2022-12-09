@@ -93,62 +93,131 @@ class ScoreboardUI #B4a7e5 {
     get_scoreboard()
 }
 
-class PersonLL #EB937F{
-    Person
-    PersonIO
-    create_person()
+class PlayerLL #EB937F{
+    DataWrapper
+    players[]: PlayerMdl
+
+    -update_players()
+    -write_players()
+
+    get_player(player_id)
     get_all_players()
-    get_person( person_id )   
+    get_players_by_club("club_id")
+    ssn_exists(ssn)
+
+    create_player(PlayerMdl)
 }
 
 class MatchLL #EB937F{
-    Match
-    MatchIO
-    create_match()
+    DataWrapper
+    matches[]: MatchMdl
+
+    -count_qps(qp_str)
+    -get_highest_shots(qp_str)
+    -update_matches()
+    -write_matches()
+    -find_match(match_id)
+    -date_obj_to_str(date_obj)
+    -date_str_to_onbj(date_str)
+    -get_last_n_matches(qp_ls, last_n_matches)
+    
+    get_all_player_qp_strings(player_id)
+    get_player_total_qps_by_division(player_id, division_id)
+    get_player_highest_shots_by_division(player_id, division_id)
     get_all_matches()
-    get_upcoming_matches()
+    get_match(match_id)
+    get_matches_by_division(division_id)
+    get_upcoming_mathes()
     get_concluded_matches()
-    change_date()
-    set_results()
-    change_results()
-    get_match( match_id )   
+    get_date(match_id)
+    get_start_and_end_date(match_id)
+    get_teams(match_id[])
+
+    generate_matches(team_id[], division_id, start_date, rest_days, rounds)
+    create_match(MatchMld)
+    set_date(match_id, new_date)
+    set_results(match_id, results, qps, home_players, away_players)
 }
 
 class DivisionLL #EB937F {
-    Division
-    DivisionIO
-    create_division()
-    get_leaderboard()
-    get_division( division_id )
+    DataWrapper
+    divisions[]: DivisionMld
+    
+    -update_divisions()
+    -write_divisions()
+    -find_division(division_id)
+
+    get_division(division_id)
+    get_all_divisions()
+    get_match_ids(division_id)
+    get_team_ids(division_id)
+    name_exists(division_name)
+
+    create_division(DivisionMld)
+    add_team(team_id, division_id)
+    add_matches(match_ids[], division_id)
+    set_dates(start_date, end_date, division_id)
 }
 
 class TeamLL #EB937F{
-    Team
-    TeamIO
-    create_team()
+    DataWrapper
+    teams[]: TeamMdl
+
+    -update_teams()
+    -write_teams()
+    -find_team(team_id)
+
     get_all_teams()
-    get_team( team_id )
+    get_team(team_id)
+    get_captain(team_id)
+    get_players(team_id)
+    get_teams_by_club(club_id)
+    team_name_exists(name, team_id)
+
+    create_team(TeamMdl)
+    add_player(player_id, team_id)
+    promote_to_captain(player_id, team_id)
 }
 
 class ClubLL #EB937F {
-    Club
-    ClubIO
-    create_club()
-    get_club( club_id )
-}
+    DataWrapper
+    clubs[]: ClubMdl
 
+    -update_clubs()
+    -write_clubs()
+    -find_club(club_id)
+
+    get_club(club_id)
+    get_all_clubs()
+    name_exists(name)
+    get_teams(club_id)
+
+    create_club()
+    add_team(team_id, club_id)
+}
+class MasterLL #EB937F {
+    MatchLL
+    DivisionLL
+    TeamLL
+    PlayerLL
+    ClubLL
+    DataWrapper
+}
 class LogicWrapper{
+    DataWrapper
+    PlayerLL
     TeamLL
     ClubLL
     DivisionLL
     MatchLL
+    MasterLL
     allexposedLLfunctions()
 }
 
 
 
 LogicWrapper -- TeamLL
-LogicWrapper -- PersonLL
+LogicWrapper -- PlayerLL
 LogicWrapper -- ClubLL
 LogicWrapper -- DivisionLL
 LogicWrapper -- MatchLL
@@ -169,55 +238,57 @@ PlayerUI-- LogicWrapper
 
 
 
-PersonLL -- StorageWrapper 
-TeamLL -- StorageWrapper 
-ClubLL -- StorageWrapper 
-DivisionLL -- StorageWrapper 
-MatchLL -- StorageWrapper 
+PlayerLL -- DataWrapper 
+TeamLL -- DataWrapper 
+ClubLL -- DataWrapper 
+DivisionLL -- DataWrapper 
+MatchLL -- DataWrapper 
 
 /'
-Storage layer
+Data layer
 '/
-class StorageWrapper{
+class DataWrapper{
+    directory
     MatchIO
-    PersonIO
+    PlayerIO
     DivisionIO
     TeamIO
     PlayerIO
     allexposedIOfunctions()
-
 }
 
-class PersonIO #ADD1b2{
-    persons_filename
-    get_person_from_file()
-    write_person_to_file()
+class PlayerIO #ADD1b2{
+    filename
+    get_players_from_file()
+    write_players_to_file()
 
 }
 class MatchIO #ADD1b2{
-    match_filename
-    get_match_from_file()
-    write_match_to_file()
-
+    filename
+    get_matches_from_file()
+    write_matches_to_file()
 }
 class DivisionIO #ADD1b2{
-    get_division_from_file()
-    write_division_person_to_file()
+    filename
+    get_divisions_from_file()
+    write_divisions_to_file()
 }
 class TeamIO  #ADD1b2  {
-    get_team_from_file()
-    write_team_person_to_file()
+    filename
+    get_teams_from_file()
+    write_teams_to_file()
 }
 class ClubIO  #ADD1b2 {
-    get_club_from_file()
-    write_club_person_to_file()
+    filename
+    get_clubs_from_file()
+    write_clubs_to_file()
 
 }
 
-StorageWrapper -- MatchIO
-StorageWrapper -- PersonIO
-StorageWrapper -- DivisionIO
-StorageWrapper -- TeamIO
-StorageWrapper -- ClubIO
+DataWrapper -- MatchIO
+DataWrapper -- PersonIO
+DataWrapper -- DivisionIO
+DataWrapper -- TeamIO
+DataWrapper -- ClubIO
 
 @enduml
