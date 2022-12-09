@@ -81,7 +81,7 @@ class PlayersTableUI(MenuFrame):
             self.display_menu(showing_page=showing_page, list_of_players=list_of_players)
             print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers))
             choice = input(" > ")
-            choice = choice.strip().lower()
+            choice = choice.lower()
 
             match choice:
                 #  if user wants to see the next self.NR_Of_ENTRIES items
