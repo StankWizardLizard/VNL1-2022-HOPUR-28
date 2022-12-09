@@ -66,7 +66,7 @@ class MatchesTableUI(MenuFrame):
 			self.display_menu(showing_page=showing_page, matches=matches)
 			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers),"or select match by number")
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 			match choice:
 				#  if user wants to see the next NR_OF_ENTRIES items
 				case "n":

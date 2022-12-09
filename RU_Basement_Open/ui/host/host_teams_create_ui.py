@@ -67,7 +67,7 @@ class CreateTeamUI(MenuFrame):
 				print(display_menu_options(page_numbers, showing_page))
 				choice = get_input("> ")
 				#  if user wants to see the next 10 items
-				if choice.lower() == "n":
+				if choice.strip().lower() == "n":
 					if showing_page == page_numbers:
 						input("Invalid Input!")
 						continue
@@ -76,14 +76,14 @@ class CreateTeamUI(MenuFrame):
 						continue
 
 				#  if user wants to see the last 10 items
-				if choice.lower() == "b":
+				if choice.strip().lower() == "b":
 					if showing_page == 0:
 						input("Invalid Input!")
 						continue
 					else:
 						showing_page -= 1
 						continue
-				if choice.lower() == "q":
+				if choice.strip().lower() == "q":
 					back = True
 					break
 				
@@ -138,14 +138,14 @@ class CreateTeamUI(MenuFrame):
 					
 					print(string)
 					choice = get_input("> ")
-					if choice.lower() == "q":
+					if choice.strip().lower() == "q":
 						# User cannot quit unless atleast two teams are selected
 						if player_counter < 4:
 							print("Please choose atleast 4 players")
 							continue
 						break
 					#  if user wants to see the next 10 items
-					if choice.lower() == "n":
+					if choice.strip().lower() == "n":
 						if showing_page == page_numbers:
 							input("Invalid Input!")
 							continue
@@ -154,7 +154,7 @@ class CreateTeamUI(MenuFrame):
 							continue
 
 					#  if user wants to see the last 10 items
-					if choice.lower() == "b":
+					if choice.strip().lower() == "b":
 						if showing_page == 0:
 							input("Invalid Input!")
 							continue
