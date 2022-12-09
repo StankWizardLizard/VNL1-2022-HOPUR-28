@@ -80,7 +80,6 @@ class PlayersTableUI(MenuFrame):
             self.clear_menu()
             self.display_menu(showing_page=showing_page, list_of_players=list_of_players)
             print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers))
-            print(list_of_players)
             choice = input(" > ")
             choice = choice.lower()
 
