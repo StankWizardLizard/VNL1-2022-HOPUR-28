@@ -133,7 +133,7 @@ class CreateTeamUI(MenuFrame):
 					if choice.strip().lower() == "q":
 						# User cannot quit unless atleast two teams are selected
 						if player_counter < 4:
-							print("Please choose atleast 4 players")
+							input("Please choose atleast 4 players")
 							continue
 						break
 					#  if user wants to see the next 10 items
@@ -162,9 +162,9 @@ class CreateTeamUI(MenuFrame):
 					player_counter += 1
 					self.clear_menu()
 				except IndexError:
-					print(f"index {choice} is out of range, try again...")
+					input(f"index {choice} is out of range, try again...")
 				except ValueError:
-					print(f"{choice} is not a number") 
+					input(f"{choice} is not a number") 
 			
 			print("Make another team with the same club? y for yes and any for no ")
 			choice = input("> ")

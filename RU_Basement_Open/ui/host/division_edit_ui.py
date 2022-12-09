@@ -53,8 +53,8 @@ class EditDivisionUI(MenuFrame):
                 case _:
                     if choice.isnumeric():
                         try:     
-                            new_date = get_date_input("Choose a new date on format YYYY-MM-DD: ")
                             match_id = match_ids[int(choice)-1]
+                            new_date = get_date_input("Choose a new date on format YYYY-MM-DD: ")
                             self.logic_wrapper.postpone_match(new_date, self.division.id, match_id)
                             # division = divisions[int(choice) -1]
                             # divisionui = EditDivisionUI(self.logic_wrapper, self.os, division)
