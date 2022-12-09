@@ -50,7 +50,7 @@ class DivisionLL():
         """
         self._update_divisions()
         return self.divisions
-
+    
     def get_match_ids(self, division_id):
         """Takes a division id and returns a list of keys for it's matches"""
         self._update_divisions()

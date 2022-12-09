@@ -13,7 +13,7 @@ class DivisionsUI(MenuFrame):
 		print("Divisions")
 		print("┌──────────────────────────────────┐")
 		print("│  1) Create new Division          │")
-		print("│  2) Edit Division                │")
+		print("│  2) Delay Match in Division      │")
 		print("│                                  │")
 		print("│  q) Quit                         │")
 		print("└──────────────────────────────────┘")

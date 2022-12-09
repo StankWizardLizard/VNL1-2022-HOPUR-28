@@ -29,14 +29,6 @@ class CreateTeamUI(MenuFrame):
 		except IndexError:
 			generate_table(table_format, [])
 
-	def _number_of_team_members(self):
-			print("How many team members (must atleast be 4)?")
-			number_of_team_members = int(input("> "))
-			while number_of_team_members < 4:
-				number_of_team_members = input(
-					"invalid number of team members. Try again \n >")
-			return number_of_team_members
-
 	def _display_player_menu(self,players_list, showing_page = 0):
 		print("Select players of team")
 		table_format = [["NR", 4], ["Player Names", 40]]
@@ -141,7 +133,7 @@ class CreateTeamUI(MenuFrame):
 					if choice.strip().lower() == "q":
 						# User cannot quit unless atleast two teams are selected
 						if player_counter < 4:
-							print("Please choose atleast 4 players")
+							input("Please choose atleast 4 players")
 							continue
 						break
 					#  if user wants to see the next 10 items
@@ -170,9 +162,9 @@ class CreateTeamUI(MenuFrame):
 					player_counter += 1
 					self.clear_menu()
 				except IndexError:
-					print(f"index {choice} is out of range, try again...")
+					input(f"index {choice} is out of range, try again...")
 				except ValueError:
-					print(f"{choice} is not a number") 
+					input(f"{choice} is not a number") 
 			
 			print("Make another team with the same club? y for yes and any for no ")
 			choice = input("> ")

@@ -21,6 +21,7 @@ class PlayerList(MenuFrame):
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [TEAM_NAME, TN]] 
 
+
         try:
             
             #Fills in data for table by with a list of lists containing data for every row
@@ -35,22 +36,13 @@ class PlayerList(MenuFrame):
 
             #Generates a table with the correct format and data
             generate_table(table_format, table_data)
-            return players_in_div
+        
         except IndexError:
             generate_table(table_format, [])
 
     def prompt_option(self, showing_page:int=0):
         '''Prompts the user to choose an option from a list of options for the division table'''
-        division_leaderboard = self.logic_wrapper.get_leaderboard(self.division)
-        
-        players_in_div = []
-        all_teams = self.logic_wrapper.get_all_teams()
-        for team_id in self.division.team_ids:
-            for team in all_teams:
-                if team_id == team.id:
-                    for player in team.player_ids:
-                        players_in_div.append(self.logic_wrapper.get_player(player))        
-        
+        players_in_div = self.logic_wrapper.get_players_by_division(self.division.id)
         
         pages_number = len(players_in_div) // 10
         while True:

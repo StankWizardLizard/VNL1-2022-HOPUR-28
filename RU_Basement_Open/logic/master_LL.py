@@ -9,7 +9,7 @@ class MasterLL:
         self.club_logic = club_logic_connection
         self.data_wrapper = data_wrapper
 
-    def _get_players_by_division(self, division_id):
+    def get_players_by_division(self, division_id):
         """Takes a division id, returns a list of all players competing in that division"""
         # get all teams in division
         team_ids = self.division_logic.get_team_ids(division_id)
@@ -29,7 +29,7 @@ class MasterLL:
     def get_player_leaderboard_by_division(self, division_id, category):
         """Takes a division id and a category, returns a sorted list 
         of player by their score in the specified category"""
-        players = self._get_players_by_division(division_id)
+        players = self.get_players_by_division(division_id)
         result_list = []
         # Get result for each player and store in a dict with their name
         for player in players:
@@ -48,15 +48,6 @@ class MasterLL:
         result_list = sorted(
             result_list, key=lambda x: x["result"], reverse=True)
         return result_list
-    def get_players_in_div(self,division):
-        players_in_div = []
-        all_teams = self.team_logic.get_all_teams()
-        for team_id in division.team_ids:
-            for team in all_teams:
-                if team_id == team.id:
-                    for player in team.player_ids:
-                        players_in_div.append(self.player_logic.get_player(player))
-        return players_in_div
 
 
 
@@ -239,13 +230,13 @@ class MasterLL:
         self.update_division_start_and_end_date(division_id)
 
     def postpone_match(self, new_date, division_id, match_id):
-        self.match_logic.set_date(self, match_id, new_date)
+        self.match_logic.set_date(match_id, new_date)
         self.update_division_start_and_end_date(division_id)
 
     def get_player_leaderboard_by_division(self, division_id, category):
         """Takes a division id and a category, returns a sorted list 
         of player by their score in the specified category"""
-        players = self._get_players_by_division(division_id)
+        players = self.get_players_by_division(division_id)
         result_list = []
         # Get result for each player and store in a dict with their name
         for player in players:
@@ -324,13 +315,21 @@ class MasterLL:
         leaderboard = self._sort_leaderboard(leaderboard)
         return leaderboard
 
+    def get_division_unplayed_match_ids(self, division_id):
+        unplayed_match_ids = []
+        match_ids = self.division_logic.get_match_ids(division_id)
+        for match_id in match_ids:
+            match = self.match_logic.get_match(match_id)
+            if match.results == []:
+                unplayed_match_ids.append(match_id)
+        return unplayed_match_ids
+    
     def get_team_names_by_division(self, division_id):
         """Takes match id and returns the team names that are playing matches"""
         team_names = []
-        
 
-        match_ids = self.division_logic.get_match_ids(division_id)
-        team_ids = self.match_logic.get_teams(match_ids)
+        unplayed_match_ids = self.get_division_unplayed_match_ids(division_id)
+        team_ids = self.match_logic.get_teams(unplayed_match_ids)
         for match in team_ids:
             a = []
             for team_id in match:

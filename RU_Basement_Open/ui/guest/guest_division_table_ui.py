@@ -5,7 +5,7 @@ from models.division_mdl import DivisionMdl
 class DivisionTableUI(MenuFrame):
 	def __init__(self,logic_wrapper, os, division:DivisionMdl = DivisionMdl("Reykjavik Open")):
 			super().__init__(logic_wrapper, os)
-			self.division = division #  Takes in the division you selected in the list of Divisions
+			self.division :DivisionMdl= division #  Takes in the division you selected in the list of Divisions
 			self.NR_OF_ENTRIES = 20 #  Number of entries displayed per page 
 
 	def display_menu(self, division_leaderboard:list=[], showing_page:int=0):
@@ -24,7 +24,7 @@ class DivisionTableUI(MenuFrame):
 		LS = 8 # Width of "Losses" column
 		LW = 10 # Width of "Legs Won" column
 
-		print(self.division.name)
+		print(f"{self.division.name} ... Start date: {self.division.start_date}, End date: {self.division.end_date}")
 
 		#  Format of table with a list of lists containing strings for each column ex. [[column name, column width], [column name, column width]]
 		table_format = [[NUMBER, NR], [TEAM_NAME, TN], [WINS, WS], [LOSS, LS], [LEGS_WON, LW]]

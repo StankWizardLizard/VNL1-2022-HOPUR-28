@@ -36,6 +36,13 @@ class LogicWrapper:
     def team_name_exists_on_club(self, name, club_id):
         return self.master_logic.team_name_exists_on_club(name, club_id)
     
+    def get_division_unplayed_match_ids(self, division_id):
+        return self.master_logic.get_division_unplayed_match_ids(division_id)
+   
+    def postpone_match(self, new_date, division_id, match_id):
+        return self.master_logic.postpone_match(new_date, division_id, match_id)
+    
+    
     # ----- Division methods -----#
     def create_division(self, division):
         return self.division_logic.create_division(division)
@@ -79,8 +86,9 @@ class LogicWrapper:
 
     def player_ssn_exists(self, ssn):
         return self.player_logic.ssn_exists(ssn)
-    def get_players_in_div(self,division):
-        return self.master_logic.get_players_in_div(division)
+    
+    def get_players_by_division(self,division):
+        return self.master_logic.get_players_by_division(division)
 
     # ----- Match methods -----#
     def get_all_matches(self):
