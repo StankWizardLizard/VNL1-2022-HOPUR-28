@@ -1,0 +1,27 @@
+
+ ██╗  ██╗ ██████╗ ██████╗ ██╗   ██╗██████╗     ██████╗  █████╗ 
+ ██║  ██║██╔═══██╗██╔══██╗██║   ██║██╔══██╗    ╚════██╗██╔══██╗
+ ███████║██║   ██║██████╔╝██║   ██║██████╔╝     █████╔╝╚█████╔╝
+ ██╔══██║██║   ██║██╔═══╝ ██║   ██║██╔══██╗    ██╔═══╝ ██╔══██╗
+ ██║  ██║╚██████╔╝██║     ╚██████╔╝██║  ██║    ███████╗╚█████╔╝
+ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚════╝ 
+                                                              
+ ##############################################################
+
+ [X] Klára functionality 
+ [X] Klára functionality til að edit'a matches
+ [ ] Fínpússa allt og laga bugs / issues
+ [ ] Endur Gera Skýrsluna
+ [ ] Endur Gera Class Diagrams 
+ [X] Gera Statemachine Diagram fyrir forritið
+
+ ##############################################################
+
+ Loksins erum búnir að ná mest functionality á forritinu núna, 
+ annars þarf bara að fín pússa og endur gera Skýrslurna og gögninn
+ í henni, vantar að breyta smá structur en annars náðum við
+ geðveiku progressi :))
+
+ ##############################################################
+
+                  Muna að mæta kl 11:00 á morgun :)
