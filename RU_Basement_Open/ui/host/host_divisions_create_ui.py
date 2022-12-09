@@ -26,11 +26,25 @@ class CreateDivisionsUI(MenuFrame):
                     f"A division with name {name} already exists, try again...")
 
             host = get_input("Enter name of the host: ")
-            phone = get_input("Enter phone number: ", number=True)
-            rounds = get_input("Enter ammount of rounds: ", number=True)
-            start_date = get_date_input("Enter division start date: ")
-            days_between_matchdays = get_input(
-                "Enter amount of rest days between match days: ", number=True)
+            phone = get_input("Enter phone number: ", number=True, length=7)
+            while True:
+                rounds = get_input("Enter ammount of rounds: ", number=True)
+                if int(rounds) <= 4:
+                    if int(rounds) != 0:                        
+                        break
+                    print("Rounds cannot be zero!")
+                print("Maximum amount of rounds is 4")
+                
+            start_date = get_date_input("Enter division start date on format YYYY-MM-DD: ")
+            
+            while True:
+                days_between_matchdays = get_input(
+                    "Enter amount of rest days between match days: ", number=True)
+                if int(days_between_matchdays) <= 7:
+                    if int(days_between_matchdays) != 0:
+                        break
+                    print("Rest days cannot be zero!")
+                print("Maximum amount of rest days in 7")
             # User can choose to save or disregard the information he just wrote
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")

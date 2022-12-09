@@ -3,10 +3,11 @@ from ui.menu_frame import MenuFrame
 from ui.guest.guest_match_table_ui import MatchTableUI
 
 class MatchesTableUI(MenuFrame):
-	def __init__(self,logic_wrapper, os, is_finished = True):
+	def __init__(self,logic_wrapper, os, is_finished = True,division = ""):
 		super().__init__(logic_wrapper, os)
 		self.is_finished = is_finished
 		self.NR_OF_ENTRIES = 10
+		self.division = division
 
 	def display_menu(self, showing_page:int=0, matches:list=[]):
 		"""Display the menu screen for the  table_data"""
@@ -56,9 +57,15 @@ class MatchesTableUI(MenuFrame):
 		then calls the a method to print a table of all teams then a method to print menu options, 
 		then takes input from the user to choose an option from the list of options printed for the teams table'''
 		if self.is_finished:
-			matches = get_all_concluded_matches(self.logic_wrapper)
-		else: 
-			matches = get_all_unplayed_matches(self.logic_wrapper)
+			if self.division != "":
+				matches = self.logic_wrapper.get_concluded_matches_by_div(self.division)
+			else:
+				matches = get_all_concluded_matches(self.logic_wrapper)
+		else:
+			if self.division != "":
+				matches = self.logic_wrapper.get_upcoming_matches_by_div(self.division)
+			else:
+				matches = get_all_unplayed_matches(self.logic_wrapper)
 		page_numbers = len(matches) // self.NR_OF_ENTRIES
 		while True:
 			self.clear_menu()
