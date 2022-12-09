@@ -17,6 +17,7 @@ class CaptainMatchesTableUI(MenuFrame):
 	def get_match_list(self):
 		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
 
+		return self.logic_wrapper.get_all_matches() # Remember to change this for final and only for host
 		return self.logic_wrapper.get_upcoming_matches()
 
 
