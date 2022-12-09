@@ -20,14 +20,7 @@ class PlayerList(MenuFrame):
 
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [TEAM_NAME, TN]] 
-        players_in_div = []
-        all_teams = self.logic_wrapper.get_all_teams()
-        for team_id in self.division.team_ids:
-            for team in all_teams:
-                if team_id == team.id:
-                    for player in team.player_ids:
-                        players_in_div.append(self.logic_wrapper.get_player(player))
-
+        players_in_div = self.logic_wrapper.get_players_in_div(self.division)
         try:
             
             #Fills in data for table by with a list of lists containing data for every row

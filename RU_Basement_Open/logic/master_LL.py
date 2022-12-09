@@ -64,6 +64,18 @@ class MasterLL:
         result_list = sorted(
             result_list, key=lambda x: x["result"], reverse=True)
         return result_list
+    def get_players_in_div(self,division):
+        players_in_div = []
+        all_teams = self.team_logic.get_all_teams()
+        for team_id in division.team_ids:
+            for team in all_teams:
+                if team_id == team.id:
+                    for player in team.player_ids:
+                        players_in_div.append(self.player_logic.get_player(player))
+        return players_in_div
+
+
+
 
     def get_player_statistics_by_division(self, player_id, division_id, last_n_matches):
         """Takes a player and division id, returns a dict containing that players
