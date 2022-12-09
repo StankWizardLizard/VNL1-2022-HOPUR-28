@@ -1,22 +1,40 @@
 {
     "club_details": [
         {
-            "id": "75979d5e-77d1-11ed-9430-4f35939dbe2f",
+            "id": "9a98067f-77da-11ed-904e-8cc68119b558",
             "teams_id": [
-                "d3bd60c0-77d2-11ed-9430-4f35939dbe2f"
+                "296b9b4d-77db-11ed-8e1d-8cc68119b558"
             ],
-            "name": "Keanu Reeves party pall",
-            "address": "Hamdal 11",
-            "phone": "4211111"
+            "name": "Test",
+            "address": "Lab",
+            "phone": "1231231"
         },
         {
-            "id": "4786d1b8-77d2-11ed-9430-4f35939dbe2f",
+            "id": "bd7551c9-77da-11ed-a9a4-8cc68119b558",
             "teams_id": [
-                "bf357eb2-77d2-11ed-9430-4f35939dbe2f"
+                "d49276ca-77dc-11ed-bb77-8cc68119b558"
             ],
-            "name": "Ragnarok",
-            "address": "asgard",
-            "phone": "5544221"
+            "name": "Try",
+            "address": "Tilraunastofa",
+            "phone": "3213213"
+        },
+        {
+            "id": "d43ae049-77db-11ed-bbeb-8cc68119b558",
+            "teams_id": [
+                "fcad59f3-77dc-11ed-88c8-8cc68119b558"
+            ],
+            "name": "Starks",
+            "address": "winterfell",
+            "phone": "1231231"
+        },
+        {
+            "id": "df03c123-77db-11ed-8670-8cc68119b558",
+            "teams_id": [
+                "830ca60d-77de-11ed-80bd-8cc68119b558"
+            ],
+            "name": "Lannisters",
+            "address": "Casterly Rock",
+            "phone": "1231231"
         }
     ]
 }

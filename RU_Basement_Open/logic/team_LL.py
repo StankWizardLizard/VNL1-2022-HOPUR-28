@@ -8,7 +8,7 @@ class TeamLL():
         self.teams = ""
         self._update_teams()
 
-    #----- Internal methods -----#
+    # ----- Internal methods -----#
     def _update_teams(self):
         """Gets all teams from data layer"""
         self.teams = self.data_wrapper.get_all_teams()
@@ -25,7 +25,7 @@ class TeamLL():
                 return team
         raise IndexError
 
-    #----- Reading methods -----#
+    # ----- Reading methods -----#
     def get_all_teams(self):
         """Returns a list of all teams from the data layer"""
         self._update_teams()
@@ -35,7 +35,7 @@ class TeamLL():
         """Returns a team from the data layer by id"""
         self._update_teams()
         return self._find_team(id)
-        
+
     def get_captain(self, team_id):
         """Takes a team id and returns it's captains player id"""
         self._update_teams()
@@ -44,20 +44,13 @@ class TeamLL():
             return team.captain_id
         else:
             raise IndexError
-        
-    def get_id_by_name(self, team_name):
-        self._update_teams()
-        for team in self.teams:
-            if team.name == team_name:
-                return team.id
-        raise IndexError
-    
+
     def get_players(self, team_id):
-        return self.get_team(team_id).player_ids 
-    
+        return self.get_team(team_id).player_ids
+
     def get_teams_by_club(self, club_id):
         """Takes a club"""
-    
+
     def team_name_exists(self, name, team_ids):
         """Takes name and a list of team ids, if that name exists on any of the teams,
         return True, else return False"""
@@ -85,15 +78,14 @@ class TeamLL():
             self._write_teams()
         except IndexError:
             raise IndexError
-            
-        
+
     def promote_to_captain(self, player_id, team_id):
         """Takes id's for a player and a team. Promotes that player to captain,
         if he's a part of the team"""
         self._update_teams()
         team = self._find_team(team_id)
         if player_id not in team.player_ids:
-            raise IndexError #TODO: Annað exception
-        else: # Assign new captain
+            raise IndexError  # TODO: Annað exception
+        else:  # Assign new captain
             team.captain_id = player_id
             self._write_teams()

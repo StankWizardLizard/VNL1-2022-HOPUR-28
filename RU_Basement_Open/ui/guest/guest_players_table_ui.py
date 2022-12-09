@@ -77,7 +77,6 @@ class PlayersTableUI(MenuFrame):
         page_numbers = len(list_of_players)//self.NR_OF_ENTRIES
 
         while True:
-
             self.clear_menu()
             self.display_menu(showing_page=showing_page, list_of_players=list_of_players)
             print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers))
