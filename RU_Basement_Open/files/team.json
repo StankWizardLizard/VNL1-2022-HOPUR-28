@@ -1,2 +1,51 @@
 {
+    "team_details": [
+        {
+            "name": "Fabrikkan",
+            "captain_id": "d73f1e21-77da-11ed-9118-8cc68119b558",
+            "player_ids": [
+                "d73f1e21-77da-11ed-9118-8cc68119b558",
+                "e81b26d6-77da-11ed-8ab1-8cc68119b558",
+                "fb1f9447-77da-11ed-9b84-8cc68119b558",
+                "0d37f057-77db-11ed-90d2-8cc68119b558"
+            ],
+            "id": "296b9b4d-77db-11ed-8e1d-8cc68119b558"
+        },
+        {
+            "name": "THe lightnings",
+            "captain_id": "58d304ba-77db-11ed-b192-8cc68119b558",
+            "player_ids": [
+                "58d304ba-77db-11ed-b192-8cc68119b558",
+                "7152015b-77db-11ed-9219-8cc68119b558",
+                "84429d65-77db-11ed-8af3-8cc68119b558",
+                "9641f937-77db-11ed-923b-8cc68119b558",
+                "ae5435ac-77db-11ed-ba13-8cc68119b558",
+                "c3a1040d-77db-11ed-85a3-8cc68119b558"
+            ],
+            "id": "d49276ca-77dc-11ed-bb77-8cc68119b558"
+        },
+        {
+            "name": "Winter is coming",
+            "captain_id": "f5fc3cfa-77db-11ed-b482-8cc68119b558",
+            "player_ids": [
+                "f5fc3cfa-77db-11ed-b482-8cc68119b558",
+                "0b8007b1-77dc-11ed-ad43-8cc68119b558",
+                "24e75cc6-77dc-11ed-bb52-8cc68119b558",
+                "3f7130e9-77dc-11ed-a8fb-8cc68119b558"
+            ],
+            "id": "fcad59f3-77dc-11ed-88c8-8cc68119b558"
+        },
+        {
+            "name": "Dept payers",
+            "captain_id": "c4a5e0c5-77dd-11ed-8c3e-8cc68119b558",
+            "player_ids": [
+                "c4a5e0c5-77dd-11ed-8c3e-8cc68119b558",
+                "29c04766-77de-11ed-9fe3-8cc68119b558",
+                "4ec0894b-77de-11ed-85d9-8cc68119b558",
+                "3b58b6a4-77de-11ed-9f8a-8cc68119b558",
+                "786701cb-77de-11ed-a355-8cc68119b558"
+            ],
+            "id": "830ca60d-77de-11ed-80bd-8cc68119b558"
+        }
+    ]
 }
