@@ -244,7 +244,6 @@ class MasterLL:
         """Takes match id and returns the team names that are playing matches"""
         team_names = []
         
-
         match_ids = self.division_logic.get_match_ids(division_id)
         team_ids = self.match_logic.get_teams(match_ids)
         for match in team_ids:

@@ -8,7 +8,7 @@ class PlayerStats(MenuFrame):
             self.player = player
             self.division = division
             self.NR_OF_ENTRIES = 10
-    def display_menu(self, division_leaderboard:list=[], showing_page:int=0):
+    def display_menu(self,games_past):
         """Display the menu screen for the  matches"""
         #Constants
         PLAYER_NAME = "Player Name"
@@ -34,11 +34,11 @@ class PlayerStats(MenuFrame):
             table_data = []
             player_name = f"{self.player.name}"
             quality_pts = f"{self.logic_wrapper.get_player_total_qps_by_division(self.player.id,self.division.id)}"
-            h_s, i_s,o_s = self.logic_wrapper.get_player_highest_shots_by_division(self.player.id,self.division.id)
+            h_s, i_s,o_s = self.logic_wrapper.get_player_highest_shots_by_division(self.player.id,self.division.id,int(games_past))
             highest_shot = f"{h_s}"
             innbound_pts = f"{i_s}"
             outbound_pts = f"{o_s}"
-            score_stats = self.logic_wrapper.get_player_statistics_by_division(self.player.id,self.division.id)
+            score_stats = self.logic_wrapper.get_player_statistics_by_division(self.player.id,self.division.id,games_past)
             score_5 = f'{score_stats["score_501"][0]}/{score_stats["score_501"][1]}/{score_stats["score_501"][2]}'
             score_3 = f'{score_stats["score_301"][0]}/{score_stats["score_301"][1]}/{score_stats["score_301"][2]}'
             score_cri = f'{score_stats["score_cricket"][0]}/{score_stats["score_cricket"][1]}/{score_stats["score_cricket"][2]}'
@@ -46,14 +46,36 @@ class PlayerStats(MenuFrame):
             table_data.append([player_name,quality_pts,highest_shot,innbound_pts,outbound_pts,score_5,score_3,score_cri,score_5_q])
             #Generates a table with the correct format and data
             generate_table(table_format, table_data)
+            return None
         except IndexError:
-            generate_table(table_format, [])
+            games_past = input("Matches exeeds played by player Try again (Q to quit): ")
+            try:
+                self.display_menu(games_past)
+            except (ValueError,IndexError):
+                if games_past.lower() == "q":
+                    return "Quit"
+                else:
+                    games_past = input("Input must be an integer try again (Q to quit):")
+                    if games_past.lower() == "q":
+                        return "Quit"
+                    self.display_menu(games_past)
     def prompt_option(self, showing_page:int=0):
         '''Prompts the user to choose an option from a list of options for the division table'''
         while True:
 
             self.clear_menu()
-            self.display_menu()
+            try:
+                games_past = input("Enter how many games in the past (Press enter for since beginning, Press Q to go back)")
+                
+                self.clear_menu()
+                quit_str =self.display_menu(games_past)
+            except ValueError:
+                if games_past.lower() == "q":
+                    break
+                print("Number must be integer")
+                continue
+            if quit_str == "Quit":
+                break
             choice = input(" > ")
             choice = choice.lower()
             match choice:

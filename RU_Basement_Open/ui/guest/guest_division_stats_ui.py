@@ -2,6 +2,9 @@ from ui.menu_frame import MenuFrame
 from ui.guest.guest_division_table_ui import DivisionTableUI
 from ui.guest.guest_matches_table_ui import MatchesTableUI
 from ui.guest.guest_player_list import PlayerList
+from ui.guest.guest_player_qps_ui import QPSTable
+from ui.guest.guest_player_inshot_ui import InShotTable
+from ui.guest.guest_player_outshot_ui import OutShotTable
 from ui.functions import *
 
 class DivisionStatsUI(MenuFrame):
@@ -50,11 +53,14 @@ class DivisionStatsUI(MenuFrame):
                     player_list = PlayerList(self.logic_wrapper,self.os,self.division)
                     player_list.prompt_option()
                 case "5":
-                    pass
+                    player_qps = QPSTable(self.logic_wrapper,self.os,self.division)
+                    player_qps.prompt_option()
                 case "6":
-                    pass
+                    player_inshot= InShotTable(self.logic_wrapper,self.os,self.division)
+                    player_inshot.prompt_option()
                 case "7":
-                    pass
+                    player_outshot = OutShotTable(self.logic_wrapper,self.os,self.division)
+                    player_outshot.prompt_option()
                 case "q":
                    break 
 

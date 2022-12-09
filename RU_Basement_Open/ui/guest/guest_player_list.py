@@ -1,6 +1,6 @@
 from ui.menu_frame import MenuFrame
 from ui.functions import *
-from ui.guest.guest_player_stats import PlayerStats
+from ui.guest.guest_player_stats_ui import PlayerStats
 from models.division_mdl import DivisionMdl
 class PlayerList(MenuFrame):
     def __init__(self,logic_wrapper, os, division:DivisionMdl = DivisionMdl("Reykjavik Open")):
