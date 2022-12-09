@@ -16,7 +16,7 @@ class CaptainMenuUI(MenuFrame):
 		"""Displays the menu for the captain"""
 		
 		print(f"Logged in as {self.status}")
-		print("┌────────────────────────┐")
+		print("┌─────────────────────────┐")
 		print("│1) Show Teams            │")
 		print("│2) All Unplayed Matches  │")
 		print("│3) All Match Results     │")
@@ -60,7 +60,7 @@ class CaptainMenuUI(MenuFrame):
 
 				# if the user wants view table of matches to edit
 				case "5":
-					matches_table_ui = CaptainMatchesTableUI(self.logic_wrapper, self.os)
+					matches_table_ui = CaptainMatchesTableUI(self.logic_wrapper, self.os, False)
 					matches_table_ui.prompt_option()
 
 				# if user wants to quit session
