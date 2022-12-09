@@ -1,6 +1,6 @@
 from ui.menu_frame import MenuFrame
 from models.division_mdl import DivisionMdl
-from ui.functions import get_input
+from ui.functions import get_input, get_date_input
 
 
 class CreateDivisionsUI(MenuFrame):
@@ -26,8 +26,25 @@ class CreateDivisionsUI(MenuFrame):
                     f"A division with name {name} already exists, try again...")
 
             host = get_input("Enter name of the host: ")
-            phone = get_input("Enter phone number: ", number=True)
-            rounds = get_input("Enter ammount of rounds: ", number=True)
+            phone = get_input("Enter phone number: ", number=True, length=7)
+            while True:
+                rounds = get_input("Enter ammount of rounds: ", number=True)
+                if int(rounds) <= 4:
+                    if int(rounds) != 0:                        
+                        break
+                    print("Rounds cannot be zero!")
+                print("Maximum amount of rounds is 4")
+                
+            start_date = get_date_input("Enter division start date on format YYYY-MM-DD: ")
+            
+            while True:
+                days_between_matchdays = get_input(
+                    "Enter amount of rest days between match days: ", number=True)
+                if int(days_between_matchdays) <= 7:
+                    if int(days_between_matchdays) != 0:
+                        break
+                    print("Rest days cannot be zero!")
+                print("Maximum amount of rest days in 7")
             # User can choose to save or disregard the information he just wrote
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")
@@ -63,18 +80,18 @@ class CreateDivisionsUI(MenuFrame):
                 print("Teams:")  # TODO: gera fallega töflu
                 for i, team in enumerate(teams):
                     print(i+1, team.name)
-                # Print teams already added 
+                # Print teams already added
                 print("------added teams------")
                 for i, team in enumerate(added_teams):
                     print(i+1, team.name)
-                
+
                 try:
                     choice = get_input(
-                        "Choose a team to add to division or press q to quit: ")
+                        "Choose a teams to add to division, press 'q' when done: ")
                     if choice.lower() == "q":
                         # User cannot quit unless atleast two teams are selected
                         if team_counter < 2:
-                            print("Pleas choose atleast 2 teams")
+                            print("Please choose atleast 2 teams")
                             continue
                         break
                     i = int(choice)-1
@@ -90,9 +107,9 @@ class CreateDivisionsUI(MenuFrame):
                 except ValueError:
                     print(f"{choice} is not a number")
             # Call to logic layer to automatically generate matches
-            self.logic_wrapper.master_logic.generate_division_matches(
-                division_id)
-            
+            self.logic_wrapper.generate_division_matches(
+                division_id, start_date, int(days_between_matchdays), int(rounds))
+
             choice = input(
                 "Would you like to create another Division? (y for yes, any for no): ")
             match choice.lower():

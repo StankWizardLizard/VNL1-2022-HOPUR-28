@@ -14,9 +14,9 @@ class CreatePlayerUI(MenuFrame):
         while True:
             self.clear_menu()
             self.display_menu()
+            clubs = self.logic_wrapper.get_all_clubs()
 
             print("Select an existing club!")
-            clubs = self.logic_wrapper.get_all_clubs()
             for i, club in enumerate(clubs):
                 print(i+1, club.name)
 
@@ -32,10 +32,10 @@ class CreatePlayerUI(MenuFrame):
 
             name = get_input("Enter Name of new player: ")
             address = get_input("Address of new player: ")
-            mobile_nr = get_input("Mobile phone number of player: ", number=True)
-            home_nr = get_input("Home phone number of player: ", number= True)
-            while True: #TODO: validate 10 characters
-                ssn = get_input("Input national id number of player: ", number=True)
+            mobile_nr = get_input("Mobile phone number of player: ", number=True, length=7)
+            home_nr = get_input("Home phone number of player: ", number= True,length=7)
+            while True: 
+                ssn = get_input("Input national id number of player: ", number=True, length=10)
                 if not self.logic_wrapper.player_ssn_exists(ssn):
                     break
                 print(f"A player with ssn {ssn} already exists, try again...")

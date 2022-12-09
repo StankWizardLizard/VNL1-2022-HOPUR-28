@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime, timedelta
 from functions.get_random_id import get_random_id
 from models.match_mdl import MatchMdl
 from collections import defaultdict
@@ -115,21 +115,37 @@ class MatchLL():
                         match.quality_points[player])
         return qp_dict
 
-    def get_player_total_qps_by_division(self, player_id, division_id):
+    def _get_last_n_matches(self, qp_ls, last_n_matches):
+        """Takes a quality point list and filters it for last n matches""" 
+        if last_n_matches > len(qp_ls):
+            raise IndexError(f"{last_n_matches} exeeds matches played by player")
+        return qp_ls[-last_n_matches:]
+    
+    def get_player_total_qps_by_division(self, player_id, division_id, last_n_matches=None):
         """Takes a player and division id, returns the player's total 
         quality points scored from all matches in that division"""
         qp_dict = self.get_all_player_qp_strings(player_id)
         qp_ls = qp_dict[division_id]
+        
+        # Filter for last n matches
+        if last_n_matches is not None:
+            qp_ls = self._get_last_n_matches(qp_ls, last_n_matches)
+
         total_score = 0
         for qp_str in qp_ls:
             total_score += self._count_qps(qp_str)
         return total_score
 
-    def get_player_highest_shots_by_division(self, player_id, division_id):
+    def get_player_highest_shots_by_division(self, player_id, division_id, last_n_matches=None):
         """Takes a player and division_id, returns the player's scores for his
         highest in-, out and regular shots he hit in all matches of that division"""
         qp_dict = self.get_all_player_qp_strings(player_id)
         qp_ls = qp_dict[division_id]
+        
+        # Filter for last n matches
+        if last_n_matches is not None:
+            qp_ls = self._get_last_n_matches(qp_ls, last_n_matches)
+        
         highest_shot = 0
         highest_inshot = 0
         highest_outshot = 0
@@ -213,44 +229,74 @@ class MatchLL():
             dates.append(self.get_date(id))
         return (str(min(dates)), str(max(dates)))
 
+    def get_teams(self, match_ids: list):
+        """Takes the match id to find team id"""
+        team_ids = []
+        for match_id in match_ids:
+            match = self.get_match(match_id)
+            team_ids.append((match.home_team, match.away_team))
+        return team_ids
+
+
     # ----- Writing methods -----#
 
-    def gen_matches(self, team_ids: list, division_id):
+    def gen_matches(self, team_ids: list, division_id, start_date, days_between_matchdays, rounds):
+        # Add a rest day if number of teams is odd
         if len(team_ids) % 2:
             team_ids.append("c")
         l = len(team_ids)
-
+        # Split list of teams in two
         t1 = team_ids[:l//2]
         t2 = team_ids[l//2:]
 
         match_days = []
+        # Pairing teams for a matches and allocating to matchdays using a
+        # round robin circle method algorithim
         for _ in range(l-1):
+            # Rotate the two lists clockwise as if t1 was stacked ontop
+            # of t2, leaving index 1 of t1 at a fixed position
             x = t1.pop()
             t2.append(x)
-
             y = t2.pop(0)
             t1.insert(1, y)
-
+            # Teams in the same column are paired for a fixture
             fixtures = list(zip(t1, t2))
+            # Remove fixtures that include an idle team
             for fixture in fixtures:
                 if "c" in fixture:
                     fixtures.remove(fixture)
                     break
-
+            # Add generated fixtures to a match-day
             match_days.append(fixtures)
-
-        i = 1
+        # Multiply the match-day list by specified rounds
+        print(match_days)
+        match_days = rounds*match_days
+    
         match_ids = []
+        dt = self._date_str_to_obj(start_date)
+        # Populate a match model class for each fixture and save to
+        # storage via the logic layer
         for day in match_days:
             for matchup in day:
                 t1, t2 = matchup
-                match = MatchMdl(f"2022-12-{i}", t1,  # TODO: Take division start date
-                                 t2, division_id=division_id)
+                match = MatchMdl(date=self._date_obj_to_str(dt), home_team=t1,
+                                 away_team=t2, division_id=division_id)
                 match_id = self.create_match(match)
                 match_ids.append(match_id)
-            i += 1
-
+            # Increment date to next match day
+            dt += timedelta(days=days_between_matchdays)
+        # Return a list of generated match ids
         return match_ids
+
+    def _date_obj_to_str(self, date_object):
+        """Takes a date string on the format "YYYY-MM-DD" and returns
+        a corrisponding datetime object"""
+        return date_object.strftime("%Y-%m-%d")
+
+    def _date_str_to_obj(self, date_string):
+        """Takes a datetime object and returns it's string representation 
+        on the form "YYYY-MM-DD" """
+        return datetime.strptime(date_string, '%Y-%m-%d')
 
     def create_match(self, match):
         """Takes a match object and forwards it to the data layer"""
@@ -267,9 +313,13 @@ class MatchLL():
         match.date = new_date
         self._write_matches
 
-    def set_results(self, id, results):
+    def set_results(self, id, home_players, away_players, results, qps):
         """Sets a matches results and uptades data layer"""
         self._update_matches()
         match = self._find_match(id)
+        match.home_team_players = home_players
+        match.away_team_players = away_players
         match.results = results
+        match.quality_points = qps
         self._write_matches()
+

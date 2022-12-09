@@ -44,6 +44,11 @@ class ClubLL():
             if club.name == name:
                 return True
         return False 
+    
+    def get_teams(self, club_id):
+        """Takes a club id, returns a list of that clubs team ids"""
+        return self.get_club(club_id).teams_id
+        
 
     #----- Writing methods -----#    
     def create_club(self, club):

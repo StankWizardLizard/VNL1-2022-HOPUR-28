@@ -2,13 +2,19 @@ from models.player_mdl import PlayerMdl
 from models.club_mdl import ClubMdl
 from models.team_mdl import TeamMdl
 from models.division_mdl import DivisionMdl
+from datetime import datetime
 import string
 import re
 
-def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[["", ""]]):
+def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[]):
     '''
-    Takes in a list of table columns and width of column, and a list of lists with data in those colums,
-    then prints a table from those inputs
+    Takes in a list of table columns and width of column, and a list of lists with strings in those colums,
+    then prints a table from those strings 
+    (can take in list of strings as well if one column in the row has more than one entry)
+    example:
+    table_format = [[column1 name, column1 width], [column2 name, column2 width]]
+    table_data = [["column1 info", "column2 info"], ["column1 info", "column2 info"]...]
+    generate_table(table_format, table_data)
     '''
     #constants
     EMPTY = ""
@@ -20,26 +26,26 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
     END_BETWEEN = "┤"
     END_FOOTER = "┘"
 
-    #table
+    # Checks if table_data was provided, if not it just prints an error code
     if table_format:
         try:
 
-            #creates lists of lines and header data
+            #creates a list of lines for each column (to seperate rows) and header data
             lines = [f"{EMPTY:─^{table_format[i][1]}}" for i in range(len(table_format))]
             header_data_list = [f"{table_format[i][0]:^{table_format[i][1]}}" for i in range(len(table_format))]
         except IndexError:
-            print("Error table data incorrect")
+            print("Error: table format incorrect")
 
         #initial strings that will be printed
         header_data = "│"
         header_top = "┌"
         between = "├"
         footer = "└"
-
+        
         #converts header data list into a string with headers
         for x in header_data_list:
             header_data = header_data + x + SEPERATOR_DATA
-        
+
         #generates lines for table in string format
         header_top = _generate_lines(header_top, lines, SEPERATOR_HEADER, END_HEADER)
         between = _generate_lines(between, lines, SEPERATOR_BETWEEN, END_BETWEEN)
@@ -48,29 +54,47 @@ def generate_table(table_format:list=[["NR", 4], ["Name", 6]], table_data:list=[
         #prints header
         print(header_top)
         print(header_data)
-        print(between)
+        if table_data:
+            print(between)  
+        else:
+            print(footer)    
 
         #prints table_data or an empty table if table_data is empty
-        if table_data:
-            for j in range(len(table_data)):
-                contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
-                contents = "│"
-                for e in range(len(contents_data_list)):
-                    contents = contents + contents_data_list[e] + SEPERATOR_DATA
-                print(contents)
-                if j < len(table_data)-1:
-                    print(between)
-        else:
-            contents_data_list = [f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
-            contents = "│"
-            for e in range(len(contents_data_list)):
-                contents = contents + contents_data_list[e] + SEPERATOR_DATA
-            print(contents)
+        try:
+            if table_data:
+                for j in range(len(table_data)):
+                    # Checks if row needs to be larger for more than one entry in a column (if column data is given as a list of strings instead of a string)
+                    # Sets size of the row (how many lines needed) as the size of the largest list
+                    column_size = 1
+                    for y in range(len(table_data[j])):
+                        if type(table_data[j][y]) is list:
+                            if column_size < len(table_data[j][y]):
+                                column_size = len(table_data[j][y])
+                    middle = column_size // 2
+                    for c in range(column_size):
+                        contents_data_list = [
+                            # If column data is a list that has a c index in that list then it  the c index of that list
+                            f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) > c 
+                            # If column data is a list that doesn't have a c index or is a string and c is not the middle line, it prints nothing at the c column line
+                            else f"{EMPTY:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) <= c or c != middle  
+                            # If it's a string, and the row length is normal or it's the approxamitely middle line of the row,
+                            else f"{table_data[j][i]:^{table_format[i][1]}}" 
+                            for i in range(len(table_format))
+                        ]
+                        contents = "│"
+                        for e in range(len(contents_data_list)):
+                            contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                        print(contents)
+                        if c == column_size-1:
+                            if j < len(table_data)-1:
+                                print(between)
+                #prints footer
+                print(footer)
+        except TypeError:
+            print("Error: wrong data type")
 
-        #prints footer
-        print(footer)
     else:
-        print("Error missing table data")
+        print("Error: missing table data")
 
 def _generate_lines(string:str, lines:list, seperator:str, end:str):
     '''
@@ -108,7 +132,21 @@ def remove_punctuation(input_str):
     input_str = ''.join(input_str.split()) # Remove whitespaces
     return input_str
 
-def get_input(display_string: str, number: bool = False, email: bool = False, isInt = False,isStr = False):
+def get_date_input(display_string: str):
+    """Takes a string to display, asks for user input and validates if it is a date
+    of format 'YYYY-MM-DD' """
+    while True:
+        choice = input(display_string).strip()
+        try:
+            start_date = datetime.strptime(choice, '%Y-%m-%d')
+            if start_date < datetime.now():
+                print(f"{start_date} has already passed")
+                continue
+            return choice
+        except ValueError:
+            print("Invalid input, date should be on format YYYY-MM-DD")
+
+def get_input(display_string: str, number: bool = False, email: bool = False, isInt = False,isStr = False, length=None):
     """Takes a string to display, asks for user input and does basic validation,
     returns input once it's valid"""
     while True:
@@ -133,8 +171,7 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
             valid = False
             error_str = "Empty input, try again..."
         # Return user's choice if all checks succeded
-        if valid:
-            return choice
+        
         if isInt:
             try:
                 if "." in choice:
@@ -143,6 +180,14 @@ def get_input(display_string: str, number: bool = False, email: bool = False, is
                     return int(choice)
             except ValueError:
                 error_str = "Input must be an integer, try again"
+                valid = False
+                
+        if length is not None and valid == True:
+            if len(choice) != length:
+                valid = False
+                error_str = f" is invalid, input must be of lenght {length}"
+        if valid:
+            return choice
         print(choice + error_str)
 
 
@@ -242,3 +287,17 @@ def get_player(logic_wrapper, id):
     new_date = input("Input new date YYYY-MM-DD: ")
     logic_wrapper.set_date(id, new_date)
     print_matches(logic_wrapper)'''
+
+#If row is normal sized it just prints the row in one line
+                    # if column_size == 1:
+                    #     contents_data_list = [f"{table_data[j][i]:^{table_format[i][1]}}" for i in range(len(table_format))]
+                    #     contents = "│"
+                    #     for e in range(len(contents_data_list)):
+                    #         contents = contents + contents_data_list[e] + SEPERATOR_DATA
+                    #     print(contents)
+                    #     if j < len(table_data)-1:
+                    #         print(between)
+                    #if row is larger than one it will print each entry of the larger column in a new line and the other data in the middle of the row
+                    # else:
+# else:
+                        #     contents_data_list = [f"{table_data[j][i][c]:^{table_format[i][1]}}" if type(table_data[j][i]) is list and len(table_data[j][i]) > c else f"{EMPTY:^{table_format[i][1]}}" for i in range(len(table_format))]
