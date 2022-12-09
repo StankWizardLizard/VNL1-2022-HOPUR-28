@@ -70,7 +70,7 @@ class MatchesTableUI(MenuFrame):
 		while True:
 			self.clear_menu()
 			self.display_menu(showing_page=showing_page, matches=matches)
-			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers))
+			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers),"or select match by number")
 			choice = input(" > ")
 			choice = choice.lower()
 			match choice:

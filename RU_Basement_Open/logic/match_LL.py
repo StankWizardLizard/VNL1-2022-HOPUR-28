@@ -269,7 +269,6 @@ class MatchLL():
             # Add generated fixtures to a match-day
             match_days.append(fixtures)
         # Multiply the match-day list by specified rounds
-        print(match_days)
         match_days = rounds*match_days
     
         match_ids = []

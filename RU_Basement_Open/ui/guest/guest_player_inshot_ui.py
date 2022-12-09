@@ -20,7 +20,6 @@ class InShotTable(MenuFrame):
         TN = 40 # Width of "Team Name" column
         WS = 15 # Width of "Wins" column
 
-        print(self.division.name)
 
         #  Format of table with a list of lists containing strings for each column ex. [[column name, column width], [column name, column width]]
         table_format = [[NUMBER, NR], [PLAYER_NAME, TN], [INSHOT_PTS, WS]]
@@ -57,6 +56,7 @@ class InShotTable(MenuFrame):
         while True:
             self.clear_menu()
             self.display_menu(division_leaderboard=division_leaderboard, showing_page=showing_page)
+            print("Press Q to go back: ")
             choice2 = input(" > ")
             choice2 = choice2.lower()
 

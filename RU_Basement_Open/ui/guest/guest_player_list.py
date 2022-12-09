@@ -17,7 +17,6 @@ class PlayerList(MenuFrame):
         NR = 4 #Length of number box
         TN = 40 #Length of team name box
 
-        print(self.division.name)
 
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [TEAM_NAME, TN]] 

@@ -1,3 +1,175 @@
 {
-    
+    "match_details": [
+        {
+            "date": "2022-12-1",
+            "home_team": "93e66c7e-76f8-11ed-81c1-acde48001122",
+            "away_team": "8828c3cc-7708-11ed-90c4-acde48001122",
+            "home_team_players": [
+                "7eecf770-76f8-11ed-81c1-acde48001122",
+                "535638f6-76f8-11ed-81c1-acde48001122",
+                "67530de8-76f8-11ed-81c1-acde48001122",
+                "fba8a76e-76f8-11ed-87b9-acde48001122"
+            ],
+            "away_team_players": [
+                "6474b3c4-7707-11ed-a63e-acde48001122",
+                "065564b4-76fd-11ed-b382-acde48001122",
+                "3547d982-76fd-11ed-b382-acde48001122",
+                "3af993e8-7707-11ed-a63e-acde48001122"
+            ],
+            "results": [
+                {
+                    "home_plr": [
+                        "7eecf770-76f8-11ed-81c1-acde48001122"
+                    ],
+                    "away_plr": [
+                        "6474b3c4-7707-11ed-a63e-acde48001122"
+                    ],
+                    "result": [
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "home_plr": [
+                        "535638f6-76f8-11ed-81c1-acde48001122"
+                    ],
+                    "away_plr": [
+                        "065564b4-76fd-11ed-b382-acde48001122"
+                    ],
+                    "result": [
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "home_plr": [
+                        "67530de8-76f8-11ed-81c1-acde48001122"
+                    ],
+                    "away_plr": [
+                        "3547d982-76fd-11ed-b382-acde48001122"
+                    ],
+                    "result": [
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "home_plr": [
+                        "fba8a76e-76f8-11ed-87b9-acde48001122"
+                    ],
+                    "away_plr": [
+                        "3af993e8-7707-11ed-a63e-acde48001122"
+                    ],
+                    "result": [
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "home_plr": [
+                        "7eecf770-76f8-11ed-81c1-acde48001122",
+                        "535638f6-76f8-11ed-81c1-acde48001122"
+                    ],
+                    "away_plr": [
+                        "6474b3c4-7707-11ed-a63e-acde48001122",
+                        "065564b4-76fd-11ed-b382-acde48001122"
+                    ],
+                    "result": [
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "home_plr": [
+                        "67530de8-76f8-11ed-81c1-acde48001122",
+                        "fba8a76e-76f8-11ed-87b9-acde48001122"
+                    ],
+                    "away_plr": [
+                        "3547d982-76fd-11ed-b382-acde48001122",
+                        "3af993e8-7707-11ed-a63e-acde48001122"
+                    ],
+                    "result": [
+                        2,
+                        1
+                    ]
+                },
+                {
+                    "home_plr": [
+                        "7eecf770-76f8-11ed-81c1-acde48001122",
+                        "535638f6-76f8-11ed-81c1-acde48001122",
+                        "67530de8-76f8-11ed-81c1-acde48001122",
+                        "fba8a76e-76f8-11ed-87b9-acde48001122"
+                    ],
+                    "away_plr": [
+                        "6474b3c4-7707-11ed-a63e-acde48001122",
+                        "065564b4-76fd-11ed-b382-acde48001122",
+                        "3547d982-76fd-11ed-b382-acde48001122",
+                        "3af993e8-7707-11ed-a63e-acde48001122"
+                    ],
+                    "results": [
+                        2,
+                        1
+                    ]
+                }
+            ],
+            "quality_points": {},
+            "division_id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "id": "4ca1fa6e-770b-11ed-8c9b-acde48001122"
+        },
+        {
+            "date": "2022-12-1",
+            "home_team": "588fa432-7708-11ed-8680-acde48001122",
+            "away_team": "7badd70e-7708-11ed-90c4-acde48001122",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "id": "4ca2232c-770b-11ed-8c9b-acde48001122"
+        },
+        {
+            "date": "2022-12-2",
+            "home_team": "93e66c7e-76f8-11ed-81c1-acde48001122",
+            "away_team": "7badd70e-7708-11ed-90c4-acde48001122",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "id": "4ca235f6-770b-11ed-8c9b-acde48001122"
+        },
+        {
+            "date": "2022-12-2",
+            "home_team": "8828c3cc-7708-11ed-90c4-acde48001122",
+            "away_team": "588fa432-7708-11ed-8680-acde48001122",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "id": "4ca246ae-770b-11ed-8c9b-acde48001122"
+        },
+        {
+            "date": "2022-12-3",
+            "home_team": "93e66c7e-76f8-11ed-81c1-acde48001122",
+            "away_team": "588fa432-7708-11ed-8680-acde48001122",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "id": "4ca25766-770b-11ed-8c9b-acde48001122"
+        },
+        {
+            "date": "2022-12-3",
+            "home_team": "7badd70e-7708-11ed-90c4-acde48001122",
+            "away_team": "8828c3cc-7708-11ed-90c4-acde48001122",
+            "home_team_players": [],
+            "away_team_players": [],
+            "results": [],
+            "quality_points": {},
+            "division_id": "462e3152-770b-11ed-8c9b-acde48001122",
+            "id": "4ca267c4-770b-11ed-8c9b-acde48001122"
+        }
+    ]
 }

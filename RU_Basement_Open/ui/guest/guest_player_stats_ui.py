@@ -38,7 +38,7 @@ class PlayerStats(MenuFrame):
             highest_shot = f"{h_s}"
             innbound_pts = f"{i_s}"
             outbound_pts = f"{o_s}"
-            score_stats = self.logic_wrapper.get_player_statistics_by_division(self.player.id,self.division.id,games_past)
+            score_stats = self.logic_wrapper.get_player_statistics_by_division(self.player.id,self.division.id,int(games_past))
             score_5 = f'{score_stats["score_501"][0]}/{score_stats["score_501"][1]}/{score_stats["score_501"][2]}'
             score_3 = f'{score_stats["score_301"][0]}/{score_stats["score_301"][1]}/{score_stats["score_301"][2]}'
             score_cri = f'{score_stats["score_cricket"][0]}/{score_stats["score_cricket"][1]}/{score_stats["score_cricket"][2]}'
@@ -65,7 +65,7 @@ class PlayerStats(MenuFrame):
 
             self.clear_menu()
             try:
-                games_past = input("Enter how many games in the past (Press enter for since beginning, Press Q to go back)")
+                games_past = input("Enter how many games in the past (Press enter for since beginning, Press Q to go back): ")
                 
                 self.clear_menu()
                 quit_str =self.display_menu(games_past)
@@ -76,6 +76,7 @@ class PlayerStats(MenuFrame):
                 continue
             if quit_str == "Quit":
                 break
+            print("Press Q to go back: ")
             choice = input(" > ")
             choice = choice.lower()
             match choice:
