@@ -6,7 +6,7 @@ class PlayerList(MenuFrame):
     def __init__(self,logic_wrapper, os, division:DivisionMdl = DivisionMdl("Reykjavik Open")):
             super().__init__(logic_wrapper, os)
             self.division = division
-            self.NR_OF_ENTRIES = 10
+            self.NR_OF_ENTRIES = 1
 
     def display_menu(self, showing_page:int=0):
         """Display the menu screen for the  matches"""
@@ -42,10 +42,10 @@ class PlayerList(MenuFrame):
     def prompt_option(self, showing_page:int=0):
         '''Prompts the user to choose an option from a list of options for the division table'''
         division_leaderboard = self.logic_wrapper.get_leaderboard(self.division)
-        pages_number = len(division_leaderboard) // 2
+        pages_number = len(division_leaderboard) // self.NR_OF_ENTRIES
         while True:
             self.clear_menu()
-            players_in_div = self.display_menu()
+            players_in_div = self.display_menu(showing_page)
             print(display_menu_options(showing_page=showing_page, how_many_pages=pages_number))
             choice = input(" > ")
             choice = choice.lower()
