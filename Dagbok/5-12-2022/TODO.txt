@@ -1,0 +1,27 @@
+
+ ██╗  ██╗ ██████╗ ██████╗ ██╗   ██╗██████╗     ██████╗  █████╗ 
+ ██║  ██║██╔═══██╗██╔══██╗██║   ██║██╔══██╗    ╚════██╗██╔══██╗
+ ███████║██║   ██║██████╔╝██║   ██║██████╔╝     █████╔╝╚█████╔╝
+ ██╔══██║██║   ██║██╔═══╝ ██║   ██║██╔══██╗    ██╔═══╝ ██╔══██╗
+ ██║  ██║╚██████╔╝██║     ╚██████╔╝██║  ██║    ███████╗╚█████╔╝
+ ╚═╝  ╚═╝ ╚═════╝ ╚═╝      ╚═════╝ ╚═╝  ╚═╝    ╚══════╝ ╚════╝ 
+                                                              
+ ##############################################################
+
+
+ [X] Tweak'a Logic Layer
+ [X] Tengja alla classa saman
+ [X] Klára UI Layer
+ [ ] Klára functionality 
+ [ ] Klára functionality til að edit'a matches
+
+ ##############################################################
+
+ UI Layerinn er sirkabout komið eins og við viljum hann, munum pæla
+ seinna um hvort þarf að breyta sma up uppsetningunni, erum að reyna að
+ klára tengja allt saman og ná functionality 100%
+ náðum góðum árangri í dag :)
+
+ ##############################################################
+
+                  Muna að mæta kl 11:00 á morgun :)
