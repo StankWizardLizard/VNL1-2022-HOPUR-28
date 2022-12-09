@@ -123,6 +123,7 @@ class MasterLL #EB937F {
     get_leaderboard(DivisionMld)
     get_team_names_by_division(division_id)
     team_name_exists_on_club(name, club_id)
+    get_division_unplayed_match_ids(division_id)
 }
 class LogicWrapper{
     DataWrapper
