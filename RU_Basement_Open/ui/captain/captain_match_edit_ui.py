@@ -127,11 +127,11 @@ class MatchEditUI(MenuFrame):
                             case _:
                                 input("Invalid Input")
 
-            self.clear_menu()
-            self.display_menu()
-                        
-            choice = input("would you like to save the table? (y for yes and any for no): ")
-            choice = choice.strip().lower()
+                self.clear_menu()
+                self.display_menu()
+                            
+                choice = input("would you like to save the table? (y for yes and any for no): ")
+                choice = choice.strip().lower()
 
                 match choice:
                     case "y":
