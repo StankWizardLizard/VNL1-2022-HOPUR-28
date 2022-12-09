@@ -19,18 +19,18 @@ class HostMenuUI(MenuFrame):
 		"""Displays the menu for the host"""
 		
 		print(f"Logged in as {self.status}")
-		print("┌──────────────────────┐")
-		print("│1) Show Teams         │")
-		print("│2) Unplayed Matches   │")
-		print("│3) Match Results      │")
-		print("│4) Divisions Table    │")
-		print("│5) Players            │")
-		print("│6) Teams              │")
-		print("│7) Clubs              │")
-		print("│8) Divisions          │")
-		print("│                      │")
-		print("│q) Log out            │")
-		print("└──────────────────────┘")
+		print("┌──────────────────────────┐")
+		print("│1) Show Teams             │")
+		print("│2) All Unplayed Matches   │")
+		print("│3) All Match Results      │")
+		print("│4) Divisions Table        │")
+		print("│5) Edit Players           │")
+		print("│6) Edit Teams             │")
+		print("│7) Edit Clubs             │")
+		print("│8) Edit Divisions         │")
+		print("│                          │")
+		print("│q) Log out                │")
+		print("└──────────────────────────┘")
 
 
 	def prompt_option(self):

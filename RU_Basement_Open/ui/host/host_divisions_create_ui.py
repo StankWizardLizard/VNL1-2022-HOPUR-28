@@ -90,15 +90,20 @@ class CreateDivisionsUI(MenuFrame):
                     table_data.append([i+1, team.name])
                 generate_table(table_format, table_data)
                 
+                back = False
                 try:
                     choice = get_input(
-                        "Choose a teams to add to division, press 'q' when done: ")
-                    if choice.lower() == "q":
+                        "Choose a teams to add to division, press (C)onfirm when done or (Q)uit to abort: ")
+                    if choice.strip().lower() == "c":
                         # User cannot quit unless atleast two teams are selected
                         if team_counter < 2:
                             print("Please choose atleast 2 teams")
                             continue
                         break
+                    if choice.strip().lower() == "q":
+                        back = True
+                        break
+                    
                     i = int(choice)-1
                     team_id = teams[i].id
                     # Moves selected team to a seperate list for added teams
@@ -111,6 +116,10 @@ class CreateDivisionsUI(MenuFrame):
                     print(f"index {choice} is out of range, try again...")
                 except ValueError:
                     print(f"{choice} is not a number")
+            # Abort from division creator
+            if back:
+                break        
+                    
             # Call to logic layer to automatically generate matches
             self.logic_wrapper.generate_division_matches(
                 division_id, start_date, int(days_between_matchdays), int(rounds))

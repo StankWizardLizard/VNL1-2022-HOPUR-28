@@ -16,15 +16,15 @@ class CaptainMenuUI(MenuFrame):
 		"""Displays the menu for the captain"""
 		
 		print(f"Logged in as {self.status}")
-		print("┌─────────────────────┐")
-		print("│1) Show Teams        │")
-		print("│2) Unplayed Matches  │")
-		print("│3) Match Results     │")
-		print("│4) Divisions Table   │")
-		print("│5) Edit Matches      │")
-		print("│                     │")
-		print("│q) Log out           │")
-		print("└─────────────────────┘")
+		print("┌────────────────────────┐")
+		print("│1) Show Teams            │")
+		print("│2) All Unplayed Matches  │")
+		print("│3) All Match Results     │")
+		print("│4) Divisions Table       │")
+		print("│5) Edit Matches          │")
+		print("│                         │")
+		print("│q) Log out               │")
+		print("└─────────────────────────┘")
 
 
 	def prompt_option(self):

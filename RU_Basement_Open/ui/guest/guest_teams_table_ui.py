@@ -96,12 +96,14 @@ class TeamsTableUI(MenuFrame):
 
 				# 
 				case _:
-					if choice.isnumeric():
-						if list_of_all_teams[int(choice)-1]:
-							team = list_of_all_teams[int(choice)-1]
-							team_table_ui = PlayersTableUI(self.logic_wrapper, self.os, team)
-							team_table_ui.prompt_option()
-					
+					try:
+						if choice.isnumeric():
+							if list_of_all_teams[int(choice)-1]:
+								team = list_of_all_teams[int(choice)-1]
+								team_table_ui = PlayersTableUI(self.logic_wrapper, self.os, team)
+								team_table_ui.prompt_option()
+					except IndexError:
+						print("Invalid id, try again...")
 				#  undocumented inputs get disregarded
 					else:
 						input("Invalid Input!")
