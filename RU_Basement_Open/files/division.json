@@ -1,30 +1,3 @@
 {
-    "division_details": [
-        {
-            "id": "5616665c-770b-11ed-8029-9fdf909ae089",
-            "name": "Lions",
-            "team_ids": [],
-            "host_name": "Villi",
-            "phone_nr": "8441799",
-            "start_date": "",
-            "end_date": "",
-            "type": "L",
-            "rounds": "4",
-            "matches": []
-        },
-        {
-            "id": "b7fc8c52-770b-11ed-8029-9fdf909ae089",
-            "name": "DivisionName",
-            "team_ids": [
-                "8d5386e0-770b-11ed-8029-9fdf909ae089"
-            ],
-            "host_name": "Villi",
-            "phone_nr": "1",
-            "start_date": "",
-            "end_date": "",
-            "type": "L",
-            "rounds": "2",
-            "matches": []
-        }
-    ]
+
 }
