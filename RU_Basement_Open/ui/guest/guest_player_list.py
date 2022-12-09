@@ -49,9 +49,7 @@ class PlayerList(MenuFrame):
             for team in all_teams:
                 if team_id == team.id:
                     for player in team.player_ids:
-                        players_in_div.append(self.logic_wrapper.get_player(player))
-
-        
+                        players_in_div.append(self.logic_wrapper.get_player(player))        
         
         
         pages_number = len(players_in_div) // 10
