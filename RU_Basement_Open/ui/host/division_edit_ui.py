@@ -34,11 +34,13 @@ class EditDivisionUI(MenuFrame):
     def prompt_option(self, showing_page = 0, id = 1):
         """Prompts the user to choose an option from a list of options for the match table"""
         team_names = self.logic_wrapper.get_team_names_by_division(self.division.id)
+        match_ids = self.logic_wrapper.get_division_unplayed_match_ids(self.division.id)
         pages_number = len(team_names)//10
         while True:
             self.clear_menu()
             self.display_menu(team_names, showing_page=showing_page)
             print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
+            print("Select a match to delay")
             choice = input(" > ")
             choice = choice.strip().lower()
 
@@ -49,4 +51,13 @@ class EditDivisionUI(MenuFrame):
 
                 # undocumented inputs get disregarded
                 case _:
-                    continue
+                    if choice.isnumeric():
+                        try:     
+                            match_id = match_ids[int(choice)-1]
+                            new_date = get_date_input("Choose a new date on format YYYY-MM-DD: ")
+                            self.logic_wrapper.postpone_match(new_date, self.division.id, match_id)
+                            # division = divisions[int(choice) -1]
+                            # divisionui = EditDivisionUI(self.logic_wrapper, self.os, division)
+                            # divisionui.prompt_option()
+                        except IndexError:
+                            input("Invalid Input!")
