@@ -40,8 +40,8 @@ class CaptainMatchesTableUI(MenuFrame):
 
 		# Print the menu
 		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Unfinished Matches")
-		print("┌────┬──────────────────────────────────────────────────────────┬──────────────────┐")
-		print("│ NR │                           Match                          │       Date       │")
+		print("┌────┬──────────────────────────────────────────────────────────┬──────────────────┬───────────────────────────┐")
+		print("│ NR │                           Match                          │       Date       │          Division         │")
 
 		try:
 			for i in range(0,len(self.match_list[self.current_page_number])):
@@ -51,13 +51,15 @@ class CaptainMatchesTableUI(MenuFrame):
 				home_team = self.logic_wrapper.get_team(current_match.home_team).name
 				away_team = self.logic_wrapper.get_team(current_match.away_team).name
 
-				print("├────┼──────────────────────────────────────────────────────────┼──────────────────┤")
-				print(f"│{current_match_number:^4}│{home_team:^27} vs {away_team:^27}│ Date:{current_match.date:^12}│")
+				division = self.logic_wrapper.get_division(current_match.division_id).name
+
+				print("├────┼──────────────────────────────────────────────────────────┼──────────────────┼───────────────────────────┤")
+				print(f"│{current_match_number:^4}│{home_team:^27} vs {away_team:^27}│ Date:{current_match.date:^12}│{division:^27}│")
 
 		except IndexError:
 			pass
 
-		print("└────┴──────────────────────────────────────────────────────────┴──────────────────┘")
+		print("└────┴──────────────────────────────────────────────────────────┴──────────────────┴───────────────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 
 
