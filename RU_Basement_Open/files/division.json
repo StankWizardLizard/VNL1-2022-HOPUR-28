@@ -1,30 +1,22 @@
 {
     "division_details": [
         {
-            "id": "5616665c-770b-11ed-8029-9fdf909ae089",
-            "name": "Lions",
-            "team_ids": [],
-            "host_name": "Villi",
-            "phone_nr": "8441799",
-            "start_date": "",
-            "end_date": "",
-            "type": "L",
-            "rounds": "4",
-            "matches": []
-        },
-        {
-            "id": "b7fc8c52-770b-11ed-8029-9fdf909ae089",
-            "name": "DivisionName",
+            "id": "f33d39d4-77d2-11ed-9430-4f35939dbe2f",
+            "name": "the fight to end all fights",
             "team_ids": [
-                "8d5386e0-770b-11ed-8029-9fdf909ae089"
+                "bf357eb2-77d2-11ed-9430-4f35939dbe2f",
+                "d3bd60c0-77d2-11ed-9430-4f35939dbe2f"
             ],
-            "host_name": "Villi",
-            "phone_nr": "1",
-            "start_date": "",
-            "end_date": "",
+            "host_name": "Kratos",
+            "phone_nr": "5141223",
+            "start_date": "2022-12-10",
+            "end_date": "2022-12-11",
             "type": "L",
             "rounds": "2",
-            "matches": []
+            "matches": [
+                "f5b7b6a8-77d2-11ed-9430-4f35939dbe2f",
+                "f5b7b6a9-77d2-11ed-9430-4f35939dbe2f"
+            ]
         }
     ]
 }

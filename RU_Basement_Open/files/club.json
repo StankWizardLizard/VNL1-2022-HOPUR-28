@@ -1,11 +1,22 @@
 {
     "club_details": [
         {
-            "id": "6e761224-770b-11ed-8029-9fdf909ae089",
-            "teams_id": [],
-            "name": "LionsClub",
-            "address": "Háaleiti 22",
-            "phone": "8441799"
+            "id": "75979d5e-77d1-11ed-9430-4f35939dbe2f",
+            "teams_id": [
+                "d3bd60c0-77d2-11ed-9430-4f35939dbe2f"
+            ],
+            "name": "Keanu Reeves party pall",
+            "address": "Hamdal 11",
+            "phone": "4211111"
+        },
+        {
+            "id": "4786d1b8-77d2-11ed-9430-4f35939dbe2f",
+            "teams_id": [
+                "bf357eb2-77d2-11ed-9430-4f35939dbe2f"
+            ],
+            "name": "Ragnarok",
+            "address": "asgard",
+            "phone": "5544221"
         }
     ]
 }

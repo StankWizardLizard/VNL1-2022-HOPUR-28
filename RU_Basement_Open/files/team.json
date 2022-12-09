@@ -1,15 +1,26 @@
 {
     "team_details": [
         {
-            "name": "LionsTeam",
-            "captain_id": "862da058-770b-11ed-8029-9fdf909ae089",
+            "name": "the a team",
+            "captain_id": "5de7615c-77d2-11ed-9430-4f35939dbe2f",
             "player_ids": [
-                "862da058-770b-11ed-8029-9fdf909ae089",
-                "862da058-770b-11ed-8029-9fdf909ae089",
-                "862da058-770b-11ed-8029-9fdf909ae089",
-                "862da058-770b-11ed-8029-9fdf909ae089"
+                "5de7615c-77d2-11ed-9430-4f35939dbe2f",
+                "7830c332-77d2-11ed-9430-4f35939dbe2f",
+                "9166c716-77d2-11ed-9430-4f35939dbe2f",
+                "b00d64fe-77d2-11ed-9430-4f35939dbe2f"
             ],
-            "id": "8d5386e0-770b-11ed-8029-9fdf909ae089"
+            "id": "bf357eb2-77d2-11ed-9430-4f35939dbe2f"
+        },
+        {
+            "name": "keanu b team",
+            "captain_id": "c268c194-77d1-11ed-9430-4f35939dbe2f",
+            "player_ids": [
+                "c268c194-77d1-11ed-9430-4f35939dbe2f",
+                "e171b6fe-77d1-11ed-9430-4f35939dbe2f",
+                "f8f6de26-77d1-11ed-9430-4f35939dbe2f",
+                "3113cd5a-77d2-11ed-9430-4f35939dbe2f"
+            ],
+            "id": "d3bd60c0-77d2-11ed-9430-4f35939dbe2f"
         }
     ]
 }
