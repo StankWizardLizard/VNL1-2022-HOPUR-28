@@ -20,7 +20,7 @@ class CaptainMenuUI(MenuFrame):
 		print("│1) Show Teams            │")
 		print("│2) All Unplayed Matches  │")
 		print("│3) All Match Results     │")
-		print("│4) Divisions Table       │")
+		print("│4) Divisions Stats       │")
 		print("│5) Edit Matches          │")
 		print("│                         │")
 		print("│q) Log out               │")
