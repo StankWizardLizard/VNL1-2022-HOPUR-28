@@ -17,7 +17,6 @@ class MatchEditUI(MenuFrame):
         self.home_team_name = self.logic_wrapper.get_team(self.match.home_team).name
         self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
 
-
     def display_menu(self):
         """Displays match table for a given match"""
 
@@ -28,13 +27,19 @@ class MatchEditUI(MenuFrame):
             try:
                 home_player_name = self.logic_wrapper.get_player(home_player_id).name
             except IndexError:
-                home_player_name = ""
+                if(home_player_id == "\u001b[47m##########################################\u001b[0m"):
+                    home_player_name = home_player_id
+                else:
+                    home_player_name = ""
 
             # Check if player exists, if set value to his name, else to nothing
             try:
                 away_player_name = self.logic_wrapper.get_player(away_player_id).name
             except IndexError:
-                away_player_name = ""
+                if(away_player_id == "\u001b[47m##########################################\u001b[0m"):
+                    away_player_name = away_player_id
+                else:
+                    away_player_name = ""
 
             # Update player_list
             self.player_list.append((home_player_name, away_player_name))
@@ -84,57 +89,70 @@ class MatchEditUI(MenuFrame):
 
     def get_points(self):
         """Get points from the user"""
-        while True:
-            # get points from user
-            for game in self.points_list:
-                for point in range(0,4):
 
+        # Check first if there are players picked from roster
+        if(len(self.home_team_players) != 0):
+            while True:
+                # reset the point list
+                self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
+
+                # get points from user
+                for i in range(0,7):
                     while True:
 
                         self.clear_menu()
                         self.display_menu()
-                        
-                        score = input("Input next leg point (1 or 0): ")
 
-                        # Input validation
-                        match score:
-                            case "1":
-                                # set point as 1
-                                game[point] = 1
-                                break
+                        print("Example : 2-1, 2-0, 1-2 or 0-2")
+                        game_points = input(f"Input points for match #{i+1}: ")
+                        game_points.strip()
 
-                            case "0":
-                                # set point as 0
-                                game[point] = 0
-                                break
+                        match game_points:
+                            case "2-1":
+                                self.points_list[i] = ["1","1","0","1"]
+                                break                            
+
+                            case "2-0":
+                                self.points_list[i] = ["1","1","0","0"]
+                                break                            
+
+                            case "1-2":
+                                self.points_list[i] = ["1","0","1","1"]
+                                break                            
+
+                            case "0-2":
+                                self.points_list[i] = ["0","0","1","1"]
+                                break                            
+
                             case _:
+                                input("Invalid Input")
 
-                                input("Invalid Input!")
+                self.clear_menu()
+                self.display_menu()
+                            
+                choice = input("would you like to save the table? (y for yes and any for no): ")
+                choice = choice.strip().lower()
 
-            self.clear_menu()
-            self.display_menu()
-                        
-            choice = input("would you like to save the table? (y for yes and any for no): ")
-            choice = choice.lower()
+                match choice:
+                    case "y":
+                        # Save info about the match and quit the window
+                        break
 
-            match choice:
-                case "y":
-                    # Save info about the match and quit the window
-                    break
+                    case "n":
+                        # Dont save info about the match
+                        self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
 
-                case "n":
-                    # Dont save info about the match
-                    self.points_list = [["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""],["","","",""]]
-
-                case _:
-                    break
+                    case _:
+                        break
+        else:
+            input("You must pick players for matchup before you can set points!")
 
 
 
     def get_quality_points(self):
         """Get quality points from the user for players"""
-        print(dir(self.match))
 
+        # Check first if there are players picked from roster
         if(len(self.home_team_players) != 0):            
             all_players = []
             all_players += self.home_team_players
@@ -143,7 +161,7 @@ class MatchEditUI(MenuFrame):
             while True:
                 #self.display_player_table(all_players, "All players")
                 player = self.pick_players_from_list(all_players,"All players")
-                print("Possible Categories: o(u)tshot, (i)nnshot, (b)ullseye, (h)ighshot, Example: 170u 170i 9h 6b")
+                print("Possible Categories: o(u)tshot, i(n)shot, (b)ullseye, (h)it, Example: 170u 170n 9h 6b")
                 quality_points = input("Input the players quality points: ")
 
                 # Validate the quality points string
@@ -174,7 +192,7 @@ class MatchEditUI(MenuFrame):
 
             # innshot check
             if(len(quality_point.split("i")) > 1):
-                point = quality_point.split("i")[0]
+                point = quality_point.split("n")[0]
                 if(point.isnumeric()):
                     point = int(point)
                     if(point <= 0 or point >= 171):
@@ -198,7 +216,7 @@ class MatchEditUI(MenuFrame):
                 point = quality_point.split("b")[0]
                 if(point.isnumeric()):
                     point = int(point)
-                    if(point <= 0 or point >= 10):
+                    if(point <= 0 or point >= 7):
                         return False
                 else:
                     return False
@@ -208,7 +226,7 @@ class MatchEditUI(MenuFrame):
                 point = quality_point.split("h")[0]
                 if(point.isnumeric()):
                     point = int(point)
-                    if(point <= 0 or point >= 7):
+                    if(point <= 0 or point >= 10):
                         return False
                 else:
                     return False
@@ -232,6 +250,9 @@ class MatchEditUI(MenuFrame):
     def get_matchup(self):
         """Get the player matchup from the user and update the table"""
         while True:
+            norm = "\u001b[0m" # Black background color asni code
+            white = "\u001b[47m" # White background color asni code
+            selected_space = white + "#"*42 + norm 
 
             # Get an instance of home team
             home_team = self.logic_wrapper.get_team(self.match.home_team)
@@ -249,13 +270,15 @@ class MatchEditUI(MenuFrame):
 
             # Let user pick the matchup for the first 4 games
             for match_game_number in range(0,4):
+                self.player_id_list[match_game_number] = (selected_space,"")
+
                 # Pick from Home team, remove from roster pick and add to player list
                 home_player = self.pick_players_from_list(home_team_players, home_team.name)
                 home_team_players.remove(home_player)
                 home_team_pick.append(home_player)
 
                 # Update board
-                self.player_id_list[match_game_number] = (home_player.id, "")
+                self.player_id_list[match_game_number] = (home_player.id, selected_space)
 
                 # Pick from Away team, remove from roster pick and add to player list
                 away_player = self.pick_players_from_list(away_team_players, away_team.name)
@@ -273,12 +296,14 @@ class MatchEditUI(MenuFrame):
 
             # Let user pick the matchup for the second 4 games
             for match_game_number in range(4,8):
+                self.player_id_list[match_game_number] = (selected_space,"")
+
                 # Pick from Home team, remove from roster pick and add to player list
                 home_player = self.pick_players_from_list(home_team_pick, home_team.name)
                 home_team_pick.remove(home_player)
 
                 # Update board
-                self.player_id_list[match_game_number] = (home_player.id, "")
+                self.player_id_list[match_game_number] = (home_player.id, selected_space)
 
                 # Pick from Away team, remove from roster pick and add to player list
                 away_player = self.pick_players_from_list(away_team_pick, away_team.name)
@@ -293,7 +318,7 @@ class MatchEditUI(MenuFrame):
             self.display_menu()
 
             choice = input("would you like to save the table? (y for yes and any for no): ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 case "y":
@@ -382,7 +407,7 @@ class MatchEditUI(MenuFrame):
 
             # Iterate through results and format data properly
             for game in self.match.results:
-                print(game,end="\n\n")
+                #print(game,end="\n\n")
 
                 # Format Players
                 for home_player, away_player in zip(game["home_plr"],game["away_plr"]):
@@ -480,7 +505,6 @@ class MatchEditUI(MenuFrame):
         """"Prompts Captain to input match data"""
 
         try:
-
             while True:
                 # Display Menu 
                 self.clear_menu()
@@ -489,7 +513,7 @@ class MatchEditUI(MenuFrame):
 
                 # Get option choice from user
                 choice = input(" > ")
-                choice = choice.lower()
+                choice = choice.strip().lower()
 
                 match choice:
                     case "1":
@@ -512,7 +536,8 @@ class MatchEditUI(MenuFrame):
                         input("Invalid Input!")
 
 
-                self.save_match_information()
+            self.save_match_information()
+            self.save_match_information()
 
         except:
-            input("Exiting without saving")
+            input("\nExiting without saving")

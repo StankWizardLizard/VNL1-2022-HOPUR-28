@@ -29,7 +29,7 @@ class CreateClubUI(MenuFrame):
 
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 # if user wants to save the the club info
@@ -53,7 +53,7 @@ class CreateClubUI(MenuFrame):
 
             choice = input(
                 "Would you like to create another club? (y for yes, any for no): ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 # if user wants to add another club

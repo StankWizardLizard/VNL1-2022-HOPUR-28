@@ -39,7 +39,7 @@ class EditDivisionsUI(MenuFrame):
 			self.display_menu(divisions, showing_page=showing_page)
 			print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				# if user wants to see the next 10 items

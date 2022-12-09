@@ -75,7 +75,7 @@ class CaptainMatchesTableUI(MenuFrame):
 			self.display_menu()
 
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				# if user wants to see the next 10 items
