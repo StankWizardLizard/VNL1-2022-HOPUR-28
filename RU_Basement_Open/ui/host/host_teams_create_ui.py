@@ -29,14 +29,6 @@ class CreateTeamUI(MenuFrame):
 		except IndexError:
 			generate_table(table_format, [])
 
-	def _number_of_team_members(self):
-			print("How many team members (must atleast be 4)?")
-			number_of_team_members = int(input("> "))
-			while number_of_team_members < 4:
-				number_of_team_members = input(
-					"invalid number of team members. Try again \n >")
-			return number_of_team_members
-
 	def _display_player_menu(self,players_list, showing_page = 0):
 		print("Select players of team")
 		table_format = [["NR", 4], ["Player Names", 40]]
