@@ -8,6 +8,7 @@ from logic.team_LL import TeamLL
 
 
 class LogicWrapper:
+    """ A class that combines all logic layer for easy access from UI layer"""
     def __init__(self):
         self.data_wrapper = DataWrapper()
         self.player_logic = PlayerLL(self.data_wrapper)

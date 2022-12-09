@@ -5,6 +5,7 @@ from collections import defaultdict
 
 
 class MatchLL():
+    """Match logic layer class. Takes input model class from ui layer"""
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         self.matches = ""
@@ -12,6 +13,7 @@ class MatchLL():
 
     # ----- Internal methods -----#
     def _count_qps(self, qp_str):
+        """ Takes a quality point string, parses it to count and return quality points"""
         qp_ls = qp_str.strip().split(",")
         score = 0
         for turn in qp_ls:
@@ -209,13 +211,16 @@ class MatchLL():
         return ret_list
     
     def get_concluded_matches_by_div(self,division):
+        """ Takes a division, returns it's concluded matches"""
         self._update_matches()
         ret_list = []
         for match in self.matches:
             if match.results and division.id==match.division_id:
                 ret_list.append(match)
         return ret_list
+    
     def get_upcoming_matches_by_div(self,division):
+        """ Takes a division, returns it's uncompleted matches"""
         self._update_matches()
         ret_list = []
         for match in self.matches:
@@ -250,6 +255,7 @@ class MatchLL():
 
     # ----- Writing methods -----#
     def gen_matches(self, team_ids: list, division_id, start_date, days_between_matchdays, rounds):
+        """Helper method to generate match fixtures for a division with a round-robin division scheduling algorithim"""
         # Add a rest day if number of teams is odd
         if len(team_ids) % 2:
             team_ids.append("c")

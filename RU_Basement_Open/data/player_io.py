@@ -4,6 +4,7 @@ from data.functions import *
 
 
 class PlayerIO:
+    """ Handles reading and writing player data from storage files"""
     def __init__(self, directory="files", filename="player.json"):
         self.player_filename = f"{directory}/{filename}"
 

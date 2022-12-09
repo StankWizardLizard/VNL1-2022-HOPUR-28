@@ -2,6 +2,7 @@
 
 class MasterLL:
     def __init__(self, match_logic_connection, division_logic_connection, team_logic_connection, player_logic_connection, club_logic_connection, data_wrapper):
+        """ Master logic layer class, handles complicated methods that needs data from more than one model type"""
         self.match_logic = match_logic_connection
         self.division_logic = division_logic_connection
         self.team_logic = team_logic_connection
@@ -153,6 +154,7 @@ class MasterLL:
         }
 
     def _count_legs(self, results):
+        """ Takes a match results and returns how many legs were won by home and away respectively"""
         win_home = 0
         for leg in results:
             if leg['result'][0] > leg['result'][1]:
@@ -217,12 +219,16 @@ class MasterLL:
         return leaderboard
 
     def update_division_start_and_end_date(self, division_id):
+        """Takes a division id, scans that divisions matches and finds the lowest and highest dates.
+        Then updates the divisions start and end date accordingly"""
         match_ids = self.division_logic.get_match_ids(division_id)
         start_date, end_date = self.match_logic.get_start_and_end_date(
             match_ids)
         self.division_logic.set_dates(start_date, end_date, division_id)
 
     def generate_division_matches(self, division_id, start_date, days_between_matchdays, rounds):
+        """ Takes a division id, start date, rest days and rounds, generates matches and allocates teams to 
+        match days with specified rest days between them"""
         team_ids = self.division_logic.get_team_ids(division_id)
         match_ids = self.match_logic.gen_matches(
             team_ids, division_id, start_date, days_between_matchdays, rounds)
@@ -230,6 +236,8 @@ class MasterLL:
         self.update_division_start_and_end_date(division_id)
 
     def postpone_match(self, new_date, division_id, match_id):
+        """ Takes a date string, a division id and a match id, sets that matches date as the new date
+        and updates the divisions start or end date if needed"""
         self.match_logic.set_date(match_id, new_date)
         self.update_division_start_and_end_date(division_id)
 
@@ -316,6 +324,7 @@ class MasterLL:
         return leaderboard
 
     def get_division_unplayed_match_ids(self, division_id):
+        """ Takes a division id, returns unplayed matches in that division"""
         unplayed_match_ids = []
         match_ids = self.division_logic.get_match_ids(division_id)
         for match_id in match_ids:

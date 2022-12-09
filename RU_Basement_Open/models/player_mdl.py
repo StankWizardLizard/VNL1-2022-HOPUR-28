@@ -1,4 +1,5 @@
 class PlayerMdl():
+    """ A model class for storing player information"""
     def __init__(
             self, name:str="", ssn:str="", mobile_nr:str="",
             home_nr:str="", address:str="", email:str="",

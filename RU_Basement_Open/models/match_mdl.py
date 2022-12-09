@@ -1,4 +1,5 @@
 class MatchMdl():
+    """ A model class for storing match information"""
     def __init__(
             self, date:str="", home_team:str="", away_team:str="",
             home_team_players:list=[], away_team_players:list=[],

@@ -4,6 +4,7 @@ from data.functions import *
 
 
 class DivisionIO:
+    """ Handles reading and writing division data from storage files"""
     def __init__(self, directory="files", filename="division.json") -> None:
         self.division_filename = f"{directory}/{filename}"
 

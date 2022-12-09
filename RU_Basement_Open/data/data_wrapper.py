@@ -5,6 +5,7 @@ from data.team_io import TeamIO
 from data.club_io import ClubIO
 
 class DataWrapper:
+    """ Wrapper class for easy access to data from logic layer"""
     def __init__(self):
         self.DIRECTORY = "files"
         self.player_io = PlayerIO(directory=self.DIRECTORY)

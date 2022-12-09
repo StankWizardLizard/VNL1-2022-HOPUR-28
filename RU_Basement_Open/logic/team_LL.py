@@ -3,6 +3,7 @@ from models import team_mdl
 
 
 class TeamLL():
+    """ Team logic layer class. Takes input model class from ui layer"""
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         self.teams = ""
@@ -46,10 +47,8 @@ class TeamLL():
             raise IndexError
 
     def get_players(self, team_id):
+        """ Takes a team id, returns that teams player ids"""
         return self.get_team(team_id).player_ids
-
-    def get_teams_by_club(self, club_id):
-        """Takes a club"""
 
     def team_name_exists(self, name, team_ids):
         """Takes name and a list of team ids, if that name exists on any of the teams,
@@ -85,7 +84,7 @@ class TeamLL():
         self._update_teams()
         team = self._find_team(team_id)
         if player_id not in team.player_ids:
-            raise IndexError  # TODO: Annað exception
+            raise IndexError
         else:  # Assign new captain
             team.captain_id = player_id
             self._write_teams()

@@ -4,6 +4,7 @@ from data.functions import *
 
 
 class TeamIO:
+    """ Handles reading and writing team data from storage files"""
     def __init__(self, directory="files", filename="team.json") -> None:
         self.team_filename = f"{directory}/{filename}"
 

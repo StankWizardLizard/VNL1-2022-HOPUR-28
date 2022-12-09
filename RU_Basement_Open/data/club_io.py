@@ -4,6 +4,7 @@ from data.functions import *
 
 
 class ClubIO:
+    """ Handles reading and writing club data from storage files"""
     def __init__(self, directory="files", filename="club.json") -> None:
         self.club_filename = f"{directory}/{filename}"
 

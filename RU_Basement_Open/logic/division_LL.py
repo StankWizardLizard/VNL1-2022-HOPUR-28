@@ -37,10 +37,7 @@ class DivisionLL():
     # ----- Reading methods -----#
 
     def get_division(self, division_id):
-        """TODO: Docstring for get_division.
-        :returns: TODO
-
-        """
+        """Takes a division id, returns it's corresponding object"""
         self._update_divisions()
         return self._find_division(division_id)
 

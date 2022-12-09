@@ -2,6 +2,7 @@ from functions.get_random_id import get_random_id
 
 
 class ClubLL():
+    """Club logic layer class. Takes input model class from ui layer"""
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         self.clubs = ""

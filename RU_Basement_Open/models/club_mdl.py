@@ -1,4 +1,5 @@
 class ClubMdl:
+    """ A model class for storing club information"""
     def __init__(
             self, name:str="", address:str="",
             phone_nr:str="", id:str="", teams_id:list=[]):

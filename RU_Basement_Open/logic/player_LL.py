@@ -2,6 +2,7 @@ from functions.get_random_id import get_random_id
 
 
 class PlayerLL():
+    """Player logic layer class. Takes input model class from ui layer"""
     def __init__(self, data_connection):
         self.data_wrapper = data_connection
         self.players = ""
@@ -20,6 +21,7 @@ class PlayerLL():
     """Returns a match by id from data layer"""
 
     def get_player(self, id):
+        """ Takes a player id and returns it's object"""
         self._update_players()
         for player in self.players:
             if player.id == id:

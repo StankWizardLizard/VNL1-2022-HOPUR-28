@@ -1,4 +1,5 @@
 class TeamMdl():
+    """ A model class for storing team information"""
     def __init__(
             self, name:str="", player_ids:list=[],
             captain_id:str="", id:str=""):
