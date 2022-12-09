@@ -512,7 +512,7 @@ class MatchEditUI(MenuFrame):
                         input("Invalid Input!")
 
 
-                self.save_match_information()
+            self.save_match_information()
 
         except:
             input("Exiting without saving")
