@@ -43,6 +43,7 @@ class DivisionLL():
         """
         self._update_divisions()
         return self._find_division(division_id)
+
     def get_all_divisions(self):
         """
         Gets all divisions fron storage layer
@@ -50,17 +51,16 @@ class DivisionLL():
         self._update_divisions()
         return self.divisions
 
-
     def get_match_ids(self, division_id):
         """Takes a division id and returns a list of keys for it's matches"""
         self._update_divisions()
         return self._find_division(division_id).matches
-    
+
     def get_team_ids(self, division_id):
         """Takes a division id and returns a list of keys for it's teams"""
         self._update_divisions()
         return self._find_division(division_id).team_ids
-    
+
     def name_exists(self, division_name):
         """Takes a name. If it exists on a division, return True.
         If not, return False"""

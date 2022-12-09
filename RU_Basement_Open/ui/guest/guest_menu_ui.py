@@ -16,14 +16,14 @@ class GuestMenuUI(MenuFrame):
 		"""Displays the menu screen for the guest"""
 	
 		print(f"Logged in as {self.status}")
-		print("┌─────────────────────┐")
-		print("│1) Show Teams        │")
-		print("│2) Unplayed Matches  │")
-		print("│3) Match Results     │")
-		print("│4) Division Stats    │")
-		print("│                     │")
-		print("│q) Log out           │")
-		print("└─────────────────────┘")
+		print("┌─────────────────────────┐")
+		print("│1) Show Teams            │")
+		print("│2) All Unplayed Matches  │")
+		print("│3) All Match Results     │")
+		print("│4) Division Stats        │")
+		print("│                         │")
+		print("│q) Log out               │")
+		print("└─────────────────────────┘")
 
 
 	def prompt_option(self):
@@ -58,9 +58,9 @@ class GuestMenuUI(MenuFrame):
 					division_table_ui = DivisionsTableUI(self.logic_wrapper, self.os)
 					division_table_ui.prompt_option()
 
-				case "5":
-					players_table_ui = PlayersTableUI(self.logic_wrapper, self.os)
-					players_table_ui.prompt_option()
+				# case "5":
+				# 	players_table_ui = PlayersTableUI(self.logic_wrapper, self.os)
+				# 	players_table_ui.prompt_option()
 
 				# if user wants to quit session
 				case "q":

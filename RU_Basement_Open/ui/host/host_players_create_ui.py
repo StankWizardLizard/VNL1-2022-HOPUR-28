@@ -15,21 +15,31 @@ class CreatePlayerUI(MenuFrame):
             self.clear_menu()
             self.display_menu()
             clubs = self.logic_wrapper.get_all_clubs()
-
-            print("Select an existing club!")
+            back = False
+            
+            print("Select a club from the list to register a new player or press 'q' to abort")
             for i, club in enumerate(clubs):
                 print(i+1, club.name)
 
             while True:
                 try:
                     choice =  get_input("Club Id: ")
+                    if choice.strip().lower() == "q":
+                        back = True
+                        break
+                    
                     club_id = clubs[int(choice)-1].id
                     break
+                    
                 except IndexError:
                     print("Invalid id, try again...")
                 except ValueError:
                     print(f"{choice} is not a number")
-
+            # Exit player creation
+            if back:
+                break
+            self.clear_menu()
+            print(f"Registering new player to club: {clubs[int(choice)-1].name}")
             name = get_input("Enter Name of new player: ")
             address = get_input("Address of new player: ")
             mobile_nr = get_input("Mobile phone number of player: ", number=True, length=7)

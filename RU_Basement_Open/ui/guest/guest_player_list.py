@@ -8,7 +8,7 @@ class PlayerList(MenuFrame):
             self.division = division
             self.NR_OF_ENTRIES = 10
 
-    def display_menu(self, showing_page:int=0):
+    def display_menu(self, showing_page:int=0, players_in_div:list=[]):
         """Display the menu screen for the  matches"""
 
         #Constants
@@ -20,7 +20,7 @@ class PlayerList(MenuFrame):
 
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[NUMBER, NR], [TEAM_NAME, TN]] 
-        players_in_div = self.logic_wrapper.get_players_in_div(self.division)
+
         try:
             
             #Fills in data for table by with a list of lists containing data for every row
@@ -29,7 +29,7 @@ class PlayerList(MenuFrame):
                 showing_page*self.NR_OF_ENTRIES,
                 showing_page*self.NR_OF_ENTRIES+len(players_in_div[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
                 ):
-                player_nr = str(i + 1+  showing_page * self.NR_OF_ENTRIES) + ")"
+                player_nr = str(i + 1) + ")"
                 player_name = f"{players_in_div[i].name}"
                 table_data.append([player_nr, player_name])
 
@@ -42,10 +42,22 @@ class PlayerList(MenuFrame):
     def prompt_option(self, showing_page:int=0):
         '''Prompts the user to choose an option from a list of options for the division table'''
         division_leaderboard = self.logic_wrapper.get_leaderboard(self.division)
-        pages_number = len(division_leaderboard) // 2
+        
+        players_in_div = []
+        all_teams = self.logic_wrapper.get_all_teams()
+        for team_id in self.division.team_ids:
+            for team in all_teams:
+                if team_id == team.id:
+                    for player in team.player_ids:
+                        players_in_div.append(self.logic_wrapper.get_player(player))
+
+        
+        
+        
+        pages_number = len(players_in_div) // 10
         while True:
             self.clear_menu()
-            players_in_div = self.display_menu()
+            self.display_menu(showing_page, players_in_div)
             print(display_menu_options(showing_page=showing_page, how_many_pages=pages_number))
             choice = input(" > ")
             choice = choice.lower()
@@ -67,38 +79,15 @@ class PlayerList(MenuFrame):
                 # if user wants to quit
                 case "q":
                     break
-                case _: 
+                case _:
+                    
                     if choice.isnumeric():
+                        if int(choice) > len(players_in_div):
+                            print("oopsie")
+                            continue
                         player_stats = PlayerStats(self.logic_wrapper,self.os,players_in_div[int(choice)-1],self.division)
                         player_stats.prompt_option()
                     else: 
                         input("Invalid Input!")
                 # undocumented inputs get disregarded
 
-'''
-print("Divisions")
-print("┌────┬──────────────────────────────────────┬──────┬──────┬──────────┐")
-print("│ NR │ Team Name                            │ Wins │ Loss │ Legs won │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                      	   │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("├────┼──────────────────────────────────────┼──────┼──────┼──────────┤")
-print("│100)│ Team Name 1                          │ 1    │ 2    │ 2        │")
-print("└────┴──────────────────────────────────────┴──────┴──────┴──────────┘")
-print("(N)ext page, (B)ack Page, (Q)uit or Team Number")
-'''

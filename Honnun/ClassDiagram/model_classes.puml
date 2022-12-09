@@ -8,15 +8,14 @@ Division "1" *-- "1..*" Match
 
 
 class Player {
-    id
-    team_id
-    name
-    SSN
+    id 
+    club_id
+    name 
+    ssn
     mobile_nr
     home_nr
     address
     email
-    captain: bool
 }
 class Club {
     id
@@ -34,6 +33,8 @@ class Team {
 class Division {
     id
     team_ids[]
+    match_ids[]
+    name
     host_name
     phone_nr
     start_date
@@ -44,14 +45,13 @@ class Division {
 class Match {
     id
     division_id
-    type
+    home_team_id
+    away_team_id
     date
-    home_team
-    away_team
-    home_team_players[]
-    away_team_players[]
-    results
-    quality_points
+    home_team_player_ids[]
+    away_team_player_ids[]
+    quality_points{}
+    results[]
 }
 
 @enduml
