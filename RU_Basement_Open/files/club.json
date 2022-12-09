@@ -1,3 +1,11 @@
 {
-
+    "club_details": [
+        {
+            "id": "8db5a9dd-77d5-11ed-9c8c-8cc68119b558",
+            "teams_id": [],
+            "name": "Tesst",
+            "address": "lala land",
+            "phone": "1231231"
+        }
+    ]
 }
