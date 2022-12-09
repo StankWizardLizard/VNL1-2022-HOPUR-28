@@ -90,10 +90,9 @@ class MatchesTableUI(MenuFrame):
 				case _:
 					try:
 						if choice.isnumeric():
-							if matches[int(choice)-1]:
-								match = matches[int(choice)-1]
-								match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
-								match_table_ui.prompt_option()
+							match = matches[int(choice)-1]
+							match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
+							match_table_ui.prompt_option()
 					#  undocumented inputs get disregarded
 						else:
 							input("Invalid Input!")
