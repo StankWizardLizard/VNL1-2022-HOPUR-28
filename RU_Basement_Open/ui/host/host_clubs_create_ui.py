@@ -25,7 +25,7 @@ class CreateClubUI(MenuFrame):
                     f"A club with the name {name} already exists, try again...")
 
             address = get_input("Address of new club: ")
-            phone = get_input("Phone number of club: ", number=True)
+            phone = get_input("Phone number of club: ", number=True, length=7)
 
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")

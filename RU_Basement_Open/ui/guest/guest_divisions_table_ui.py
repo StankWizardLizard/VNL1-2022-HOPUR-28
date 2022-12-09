@@ -1,5 +1,5 @@
 from ui.menu_frame import MenuFrame
-from ui.guest.guest_division_table_ui import DivisionTableUI
+from ui.guest.guest_division_stats_ui import DivisionStatsUI
 from ui.functions import *
 
 class DivisionsTableUI(MenuFrame):
@@ -82,8 +82,8 @@ class DivisionsTableUI(MenuFrame):
                         try:
                             if list_of_divisions[int(choice)-1]:
                                 division = list_of_divisions[int(choice)-1]
-                                division_table_ui = DivisionTableUI(self.logic_wrapper, self.os, division)
-                                division_table_ui.prompt_option()
+                                division_stats_ui = DivisionStatsUI(self.logic_wrapper, self.os, division)
+                                division_stats_ui.prompt_option()
                         except IndexError:
                             input("Invalid Input!")
                     # undocumented inputs get disregarded

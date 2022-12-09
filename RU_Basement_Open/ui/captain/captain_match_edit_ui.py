@@ -18,7 +18,6 @@ class MatchEditUI(MenuFrame):
         self.away_team_name = self.logic_wrapper.get_team(self.match.away_team).name
 
 
-
     def display_menu(self):
         """Displays match table for a given match"""
 
@@ -32,6 +31,24 @@ class MatchEditUI(MenuFrame):
                 home_player_name = ""
 
             # Check if player exists, if set value to his name, else to nothing
+            try:
+                away_player_name = self.logic_wrapper.get_player(away_player_id).name
+            except IndexError:
+                away_player_name = ""
+
+            # Update player_list
+            self.player_list.append((home_player_name, away_player_name))
+
+        # For loop through player id list
+        self.player_list = []
+        for home_player_id, away_player_id in self.player_id_list:
+            # Check if player exists, if so value to his name else to nothing
+            try:
+                home_player_name = self.logic_wrapper.get_player(home_player_id).name
+            except IndexError:
+                home_player_name = ""
+
+            # Check if player exists, if so value to his name else to nothing
             try:
                 away_player_name = self.logic_wrapper.get_player(away_player_id).name
             except IndexError:
@@ -375,6 +392,95 @@ class MatchEditUI(MenuFrame):
         quality_points = {}
 
         self.logic_wrapper.set_match_results(self.match.id, home_team, away_team, results, quality_points)
+
+
+
+    def get_match_information(self):
+        """Get points, players, quality points for a given match"""
+        # TODO UNFINISHED
+
+        # Get results
+        # results = self.match.results
+        
+        print(dir(self.match),end="\n\n")
+        print(self.match.results)
+        print(self.match.quality_points)
+        print(self.match.home_team_players)
+        print(self.match.away_team_players)
+        input()
+
+        pass
+
+
+
+    def save_match_information(self):
+        """Save points, players, quality points for a given match"""
+
+        results = []
+
+        # Section off the Singles Games
+        singles_players = self.player_id_list[0:4]
+        singles_results = self.points_list[0:4]
+    
+        # iterate through both lists and format dicts
+        for players, points in zip(singles_players, singles_results):
+            match = {
+                "home_plr": [players[0]],
+                "away_plr": [players[1]],
+                "result": [int(points[0]) + int(points[1]), int(points[2]) + int(points[3])] 
+            }
+            results.append(match)
+
+        # Section off the Duo Games
+        duos_players = self.player_id_list[4:8]
+        duos_results = self.points_list[4:6]
+
+        # Format First Duo Match
+        match = {
+            "home_plr":[duos_players[0][0], duos_players[1][0]],
+            "away_plr":[duos_players[0][1], duos_players[1][1]],
+            "result":[int(duos_results[0][0]) + int(duos_results[0][1]), int(duos_results[0][2]) + int(duos_results[0][3])]
+        }
+        results.append(match)
+
+        # Format Second Duo Match
+        match = {
+            "home_plr":[duos_players[2][0], duos_players[3][0]],
+            "away_plr":[duos_players[2][1], duos_players[3][1]],
+            "result":[int(duos_results[1][0]) + int(duos_results[1][1]), int(duos_results[1][2]) + int(duos_results[1][3])]
+        }
+        results.append(match)
+
+        # Section off Quad game
+        quads_players = self.player_id_list[8:12]
+        quads_results = self.points_list[-1]
+
+        # Format the Quad game
+        match = {
+            "home_plr":[x[0] for x in quads_players],
+            "away_plr":[x[1] for x in quads_players],
+            "results":[int(quads_results[0]) + int(quads_results[1]) , int(quads_results[2]) + int(quads_results[3])]
+        }
+        results.append(match)
+
+
+        # Save match results
+        #self.logic_wrapper.set_match_results(self.match.id, results, quality_points)
+
+        home_team = [player.id for player in self.home_team_players]
+        away_team = [player.id for player in self.away_team_players]
+        quality_points = {}
+
+        self.logic_wrapper.set_match_results(self.match.id, home_team, away_team, results, quality_points)
+
+
+
+    def get_quality_points(self):
+        """Get quality points from the user for players"""
+        print(dir(self.match))
+        print(self.match.results)
+        input()
+        pass
 
 
 
