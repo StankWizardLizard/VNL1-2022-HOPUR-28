@@ -73,7 +73,7 @@ class TeamsTableUI(MenuFrame):
 			self.display_menu(showing_page=showing_page, list_of_all_teams=list_of_all_teams)
 			print(display_menu_options(showing_page=showing_page, how_many_pages=page_numbers), "or select team by number")
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				#  if user wants to see the next self.NR_Of_ENTRIES items

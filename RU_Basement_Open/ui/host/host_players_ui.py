@@ -25,7 +25,7 @@ class PlayersUI(MenuFrame):
 			self.clear_menu()
 			self.display_menu()
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				# if user wants to create a new club

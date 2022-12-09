@@ -36,8 +36,7 @@ class CaptainMenuUI(MenuFrame):
 			self.display_menu()
 	
 			choice = input(" > ")
-			choice = choice.lower()
-
+			choice = choice.strip().lower()
 			match choice:
 				# if user wants to show teams
 				case "1":

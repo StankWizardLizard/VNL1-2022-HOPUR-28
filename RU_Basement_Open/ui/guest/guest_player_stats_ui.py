@@ -79,7 +79,7 @@ class PlayerStats(MenuFrame):
                 break
             print("Press Q to go back: ")
             choice = input(" > ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
             match choice:
                 case "q":
                     break

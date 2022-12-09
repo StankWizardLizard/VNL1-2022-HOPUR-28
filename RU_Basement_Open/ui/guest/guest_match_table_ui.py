@@ -106,7 +106,7 @@ class MatchTableUI(MenuFrame):
 			print(display_menu_options(how_many_pages=0, showing_page=0))
 
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 			match choice:
 				case "q":
