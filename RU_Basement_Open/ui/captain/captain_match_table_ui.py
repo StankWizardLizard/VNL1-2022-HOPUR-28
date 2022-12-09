@@ -2,10 +2,6 @@ from ui.captain.captain_match_edit_ui import MatchEditUI
 
 from ui.menu_frame import MenuFrame
 
-from ui.functions import get_all_concluded_matches
-from ui.functions import get_all_unplayed_matches
-from ui.functions import get_all_matches
-
 from math import ceil
 
 class CaptainMatchesTableUI(MenuFrame):
@@ -17,15 +13,13 @@ class CaptainMatchesTableUI(MenuFrame):
 		self.match_list = []
 
 
+
 	def get_match_list(self):
 		"""Gets a list of either unplayed or completed matches based on self.match_finished_status variable"""
 
-		return get_all_unplayed_matches(self.logic_wrapper)
+		return self.logic_wrapper.get_all_matches() # Remember to change this for final and only for host
+		return self.logic_wrapper.get_upcoming_matches()
 
-		if(self.match_finished_status):
-			return get_all_concluded_matches(self.logic_wrapper)
-		else:
-			return get_all_unplayed_matches(self.logic_wrapper)
 
 
 	def format_match_list(self, match_list):
@@ -40,24 +34,30 @@ class CaptainMatchesTableUI(MenuFrame):
 		return formatted_list
 
 
+
 	def display_menu(self):
 		"""Displays the match table window and the options"""
 
 		# Print the menu
-		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Matches")
-		print("┌────┬────────────────────────────────────────────────────────┬──────────────────┐")
-		print("│ NR │                          Match                         │       Date       │")
+		print(f"Showing page {self.current_page_number+1}-{self.max_page_number} of Unfinished Matches")
+		print("┌────┬──────────────────────────────────────────────────────────┬──────────────────┐")
+		print("│ NR │                           Match                          │       Date       │")
 
 		try:
 			for i in range(0,len(self.match_list[self.current_page_number])):
 				current_match_number = str(i+1) + ')'
 				current_match = self.match_list[self.current_page_number][i]
-				print("├────┼────────────────────────────────────────────────────────┼──────────────────┤")
-				print(f"│{current_match_number:^4}│{current_match.home_team:^27}vs{current_match.away_team:^27}│ Date:{current_match.date:^12}│")
+
+				home_team = self.logic_wrapper.get_team(current_match.home_team).name
+				away_team = self.logic_wrapper.get_team(current_match.away_team).name
+
+				print("├────┼──────────────────────────────────────────────────────────┼──────────────────┤")
+				print(f"│{current_match_number:^4}│{home_team:^27} vs {away_team:^27}│ Date:{current_match.date:^12}│")
+
 		except IndexError:
 			pass
 
-		print("└────┴────────────────────────────────────────────────────────┴──────────────────┘")
+		print("└────┴──────────────────────────────────────────────────────────┴──────────────────┘")
 		print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
 
 
@@ -86,7 +86,8 @@ class CaptainMatchesTableUI(MenuFrame):
 				# if user wants to see the last 10 items
 				case "b":
 					if(self.current_page_number == 0):
-						input("Invalid Input")
+						input("Invalid Input")		#input()
+
 					else:
 						self.current_page_number -= 1
 

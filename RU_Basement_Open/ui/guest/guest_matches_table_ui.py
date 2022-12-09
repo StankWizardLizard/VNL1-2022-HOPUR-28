@@ -3,10 +3,11 @@ from ui.menu_frame import MenuFrame
 from ui.guest.guest_match_table_ui import MatchTableUI
 
 class MatchesTableUI(MenuFrame):
-	def __init__(self,logic_wrapper, os, is_finished = True):
+	def __init__(self,logic_wrapper, os, is_finished = True,division = ""):
 		super().__init__(logic_wrapper, os)
 		self.is_finished = is_finished
 		self.NR_OF_ENTRIES = 10
+		self.division = division
 
 	def display_menu(self, showing_page:int=0, matches:list=[]):
 		"""Display the menu screen for the  table_data"""

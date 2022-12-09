@@ -115,21 +115,37 @@ class MatchLL():
                         match.quality_points[player])
         return qp_dict
 
-    def get_player_total_qps_by_division(self, player_id, division_id):
+    def _get_last_n_matches(self, qp_ls, last_n_matches):
+        """Takes a quality point list and filters it for last n matches""" 
+        if last_n_matches > len(qp_ls):
+            raise IndexError(f"{last_n_matches} exeeds matches played by player")
+        return qp_ls[-last_n_matches:]
+    
+    def get_player_total_qps_by_division(self, player_id, division_id, last_n_matches=None):
         """Takes a player and division id, returns the player's total 
         quality points scored from all matches in that division"""
         qp_dict = self.get_all_player_qp_strings(player_id)
         qp_ls = qp_dict[division_id]
+        
+        # Filter for last n matches
+        if last_n_matches is not None:
+            qp_ls = self._get_last_n_matches(qp_ls, last_n_matches)
+
         total_score = 0
         for qp_str in qp_ls:
             total_score += self._count_qps(qp_str)
         return total_score
 
-    def get_player_highest_shots_by_division(self, player_id, division_id):
+    def get_player_highest_shots_by_division(self, player_id, division_id, last_n_matches=None):
         """Takes a player and division_id, returns the player's scores for his
         highest in-, out and regular shots he hit in all matches of that division"""
         qp_dict = self.get_all_player_qp_strings(player_id)
         qp_ls = qp_dict[division_id]
+        
+        # Filter for last n matches
+        if last_n_matches is not None:
+            qp_ls = self._get_last_n_matches(qp_ls, last_n_matches)
+        
         highest_shot = 0
         highest_inshot = 0
         highest_outshot = 0
@@ -179,6 +195,21 @@ class MatchLL():
         ret_list = []
         for match in self.matches:
             if match.results:
+                ret_list.append(match)
+        return ret_list
+    
+    def get_concluded_matches_by_div(self,division):
+        self._update_matches()
+        ret_list = []
+        for match in self.matches:
+            if match.results and division.id==match.division_id:
+                ret_list.append(match)
+        return ret_list
+    def get_upcoming_matches_by_div(self,division):
+        self._update_matches()
+        ret_list = []
+        for match in self.matches:
+            if not match.results and division.id == match.division_id:
                 ret_list.append(match)
         return ret_list
 

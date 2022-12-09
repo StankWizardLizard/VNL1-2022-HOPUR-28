@@ -27,8 +27,8 @@ class LogicWrapper:
     def get_player_leaderboard_by_division(self, division_id, category):
         return self.master_logic.get_player_leaderboard_by_division(division_id, category)
        
-    def get_player_statistics_by_division(self, player_id, division_id):  
-        return self.master_logic.get_player_statistics_by_division(player_id, division_id)
+    def get_player_statistics_by_division(self, player_id, division_id, last_n_matches=None):  
+        return self.master_logic.get_player_statistics_by_division(player_id, division_id, last_n_matches)
 
     def get_team_names_by_division(self, division_id):
         return self.master_logic.get_team_names_by_division(division_id)
@@ -79,6 +79,8 @@ class LogicWrapper:
 
     def player_ssn_exists(self, ssn):
         return self.player_logic.ssn_exists(ssn)
+    def get_players_in_div(self,division):
+        return self.master_logic.get_players_in_div(division)
 
     # ----- Match methods -----#
     def get_all_matches(self):
@@ -92,7 +94,10 @@ class LogicWrapper:
 
     def get_concluded_matches(self):
         return self.match_logic.get_concluded_matches()
-
+    def get_upcoming_matches_by_div(self,division):
+        return self.match_logic.get_upcoming_matches_by_div(division)
+    def get_concluded_matches_by_div(self, division):
+        return self.match_logic.get_concluded_matches_by_div(division)
     def create_match(self, match):
         self.match_logic.create_match(match)
 
@@ -111,8 +116,9 @@ class LogicWrapper:
     def get_player_total_qps_by_division(self, player_id, division_id):
         return self.match_logic.get_player_total_qps_by_division(player_id, division_id)
 
-    def get_player_highest_shots_by_division(self, player_id, division_id):
-        return self.match_logic.get_player_highest_shots_by_division(player_id, division_id)
+    def get_player_highest_shots_by_division(self, player_id, division_id, last_n_matches=None):
+        return self.match_logic.get_player_highest_shots_by_division(player_id, division_id, last_n_matches)
+
     # ----- Team methods -----#
 
     def get_all_teams(self):
