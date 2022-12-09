@@ -99,10 +99,10 @@ class MasterLL:
             else:
                 score_ls[1] = score_ls[1] + 1
 
-        score_501 = [0, 0]
-        score_301 = [0, 0]
-        score_cricket = [0, 0]
-        score_501_quad = [0, 0]
+        score_501 = [0, 0, 0]
+        score_301 = [0, 0, 0]
+        score_cricket = [0, 0, 0]
+        score_501_quad = [0, 0, 0]
         # when 0 <= i <= 3 game type is 501
         # when i = 4 game type is 301
         # when i = 5 game type is cricket
@@ -131,12 +131,29 @@ class MasterLL:
             if i == 5:
                 increment_score(score_cricket, win)
             if i == 6:
-                increment_score(score_501_quad, win)                
-        score_501[2]=1-score_501[0]/(score_501[0]+score_501[1])*100
-        score_301[2]=1-score_301[0]/(score_301[0]+score_301[1])*100
-        score_cricket[2]=1-score_cricket[0]/(score_cricket[0]+score_cricket[1])*100
-        score_501_quad[2]=1-score_501_quad[0]/(score_501_quad[0]+score_501_quad[1])*100
-
+                increment_score(score_501_quad, win)    
+        # Clalculate winrates for all types
+        if score_501[0] + score_501[1] == 0:
+            score_501[2] = 0
+        else:
+            score_501[2]=score_501[0]/(score_501[0]+score_501[1])*100
+        
+        if score_301[0] + score_301[1] == 0:
+            score_301[2] = 0
+        else:
+            score_301[2]=score_301[0]/(score_301[0]+score_301[1])*100
+        
+        if score_cricket[0] + score_cricket[1] == 0:
+            score_cricket[2] = 0
+        else:
+            score_cricket[2]=score_cricket[0]/(score_cricket[0]+score_cricket[1])*100
+        
+        if score_501_quad[0] + score_501_quad[1] == 0:
+            score_501_quad[2] = 0
+        else:
+            score_501_quad[2]=score_501_quad[0]/(score_501_quad[0]+score_501_quad[1])*100
+        
+       
         return {
             "score_301": score_301,
             "score_501": score_501,
@@ -144,12 +161,12 @@ class MasterLL:
             "score_501_quad": score_501_quad,
         }
 
-    def _count_legs(self, home, results):
+    def _count_legs(self, results):
         win_home = 0
         for leg in results:
-            if home:
-                if leg[0] > leg[1]:
-                    win_home += 1
+            if leg['result'][0] > leg['result'][1]:
+                win_home += 1
+
         win_away = 7-win_home
         return win_home, win_away
 
@@ -168,9 +185,9 @@ class MasterLL:
             if match.results == []:
                 continue
             if team.id == match.home_team:
-                win_legs, loss_legs = self._count_legs(True, match.results)
+                win_legs, loss_legs = self._count_legs(match.results)
             elif team.id == match.away_team:
-                loss_legs, win_legs = self._count_legs(False, match.results)
+                loss_legs, win_legs = self._count_legs(match.results)
             else:
                 continue
             if win_legs >= 4:
@@ -253,10 +270,10 @@ class MasterLL:
         name, his winrate in 301, 501, cricket and quad-501 along with his total
         quality points, highest in- and outshot and highest shot overall."""
         total_score_dict = {
-            "score_501": [0, 0],
-            "score_301": [0, 0],
-            "score_cricket": [0, 0],
-            "score_501_quad": [0, 0]
+            "score_501": [0, 0, 0],
+            "score_301": [0, 0, 0],
+            "score_cricket": [0, 0, 0],
+            "score_501_quad": [0, 0, 0]
         }
         player_matches = []
         matches = self.match_logic.get_matches_by_division(division_id)

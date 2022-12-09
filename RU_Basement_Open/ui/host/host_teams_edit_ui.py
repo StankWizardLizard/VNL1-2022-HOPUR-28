@@ -46,7 +46,7 @@ class EditTeamUI(MenuFrame):
 			self.display_menu(teams, showing_page=showing_page)
 			print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
 			choice = input(" > ")
-			choice = choice.lower()
+			choice = choice.strip().lower()
 
 
 			match choice:

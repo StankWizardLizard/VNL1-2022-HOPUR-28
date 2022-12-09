@@ -28,18 +28,18 @@ class PlayerStats(MenuFrame):
 
         #Format rows of table with a list of lists [row name, row width]
         table_format = [[PLAYER_NAME, PN], [Q_PTS, Q],[HIGH_PTS,Q],[INN_PTS,Q],[OUT_PTS,Q],[S_501,Q],[S_301,Q],[S_CRICKET,Q],[S_QUAD,Q]] 
-        print("Name:{}      Adress:          ")
+
         try:
             
             #Fills in data for table by with a list of lists containing data for every row
             table_data = []
             player_name = f"{self.player.name}"
             quality_pts = f"{self.logic_wrapper.get_player_total_qps_by_division(self.player.id,self.division.id)}"
-            h_s, i_s,o_s = self.logic_wrapper.get_player_highest_shots_by_division(self.player.id,self.division.id,int(games_past))
+            h_s, i_s,o_s = self.logic_wrapper.get_player_highest_shots_by_division(self.player.id,self.division.id,games_past)
             highest_shot = f"{h_s}"
             innbound_pts = f"{i_s}"
             outbound_pts = f"{o_s}"
-            score_stats = self.logic_wrapper.get_player_statistics_by_division(self.player.id,self.division.id,int(games_past))
+            score_stats = self.logic_wrapper.get_player_statistics_by_division(self.player.id,self.division.id,games_past)
             score_5 = f'{score_stats["score_501"][0]}/{score_stats["score_501"][1]}/{score_stats["score_501"][2]}'
             score_3 = f'{score_stats["score_301"][0]}/{score_stats["score_301"][1]}/{score_stats["score_301"][2]}'
             score_cri = f'{score_stats["score_cricket"][0]}/{score_stats["score_cricket"][1]}/{score_stats["score_cricket"][2]}'
@@ -67,6 +67,10 @@ class PlayerStats(MenuFrame):
             self.clear_menu()
             try:
                 games_past = input("Enter how many games in the past (Press enter for since beginning, Press Q to go back): ")
+                if games_past.strip() == "":
+                    games_past = None
+                else:
+                    games_past = int(games_past)
                 
                 self.clear_menu()
                 quit_str =self.display_menu(games_past)
@@ -79,7 +83,7 @@ class PlayerStats(MenuFrame):
                 break
             print("Press Q to go back: ")
             choice = input(" > ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
             match choice:
                 case "q":
                     break

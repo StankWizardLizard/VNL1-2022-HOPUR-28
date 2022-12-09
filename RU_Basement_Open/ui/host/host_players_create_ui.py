@@ -54,7 +54,7 @@ class CreatePlayerUI(MenuFrame):
 
             choice = input(
                 "Would you like to save? (y)es, (q)uit and any for no: ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 # if user wants to save the the club info
@@ -79,7 +79,7 @@ class CreatePlayerUI(MenuFrame):
 
             choice = input(
                 "Would you like to create another player? (y for yes, any for no): ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 # if user wants to add another player

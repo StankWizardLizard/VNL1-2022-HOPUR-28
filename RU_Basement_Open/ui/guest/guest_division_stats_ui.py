@@ -37,8 +37,8 @@ class DivisionStatsUI(MenuFrame):
             self.display_menu(list_of_divisions, showing_page=showing_page)
             print(display_menu_options(how_many_pages=pages_number, showing_page=showing_page))
             choice = input(" > ")
-            choice = choice.lower()
-
+            choice = choice.strip().lower()
+            
             match choice:
                 case "1":
                     unplayed_matches_ui = MatchesTableUI(self.logic_wrapper,self.os, False,self.division)

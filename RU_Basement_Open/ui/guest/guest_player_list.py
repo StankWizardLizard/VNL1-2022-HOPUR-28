@@ -49,9 +49,7 @@ class PlayerList(MenuFrame):
             for team in all_teams:
                 if team_id == team.id:
                     for player in team.player_ids:
-                        players_in_div.append(self.logic_wrapper.get_player(player))
-
-        
+                        players_in_div.append(self.logic_wrapper.get_player(player))        
         
         
         pages_number = len(players_in_div) // 10
@@ -60,7 +58,7 @@ class PlayerList(MenuFrame):
             self.display_menu(showing_page, players_in_div)
             print(display_menu_options(showing_page=showing_page, how_many_pages=pages_number))
             choice = input(" > ")
-            choice = choice.lower()
+            choice = choice.strip().lower()
 
             match choice:
                 case "n":
