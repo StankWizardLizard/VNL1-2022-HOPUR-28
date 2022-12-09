@@ -42,10 +42,10 @@ class MatchesTableUI(MenuFrame):
 				table_data.append([match_nr, teams_playing, date])
 
 			# Generates a table with the correct format and data
-            # example:
-            # table_format = [[column1 name, column1 width], [column2 name, column2 width]]
+			# example:
+			# table_format = [[column1 name, column1 width], [column2 name, column2 width]]
 			# table_data = [["column1 info", "column2 info"], ["column1 info", "column2 info"]...]
-            # generate_table(table_format, table_data)
+			# generate_table(table_format, table_data)
 			generate_table(table_format, table_data)
 		except IndexError:
 			# Generates an empty table if matches gives wrong data
@@ -57,15 +57,9 @@ class MatchesTableUI(MenuFrame):
 		then calls the a method to print a table of all teams then a method to print menu options, 
 		then takes input from the user to choose an option from the list of options printed for the teams table'''
 		if self.is_finished:
-			if self.division != "":
-				matches = self.logic_wrapper.get_concluded_matches_by_div(self.division)
-			else:
-				matches = get_all_concluded_matches(self.logic_wrapper)
-		else:
-			if self.division != "":
-				matches = self.logic_wrapper.get_upcoming_matches_by_div(self.division)
-			else:
-				matches = get_all_unplayed_matches(self.logic_wrapper)
+			matches = self.logic_wrapper.get_concluded_matches()
+		else: 
+			matches = self.logic_wrapper.get_upcoming_matches()
 		page_numbers = len(matches) // self.NR_OF_ENTRIES
 		while True:
 			self.clear_menu()
@@ -100,37 +94,11 @@ class MatchesTableUI(MenuFrame):
 								match = matches[int(choice)-1]
 								match_table_ui = MatchTableUI(self.logic_wrapper, self.os, match)
 								match_table_ui.prompt_option()
+					#  undocumented inputs get disregarded
+						else:
+							input("Invalid Input!")
 					except IndexError:
 						print("Invalid id, try again...")
       
-				#  undocumented inputs get disregarded
-					else:
-						input("Invalid Input!")
+					
 
-'''
-print("Match Results")
-print("┌────┬──────────────────────────────────────┬────────────────────┐")
-print("│ NR │ Match Name                           │ Date               │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│100)│ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│99) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│98) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│97) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│96) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│95) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│94) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│93) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│92) │ HR Basement Match nr 1               │ Date:              │")
-print("├────┼──────────────────────────────────────┼────────────────────┤")
-print("│91) │ HR Basement Match nr 1               │ Date:              │")
-print("└────┴──────────────────────────────────────┴────────────────────┘")
-print("(N)ext page, (B)ack Page, (Q)uit or Match Number")
-'''

@@ -30,7 +30,7 @@ class DivisionsTableUI(MenuFrame):
                 showing_page*self.NR_OF_ENTRIES, 
                 showing_page*self.NR_OF_ENTRIES+len(list_of_all_divisions[showing_page*self.NR_OF_ENTRIES:showing_page*self.NR_OF_ENTRIES+self.NR_OF_ENTRIES])
                 ):
-                division_nr = str(i + 1 + showing_page * self.NR_OF_ENTRIES) + ")"
+                division_nr = str(i + 1) + ")"
                 division =f"{list_of_all_divisions[i].name}"
                 table_data.append([division_nr, division])
             # Generates a table with the correct format and data

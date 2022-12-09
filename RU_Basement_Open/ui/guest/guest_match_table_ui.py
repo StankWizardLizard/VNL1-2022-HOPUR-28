@@ -43,19 +43,19 @@ class MatchTableUI(MenuFrame):
 
 		for i in range(0, len(games)):
 			try:
-				player_home = self.points_list[i][2]
+				player_home = self.points_list[i][0][0]
 			except IndexError:
 				player_home = ""
 			try:
-				player_away = self.points_list[i][3]
+				player_away = self.points_list[i][1][0]
 			except IndexError:
 				player_away = ""
 			try:
-				points_home = f"{self.points_list[i][0]}"
+				points_home = f"{self.points_list[i][2][0]}"
 			except IndexError:
 				points_home = ""
 			try:
-				points_away = f"{self.points_list[i][1]}"
+				points_away = f"{self.points_list[i][2][1]}"
 			except IndexError:
 				points_away = ""
 			game = games[i]
