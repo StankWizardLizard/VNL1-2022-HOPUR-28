@@ -102,11 +102,12 @@ class TeamsTableUI(MenuFrame):
 								team = list_of_all_teams[int(choice)-1]
 								team_table_ui = PlayersTableUI(self.logic_wrapper, self.os, team)
 								team_table_ui.prompt_option()
+					#  undocumented inputs get disregarded
+						else:
+							input("Invalid Input!")
 					except IndexError:
 						print("Invalid id, try again...")
-				#  undocumented inputs get disregarded
-					else:
-						input("Invalid Input!")
+				
 
 
 '''
