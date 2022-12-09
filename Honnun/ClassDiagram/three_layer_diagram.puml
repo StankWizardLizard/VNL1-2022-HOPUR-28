@@ -196,12 +196,27 @@ class ClubLL #EB937F {
     add_team(team_id, club_id)
 }
 class MasterLL #EB937F {
+    DataWrapper
     MatchLL
     DivisionLL
     TeamLL
     PlayerLL
     ClubLL
-    DataWrapper
+
+    -get_players_by_division(division_id)
+    -count_player_wins_in_match(player_id, MatchMdl)
+    -count_legs(home: bool, results)
+    -calculate_record(TeamMdl, matches[]: MatchMdl)
+    -sort_leaderboard(leaderboard)
+
+    update_division_start_and_end_date(division_id)
+    generate_division_matches(division_id, start_date, rest_days, rounds)
+    postpone_match(new_date, division_id, match_id)
+    get_player_leaderboard_by_division(division_id, category)
+    get_player_statistics_by_division(player_id, division_id, last_n_matches)
+    get_leaderboard(DivisionMld)
+    get_team_names_by_division(division_id)
+    team_name_exists_on_club(name, club_id)
 }
 class LogicWrapper{
     DataWrapper
