@@ -69,10 +69,10 @@ class MasterLL:
         name, his winrate in 301, 501, cricket and quad-501 along with his total
         quality points, highest in- and outshot and highest shot overall."""
         total_score_dict = {   
-        "score_501" : [0, 0],
-        "score_301" : [0, 0],
-        "score_cricket" : [0, 0],
-        "score_501_quad" : [0, 0]
+        "score_501" : [0, 0,0],
+        "score_301" : [0, 0,0],
+        "score_cricket" : [0, 0,0],
+        "score_501_quad" : [0, 0,0]
         }
         
         matches = self.match_logic.get_matches_by_division(division_id)
@@ -82,7 +82,6 @@ class MasterLL:
                 # Add results to total score
                 for key in total_score_dict:
                     total_score_dict[key] = [sum(value) for value in zip(total_score_dict[key], score[key])]
-        
         return total_score_dict
             
     def _count_player_wins_in_match(self, player_id, match):
@@ -126,7 +125,11 @@ class MasterLL:
                 increment_score(score_cricket, win)                
             if i == 6:
                 increment_score(score_501_quad, win)                
-            
+        score_501[2]=1-score_501[0]/(score_501[0]+score_501[1])*100
+        score_301[2]=1-score_301[0]/(score_301[0]+score_301[1])*100
+        score_cricket[2]=1-score_cricket[0]/(score_cricket[0]+score_cricket[1])*100
+        score_501_quad[2]=1-score_501_quad[0]/(score_501_quad[0]+score_501_quad[1])*100
+
         return {
             "score_301" : score_301,
             "score_501" : score_501,

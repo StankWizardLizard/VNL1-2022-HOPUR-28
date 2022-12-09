@@ -77,7 +77,7 @@ class PlayerList(MenuFrame):
                     break
                 case _: 
                     if choice.isnumeric():
-                        player_stats = PlayerStats(self.logic_wrapper,self.os,players_in_div[int(choice)-1])
+                        player_stats = PlayerStats(self.logic_wrapper,self.os,players_in_div[int(choice)-1],self.division)
                         player_stats.prompt_option()
                     else: 
                         input("Invalid Input!")
